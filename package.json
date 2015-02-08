@@ -1,0 +1,33 @@
+{
+  "name"                        : "shopio",
+  "version"                     : "0.2.08",
+  "description"                 : "Shopio is everything you need to sell anywhere (with your own io.js or nodejs servers) — Edit",
+  "homepage"                    : "http://zetapath.com",
+  "author"                      : "Javi Jimenez Villar",
+  "dependencies": {
+    "coffee-script"             : "*",
+    "nodemailer"                : "*",
+    "nodemailer-smtp-transport" : "*",
+    "premailer-api"             : "*",
+    "shortid"                   : "*",
+    "zenproxy"                  : "*",
+    "zenserver"                 : "*"
+  },
+  "devDependencies" : {
+    "gulp"                      : "*",
+    "gulp-coffee"               : "*",
+    "gulp-concat"               : "*",
+    "gulp-flatten"              : "*",
+    "gulp-header"               : "*",
+    "gulp-stylus"               : "*",
+    "gulp-uglify"               : "*",
+    "gulp-util"                 : "*",
+    "gulp-yml"                  : "*",
+    "zenrequest"                : "*"
+  },
+  "scripts"         : {
+    "start"                     : "node zen zen",
+    "postinstall"               : "bower install"
+  },
+  "engines"                     : { "node": "*"}
+}

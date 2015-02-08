@@ -1,0 +1,61 @@
+# -- Environment ---------------------------------------------------------------
+environment: development
+
+# -- RESTful services ----------------------------------------------------------
+api:
+  - session
+
+# -- HTML pages ----------------------------------------------------------------
+www:
+  - index
+
+# -- Static resources ----------------------------------------------------------
+statics:
+  - url     : /assets
+    folder  : /www/assets
+    maxage  : 3600
+  - file    : humans.txt
+    folder  : /www/assets
+    maxage  : 3600
+  - file    : robots.txt
+    folder  : /www/assets
+
+# -- session -------------------------------------------------------------------
+session:
+  cookie: shopio
+  domain: ""
+  path  : "/"
+  expire: 3600
+  authorization: authorization
+
+# -- Deploy --------------------------------------------------------------------
+deploy:
+  - "git pull"
+  - "bower install --allow-root"
+  - "gulp init"
+  - "pm2 restart OIZIO"
+
+# -- CORS Properties -----------------------------------------------------------
+headers:
+  Access-Control-Allow-Origin: "*"
+  Access-Control-Allow-Credentials: true
+  Access-Control-Allow-Methods: GET,PUT,POST,DELETE,OPTIONS
+  Access-Control-Max-Age: 1
+  Access-Control-Allow-Headers:
+    - Accept
+    - Accept-Version
+    - Content-Length
+    - Content-MD5
+    - Content-Type
+    - Date
+    - Api-Version
+    - Response-Time
+    - Authorization
+  Access-Control-Expose-Headers:
+    - api-version
+    - content-length
+    - content-md5
+    - content-type
+    - date
+    - request-id
+    - response-time

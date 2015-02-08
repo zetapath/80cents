@@ -1,0 +1,19 @@
+# -- General Info --------------------------------------------------------------
+type        : development
+protocol    : http
+host        : localhost
+port        : 1337
+timezone    : Europe/Amsterdam
+
+# -- Mustache template ---------------------------------------------------------
+mustache:
+  cache: false
+
+# -- Services ------------------------------------------------------------------
+mongo:
+  - name    : primary
+    host    : localhost
+    port    : 27017
+    db      : shopio
+    # user    : admin
+    # password: password
