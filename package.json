@@ -1,6 +1,6 @@
 {
   "name"                        : "shopio",
-  "version"                     : "0.2.08",
+  "version"                     : "0.2.09",
   "description"                 : "Shopio is everything you need to sell anywhere (with your own io.js or nodejs servers) — Edit",
   "homepage"                    : "http://zetapath.com",
   "author"                      : "Javi Jimenez Villar",

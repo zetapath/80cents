@@ -1,0 +1,67 @@
+[data-atoms=app]
+
+  > [data-organism-article] > [data-molecule-navigation]
+    transition margin-top (ANIMATION_DURATION / 3)
+    background-color: DARK
+    > [data-atom-button]
+      > abbr, .icon
+        color: lighten(DARK, 50%)
+      > abbr
+        font-weight: FONT_WEIGHT_NORMAL
+      > .icon
+        font-weight: FONT_WEIGHT_BOLD
+      &.active
+        box-shadow: inset 0 -.25rem lighten(THEME, 25%)
+        > abbr, .icon
+          color: WHITE
+
+  > [data-organism-article] > [data-organism-header] [data-molecule-navigation]
+    padding: 0 (U / 3)
+
+  > aside > [data-organism-header] [data-molecule-navigation] [data-atom-button]
+    color: lighten(DARK, 75%)
+    &:active
+      color: WHITE !important
+
+  > [data-organism-article] > [data-organism-section] [data-molecule-navigation] > [data-atom-button]
+      border-radius: 0
+      box-shadow none
+      &:not(:first-child)
+        border-left: solid 1px rgba(0,0,0,0.05)
+      &:first-child
+        border-top-left-radius: BORDER_RADIUS
+        border-bottom-left-radius: BORDER_RADIUS
+      &:last-child
+        border-top-right-radius: BORDER_RADIUS
+        border-bottom-right-radius: BORDER_RADIUS
+
+  > [data-organism-article] > [data-organism-footer] [data-molecule-navigation] [data-atom-button], > [data-organism-article] > [data-molecule-navigation] [data-atom-button]
+    color: lighten(DARK, 35%)
+    &:active, &.active
+      color: WHITE
+
+  > [data-organism-article] > [data-organism-footer] [data-molecule-navigation] [data-atom-button]
+    &.active
+      background-color: darken(DARK, 25%)
+
+  > [data-system=dialog] [data-organism-dialog]
+    > [data-organism-footer] [data-atom-button]
+      font-weight: FONT_WEIGHT_NORMAL
+      text-transform: uppercase
+      &.default
+        color: THEME
+    &.accept > [data-organism-footer] [data-atom-button].default
+      color: ACCEPT
+    &.cancel > [data-organism-footer] [data-atom-button].default
+      color: CANCEL
+    &.warning > [data-organism-footer] [data-atom-button].default
+      color: WARNING
+
+@media screen and (min-width: 1024px)
+  [data-atoms=app]
+    > [data-organism-article] > [data-organism-header] [data-molecule-navigation] [data-atom-button]:hover
+      color: WHITE !important
+
+    > [data-organism-article] > [data-organism-footer] [data-molecule-navigation] [data-atom-button], > [data-organism-article] > [data-molecule-navigation] [data-atom-button]
+      &:hover
+        color: WHITE

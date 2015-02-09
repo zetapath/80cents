@@ -1,0 +1,22 @@
+{
+    "name": "shopio",
+    "version": "0.2.8",
+    "directory": "bower_components",
+    "componentsDirectory": "bower_components",
+    "ignore": [
+            "**/.*",
+            "node_modules",
+            "bower_components"
+    ],
+    "dependencies": {
+        "atoms"            : "*",
+        "atoms-app-theme"  : "*",
+        "highcharts"       : "*",
+        "hope"             : "*",
+        "flexo"            : "*",
+        "hope"             : "*",
+        "jquery"           : "*",
+        "moment"           : "*",
+        "stylmethods"      : "*"
+    }
+}

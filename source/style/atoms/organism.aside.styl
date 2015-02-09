@@ -1,0 +1,40 @@
+[data-atoms=app]
+  > [data-organism-aside]
+    background: DARK
+    width: ASIDE_WIDTH
+    &.active
+      z-index: 0
+    &:not(.active)
+      z-index: -1
+    & [data-organism-header]
+      background-color: darken(DARK, 10%)
+
+  &[data-screen=small] > [data-organism-aside]
+    vendor(animation-duration, ANIMATION_DURATION)
+    vendor(animation-timing-function, ANIMATION_EASE)
+    &.active
+      &[data-state="in"]
+        &:not(.right)
+          vendor(animation-name, aside-in)
+        &.right
+          vendor(animation-name, aside-in-right)
+      &[data-state="out"]
+        &:not(.right)
+          vendor(animation-name, aside-in)
+        &.right
+          vendor(animation-name, aside-in-right)
+        vendor(animation-direction, reverse)
+        vendor(animation-fill-mode, forwards)
+
+TRANSLATE = -25%
+@keyframes aside-in
+  0%
+    transform: translateX(TRANSLATE)
+  100%
+    transform: translateX(0)
+
+@keyframes aside-in-right
+  0%
+    transform: translateX(-(TRANSLATE))
+  100%
+    transform: translateX(0)

@@ -1,0 +1,96 @@
+[data-system=dialog]
+  &:not(.active)
+    display: none
+  &.active
+    &:not(.no-block):not(.loading)
+      > [data-organism-dialog]
+        background-color: lighten(BACKGROUND, 2.5%)
+        &, [data-atom-button], [data-atom-link]
+          color: darken(BACKGROUND, 75%)
+        &.accept > [data-organism-header]
+          background-color: ACCEPT
+        &.cancel > [data-organism-header]
+          background-color: CANCEL
+        &.warning > [data-organism-header]
+          background-color: WARNING
+        &.accept, &.cancel, &.warning
+          > [data-organism-header]
+            &, [data-atom-button], [data-atom-link]
+              color: WHITE
+        > [data-organism-footer]
+          background-color: darken(BACKGROUND, 2.5%)
+          border-top: solid 1px darken(BACKGROUND, 5%)
+        &:not(.side)
+          &.show, &.hide
+            vendor(animation-name, dialog-bottom)
+        &.side
+          &:not(.right)
+            &.show, &.hide
+              vendor(animation-name, dialog-left)
+          &.right
+            &.show, &.hide
+              vendor(animation-name, dialog-right)
+
+    &.loading
+      > [data-organism-dialog]
+        background-color: rgba(0,0,0,0.5)
+        &.show, &.hide
+          vendor(animation-name, dialog-loading-show)
+
+    &.no-block
+      transition height (.5 * ANIMATION_DURATION)
+      > [data-organism-dialog]
+        background-color: DARK
+        color: WHITE
+        > section
+          background-color: WHITE
+          > figure
+            background-color: darken(BACKGROUND, 7.5%)
+          > p
+            color: DARK
+        &.show, &.hide
+          vendor(animation-name, dialog-bottom)
+
+    > [data-organism-dialog]
+      vendor(animation-duration, ANIMATION_DURATION)
+      vendor(animation-timing-function, ANIMATION_EASE)
+      &.show
+        vendor(animation-direction, normal)
+      &.hide
+        vendor(animation-direction, reverse)
+        vendor(animation-fill-mode, forwards)
+
+// -- ANIMATIONS ---------------------------------------------------------------
+@keyframes dialog-show
+  0%
+    transform scale3d(1.1, 1.1, 1)
+  100%
+    opacity: 1
+    transform: scale3d(1, 1, 1)
+
+@keyframes dialog-bottom
+  0%
+    transform: translateY(250%)
+  100%
+    opacity: 1
+    transform: translateY(0)
+
+@keyframes dialog-left
+  0%
+    transform: translateX(-150%)
+  100%
+    opacity: 1
+    transform: translateX(0)
+
+@keyframes dialog-right
+  0%
+    transform: translateX(150%)
+  100%
+    opacity: 1
+    transform: translateX(0)
+
+@keyframes dialog-loading-show
+  0%
+    opacity: 0
+  100%
+    opacity: 1

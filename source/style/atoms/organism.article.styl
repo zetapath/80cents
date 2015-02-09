@@ -1,0 +1,9 @@
+[data-atoms=app]
+  > [data-organism-article]
+    &.active
+      background-color: BACKGROUND
+
+  &[data-screen=normal]
+    > [data-organism-article]
+        &:not(.active)
+           display: none

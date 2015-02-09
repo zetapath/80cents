@@ -1,0 +1,28 @@
+[data-atoms=app]
+  [data-organism-article] > [data-organism-header] > [data-atom-heading]
+    color               : DARK
+  [data-organism-aside] > [data-organism-header] > [data-atom-heading]
+    color: lighten(DARK, 75%)
+  [data-organism-article], [data-organism-aside]
+    [data-organism-header] > [data-atom-heading]
+      margin              : 0 (U / 2)
+      font-size           : 1.4rem
+      line-height         : 3.4rem
+      font-weight         : FONT_WEIGHT_NORMAL
+      & + [data-atom-heading]
+        font-weight: FONT_WEIGHT_THIN
+        opacity: 0.75
+
+  [data-organism-section] >
+    h1
+      font-size: (FONT_SIZE_BIG * 1.1)
+    h2
+      font-size: FONT_SIZE_BIG
+    h3
+      font-size: FONT_SIZE_NORMAL
+    h4
+      font-size: FONT_SIZE_NORMAL
+    h5
+      font-size: FONT_SIZE_SMALL
+    h6
+      font-size: FONT_SIZE_TINY

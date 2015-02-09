@@ -1,0 +1,95 @@
+[data-atoms=app]
+  [data-atom-input]:not([type=range]):not([type=checkbox]):not([data-atom-input=autocomplete]), [data-atom-input=autocomplete] > input, [data-atom-select], [data-atom-textarea]
+    padding-top: (FORM_SIZE / 2)
+    padding-bottom: (FORM_SIZE / 2)
+    margin-bottom: (FORM_SIZE / 4)
+    font-family: FONT_FAMILY
+    font-size: FONT_SIZE_NORMAL
+    font-weight: FONT_WEIGHT_NORMAL
+    background-color: transparent
+    border: none
+    border-radius: 0px
+    color: DARK
+    box-shadow: inset 0 -1px FORM_COLOR
+    transition-property color, box-shadow
+    transition-duration (ANIMATION_DURATION / 2)
+    transition-timing-function ANIMATION_EASE
+
+    // &:after
+    //   position: absolute
+    //   right: 0px
+    //   content:"after"
+    //   font-size: FONT_SIZE_TINY
+    //   font-weight: FONT_WEIGHT_THIN
+    //   color: lighten(DARK, 75%)
+
+    &:focus
+      box-shadow: inset 0 -2px THEME
+
+    &.error, &.required
+      color: darken(CANCEL, 5%)
+      box-shadow: inset 0 -2px lighten(CANCEL, 20%)
+      &::-webkit-input-placeholder
+        color: lighten(CANCEL, 40%)
+      &::-moz-placeholder
+        color: lighten(CANCEL, 40%)
+      &:-ms-input-placeholder
+        color: lighten(CANCEL, 40%)
+
+    &[disabled]
+      box-shadow: none
+      border-bottom: dashed 1px FORM_COLOR
+      color: darken(FORM_COLOR, 25%)
+
+    &::-webkit-input-placeholder
+      color: FORM_COLOR
+      font-weight: FONT_WEIGHT_THIN
+    &::-moz-placeholder
+      color: FORM_COLOR
+      font-weight: FONT_WEIGHT_THIN
+    &::-ms-input-placeholder
+      color: FORM_COLOR
+      font-weight: FONT_WEIGHT_THIN
+
+  /* -- RANGE --------------------------------------------------------------- */
+  [data-atom-input][type=range]
+    background-color: FORM_COLOR
+    border-radius: (BORDER_RADIUS / 2)
+    box-shadow 0 0 0 4px rgba(0,0,0,0.05)
+    &::-moz-range-thumb
+      background-color: lighten(FORM_COLOR, 90%)
+    &::-webkit-slider-thumb
+      border-radius: BORDER_RADIUS
+      background-color: lighten(FORM_COLOR, 90%)
+      border: 1px solid FORM_COLOR
+      &::after
+        content: "|||"
+        display: block
+        font-size: FONT_SIZE_TINY !important
+        line-height: 1.5rem
+        text-align: center
+        color: #ccc
+    &:active, &:hover
+      background-color: THEME !important
+      &::-moz-range-thumb
+        background: THEME
+      &::-moz-range-track
+        background: THEME
+      &::-webkit-slider-thumb
+        background-color: THEME
+        border-color: THEME
+
+  /* -- CHECKBOX ------------------------------------------------------------ */
+  [data-atom-input][type=checkbox]
+    cursor: pointer
+    background-color: FORM_COLOR
+    border-radius: BORDER_RADIUS
+    transition background ANIMATION_DURATION
+    &:checked
+      background-color: THEME
+      &:after
+        color: WHITE
+
+@media screen and (min-width: 1024px)
+  [data-atoms=app] input[type=range]:hover
+    background-color: THEME !important

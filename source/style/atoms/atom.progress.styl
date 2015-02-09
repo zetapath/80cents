@@ -1,0 +1,20 @@
+[data-atoms=app]
+  [data-atom-progress]
+    border: none
+    &::-webkit-progress-value
+      transition all ANIMATION_DURATION
+
+  [data-organism-section] [data-atom-progress]
+    background-color: BACKGROUND = darken(BACKGROUND, 7.5%)
+    &::-webkit-progress-value
+      background-color: THEME
+    &::-webkit-progress-bar
+      background-color: BACKGROUND
+
+  [data-organism-header], [data-organism-footer]
+    [data-atom-progress]
+      background-color: rgba(255,255,255,0.25)
+      &::-webkit-progress-value
+        background: lighten(THEME, 40%)
+      &::-webkit-progress-bar
+        background-color: transparent

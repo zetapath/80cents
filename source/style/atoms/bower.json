@@ -1,0 +1,13 @@
+{
+  "name": "atoms-app-theme",
+  "version": "1.0.6",
+  "main": "app.styl",
+  "homepage": "http://atoms.tapquo.com",
+  "license": "MIT",
+  "authors": [
+    "Javi Jimenez", "Javi Jimenez <javi@tapquo.com>"],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tapquo/atoms-app-theme.git"
+  }
+}

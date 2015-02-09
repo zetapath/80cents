@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Shopio</title>
+    <meta name="title" content="{{meta.title}}">
+    <meta name="description" content="{{meta.description}}">
+    <meta name="keywords" content="shopio, ...">
+    <meta name="author" content="@zetapath">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)">
+    <meta name="apple-mobile-web-app-title" content="shopio">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" href="/assets/css/shopio.dependencies.css">
+    <link rel="stylesheet" href="/assets/css/shopio.css">
+  </head>
+  <body data-page="{{page}}" data-atoms="app">
+    {{> partial.landing}}
+    {{> partial.app}}
+
+    <script src="/assets/js/shopio.dependencies.js"></script>
+    <script src="/assets/js/shopio.js"></script>
+    <script>
+      __.host = "{{{host}}}";
+      {{#session}}
+      __.session = {
+        id      : "{{session.id}}",
+        mail    : "{{session.mail}}",
+        name    : "{{session.name}}",
+        username: "{{session.username}}",
+        bio     : "{{session.bio}}",
+        avatar  : "{{{session.avatar}}}"};
+      {{/session}}
+    </script>
+  </body>
+</html>

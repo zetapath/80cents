@@ -1,0 +1,12 @@
+[data-atoms=app]
+  [data-atom-switch]
+    border: none
+    border-radius: BORDER_RADIUS
+    background-color: FORM_COLOR
+    transition all ANIMATION_DURATION (ANIMATION_DURATION / 2) ANIMATION_EASE
+    &:after
+      background-color: lighten(BACKGROUND, 50%)
+      border-radius: BORDER_RADIUS
+      transition left (ANIMATION_DURATION / 2) ANIMATION_EASE
+    &:checked
+      background-color: THEME

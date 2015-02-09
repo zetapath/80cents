@@ -1,0 +1,30 @@
+id    : aside
+style : active
+children:
+  - Organism.Header:
+
+  - Organism.Section:
+      children:
+        - Molecule.Navigation:
+            events:
+              - select
+            callbacks:
+              - onOption
+            children:
+              - Atom.Link:
+                  path: /app/dashboard
+                  text: dashboard
+                  events:
+                    - touch
+              - Atom.Link:
+                  path: /app/collections
+                  text: collections
+                  events:
+                    - touch
+              - Atom.Link:
+                  path: /app/products
+                  text: products
+                  events:
+                    - touch
+
+  - Organism.Footer:

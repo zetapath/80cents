@@ -1,0 +1,36 @@
+id: app
+style: active
+
+children:
+  - Organism.Header:
+      id: header
+      children:
+        - Atom.Heading:
+            id: title
+            style: left
+            value: Collections
+
+        - Molecule.Navigation:
+            id: navigation
+            style: right
+            children:
+              - Atom.Button:
+                  style: transparent
+                  context: dashboard
+                  text: Import Collection
+              - Atom.Button:
+                  style: theme
+                  context: collections
+                  text: Add a Collection
+        - Atom.Progress:
+            value: 40
+  - Organism.Section:
+      id: section
+      style: active
+      children:
+        - Molecule.Div:
+            id: dashboard
+        - Molecule.Div:
+            id: collections
+        - Molecule.Div:
+            id: products
