@@ -12,11 +12,9 @@ __.proxy = (type, method, parameters = {}, background = false) ->
     dataType    : 'json'
     contentType : "application/x-www-form-urlencoded"
     success: (xhr) ->
-      console.log "v", xhr
       unless background then do __.Dialog.Loading.hide
       promise.done null, xhr
     error: (xhr, response) =>
-      console.log "x", xhr, response
       unless background then do __.Dialog.Loading.hide
       error = code: xhr.status, message: xhr.responseJSON.message
       promise.done error, null

@@ -9,7 +9,6 @@ children:
             id: title
             style: left
             value: Collections
-
         - Molecule.Navigation:
             id: navigation
             style: right
@@ -23,14 +22,38 @@ children:
                   context: collections
                   text: Add a Collection
         - Atom.Progress:
+            id: progress
             value: 40
+
   - Organism.Section:
       id: section
       style: active
       children:
         - Molecule.Div:
             id: dashboard
-        - Molecule.Div:
+        - Molecule.List:
             id: collections
-        - Molecule.Div:
+            events:
+              - select
+            callbacks:
+              - onCollection
+            bind:
+              entity      : "__.Entity.Collection"
+              atom        : "Atom.Li"
+              events      : ["touch"]
+              create      : true
+              update      : true
+              destroy     : true
+        - Molecule.List:
             id: products
+            events:
+              - select
+            callbacks:
+              - onProduct
+            bind:
+              entity      : "__.Entity.Product"
+              atom        : "Atom.Li"
+              events      : ["touch"]
+              create      : true
+              update      : true
+              destroy     : true

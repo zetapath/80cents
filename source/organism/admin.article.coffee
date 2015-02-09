@@ -12,12 +12,27 @@ class Atoms.Organism.AdminArticle extends Atoms.Organism.Article
     @context id
 
   # -- Children Bubble Events --------------------------------------------------
+  onCollection: (atom) ->
+    console.log atom.entity
 
+  onProduct: (atom) ->
+    console.log atom.entity
 
   # -- Private Events ----------------------------------------------------------
   context: (id) =>
+    @header.progress.value 0
     @header.title.el.html id
     for button in @header.navigation.children
       do button.el[if button.attributes.context is id then "show" else "hide"]
-    # @_fetchContext id, "Campaign" if id is "campaigns"
-    # @_fetchContext id, "Shortcut" if id is "shortcuts"
+    @header.progress.value 20
+    @section[id].el.show().siblings().hide()
+    @_fetchContext id, "Collection" if id is "collections"
+    @_fetchContext id, "Product" if id is "products"
+
+  _fetchContext: (id, entity) ->
+    __.Entity[entity].destroyAll()
+    __.Entity[entity].create empty: true
+    __.proxy("GET", entity.toLowerCase(), null, true).then (error, response) =>
+      @header.progress.value 80
+      __.Entity[entity].createOrUpdate item for item in response[id]
+      @header.progress.value 100

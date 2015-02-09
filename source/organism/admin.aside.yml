@@ -4,8 +4,10 @@ children:
   - Organism.Header:
 
   - Organism.Section:
+      id: section
       children:
         - Molecule.Navigation:
+            id: navigation
             events:
               - select
             callbacks:
