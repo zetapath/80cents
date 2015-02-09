@@ -4,6 +4,7 @@ environment: development
 # -- RESTful services ----------------------------------------------------------
 api:
   - session
+  - collection
 
 # -- HTML pages ----------------------------------------------------------------
 www:

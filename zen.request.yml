@@ -8,6 +8,7 @@ port    : 1337
 # ------------------------------------------------------------------------------
 tests:
   - session
+  - collection
 
 # -- USERS ----------------------------------------------------------------------
 OWNERS:
@@ -26,6 +27,30 @@ USERS:
     name          : User nº2
 
 # -- COLLECTIONS ---------------------------------------------------------------
-
+COLLECTIONS:
+  - title         : Organic Food
+    description   : organic food
+    image         : http://
+    search        :
+      page_title      : organic food
+      meta_description: food rice
+      url_handle      : organic_food
+    visibility    : true
+  - title         : Accesories
+    description   : Accesories with thailand cotton
+    image         : http://
+    search        :
+      page_title      : accesories
+      meta_description: accesories with thailand cotton
+      url_handle      : accesories
+    visibility    : true
+  - title         : Clothes
+    description   : Clothes with thailand cotton
+    image         : http://
+    search        :
+      page_title      : clothes
+      meta_description: clothes with thailand cotton
+      url_handle      : clothes
+    visibility    : true
 
 # -- PRODUCTS ------------------------------------------------------------------
