@@ -17,7 +17,7 @@ Collection = new Schema
     meta_description: type: String
     url_handle      : type: String
   # -- Visibility
-  visibily          : type: Boolean, default: true
+  visibility        : type: Boolean, default: true
   # -- Dates
   updated_at        : type: Date, default: Date.now
   created_at        : type: Date, default: Date.now

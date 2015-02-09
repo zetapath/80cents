@@ -6,7 +6,7 @@ Session     = require "../common/session"
 module.exports = (server) ->
 
   server.post "/api/signup", (request, response) ->
-    if request.required ['mail', 'password']
+    if request.required ["mail", "password"]
       User.signup(request.parameters).then (error, user) ->
         return response.conflict() if error?
         user = user.parse()
@@ -15,7 +15,7 @@ module.exports = (server) ->
 
 
   server.post "/api/login", (request, response) ->
-    if request.required ['mail', 'password']
+    if request.required ["mail", "password"]
       User.login(request.parameters).then (error, user) ->
         if error then response.unauthorized() else response.json user.parse()
 
