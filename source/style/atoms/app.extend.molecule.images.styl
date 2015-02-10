@@ -1,0 +1,33 @@
+[data-molecule-form="images"]
+  position                            : relative
+  [data-atom-input][type="file"]
+    display                           : none !important
+
+  [data-molecule-div]
+    display                           : inline-block
+
+  [data-atom-figure]
+    display                           : inline-block
+    width                             : SIZE = (4 * U)
+    height                            : SIZE
+    margin-right                      : (U / 2)
+    vertical-align                    : top
+    cursor                            : pointer
+    &.add
+      &:after
+        content                         : "+"
+        display                         : block
+        margin                          : 0 auto
+        font-size                       : (SIZE / 2)
+        line-height                     : SIZE
+        text-align                      : center
+        color                           : WHITE
+        transition                        font-size (ANIMATION_DURATION / 2) ANIMATION_EASE
+      &:hover:after
+        font-size                       : SIZE
+
+  [data-atom-progress]
+    position                          : absolute
+    right                             : 0
+    bottom                            : 0
+    left                              : 0

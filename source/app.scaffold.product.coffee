@@ -87,7 +87,7 @@ __.scaffold.form_product =
       "Atom.Text": value: "Upload and edit images of this product. You can also add images from the web. Drag to reorder images."
     ]
   ,
-    "Molecule.Form": children: []
+    "Molecule.Images": id: "images"
   ,
     "Atom.Label": style: "anchor"
   ,

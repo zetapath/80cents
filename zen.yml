@@ -5,6 +5,7 @@ environment: development
 api:
   - session
   - collection
+  - product.image
   - product
 
 # -- HTML pages ----------------------------------------------------------------

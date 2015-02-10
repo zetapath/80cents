@@ -15,6 +15,7 @@ class Atoms.Molecule.Product extends Atoms.Molecule.Div
       properties[key] = value for key, value of form.value()
 
     if valid
+      properties.images = @images.value()
       method = if @entity then "PUT" else "POST"
       __.proxy(method, "product", properties, true).then (error, response) =>
         unless error
@@ -29,6 +30,8 @@ class Atoms.Molecule.Product extends Atoms.Molecule.Div
       @trigger "progress", 40
       @entity = __.Entity.Product.createOrUpdate product
       form.value @entity for form in @children when form.constructor.name is "Form"
+      @images.value @entity
+
       @el.show()
       Atoms.Url.path "admin/product/#{@entity.id}"
       @trigger "progress", 100
