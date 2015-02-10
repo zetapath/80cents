@@ -31,26 +31,23 @@ COLLECTIONS:
   - title             : Organic Food
     description       : organic food
     image             : http://
-    search            :
-      page_title      : organic food
-      meta_description: food rice
-      url_handle      : organic_food
+    page_title        : organic food
+    meta_description  : food rice
+    url_handle        : organic_food
     visibility        : true
   - title             : Accesories
     description       : Accesories with thailand cotton
     image             : http://
-    search            :
-      page_title      : accesories
-      meta_description: accesories with thailand cotton
-      url_handle      : accesories
+    page_title        : accesories
+    meta_description  : accesories with thailand cotton
+    url_handle        : accesories
     visibility        : true
   - title             : Clothes
     description       : Clothes with thailand cotton
     image             : http://
-    search            :
-      page_title      : clothes
-      meta_description: clothes with thailand cotton
-      url_handle      : clothes
+    page_title        : clothes
+    meta_description  : clothes with thailand cotton
+    url_handle        : clothes
     visibility        : true
 
 # -- PRODUCTS ------------------------------------------------------------------
@@ -76,10 +73,9 @@ PRODUCTS:
       - "http://3"
     collection        : ?
     tags              :
-    search            :
-      page_title      : rice
-      meta_description: organic black rice
-      url_handle      : rice
+    page_title        : rice
+    meta_description  : organic black rice
+    url_handle        : rice
     visibility        : true
   - title             : Noodle
     description       : Organic Noodle

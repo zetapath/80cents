@@ -32,10 +32,9 @@ Product = new Schema
   collection_id     : type: Schema.ObjectId, ref: "Collection"
   tags              : [type: String]
   # -- Search Engines
-  search            :
-    page_title      : type: String
-    meta_description: type: String
-    url_handle      : type: String
+  page_title        : type: String
+  meta_description  : type: String
+  url_handle        : type: String
   # -- Visibility
   visibility        : type: Boolean, default: true
   # -- Dates
@@ -92,7 +91,9 @@ Product.methods.parse = ->
   images            : @images
   collection_id     : @collection_id
   tags              : @tags
-  search            : @search
+  page_title        : @page_title
+  meta_description  : @meta_description
+  url_handle        : @url_handle
   visibility        : @visibility
   updated_at        : @updated_at
   created_at        : @created_at

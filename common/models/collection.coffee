@@ -12,10 +12,9 @@ Collection = new Schema
   description       : type: String
   image             : type: String
   # -- Search Engines
-  search            :
-    page_title      : type: String
-    meta_description: type: String
-    url_handle      : type: String
+  page_title        : type: String
+  meta_description  : type: String
+  url_handle        : type: String
   # -- Visibility
   visibility        : type: Boolean, default: true
   # -- Dates
@@ -52,13 +51,15 @@ Collection.methods.delete = ->
   promise
 
 Collection.methods.parse = ->
-  id            : @_id.toString()
-  owner         : @owner?.parse?() or @owner
-  title         : @title
-  description   : @description
-  image         : @image
-  search        : @search
-  updated_at    : @updated_at
-  created_at    : @created_at
+  id              : @_id.toString()
+  owner             : @owner?.parse?() or @owner
+  title             : @title
+  description       : @description
+  image             : @image
+  page_title        : @page_title
+  meta_description  : @meta_description
+  url_handle        : @url_handle
+  updated_at        : @updated_at
+  created_at        : @created_at
 
 exports = module.exports = db.model "Collection", Collection
