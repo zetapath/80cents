@@ -6,6 +6,15 @@ Session     = require "../common/session"
 
 module.exports = (server) ->
 
+  server.get "/api/product/:id", (request, response) ->
+    Hope.shield([ ->
+      Session request, response
+    , (error, session) ->
+      Product.search _id: request.parameters.id, owner: session._id, limit = 1
+    ]).then (error, product) ->
+      if error then response.unauthorized() else response.json product.parse()
+
+
   server.get "/api/product", (request, response) ->
     Session(request, response).then (error, session) ->
       Product.search(owner: session._id).then (error, products) ->
