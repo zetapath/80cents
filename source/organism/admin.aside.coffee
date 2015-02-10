@@ -15,5 +15,5 @@ class Atoms.Organism.AdminAside extends Atoms.Organism.Aside
   # -- Children Bubble Events --------------------------------------------------
   onOption: (event, atom) ->
     context = atom.attributes.text
-    Atoms.Url.path "app/#{context}"
+    Atoms.Url.path "admin/#{context}"
     __.Article.AdminArticle.context context

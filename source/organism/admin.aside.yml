@@ -14,17 +14,17 @@ children:
               - onOption
             children:
               - Atom.Link:
-                  path: /app/dashboard
+                  path: /admin/dashboard
                   text: dashboard
                   events:
                     - touch
               - Atom.Link:
-                  path: /app/collections
+                  path: /admin/collections
                   text: collections
                   events:
                     - touch
               - Atom.Link:
-                  path: /app/products
+                  path: /admin/products
                   text: products
                   events:
                     - touch

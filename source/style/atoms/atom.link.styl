@@ -1,19 +1,30 @@
 [data-atoms=app]
+  [data-organism-header]
+    > [data-atom-link]
+      margin                : 0 0 0 (U / 2)
+      padding-right         : 0 !important
+      font-size             : SIZE = 1.4rem
+      font-weight           : FONT_WEIGHT_NORMAL
+      text-transform        : Capitalize
+      color                 : lighten(DARK, 50%)
+      &:hover
+        color               : THEME
+
   [data-organism-aside]
     [data-atom-link]
-      padding: 0 U
-      font-weight: normal
-      font-size: FONT_SIZE_TINY
-      text-transform: Capitalize
+      padding               : 0 U
+      font-weight           : normal
+      font-size             : FONT_SIZE_TINY
+      text-transform        : Capitalize
       &:not(.active)
-        color: lighten(DARK, 50%)
+        color               : lighten(DARK, 50%)
       &.active
-        color: WHITE
-        background-color: darken(DARK, 25%)
+        color               : WHITE
+        background-color    : darken(DARK, 25%)
       > .icon
-        color: WHITE
+        color               : WHITE
       > small
-        background-color: THEME
-        font-weight: bold
-        color: WHITE
-        border-radius: BORDER_RADIUS
+        background-color    : THEME
+        font-weight         : bold
+        color               : WHITE
+        border-radius       : BORDER_RADIUS

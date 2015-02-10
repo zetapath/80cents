@@ -2,7 +2,9 @@
 
 class __.Entity.Collection extends Atoms.Class.Entity
 
-  @fields "id", "title", "description", "image", "search", "updated_at", "created_at"
+  @fields "id", "title", "description", "image",
+          "page_title", "meta_description", "url_handle",
+          "updated_at", "created_at"
 
   # -- Static Methods
   @createOrUpdate: (attributes) =>

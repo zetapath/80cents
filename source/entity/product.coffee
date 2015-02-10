@@ -5,7 +5,9 @@ class __.Entity.Product extends Atoms.Class.Entity
   @fields "id", "title", "description", "type", "vendor", "price", "compare_at_price",
           "stock", "barcode", "tax", "requires_shipping", "weight", "sizes",
           "colors", "materials", "default_image", "images", "collection_id",
-          "tags", "search", "visibilty", "updated_at", "created_at"
+          "tags", "search", "visibilty",
+          "page_title", "meta_description", "url_handle",
+          "updated_at", "created_at"
 
   # -- Static Methods
   @createOrUpdate: (attributes) =>

@@ -11,6 +11,6 @@ Atoms.$ ->
     new Atoms.Organism.Session()
     __.Dialog.Session.show()
 
-  if page is "app"
+  if page is "admin"
     new Atoms.Organism.AdminAside()
     new Atoms.Organism.AdminArticle()

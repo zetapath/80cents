@@ -5,10 +5,14 @@ children:
   - Organism.Header:
       id: header
       children:
-        - Atom.Heading:
+        - Atom.Link:
             id: title
             style: left
-            value: Collections
+            value: ?
+        - Atom.Heading:
+            id: subtitle
+            style: left
+            value: ?
         - Molecule.Navigation:
             id: navigation
             style: right
@@ -33,6 +37,8 @@ children:
       id: section
       style: active
       children:
+        - Molecule.Product:
+            id: product
         - Molecule.Div:
             id: dashboard
         - Molecule.List:

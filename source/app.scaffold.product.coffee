@@ -9,6 +9,8 @@ __.scaffold.form_product =
     ]
   ,
     "Molecule.Form": children: [
+      "Atom.Input": name: "id", style: "hidden"
+    ,
       "Atom.Label": value: "Title"
     ,
       "Atom.Input": name: "title", placeholder: "e.g. Unicorn crest short sleeve tee", required: true
@@ -97,8 +99,9 @@ __.scaffold.form_product =
   ,
     "Molecule.Form": children: [
       "Atom.Label": value: "Available collections"
-    ,
-      "Atom.Select": name: "collection_id", options: ["Select...", 1, 2, 3]
+    # @TODO: Set collections
+    # ,
+    #   "Atom.Select": name: "collection_id", options: []
     ]
   ,
     "Atom.Label": style: "anchor"
@@ -123,7 +126,7 @@ __.scaffold.form_product =
       "Atom.Text": value: "Set up the page title, meta description and handle. These help define how this product shows up on search engines."
     ]
   ,
-    "Molecule.Form": id: "search", children: [
+    "Molecule.Form": children: [
       "Atom.Label": value: "Page title"
     ,
       "Atom.Input": name: "page_title", placeholder: "less than 70 characters", maxlength: 70

@@ -28,7 +28,7 @@ class Atoms.Organism.Session extends Atoms.Organism.Dialog
       do @_enableForm
       if response?.id?
         document.cookie = "shopio=#{response.id}"
-        window.location = "/app/dashboard"
+        window.location = "/admin/dashboard"
       else
         @section.form.error.el.html(error.message).show()
 
