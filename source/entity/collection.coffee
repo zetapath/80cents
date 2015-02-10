@@ -11,3 +11,11 @@ class __.Entity.Collection extends Atoms.Class.Entity
       entity.updateAttributes attributes
     else
       @create attributes
+
+  # -- Instance Methods
+  parse: ->
+    style       : "thumb #{unless @visibility then 'hidden'}"
+    image       : @image or "http://"
+    text        : @title
+    description : @price
+    info        : moment(@created_at).fromNow()

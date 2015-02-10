@@ -31,8 +31,8 @@ class Atoms.Organism.AdminArticle extends Atoms.Organism.Article
 
   _fetchContext: (id, entity) ->
     __.Entity[entity].destroyAll()
-    __.Entity[entity].create empty: true
     __.proxy("GET", entity.toLowerCase(), null, true).then (error, response) =>
       @header.progress.value 80
       __.Entity[entity].createOrUpdate item for item in response[id]
       @header.progress.value 100
+      setTimeout (=> @header.progress.refresh value: 0), 500

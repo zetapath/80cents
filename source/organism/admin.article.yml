@@ -21,6 +21,10 @@ children:
                   style: theme
                   context: collections
                   text: Add a Collection
+              - Atom.Button:
+                  style: theme
+                  context: products
+                  text: Add a Product
         - Atom.Progress:
             id: progress
             value: 40
@@ -33,6 +37,10 @@ children:
             id: dashboard
         - Molecule.List:
             id: collections
+            data:
+              flex        : horizontal wrap
+              flex-items  : start
+              flex-content: start
             events:
               - select
             callbacks:
@@ -46,6 +54,10 @@ children:
               destroy     : true
         - Molecule.List:
             id: products
+            data:
+              flex        : horizontal wrap
+              flex-items  : start
+              flex-content: start
             events:
               - select
             callbacks:

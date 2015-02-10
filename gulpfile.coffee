@@ -35,7 +35,8 @@ www =
     js      : [ 'bower_components/jquery/dist/jquery.min.js'
                 'bower_components/hope/hope.js'
                 'bower_components/atoms/atoms.standalone.js'
-                'bower_components/atoms/atoms.app.js']
+                'bower_components/atoms/atoms.app.js'
+                'bower_components/moment/min/moment.min.js']
 
     css     : [ 'bower_components/flexo/dist/flexo.layout.css'
                 'bower_components/atoms/atoms.app.css']

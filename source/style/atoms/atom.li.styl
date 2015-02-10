@@ -1,10 +1,5 @@
 [data-atoms=app]
   [data-atom-li]
-    &.destroy
-      vendor(animation-name, li-destroy)
-      vendor(animation-fill-mode, forwards)
-      vendor(animation-duration, ANIMATION_DURATION)
-
     > figure
       background-color: darken(BACKGROUND, 7.5%)
       > .icon
@@ -23,6 +18,13 @@
         font-weight: FONT_WEIGHT_BOLD
       &:not(.anchor)
         color: darken(BACKGROUND, 65%)
+      &.thumb
+        cursor: pointer
+        margin: U
+        width: SIZE = (15 * U)
+        > figure
+          height: (SIZE / 1.2)
+          order: -1
       > div
         > span, > small
           color: darken(BACKGROUND, 40%)
@@ -40,20 +42,3 @@
 
     &.no-divider
       border-bottom: none
-
-  [data-organism-aside] > [data-organism-section] [data-atom-li]
-    border-bottom: solid 1px lighten(DARK, 5%)
-    &:not(.anchor)
-      color: lighten(DARK, 85%)
-    &.anchor
-      color: lighten(DARK, 42.5%)
-
-
-@keyframes li-destroy
-  75%
-    height: inherit !important
-    padding: inherit !important
-    right: 100%
-  100%
-    height: 0px
-    padding: 0

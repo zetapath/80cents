@@ -9,7 +9,18 @@ module.exports = (server) ->
   server.get "/api/product", (request, response) ->
     Session(request, response).then (error, session) ->
       Product.search(owner: session._id).then (error, products) ->
-        response.json products: (c.parse() for c in products) or []
+        result = []
+        for product in (products or [])
+          result.push
+            id                : product._id.toString()
+            title             : product.title
+            type              : product.type
+            price             : product.price
+            default_image     : product.default_image
+            collection_id     : product.collection_id
+            visibility        : product.visibility
+            created_at        : product.created_at
+        response.json products: result
 
 
   server.post "/api/product", (request, response) ->
