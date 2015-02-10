@@ -1,5 +1,7 @@
 "use strict"
 
+__.scaffold = {}
+
 Atoms.$ ->
   Atoms.Url.options.absolute = true
   page = Atoms.$("body").attr "data-page"

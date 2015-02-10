@@ -1,0 +1,34 @@
+[data-molecule-div="product"]
+  margin                        : U 0
+  // display-flex()
+  // flex-direction row
+  // flex-wrap                       wrap
+  > [data-molecule-div], > [data-molecule-form]
+    display                     : inline-block
+    padding                     : 2%
+    vertical-align              : top
+  > [data-molecule-div]
+    width                       : SIZE = 20% //(16 * U)
+    max-width                   : SIZE
+    > [data-atom-text]
+      margin-top                : (U / 3)
+      font-size                 : FONT_SIZE_TINY
+      line-height               : FONT_SIZE_BIG
+      opacity                   : 0.65
+  > [data-molecule-form]
+    width                       : SIZE = 70%
+    box-shadow                    0 SHADOW_HEIGHT (U / 3) darken(BACKGROUND, 10%)
+    border-radius                 BORDER_RADIUS
+    > .half
+      display                   : inline-block
+      width                     : 49% !important
+      &:nth-child(odd)
+        margin-right            : 2%
+    > [data-atom-label] + [data-atom-input][type="checkbox"]
+      margin-left               : U
+
+  > [data-atom-label]
+    margin-bottom               : U
+    width                       : 100%
+    height                      : U
+    border-bottom               : solid 1px darken(BACKGROUND, 10%)

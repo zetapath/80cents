@@ -5,25 +5,29 @@
     color: lighten(DARK, 75%)
   [data-organism-article], [data-organism-aside]
     [data-organism-header] > [data-atom-heading]
-      margin              : 0 (U / 2)
-      font-size           : 1.4rem
+      margin              : 0 0 0 (U / 2)
+      font-size           : SIZE = 1.4rem
       text-transform      : Capitalize
       line-height         : 3.4rem
       font-weight         : FONT_WEIGHT_NORMAL
+      opacity             : 0.5
       & + [data-atom-heading]
-        font-weight: FONT_WEIGHT_THIN
-        opacity: 0.75
-
-  [data-organism-section] >
+        margin            : 0
+        opacity           : 1
+        &:before
+          content         : "/"
+          margin-right    : (U / 2)
+  [data-organism-section]
+    font-weight           : FONT_WEIGHT_NORMAL
     h1
-      font-size: (FONT_SIZE_BIG * 1.1)
+      font-size           : (FONT_SIZE_BIG * 1.1)
     h2
-      font-size: FONT_SIZE_BIG
+      font-size           : FONT_SIZE_BIG
     h3
-      font-size: FONT_SIZE_NORMAL
+      font-size           : FONT_SIZE_NORMAL
     h4
-      font-size: FONT_SIZE_NORMAL
+      font-size           : FONT_SIZE_NORMAL
     h5
-      font-size: FONT_SIZE_SMALL
+      font-size           : FONT_SIZE_SMALL
     h6
-      font-size: FONT_SIZE_TINY
+      font-size           : FONT_SIZE_TINY
