@@ -16,19 +16,21 @@ children:
         - Molecule.Navigation:
             id: navigation
             style: right
+            events:
+              - select
+            callbacks:
+              - onButton
             children:
-              - Atom.Button:
-                  style: transparent
-                  context: dashboard
-                  text: Import Collection
               - Atom.Button:
                   style: theme
                   context: collections
                   text: Add a Collection
+                  callback: collection
               - Atom.Button:
                   style: theme
                   context: products
                   text: Add a Product
+                  callback: product
         - Atom.Progress:
             id: progress
             value: 40

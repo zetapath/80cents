@@ -2,6 +2,7 @@
 
 __.scaffold.form_collection =
   endpoint: "collection"
+  entity_name: "Collection"
   children: [
     "Molecule.Div": children: [
       "Atom.Heading": size: "h2", value: "Collection details"

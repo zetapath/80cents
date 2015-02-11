@@ -19,5 +19,5 @@ class Atoms.Molecule.FormGroup extends Atoms.Molecule.Div
       method = if @entity then "PUT" else "POST"
       __.proxy(method, @attributes.endpoint, properties, true).then (error, response) =>
         unless error
-          @entity.updateAttributes response
+          __.Entity[@attributes.entity_name].createOrUpdate response
           @trigger "progress", 100

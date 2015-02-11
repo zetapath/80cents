@@ -1,4 +1,5 @@
 zen.error.json
+www/assets/scaffold/*
 www/assets/uploads/*.jpeg
 www/assets/uploads/*.jpg
 www/assets/uploads/*.png

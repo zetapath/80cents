@@ -27,11 +27,11 @@ class Atoms.Organism.AdminArticle extends Atoms.Organism.Article
       @section.products.el.show().siblings().hide()
 
   # -- Children Bubble Events --------------------------------------------------
-  onCollection: (atom) ->
-    @collection atom.entity.id
+  onButton: (event, atom) -> do @[atom.attributes.callback]
 
-  onProduct: (atom) =>
-    @product atom.entity.id
+  onCollection: (atom) -> @collection atom.entity.id
+
+  onProduct: (atom) => @product atom.entity.id
 
   # -- Private Events ----------------------------------------------------------
   context: (id) =>
@@ -53,19 +53,16 @@ class Atoms.Organism.AdminArticle extends Atoms.Organism.Article
       @header.progress.value 100
       setTimeout (=> @header.progress.refresh value: 0), 500
 
-  product: (id) ->
-    @header.title.refresh text: "Products", href: "/admin/products"
-    @header.subtitle.refresh value: "/ Edit"
-    do @hideHeaderButtons
-    @section.el.children().hide()
-    @section.product.fetch id
+  product: (id) -> @showGroupForm id, "Products", "product"
 
-  collection: (id) ->
-    @header.title.refresh text: "Collections", href: "/admin/collections"
-    @header.subtitle.refresh value: "/ Edit"
+  collection: (id) -> @showGroupForm id, "Collections", "collection"
+
+  showGroupForm: (id, title, form) ->
+    @header.title.refresh text: title, href: "/admin/#{title.toLowerCase()}"
+    @header.subtitle.refresh value: "/ #{if id then 'edit' else 'new'}"
     do @hideHeaderButtons
     @section.el.children().hide()
-    @section.collection.fetch id
+    @section[form].fetch id
 
   hideHeaderButtons: ->
     @header.navigation.el.children().hide()

@@ -2,6 +2,7 @@
 
 __.scaffold.form_product =
   endpoint: "product"
+  entity_name: "Product"
   children: [
     "Molecule.Div": children: [
       "Atom.Heading": size: "h2", value: "Product Details"
