@@ -25,7 +25,8 @@ module.exports = (server) ->
             title             : product.title
             type              : product.type
             price             : product.price
-            default_image     : product.default_image
+            # @TODO : Use default_image when is ready
+            default_image     : product.images[0] or undefined
             collection_id     : product.collection_id
             visibility        : product.visibility
             created_at        : product.created_at

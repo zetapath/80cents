@@ -97,11 +97,10 @@ __.scaffold.form_product =
       "Atom.Text": value: "Collections can be used to group products together."
     ]
   ,
-    "Molecule.Form": children: [
+    "Molecule.Form": id: "collection", children: [
       "Atom.Label": value: "Available collections"
-    # @TODO: Set collections
-    # ,
-    #   "Atom.Select": name: "collection_id", options: []
+    ,
+      "Atom.Select": id: "id", name: "collection_id", options: []
     ]
   ,
     "Atom.Label": style: "anchor"

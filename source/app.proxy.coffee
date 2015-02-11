@@ -9,8 +9,8 @@ __.proxy = (type, method, parameters = {}, background = false) ->
     url         : "#{__.host}api/#{method}"
     type        : type
     data        : parameters
-    dataType    : 'json'
-    contentType : "application/x-www-form-urlencoded"
+    dataType    : "json"
+    # contentType : "application/x-www-form-urlencoded"
     success: (xhr) ->
       unless background then do __.Dialog.Loading.hide
       promise.done null, xhr

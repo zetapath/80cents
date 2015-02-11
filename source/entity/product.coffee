@@ -7,7 +7,8 @@ class __.Entity.Product extends Atoms.Class.Entity
           "colors", "materials", "default_image", "images", "collection_id",
           "tags", "search", "visibility",
           "page_title", "meta_description", "url_handle",
-          "updated_at", "created_at"
+          "updated_at", "created_at",
+
 
   # -- Static Methods
   @createOrUpdate: (attributes) =>
@@ -19,8 +20,8 @@ class __.Entity.Product extends Atoms.Class.Entity
 
   # -- Instance Methods
   parse: ->
-    style       : "thumb #{unless @visibility then 'hidden'}"
-    image       : @default_image or "http://"
+    style       : "thumb#{if @visibility then ' hidden' else ''}"
+    image       : "#{__.host}assets/img/product/#{@default_image}"
     text        : @title
     description : @price
     info        : moment(@created_at).fromNow()
