@@ -5,6 +5,8 @@ Hope        = require("zenserver").Hope
 Schema      = require("zenserver").Mongoose.Schema
 db          = require("zenserver").Mongo.connections.primary
 
+array_parse = ["tags", "sizes", "colors", "materials", "images"]
+
 Product = new Schema
   _id               : type: String, unique: true, default: shortId.generate
   owner             : type: Schema.ObjectId, ref: "User"
@@ -60,6 +62,9 @@ Product.statics.search = (query, limit = 0, page = 1, populate = "", sort = crea
 
 Product.statics.findAndUpdate = (filter, values) ->
   promise = new Hope.Promise()
+  # -- Specific formats
+  for key in array_parse
+    values[key] = values[key]?.toLowerCase().replace(/ /g,"").split(",") or []
   @findOneAndUpdate filter, values, (error, value) ->
     promise.done error, value
   promise

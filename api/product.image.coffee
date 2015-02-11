@@ -36,7 +36,7 @@ module.exports = (server) ->
 # -- Private Methods -----------------------------------------------------------
 _upload = (file, product) ->
   promise = new Hope.Promise()
-  file_name = "#{product._id}_#{file.name}".replace(/ /g,"_")
+  file_name = "#{product._id}_#{file.name}".replace(/ /g,"_").toLowerCase()
   destiny = path.join IMAGES_PATH, file_name
   fs.rename file.path, destiny, (error, result)->
     return promise.done true if error?

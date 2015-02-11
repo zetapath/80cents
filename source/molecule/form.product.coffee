@@ -15,13 +15,15 @@ class Atoms.Molecule.Product extends Atoms.Molecule.Div
       properties[key] = value for key, value of form.value()
 
     if valid
-      properties.images = @images.value()
+      # -- Format specific values
+      properties.images = @images.value().join ", "
+
       method = if @entity then "PUT" else "POST"
       __.proxy(method, "product", properties, true).then (error, response) =>
         unless error
           @entity.updateAttributes response
           @trigger "progress", 100
-          setTimeout (=> @trigger "save"), 500
+          # setTimeout (=> @trigger "save"), 500
 
   # -- Private Events ----------------------------------------------------------
   fetch: (@entity) ->
@@ -29,9 +31,11 @@ class Atoms.Molecule.Product extends Atoms.Molecule.Div
     __.proxy("GET", "product/#{@entity}", null ,true).then (error, product) =>
       @trigger "progress", 40
       @entity = __.Entity.Product.createOrUpdate product
-      form.value @entity for form in @children when form.constructor.name is "Form"
-      @images.value @entity
-
       @el.show()
+      # -- Format specific values
+      @entity[key] = @entity[key].join ", " for key in ["sizes", "materials", "colors", "tags"]
+      @images.value @entity
+      form.value @entity for form in @children when form.constructor.name is "Form"
+
       Atoms.Url.path "admin/product/#{@entity.id}"
       @trigger "progress", 100

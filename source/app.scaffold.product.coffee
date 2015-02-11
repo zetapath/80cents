@@ -84,7 +84,7 @@ __.scaffold.form_product =
     "Molecule.Div": children: [
       "Atom.Heading": size: "h2", value: "Images"
     ,
-      "Atom.Text": value: "Upload and edit images of this product. You can also add images from the web. Drag to reorder images."
+      "Atom.Text": value: "Upload and edit images of this product. Drag to reorder images."
     ]
   ,
     "Molecule.Images": id: "images"
@@ -151,7 +151,7 @@ __.scaffold.form_product =
     "Molecule.Form": children: [
       "Atom.Label": value: "Visible"
     ,
-      "Atom.Switch": name: "visibility", value: true
+      "Atom.Switch": name: "visibility"
     ]
   ,
     "Atom.Label": style: "anchor"

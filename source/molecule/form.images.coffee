@@ -27,7 +27,7 @@ class Atoms.Molecule.Images extends Atoms.Molecule.Form
     if @entity?
       @attributes.files = []
       @images.destroyChildren()
-      @_addImage "#{__.host}assets/img/product/#{img}" for img in (@entity.images)
+      @_addImage file for file in (@entity.images or [])
     else
       @attributes.files
 
@@ -56,25 +56,20 @@ class Atoms.Molecule.Images extends Atoms.Molecule.Form
         abort: =>
           alert "upload aborted"
 
-      image = @_addImage "http://"
-      parameters =
-        file: file_url
-        id  : @entity.id
-
+      parameters = file: file_url, id: @entity.id
       _connectMultipart("POST", "/api/product/image", parameters, callbacks).then (error, file) =>
         @progress.el.hide()
         @progress.value 0
-        unless error
-          image.refresh
-            url   : "#{__.host}assets/img/product/#{file.name}"
-            file  : file.name
-          @attributes.files.push file.name
+        @_addImage file.name unless error
     false
 
-  _addImage: (url) ->
-    @attributes.files.push url
-    image = @images.appendChild "Atom.Figure", url: url, events: ["touch"], callbacks: ["onDestroy"]
-    image
+  _addImage: (file) ->
+    @attributes.files.push file
+    @images.appendChild "Atom.Figure",
+      url       : "#{__.host}assets/img/product/#{file}"
+      file      : file
+      events    : ["touch"]
+      callbacks : ["onDestroy"]
 
 _connectMultipart = (type, url, parameters, callbacks = {}) ->
   promise = new Hope.Promise()
