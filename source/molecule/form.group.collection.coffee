@@ -1,28 +1,8 @@
 "use strict"
 
-class Atoms.Molecule.Collection extends Atoms.Molecule.Div
+class Atoms.Molecule.Collection extends Atoms.Molecule.FormGroup
 
   @default  : __.scaffold.form_collection
-
-  # -- Children Bubble Events --------------------------------------------------
-  onSave: ->
-    properties = {}
-    valid = true
-    for form in @children when form.constructor.name is "Form" and valid
-      for field in form.children when field.attributes.required and field.value() is ""
-        valid = false
-        break
-      properties[key] = value for key, value of form.value()
-
-    if valid
-      # -- Format specific values
-      properties.images = @images.value().join ", "
-
-      method = if @entity then "PUT" else "POST"
-      __.proxy(method, "collection", properties, true).then (error, response) =>
-        unless error
-          @entity.updateAttributes response
-          @trigger "progress", 100
 
   # -- Private Events ----------------------------------------------------------
   fetch: (@entity) ->

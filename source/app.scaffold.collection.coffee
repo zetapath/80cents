@@ -1,6 +1,7 @@
 "use strict"
 
 __.scaffold.form_collection =
+  endpoint: "collection"
   children: [
     "Molecule.Div": children: [
       "Atom.Heading": size: "h2", value: "Collection details"
