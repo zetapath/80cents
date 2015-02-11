@@ -2,7 +2,7 @@
 
 class __.Entity.Collection extends Atoms.Class.Entity
 
-  @fields "id", "title", "description", "image",
+  @fields "id", "title", "description", "images",
           "page_title", "meta_description", "url_handle",
           "updated_at", "created_at"
 
@@ -17,7 +17,7 @@ class __.Entity.Collection extends Atoms.Class.Entity
   # -- Instance Methods
   parse: ->
     style       : "thumb #{unless @visibility then 'hidden'}"
-    image       : @image or "http://"
+    image       : "#{__.host}assets/uploads/#{@images[0]}"
     text        : @title
     description : @price
     info        : moment(@created_at).fromNow()

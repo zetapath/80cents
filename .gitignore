@@ -1,7 +1,7 @@
 zen.error.json
-www/assets/img/product/*.jpeg
-www/assets/img/product/*.jpg
-www/assets/img/product/*.png
+www/assets/uploads/*.jpeg
+www/assets/uploads/*.jpg
+www/assets/uploads/*.png
 www/assets/*/shopio*.*
 bower_components
 node_modules

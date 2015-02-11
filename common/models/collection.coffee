@@ -10,7 +10,7 @@ Collection = new Schema
   # -- Details
   title             : type: String
   description       : type: String
-  image             : type: String
+  images            : [type: String]
   # -- Search Engines
   page_title        : type: String
   meta_description  : type: String
@@ -25,6 +25,7 @@ Collection = new Schema
 Collection.statics.create = (values) ->
   promise = new Hope.Promise()
   campaign = db.model "Collection", Collection
+  values = __StringToArray values
   new campaign(values).save (error, value) -> promise.done error, value
   promise
 
@@ -40,6 +41,7 @@ Collection.statics.search = (query, limit = 0, page = 1, populate = "", sort = c
 
 Collection.statics.findAndUpdate = (filter, values) ->
   promise = new Hope.Promise()
+  values = __StringToArray values
   @findOneAndUpdate filter, values, (error, value) ->
     promise.done error, value
   promise
@@ -55,7 +57,7 @@ Collection.methods.parse = ->
   owner             : @owner?.parse?() or @owner
   title             : @title
   description       : @description
-  image             : @image
+  images            : @images
   page_title        : @page_title
   meta_description  : @meta_description
   url_handle        : @url_handle
@@ -63,3 +65,9 @@ Collection.methods.parse = ->
   created_at        : @created_at
 
 exports = module.exports = db.model "Collection", Collection
+
+# -- Private methods -----------------------------------------------------------
+__StringToArray = (values) ->
+  for key in ["images"]
+    values[key] = values[key]?.toLowerCase().replace(/ /g,"").split(",") or []
+  values

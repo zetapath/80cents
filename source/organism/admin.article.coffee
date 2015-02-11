@@ -28,7 +28,7 @@ class Atoms.Organism.AdminArticle extends Atoms.Organism.Article
 
   # -- Children Bubble Events --------------------------------------------------
   onCollection: (atom) ->
-    console.log atom.entity
+    @collection atom.entity.id
 
   onProduct: (atom) =>
     @product atom.entity.id
@@ -59,6 +59,13 @@ class Atoms.Organism.AdminArticle extends Atoms.Organism.Article
     do @hideHeaderButtons
     @section.el.children().hide()
     @section.product.fetch id
+
+  collection: (id) ->
+    @header.title.refresh text: "Collections", href: "/admin/collections"
+    @header.subtitle.refresh value: "/ Edit"
+    do @hideHeaderButtons
+    @section.el.children().hide()
+    @section.collection.fetch id
 
   hideHeaderButtons: ->
     @header.navigation.el.children().hide()

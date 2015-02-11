@@ -6,20 +6,23 @@ Session     = require "../common/session"
 
 module.exports = (server) ->
 
-  server.get "/api/product/:id", (request, response) ->
+  server.get "/api/product", (request, response) ->
     Hope.shield([ ->
       Session request, response
     , (error, session) ->
-      Product.search _id: request.parameters.id, owner: session._id, limit = 1
-    ]).then (error, product) ->
-      if error then response.unauthorized() else response.json product.parse()
-
-
-  server.get "/api/product", (request, response) ->
-    Session(request, response).then (error, session) ->
-      Product.search(owner: session._id).then (error, products) ->
+      limit = 0
+      filter = owner: session._id
+      if request.parameters.id?
+        filter._id = request.parameters.id
+        limit = 1
+      Product.search filter, limit
+    ]).then (error, value) ->
+      return response.unauthorized() if error
+      if request.parameters.id
+        result = value.parse()
+      else
         result = []
-        for product in (products or [])
+        for product in (value or [])
           result.push
             id                : product._id.toString()
             title             : product.title
@@ -30,7 +33,8 @@ module.exports = (server) ->
             collection_id     : product.collection_id
             visibility        : product.visibility
             created_at        : product.created_at
-        response.json products: result
+        result = products: result
+      response.json result
 
 
   server.post "/api/product", (request, response) ->

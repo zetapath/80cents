@@ -1,8 +1,8 @@
 "use strict"
 
-class Atoms.Molecule.Product extends Atoms.Molecule.Div
+class Atoms.Molecule.Collection extends Atoms.Molecule.Div
 
-  @default  : __.scaffold.form_product
+  @default  : __.scaffold.form_collection
 
   # -- Children Bubble Events --------------------------------------------------
   onSave: ->
@@ -19,30 +19,20 @@ class Atoms.Molecule.Product extends Atoms.Molecule.Div
       properties.images = @images.value().join ", "
 
       method = if @entity then "PUT" else "POST"
-      __.proxy(method, "product", properties, true).then (error, response) =>
+      __.proxy(method, "collection", properties, true).then (error, response) =>
         unless error
           @entity.updateAttributes response
           @trigger "progress", 100
-          # setTimeout (=> @trigger "save"), 500
 
   # -- Private Events ----------------------------------------------------------
   fetch: (@entity) ->
-    Hope.chain([ =>
-      @trigger "progress", 10
-      __.proxy "GET", "collection", null ,true
-    , (error, @collections) =>
-      @trigger "progress", 30
-      __.proxy "GET", "product/#{@entity}", null ,true
-    ]).then (error, product) =>
+    __.proxy("GET", "collection", id: @entity , true).then (error, product) =>
       @trigger "progress", 60
-      @entity = __.Entity.Product.createOrUpdate product
+      @entity = __.Entity.Collection.createOrUpdate product
       @el.show()
-      # -- Format specific values
-      @entity[key] = @entity[key].join ", " for key in ["sizes", "materials", "colors", "tags"]
-      @images.value @entity
-      @collection.id.refresh
-        options: (label: c.title, value: c.id for c in @collections.collections)
       form.value @entity for form in @children when form.constructor.name is "Form"
+      console.log @entity
+      @images.value @entity
 
-      Atoms.Url.path "admin/product/#{@entity.id}"
+      Atoms.Url.path "admin/collection/#{@entity.id}"
       @trigger "progress", 100

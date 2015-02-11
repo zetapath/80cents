@@ -9,6 +9,7 @@ class Atoms.Molecule.Images extends Atoms.Molecule.Form
   @events: ["add", "destroy"]
 
   @default:
+    entity : undefined
     children: [
       "Atom.Input": id: "file", type: "file", events: ["change"], callbacks: ["onFileChange"]
     ,
@@ -39,6 +40,7 @@ class Atoms.Molecule.Images extends Atoms.Molecule.Form
   onDestroy: (event, atom) =>
     atom.destroy()
     @attributes.files.splice @attributes.files.indexOf(atom.attributes.file), 1
+    # @TODO: Remove from here
     false
 
   onFileChange: (event) ->
@@ -56,8 +58,11 @@ class Atoms.Molecule.Images extends Atoms.Molecule.Form
         abort: =>
           alert "upload aborted"
 
-      parameters = file: file_url, id: @entity.id
-      _connectMultipart("POST", "/api/product/image", parameters, callbacks).then (error, file) =>
+      parameters =
+        file  : file_url
+        id    : @entity.id
+        entity: @entity.constructor.name
+      _connectMultipart("POST", "/api/image", parameters, callbacks).then (error, file) =>
         @progress.el.hide()
         @progress.value 0
         @_addImage file.name unless error
@@ -66,7 +71,7 @@ class Atoms.Molecule.Images extends Atoms.Molecule.Form
   _addImage: (file) ->
     @attributes.files.push file
     @images.appendChild "Atom.Figure",
-      url       : "#{__.host}assets/img/product/#{file}"
+      url       : "#{__.host}assets/uploads/#{file}"
       file      : file
       events    : ["touch"]
       callbacks : ["onDestroy"]
@@ -85,6 +90,5 @@ _connectMultipart = (type, url, parameters, callbacks = {}) ->
   if callbacks.abort    then xhr.addEventListener "abort", callbacks.abort, false
 
   xhr.open "POST", url
-  # xhr.setRequestHeader "Authorization", "bearer #{Appnima.token}"
   xhr.send formData
   promise

@@ -21,7 +21,7 @@ class __.Entity.Product extends Atoms.Class.Entity
   # -- Instance Methods
   parse: ->
     style       : "thumb#{if @visibility then ' hidden' else ''}"
-    image       : "#{__.host}assets/img/product/#{@default_image}"
+    image       : "#{__.host}assets/uploads/#{@default_image}"
     text        : @title
     description : @price
     info        : moment(@created_at).fromNow()

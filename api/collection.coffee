@@ -6,9 +6,22 @@ Session     = require "../common/session"
 module.exports = (server) ->
 
   server.get "/api/collection", (request, response) ->
-    Session(request, response).then (error, session) ->
-      Collection.search(owner: session._id).then (error, collections) ->
-        response.json collections: (c.parse() for c in collections) or []
+    Hope.shield([ ->
+      Session request, response
+    , (error, session) ->
+      limit = 0
+      filter = owner: session._id
+      if request.parameters.id?
+        filter._id = request.parameters.id
+        limit = 1
+      Collection.search filter, limit
+    ]).then (error, value) ->
+      return response.unauthorized() if error
+      if request.parameters.id
+        result = value.parse()
+      else
+        result = collections: (c.parse() for c in value) or []
+      response.json result
 
 
   server.post "/api/collection", (request, response) ->

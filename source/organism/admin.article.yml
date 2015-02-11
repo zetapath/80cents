@@ -37,6 +37,8 @@ children:
       id: section
       style: active
       children:
+        - Molecule.Collection:
+            id: collection
         - Molecule.Product:
             id: product
         - Molecule.Div:
