@@ -70,5 +70,9 @@ __.scaffold.form_collection =
   ,
     "Atom.Label": style: "anchor"
   ,
-    "Atom.Button": style: "theme", text: "Save", callbacks: ["onSave"]
+    "Molecule.Navigation": children: [
+      "Atom.Button": style: "cancel", text: "Remove", callbacks: ["onRemove"], disabled: true
+    ,
+      "Atom.Button": style: "theme", text: "Save", callbacks: ["onSave"]
+    ]
   ]

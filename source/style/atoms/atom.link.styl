@@ -18,9 +18,10 @@
       text-transform        : Capitalize
       &:not(.active)
         color               : lighten(DARK, 50%)
+      &.active, &:hover
+        background-color    : darken(DARK, 25%)
       &.active
         color               : WHITE
-        background-color    : darken(DARK, 25%)
       > .icon
         color               : WHITE
       > small

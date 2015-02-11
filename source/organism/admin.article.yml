@@ -33,7 +33,6 @@ children:
                   callback: product
         - Atom.Progress:
             id: progress
-            value: 40
 
   - Organism.Section:
       id: section

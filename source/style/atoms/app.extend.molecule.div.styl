@@ -1,14 +1,11 @@
 [data-molecule-div="collection"], [data-molecule-div="product"]
   margin                        : U 0
-  // display-flex()
-  // flex-direction row
-  // flex-wrap                       wrap
   > [data-molecule-div], > [data-molecule-form]
     display                     : inline-block
     padding                     : 2%
     vertical-align              : top
   > [data-molecule-div]
-    width                       : SIZE = 20% //(16 * U)
+    width                       : SIZE = 20%
     max-width                   : SIZE
     > [data-atom-text]
       margin-top                : (U / 3)
@@ -32,3 +29,14 @@
     width                       : 100%
     height                      : U
     border-bottom               : solid 1px darken(BACKGROUND, 10%)
+
+  > [data-molecule-navigation]
+    display                     : block !important
+    padding                     : 0 2%
+    width                       : 96% !important
+    height                      : HEIGHT = auto !important
+    text-align                  : right
+    > [data-atom-button]
+      margin-left               : 2% !important
+      width                     : auto !important
+      height                    : HEIGHT

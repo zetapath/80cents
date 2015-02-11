@@ -16,15 +16,10 @@ class Atoms.Organism.AdminArticle extends Atoms.Organism.Article
     if url.length is 3 then @context url[2] else @[url[2]] url[3]
 
     # -- Bindings
-    @section.product.bind "progress", (value) =>
-      @header.progress.value value
-      if value is 100
-        setTimeout (=> @header.progress.refresh value: 0), 500
-    @section.product.bind "loaded", =>
-      @header.progress.value 100
-    @section.product.bind "save", =>
-      Atoms.Url.path "admin/products"
-      @section.products.el.show().siblings().hide()
+    for formgroup in ["collection", "product"]
+      @section[formgroup].bind "progress", (value) =>
+        @header.progress.value value
+        setTimeout (=> @header.progress.refresh value: 0), 500 if value is 100
 
   # -- Children Bubble Events --------------------------------------------------
   onButton: (event, atom) -> do @[atom.attributes.callback]
