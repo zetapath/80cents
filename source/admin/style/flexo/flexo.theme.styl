@@ -1,0 +1,61 @@
+
+// -- BASE ---------------------------------------------------------------------
+body
+  color                     : COLOR
+
+.bck
+  background-color          : BACKGROUND
+  &.theme
+    background-color        : THEME
+    color                   : WHITE
+  &.color
+    background-color        : COLOR
+
+.color
+  &.white
+    color                   : WHITE
+  &.theme
+    color                   : THEME
+
+.row
+  margin-bottom             : 1.5rem
+
+// -- BUTTON -------------------------------------------------------------------
+// .button, button, input[type="submit"], input[type="reset"], input[type="button"]
+//   font-weight               : bold
+//   text-transform            : uppercase
+//   letter-spacing            : .1rem
+//   color                     : COLOR = darken(BACKGROUND, 50%)
+//   border                    : 1px solid COLOR
+//   border-radius             : BORDER_RADIUS
+//   &:hover, &:focus
+//     color                   : darken(BACKGROUND, 75%)
+//     border-color            : darken(BACKGROUND, 75%)
+//   &.primary
+//     color                   : WHITE
+//     background-color        : THEME
+//     border-color            : darken(THEME, 5%)
+//     &:hover, &:focus
+//       color                 : WHITE
+//       background-color      : darken(THEME, 10%)
+//       border-color          : darken(THEME, 15%)
+
+// -- FORM ---------------------------------------------------------------------
+input[type="email"], input[type="search"], input[type="text"], input[type="tel"],
+input[type="url"], input[type="password"], textarea, select
+  background-color          : WHITE
+  border                    : 1px solid darken(BACKGROUND, 15%)
+  border-radius             : BORDER_RADIUS
+  &:focus
+    border                  : 1px solid darken(BACKGROUND, 30%)
+
+// -- TABLE ---------------------------------------------------------------------
+table
+  th, td
+    border-bottom           : 1px solid darken(BACKGROUND, 10%)
+
+// -- CODE ---------------------------------------------------------------------
+code
+  background                : darken(BACKGROUND, 5%)
+  border                    : 1px solid darken(BACKGROUND, 10%)
+  border-radius             : BORDER_RADIUS

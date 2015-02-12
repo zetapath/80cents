@@ -19,7 +19,7 @@ __.scaffold.form_collection =
     ,
       "Atom.Label": value: "Description"
     ,
-      "Atom.Textarea": name: "description"
+      "Atom.Wysihtml5": name: "description", id: "collection"
     ]
   ,
     "Atom.Label": style: "anchor"

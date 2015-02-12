@@ -19,7 +19,7 @@ __.scaffold.form_product =
     ,
       "Atom.Label": value: "Description"
     ,
-      "Atom.Textarea": name: "description"
+      "Atom.Wysihtml5": name: "description",  id: "product"
     ,
       "Atom.Label": style: "half", value: "Type"
     ,

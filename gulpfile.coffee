@@ -13,34 +13,60 @@ yml     = require 'gulp-yml'
 pkg     = require './package.json'
 
 # -- FILES ---------------------------------------------------------------------
+assets = 'www/assets/'
+source =
+  coffee: 'source/**/*.coffee'
+  styl  : 'source/**/*.styl'
+  yml   : 'source/**/*.yml'
+
 www =
-  coffee    : [ 'source/app.coffee'
-                'source/app.*.coffee'
-                'source/entity/*.coffee'
-                'source/atom/*.coffee'
-                'source/molecule/*.coffee'
-                'source/organism/*.coffee']
+  coffee    : [ 'source/site/app.coffee'
+                'source/app.proxy.coffee'
+                'source/site/app.*.coffee'
+                'source/site/entity/*.coffee'
+                'source/site/atom/*.coffee'
+                'source/site/molecule/*.coffee'
+                'source/site/organism/*.coffee']
   styl      : [ 'bower_components/stylmethods/vendor.styl'
-                'source/style/constants.styl'
+                'source/site/style/constants.styl'
+                # FLEXO
+                'source/site/style/flexo/flexo.styl'
+                'source/site/style/flexo/flexo.page.styl'
+                'source/site/style/flexo/flexo.page.*.styl']
+  thirds    :
+    js      : [ 'bower_components/jquery/dist/jquery.min.js'
+                'bower_components/hope/hope.js']
+    css     : [ 'bower_components/flexo/dist/flexo.layout.css']
+
+admin =
+  coffee    : [ 'source/admin/app.coffee'
+                'source/app.proxy.coffee'
+                'source/admin/app.*.coffee'
+                'source/admin/entity/*.coffee'
+                'source/admin/atom/*.coffee'
+                'source/admin/molecule/*.coffee'
+                'source/admin/organism/*.coffee']
+  styl      : [ 'bower_components/stylmethods/vendor.styl'
+                'source/admin/style/constants.styl'
                 # ATOMS
-                'source/style/atoms/*.styl'
+                'source/admin/style/atoms/*.styl'
                 'bower_components/atoms-icons/atoms.icons.styl'
                 # FLEXO
-                'source/style/flexo/flexo.styl'
-                'source/style/flexo/flexo.page.styl'
-                'source/style/flexo/flexo.page.*.styl']
-  yml       : [ 'source/organism/*.yml']
+                'source/admin/style/flexo/flexo.styl'
+                'source/admin/style/flexo/flexo.page.styl'
+                'source/admin/style/flexo/flexo.page.*.styl']
+  yml       : [ 'source/admin/organism/*.yml']
 
   thirds    :
     js      : [ 'bower_components/jquery/dist/jquery.min.js'
                 'bower_components/hope/hope.js'
                 'bower_components/atoms/atoms.standalone.js'
                 'bower_components/atoms/atoms.app.js'
-                'bower_components/moment/min/moment.min.js']
+                'bower_components/moment/min/moment.min.js'
+                'bower_components/wysihtml5/dist/wysihtml5-0.3.0.min.js']
 
     css     : [ 'bower_components/flexo/dist/flexo.layout.css'
                 'bower_components/atoms/atoms.app.css']
-  assets    : 'www/assets/'
 
 banner = [
   '/**'
@@ -56,10 +82,16 @@ banner = [
 gulp.task 'thirds', ->
   gulp.src(www.thirds.js)
     .pipe(concat(pkg.name + '.dependencies.js'))
-    .pipe(gulp.dest(www.assets + '/js'))
+    .pipe(gulp.dest(assets + '/js'))
   gulp.src(www.thirds.css)
     .pipe(concat(pkg.name + '.dependencies.css'))
-    .pipe(gulp.dest(www.assets + '/css'))
+    .pipe(gulp.dest(assets + '/css'))
+  gulp.src(admin.thirds.js)
+    .pipe(concat(pkg.name + '.admin.dependencies.js'))
+    .pipe(gulp.dest(assets + '/js'))
+  gulp.src(admin.thirds.css)
+    .pipe(concat(pkg.name + '.admin.dependencies.css'))
+    .pipe(gulp.dest(assets + '/css'))
 
 gulp.task 'coffee', ->
   gulp.src(www.coffee)
@@ -67,24 +99,35 @@ gulp.task 'coffee', ->
     .pipe(coffee().on('error', gutil.log))
     .pipe(uglify({mangle: false}))
     .pipe(header(banner, {pkg: pkg}))
-    .pipe(gulp.dest(www.assets + '/js'))
+    .pipe(gulp.dest(assets + '/js'))
+  gulp.src(admin.coffee)
+    .pipe(concat(pkg.name + '.admin.coffee'))
+    .pipe(coffee().on('error', gutil.log))
+    .pipe(uglify({mangle: false}))
+    .pipe(header(banner, {pkg: pkg}))
+    .pipe(gulp.dest(assets + '/js'))
 
 gulp.task 'styl', ->
   gulp.src(www.styl)
     .pipe(concat(pkg.name + '.styl'))
     .pipe(stylus({compress: true, errors: true}))
     .pipe(header(banner, {pkg: pkg}))
-    .pipe(gulp.dest(www.assets + '/css'))
+    .pipe(gulp.dest(assets + '/css'))
+  gulp.src(admin.styl)
+    .pipe(concat(pkg.name + '.admin.styl'))
+    .pipe(stylus({compress: true, errors: true}))
+    .pipe(header(banner, {pkg: pkg}))
+    .pipe(gulp.dest(assets + '/css'))
 
 gulp.task 'yml', ->
-  gulp.src(www.yml)
+  gulp.src(admin.yml)
     .pipe(yml().on('error', gutil.log))
-    .pipe(gulp.dest(www.assets + '/scaffold'))
+    .pipe(gulp.dest(assets + '/scaffold'))
 
 gulp.task 'init', ->
   gulp.run(['thirds', 'coffee', 'styl', 'yml'])
 
 gulp.task 'default', ->
-  gulp.watch(www.coffee, ['coffee'])
-  gulp.watch(www.styl, ['styl'])
-  gulp.watch(www.yml, ['yml'])
+  gulp.watch(source.coffee, ['coffee'])
+  gulp.watch(source.styl, ['styl'])
+  gulp.watch(source.yml, ['yml'])

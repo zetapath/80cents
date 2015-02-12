@@ -17,6 +17,7 @@ class Atoms.Molecule.FormGroup extends Atoms.Molecule.Div
       properties.images = @images.value().join ", "
 
       method = if @entity then "PUT" else "POST"
+
       __.proxy(method, @attributes.endpoint, properties, true).then (error, response) =>
         unless error
           __.Entity[@attributes.entity_name].createOrUpdate response

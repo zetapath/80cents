@@ -17,6 +17,7 @@
         "hope"             : "*",
         "jquery"           : "*",
         "moment"           : "*",
-        "stylmethods"      : "*"
+        "stylmethods"      : "*",
+        "wysihtml5"        : "*"
     }
 }

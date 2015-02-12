@@ -1,0 +1,26 @@
+[data-atom-textarea="wysihtml5"]
+  nav&
+    height                  : UNIT = (1.5 * U) !important
+    min-height              : UNIT
+    margin-top              : -(UNIT)
+    line-height             : UNIT
+    box-shadow              : none !important
+    float: right
+    width: auto !important
+    > *
+      display               : block
+      height                : UNIT
+      float                 : left
+    > [data-wysihtml5-command]
+      width                 : UNIT
+      margin-right          : 1px
+      text-align            : center
+      color                 : COLOR
+      background-color      : darken(BACKGROUND, 5%) !important
+      &:not([unselectable="on"])
+        background-color    : COLOR
+        color               : WHITE
+      &.bold
+        font-weight         : FONT_WEIGHT_BOLD
+    > div
+      font-size             : FONT_SIZE_SMALL
