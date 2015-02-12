@@ -1,0 +1,30 @@
+body
+  > header
+    position                        : fixed
+    width                           : 100%
+    padding                         : 0 SPACE
+    height                          : HEIGHT = (1.5 * U)
+    line-height                     : HEIGHT
+    background-color                : BACKGROUND
+
+    .logo
+      font-size                     : (U / 2)
+      font-weight                   : FONT_WEIGHT_BOLD
+      color                         : THEME
+    a
+      text-decoration               : none
+      color                         : COLOR
+    nav
+      margin                        : 0 U
+      a
+        padding                     : (SPACE / 2) SPACE
+        margin-right                : SPACE
+        font-size                   : 85%
+        font-weight                 : FONT_WEIGHT_BOLD
+        text-transform              : Uppercase
+        border-radius               : SPACE
+        transition                    background TRANSITION_DURATION
+        &:first-child, &:hover
+          background-color          : THEME
+          color                     : WHITE
+

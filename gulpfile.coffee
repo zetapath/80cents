@@ -20,19 +20,19 @@ source =
   yml   : 'source/**/*.yml'
 
 store =
-  coffee    : [ 'source/site/app.coffee'
+  coffee    : [ 'source/store/app.coffee'
                 'source/app.proxy.coffee'
-                'source/site/app.*.coffee'
-                'source/site/entity/*.coffee'
-                'source/site/atom/*.coffee'
-                'source/site/molecule/*.coffee'
-                'source/site/organism/*.coffee']
+                'source/store/app.*.coffee'
+                'source/store/entity/*.coffee'
+                'source/store/atom/*.coffee'
+                'source/store/molecule/*.coffee'
+                'source/store/organism/*.coffee']
   styl      : [ 'bower_components/stylmethods/vendor.styl'
-                'source/site/style/constants.styl'
+                'source/store/style/constants.styl'
                 # FLEXO
-                'source/site/style/flexo/flexo.styl'
-                'source/site/style/flexo/flexo.page.styl'
-                'source/site/style/flexo/flexo.page.*.styl']
+                'source/store/style/flexo/flexo.styl'
+                'source/store/style/flexo/flexo.page.styl'
+                'source/store/style/flexo/flexo.page.*.styl']
   thirds    :
     js      : [ 'bower_components/jquery/dist/jquery.min.js'
                 'bower_components/hope/hope.js']

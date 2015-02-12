@@ -1,0 +1,10 @@
+<header>
+  <div class="container"  data-flex="horizontal ">
+    <a href="/store" class="logo">shopio</a>
+    <nav class="align left">
+      {{#collections}}
+        <a href="/collection/{{_id}}">{{title}}</a>
+      {{/collections}}
+    </nav>
+  </div>
+</header>

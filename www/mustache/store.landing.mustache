@@ -1,0 +1,17 @@
+<article class="landing" data-flex="vertical center">
+  <h2>Wellcome the backery</h2>
+  <h6><i>We love to create special flavor every day</i></h6>
+</article>
+
+
+<article>
+  <div class="container">
+    {{#products}}
+    <div data-column="6" class="product" data-flex="vertical center" style="background-image: url({{images[0]}});">
+      <strong>{{title}}</strong>
+      <small>{{{description}}}</small>
+    </div>
+    {{/products}}
+
+  </div>
+</article>

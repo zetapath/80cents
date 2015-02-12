@@ -1,7 +1,17 @@
+// -- BASE ---------------------------------------------------------------------
+@media (min-width: 1200px)
+  .container
+    max-width           : 1200px
+
+  header
+    background-color: red !important
 
 // -- BASE ---------------------------------------------------------------------
 body
   color                     : COLOR
+
+  .container
+    width                   : 90% !important
 
 .bck
   background-color          : BACKGROUND
@@ -20,25 +30,29 @@ body
 .row
   margin-bottom             : 1.5rem
 
+// -- LINK ---------------------------------------------------------------------
+a
+  text-decoration           : none
+
 // -- BUTTON -------------------------------------------------------------------
-// .button, button, input[type="submit"], input[type="reset"], input[type="button"]
-//   font-weight               : bold
-//   text-transform            : uppercase
-//   letter-spacing            : .1rem
-//   color                     : COLOR = darken(BACKGROUND, 50%)
-//   border                    : 1px solid COLOR
-//   border-radius             : BORDER_RADIUS
-//   &:hover, &:focus
-//     color                   : darken(BACKGROUND, 75%)
-//     border-color            : darken(BACKGROUND, 75%)
-//   &.primary
-//     color                   : WHITE
-//     background-color        : THEME
-//     border-color            : darken(THEME, 5%)
-//     &:hover, &:focus
-//       color                 : WHITE
-//       background-color      : darken(THEME, 10%)
-//       border-color          : darken(THEME, 15%)
+.button, button, input[type="submit"], input[type="reset"], input[type="button"]
+  font-weight               : bold
+  text-transform            : uppercase
+  letter-spacing            : .1rem
+  color                     : COLOR = darken(BACKGROUND, 50%)
+  border                    : 1px solid COLOR
+  border-radius             : BORDER_RADIUS
+  &:hover, &:focus
+    color                   : darken(BACKGROUND, 75%)
+    border-color            : darken(BACKGROUND, 75%)
+  &.primary
+    color                   : WHITE
+    background-color        : THEME
+    border-color            : darken(THEME, 5%)
+    &:hover, &:focus
+      color                 : WHITE
+      background-color      : darken(THEME, 10%)
+      border-color          : darken(THEME, 15%)
 
 // -- FORM ---------------------------------------------------------------------
 input[type="email"], input[type="search"], input[type="text"], input[type="tel"],
