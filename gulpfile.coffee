@@ -19,7 +19,7 @@ source =
   styl  : 'source/**/*.styl'
   yml   : 'source/**/*.yml'
 
-www =
+store =
   coffee    : [ 'source/site/app.coffee'
                 'source/app.proxy.coffee'
                 'source/site/app.*.coffee'
@@ -80,11 +80,11 @@ banner = [
 
 # -- TASKS ---------------------------------------------------------------------
 gulp.task 'thirds', ->
-  gulp.src(www.thirds.js)
-    .pipe(concat(pkg.name + '.dependencies.js'))
+  gulp.src(store.thirds.js)
+    .pipe(concat(pkg.name + '.store.dependencies.js'))
     .pipe(gulp.dest(assets + '/js'))
-  gulp.src(www.thirds.css)
-    .pipe(concat(pkg.name + '.dependencies.css'))
+  gulp.src(store.thirds.css)
+    .pipe(concat(pkg.name + '.store.dependencies.css'))
     .pipe(gulp.dest(assets + '/css'))
   gulp.src(admin.thirds.js)
     .pipe(concat(pkg.name + '.admin.dependencies.js'))
@@ -94,8 +94,8 @@ gulp.task 'thirds', ->
     .pipe(gulp.dest(assets + '/css'))
 
 gulp.task 'coffee', ->
-  gulp.src(www.coffee)
-    .pipe(concat(pkg.name + '.coffee'))
+  gulp.src(store.coffee)
+    .pipe(concat(pkg.name + '.store.coffee'))
     .pipe(coffee().on('error', gutil.log))
     .pipe(uglify({mangle: false}))
     .pipe(header(banner, {pkg: pkg}))
@@ -108,8 +108,8 @@ gulp.task 'coffee', ->
     .pipe(gulp.dest(assets + '/js'))
 
 gulp.task 'styl', ->
-  gulp.src(www.styl)
-    .pipe(concat(pkg.name + '.styl'))
+  gulp.src(store.styl)
+    .pipe(concat(pkg.name + '.store.styl'))
     .pipe(stylus({compress: true, errors: true}))
     .pipe(header(banner, {pkg: pkg}))
     .pipe(gulp.dest(assets + '/css'))

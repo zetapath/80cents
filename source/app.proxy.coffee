@@ -1,5 +1,7 @@
 "use strict"
 
+window.__ = window.__ or {}
+
 __.proxy = (type, method, parameters = {}, background = false) ->
   promise = new Hope.Promise()
   unless background then __.Dialog.Loading.show()

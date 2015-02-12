@@ -20,15 +20,14 @@
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="cleartype" content="on">
 
-    <link rel="stylesheet" href="/assets/css/shopio.admin.dependencies.css">
-    <link rel="stylesheet" href="/assets/css/shopio.admin.css">
+    <link rel="stylesheet" href="/assets/css/shopio.{{asset}}.dependencies.css">
+    <link rel="stylesheet" href="/assets/css/shopio.{{asset}}.css">
   </head>
   <body data-page="{{page}}" data-atoms="app">
-    {{> partial.landing}}
-    {{> partial.app}}
+    {{> partial.store}}
 
-    <script src="/assets/js/shopio.admin.dependencies.js"></script>
-    <script src="/assets/js/shopio.admin.js"></script>
+    <script src="/assets/js/shopio.{{asset}}.dependencies.js"></script>
+    <script src="/assets/js/shopio.{{asset}}.js"></script>
     <script>
       __.host = "{{{host}}}";
       {{#session}}
