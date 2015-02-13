@@ -24,15 +24,14 @@
       <strong>$ {{product.price}}</strong>
       <small><strong>Availability: In stock</strong></small>
       <p>{{{product.description}}}</p>
-      <form>
-        <button>-</button>
-        <input type="number" value="1" />
-        <button>+</button>
+      <form data-flex="horizontal">
+        <button class="icon plus"></button>
+        <input type="text" value="1" maxlength="2" />
+        <button class="icon minus"></button>
       </form>
       <nav>
-        <button class="primary"><span class="icon plus">Add to Cart</button>
-        <button><span class="icon like"></button>
-        <button><span class="icon plus"></button>
+        <button class="primary"><span class="icon plus"></span>Add to Cart</button>
+        <button class="icon heart"></button>
       </nav>
       <nav>
         <small>

@@ -20,6 +20,21 @@
         margin                            : (1.5 * SPACE) 0 (2 * SPACE) 0
         font-size                         : 90%
         color                             : lighten(COLOR, 25%)
+      // -- Form
+      > form
+        > *
+          padding                         : 0px !important
+          height                          : SIZE = (U / 2) !important
+          width                           : SIZE
+          text-align                      : center
+          border-radius                   : 0px
+          vertical-align                  : top
+        > button
+          font-weight                     : FONT_WEIGHT_NORMAL
+          background-color                : BACKGROUND
+          &:hover
+            background-color              : COLOR
+            color                         : WHITE
       // -- Actions
       > nav
         > button
@@ -33,11 +48,11 @@
     figure
       &.thumbnail
         margin                            : (SPACE / 2)
-        height                            : SIZE = U
+        height                            : SIZE = (1.25 * U)
         width                             : SIZE
         cursor                            : POINTER
         &:hover
-          box-shadow                        0 0 0 1px BOX
+          box-shadow                        0 0 0 6px WHITE, 0 0 0 7px BOX
 
     // -- Others
     nav

@@ -8,23 +8,33 @@ body
     line-height                     : HEIGHT
 
     .logo
+      margin-right                  : U
       font-size                     : (U / 2)
       font-weight                   : FONT_WEIGHT_BOLD
       color                         : THEME
-    a
-      text-decoration               : none
-      color                         : COLOR
     nav
-      margin                        : 0 U
+      // margin                        : 0 U
       a
-        padding                     : (SPACE / 2) SPACE
-        margin-right                : (SPACE / 2)
         font-size                   : 85%
         font-weight                 : FONT_WEIGHT_BOLD
         text-transform              : Uppercase
         border-radius               : SPACE
         transition                    background TRANSITION_DURATION
-        &:first-child, &:hover
-          background-color          : THEME
-          color                     : WHITE
+        &:not(.icon)
+          padding                     : (SPACE / 2) SPACE
+          margin-right                : (SPACE / 2)
+          &:first-child, &:hover
+            background-color          : THEME
+            color                     : WHITE
 
+        &.cart
+          > small
+            display                 : inline-block
+            padding                 : 0 (SPACE / 4)
+            height                  : SIZE = (U / 3.5)
+            font-weight             : FONT_WEIGHT_NORMAL
+            text-align              : center
+            line-height             : SIZE
+            background-color        : COLOR
+            color                   : WHITE
+            border-radius           : (SIZE / 2)

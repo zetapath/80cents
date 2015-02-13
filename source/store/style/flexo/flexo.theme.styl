@@ -34,9 +34,11 @@ a
   font-weight               : bold
   text-transform            : uppercase
   letter-spacing            : .1rem
-  color                     : COLOR = darken(BACKGROUND, 50%)
-  border                    : 1px solid COLOR
+  color                     : lighten(COLOR, 50%)
+  border                    : 1px solid BOX
   border-radius             : BORDER_RADIUS
+  > .icon
+    margin-right            : (SPACE / 1.25)
   &:hover, &:focus
     color                   : darken(BACKGROUND, 75%)
     border-color            : darken(BACKGROUND, 75%)
@@ -53,7 +55,7 @@ a
 input[type="email"], input[type="search"], input[type="text"], input[type="tel"],
 input[type="url"], input[type="password"], textarea, select
   background-color          : WHITE
-  border                    : 1px solid darken(BACKGROUND, 15%)
+  border                    : 1px solid BOX
   border-radius             : BORDER_RADIUS
   &:focus
     border                  : 1px solid darken(BACKGROUND, 30%)
