@@ -37,6 +37,7 @@ Product = new Schema
   url_handle        : type: String
   # -- Visibility
   visibility        : type: Boolean, default: true
+  highlight         : type: Boolean, default: false
   # -- Dates
   updated_at        : type: Date, default: Date.now
   created_at        : type: Date, default: Date.now
@@ -99,6 +100,7 @@ Product.methods.parse = ->
   meta_description  : @meta_description
   url_handle        : @url_handle
   visibility        : @visibility
+  highlight         : @highlight
   updated_at        : @updated_at
   created_at        : @created_at
 

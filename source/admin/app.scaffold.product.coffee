@@ -153,6 +153,10 @@ __.scaffold.form_product =
       "Atom.Label": value: "Visible"
     ,
       "Atom.Switch": name: "visibility"
+    ,
+      "Atom.Label": value: "Highlight in Home Page"
+    ,
+      "Atom.Switch": name: "highlight"
     ]
   ,
     "Atom.Label": style: "anchor"

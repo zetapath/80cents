@@ -32,6 +32,7 @@ module.exports = (server) ->
             default_image     : product.images[0] or undefined
             collection_id     : product.collection_id
             visibility        : product.visibility
+            highlight         : product.highlight
             created_at        : product.created_at
         result = products: result
       response.json result
