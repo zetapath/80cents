@@ -9,6 +9,8 @@ class Atoms.Molecule.Product extends Atoms.Molecule.FormGroup
     super
     __.proxy("GET", "collection", null, true).then (error, @collections) =>
       @trigger "progress", 30
+      @collection.id.refresh
+        options: (label: c.title, value: c.id for c in @collections.collections)
       if @entity
         __.proxy("GET", "product", id: @entity, true).then (error, product) =>
           @trigger "progress", 60
@@ -17,10 +19,7 @@ class Atoms.Molecule.Product extends Atoms.Molecule.FormGroup
           # -- Format specific values
           @entity[key] = @entity[key].join ", " for key in ["sizes", "materials", "colors", "tags"]
           @images.value @entity
-          @collection.id.refresh
-            options: (label: c.title, value: c.id for c in @collections.collections)
           form.value @entity for form in @children when form.constructor.name is "Form"
-
           Atoms.Url.path "admin/product/#{@entity.id}"
           @trigger "progress", 100
       else
