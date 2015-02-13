@@ -61,6 +61,7 @@ Collection.methods.parse = ->
   page_title        : @page_title
   meta_description  : @meta_description
   url_handle        : @url_handle
+  visibility        : @visibility
   updated_at        : @updated_at
   created_at        : @created_at
 

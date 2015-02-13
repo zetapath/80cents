@@ -22,6 +22,6 @@ module.exports = (zen) ->
       bindings =
         page    : "admin"
         session : session
-        assets  : "admin"
+        asset   : "admin"
         host    : C.HOST[global.ZEN.type.toUpperCase()]
       response.page "base", bindings, []

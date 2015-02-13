@@ -6,14 +6,13 @@ class Atoms.Molecule.Collection extends Atoms.Molecule.FormGroup
 
   # -- Private Events ----------------------------------------------------------
   fetch: (@entity) ->
-    @trigger "progress", 10
-    form.clean() for form in @children when form.constructor.name is "Form"
-    @images.value []
+    super
     if @entity
       __.proxy("GET", "collection", id: @entity , true).then (error, product) =>
         @trigger "progress", 60
         @entity = __.Entity.Collection.createOrUpdate product
         @el.show()
+        console.log @entity.visibility
         form.value @entity for form in @children when form.constructor.name is "Form"
         @images.value @entity
 

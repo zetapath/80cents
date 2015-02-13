@@ -6,10 +6,7 @@ class Atoms.Molecule.Product extends Atoms.Molecule.FormGroup
 
   # -- Private Events ----------------------------------------------------------
   fetch: (@entity) ->
-    @trigger "progress", 10
-    form.clean() for form in @children when form.constructor.name is "Form"
-    @images.value []
-
+    super
     __.proxy("GET", "collection", null, true).then (error, @collections) =>
       @trigger "progress", 30
       if @entity

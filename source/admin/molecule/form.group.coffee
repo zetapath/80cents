@@ -22,3 +22,8 @@ class Atoms.Molecule.FormGroup extends Atoms.Molecule.Div
         unless error
           __.Entity[@attributes.entity_name].createOrUpdate response
           @trigger "progress", 100
+
+  fetch: (@entity) ->
+    @trigger "progress", 10
+    form.clean() for form in @children when form.constructor.name is "Form"
+    @images.value []

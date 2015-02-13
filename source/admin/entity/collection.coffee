@@ -3,7 +3,7 @@
 class __.Entity.Collection extends Atoms.Class.Entity
 
   @fields "id", "title", "description", "images",
-          "page_title", "meta_description", "url_handle",
+          "page_title", "meta_description", "url_handle", "visibility",
           "updated_at", "created_at"
 
   # -- Static Methods

@@ -26,7 +26,7 @@ class Atoms.Atom.Wysihtml5 extends Atoms.Atom.Textarea
     @textarea = @el.siblings("textarea").first()
 
   value: (data) ->
-    if data
+    if data?
       @editor.setValue data, false
     else
       @textarea.val()
