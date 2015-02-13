@@ -24,13 +24,13 @@
       <strong>$ {{product.price}}</strong>
       <small><strong>Availability: In stock</strong></small>
       <p>{{{product.description}}}</p>
-      <form data-flex="horizontal">
-        <button class="icon plus"></button>
-        <input type="text" value="1" maxlength="2" />
-        <button class="icon minus"></button>
+      <form data-flex="horizontal" method="null">
+        <button class="icon minus" data-action="minus"></button>
+        <input type="text" value="1" maxlength="2" id="quantity" disabled/>
+        <button class="icon plus" data-action="plus"></button>
       </form>
       <nav>
-        <button class="primary"><span class="icon plus"></span>Add to Cart</button>
+        <button class="primary" data-action="add"><span class="icon plus"></span>Add to Cart</button>
         <button class="icon heart"></button>
       </nav>
       <nav>
