@@ -1,0 +1,45 @@
+[data-page="product"]
+  article
+    &.slideshow
+      height                              : 45vh
+
+    .box
+      // -- Title
+      > h1
+        margin-bottom                     : 0
+        font-size                         : 150%
+        font-weight                       : FONT_WEIGHT_BOLD
+        text-transform                    : Uppercase
+      // -- Price
+      > strong
+        margin                            : SPACE 0 (SPACE / 4)
+        font-size                         : 200%
+        font-weight                       : FONT_WEIGHT_BOLD
+      // -- Description
+      > p
+        margin                            : (1.5 * SPACE) 0 (2 * SPACE) 0
+        font-size                         : 90%
+        color                             : lighten(COLOR, 25%)
+      // -- Actions
+      > nav
+        > button
+          vertical-align                  : top
+
+    // -- Images & Figures
+    img, figure
+      background-color                    : BACKGROUND
+    img
+      width                               : 100%
+    figure
+      &.thumbnail
+        margin                            : (SPACE / 2)
+        height                            : SIZE = U
+        width                             : SIZE
+        cursor                            : POINTER
+        &:hover
+          box-shadow                        0 0 0 1px BOX
+
+    // -- Others
+    nav
+      &.thumbnails
+        padding                           : (SPACE / 2)

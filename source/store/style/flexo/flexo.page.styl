@@ -1,0 +1,25 @@
+// -- Article
+article
+  &.slideshow
+    color                             : WHITE
+    background-size                   : cover
+    > h2
+      margin-top                      : (1.5 * U)
+      font-size                       : (U / 1.25)
+      text-transform                  : Uppercase
+      font-weight                     : bold
+  &:not(.slideshow)
+    padding                           : (1.5 * U) 0
+
+  .box
+    box-shadow                          0 0 0 1px BOX
+    &.text
+      padding                         : (2 * SPACE)
+      > *
+        display                       : block
+    &:not(.text)
+      padding                         : SPACE
+
+// -- Figure
+figure
+  background-size                     : cover

@@ -1,0 +1,51 @@
+{{! -- COLLECTION ----------------------------------------------------------- }}
+<article class="slideshow" data-flex="vertical center" style="background-image: url(/assets/uploads/{{product.collection_id.images}});">
+  <h2>{{product.collection_id.title}}</h2>
+
+</article>
+
+<article>
+  <div class="container">
+    {{! -- PRODUCT ---------------------------------------------------------- }}
+    <section data-column="5">
+      <div class="box">
+        <img src="/assets/uploads/{{product.default_image}}" />
+      </div>
+      <nav class="thumbnails" data-flex="horizontal center">
+      {{#product.images}}
+        <figure class="thumbnail" style="background-image: url(/assets/uploads/{{.}});"></figure>
+      {{/product.images}}
+      </nav>
+    </section>
+
+    <section data-column="7" class="box text">
+      <h1>{{product.title}}</h1>
+      <a href="/collection/{{product.collection_id.title}}">{{product.collection_id.title}}</a>
+      <strong>$ {{product.price}}</strong>
+      <small><strong>Availability: In stock</strong></small>
+      <p>{{{product.description}}}</p>
+      <form>
+        <button>-</button>
+        <input type="number" value="1" />
+        <button>+</button>
+      </form>
+      <nav>
+        <button class="primary"><span class="icon plus">Add to Cart</button>
+        <button><span class="icon like"></button>
+        <button><span class="icon plus"></button>
+      </nav>
+      <nav>
+        <small>
+        <strong>tags:</strong>
+        {{#product.tags}}
+        <a href="/tag/{{.}}">{{.}}</a>
+        {{/product.tags}}
+        </small>
+      </nav>
+    </section>
+
+    {{! -- REVIEWS ---------------------------------------------------------- }}
+
+    {{! -- RELATED PRODUCTS ------------------------------------------------- }}
+  </div>
+</article>

@@ -92,9 +92,9 @@ Product.methods.parse = ->
   sizes             : @sizes
   colors            : @colors
   materials         : @materials
-  default_image     : @default_image
+  default_image     :  @images[0]
   images            : @images
-  collection_id     : @collection_id
+  collection_id     : @collection_id?.parse?() or @collection_id
   tags              : @tags
   page_title        : @page_title
   meta_description  : @meta_description

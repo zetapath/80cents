@@ -8,11 +8,37 @@ C           = require "../common/constants"
 module.exports = (zen) ->
 
   zen.get "/collection/:id", (request, response) ->
-    response.json collection: request.parameters.id
+    Hope.join([ ->
+      Session request, response, redirect = true
+    , ->
+      Collection.search _id: request.parameters.id, visibility: true, limit = 1
+    ]).then (errors, values) ->
+      bindings =
+        page        : "home"
+        asset       : "store"
+        host        : C.HOST[global.ZEN.type.toUpperCase()]
+        session     : values[0]
+        collection  : values[1]
+      response.page "base", bindings, ["store.header", "store.collection", "store.footer"]
 
 
   zen.get "/product/:id", (request, response) ->
-    response.json product: request.parameters.id
+    Hope.join([ ->
+      Session request, response, redirect = true
+    , ->
+      Collection.search visibility: true
+    , ->
+      filter = _id: request.parameters.id, visibility: true
+      Product.search filter, limit = 1, null, populate = "collection_id"
+    ]).then (errors, values) ->
+      bindings =
+        page        : "product"
+        asset       : "store"
+        host        : C.HOST[global.ZEN.type.toUpperCase()]
+        session     : values[0]
+        collections : values[1]
+        product     : values[2]?.parse()
+      response.page "base", bindings, ["store.header", "store.product", "store.footer"]
 
 
   zen.get "/profile", (request, response) ->
@@ -37,6 +63,6 @@ module.exports = (zen) ->
         host        : C.HOST[global.ZEN.type.toUpperCase()]
         session     : values[0]
         collections : values[1]
-        products    : values[2]
-      response.page "base", bindings, ["store.header", "store.landing", "store.footer"]
+        products    : (product.parse() for product in values[2])
+      response.page "base", bindings, ["store.header", "store.home", "store.footer"]
 
