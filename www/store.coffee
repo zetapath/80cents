@@ -7,28 +7,32 @@ C           = require "../common/constants"
 
 module.exports = (zen) ->
 
-  zen.get "/store/collection/:id", (request, response) ->
-    response.ok()
+  zen.get "/collection/:id", (request, response) ->
+    response.json collection: request.parameters.id
 
 
-  zen.get "/store/product/:id", (request, response) ->
-    response.ok()
+  zen.get "/product/:id", (request, response) ->
+    response.json product: request.parameters.id
 
 
-  zen.get "/store/profile", (request, response) ->
-    response.ok()
+  zen.get "/profile", (request, response) ->
+    response.json page: "profile"
 
 
-  zen.get "/store", (request, response) ->
+  zen.get "/about", (request, response) ->
+    response.json page: "about"
+
+
+  zen.get "/", (request, response) ->
     Hope.join([ ->
       Session request, response, redirect = true
     , ->
-      Collection.search()
+      Collection.search visibility: true
     , ->
-      Product.search()
+      Product.search visibility: true, highlight: true
     ]).then (errors, values) ->
       bindings =
-        page        : "landing"
+        page        : "home"
         asset       : "store"
         host        : C.HOST[global.ZEN.type.toUpperCase()]
         session     : values[0]

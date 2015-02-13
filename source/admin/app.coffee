@@ -7,7 +7,7 @@ Atoms.$ ->
   page = Atoms.$("body").attr "data-page"
 
   # -- Landing -----------------------------------------------------------------
-  if page is "landing"
+  if page is "session"
     new Atoms.Organism.Session()
     __.Dialog.Session.show()
 

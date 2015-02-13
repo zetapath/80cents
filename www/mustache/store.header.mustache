@@ -1,10 +1,15 @@
-<header>
-  <div class="container"  data-flex="horizontal ">
-    <a href="/store" class="logo">shopio</a>
-    <nav class="align left">
+<header class="bck">
+  <div class="container"  data-flex="horizontal grow">
+    <a href="/" class="logo" data-flex-grow="min">shopio</a>
+    <nav class="align left"data-flex-grow="max">
       {{#collections}}
         <a href="/collection/{{_id}}">{{title}}</a>
       {{/collections}}
+      <a href="/about">About us</a>
+    </nav>
+    <nav class="align right" data-flex-grow="min">
+      <button data-action="search">search</button>
+      <a href="/cart">cart<small>n</small></a>
     </nav>
   </div>
 </header>

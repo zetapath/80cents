@@ -30,13 +30,13 @@ store =
   styl      : [ 'bower_components/stylmethods/vendor.styl'
                 'source/store/style/constants.styl'
                 # FLEXO
-                'source/store/style/flexo/flexo.styl'
+                'source/store/style/flexo/flexo.theme.styl'
                 'source/store/style/flexo/flexo.page.styl'
                 'source/store/style/flexo/flexo.page.*.styl']
   thirds    :
     js      : [ 'bower_components/jquery/dist/jquery.min.js'
                 'bower_components/hope/hope.js']
-    css     : [ 'bower_components/flexo/dist/flexo.layout.css']
+    css     : [ 'bower_components/flexo/dist/flexo.css']
 
 admin =
   coffee    : [ 'source/admin/app.coffee'

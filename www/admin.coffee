@@ -25,3 +25,12 @@ module.exports = (zen) ->
         asset   : "admin"
         host    : C.HOST[global.ZEN.type.toUpperCase()]
       response.page "base", bindings, []
+
+
+  zen.get "/admin", (request, response) ->
+    Session(request, response, redirect = true).then (error, session) ->
+      return response.redirect "/admin/dashboard" if session
+      response.page "base",
+        page    : "session"
+        asset   : "admin"
+        host    : C.HOST[global.ZEN.type.toUpperCase()]
