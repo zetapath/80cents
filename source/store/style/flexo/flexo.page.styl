@@ -1,28 +1,40 @@
-// -- Article
-article
-  &.slideshow
-    color                             : WHITE
-    background-size                   : cover
-    > h2
-      margin-top                      : (1.5 * U)
-      font-size                       : (U / 1.25)
-      text-transform                  : Uppercase
-      font-weight                     : bold
-  &:not(.slideshow)
-    padding                           : (1.5 * U) 0
+body
+  // -- Article
+  > article
+    &.slideshow
+      position                          : relative
+      color                             : WHITE
+      background-size                   : cover
+      > h2
+        z-index                         : 1
+        margin-top                      : (1.5 * U)
+        font-size                       : (U / 1.25)
+        text-transform                  : Uppercase
+        font-weight                     : bold
+      > .overlay
+        z-index                         : 0
+        position                        : absolute
+        left                            : 0
+        width                           : 100%
+        top                             : 0
+        height                          : 100%
+        background                      : url("/assets/img/overlay.png") repeat 0 0
 
-  .box
-    box-shadow                          0 0 0 1px BOX
-    &.text
-      padding                         : (2 * SPACE)
-      > *
-        display                       : block
-    &:not(.text)
-      padding                         : SPACE
+    &:not(.slideshow)
+      padding                           : (1.5 * U) 0
 
-// -- Figure
-figure
-  background-size                     : cover
+    .box
+      box-shadow                          0 0 0 1px BOX
+      &.text
+        padding                         : (2 * SPACE)
+        > *
+          display                       : block
+      &:not(.text)
+        padding                         : SPACE
+
+  // -- Figure
+  figure
+    background-size                     : cover
 
 // -- Icons
 @font-face

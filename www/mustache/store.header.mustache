@@ -10,7 +10,12 @@
     <nav class="align right" data-flex-grow="min">
       <button data-action="search" class="icon search"></button>
       <a href="/cart" class="cart icon cart"><small>12</small></a>
+      {{#session}}
       <a href="/profile" class="icon user"></a>
+      {{/session}}
+      {{^session}}
+      <button data-action="session" class="primary">sign in</button>
+      {{/session}}
     </nav>
   </div>
 </header>

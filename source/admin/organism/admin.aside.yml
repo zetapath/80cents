@@ -19,6 +19,16 @@ children:
                   events:
                     - touch
               - Atom.Link:
+                  path: /admin/orders
+                  text: orders
+                  events:
+                    - touch
+              - Atom.Link:
+                  path: /admin/customers
+                  text: customers
+                  events:
+                    - touch
+              - Atom.Link:
                   path: /admin/collections
                   text: collections
                   events:

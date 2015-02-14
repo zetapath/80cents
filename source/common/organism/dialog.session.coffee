@@ -2,7 +2,7 @@
 
 class Atoms.Organism.Session extends Atoms.Organism.Dialog
 
-  @url: "/assets/scaffold/dialog.session.json"
+  @url: "/assets/scaffold/common/organism/dialog.session.json"
 
   render: ->
     super

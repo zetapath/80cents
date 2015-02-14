@@ -7,10 +7,10 @@ children:
             value: Your account
         - Molecule.Navigation:
             id: navigation
-            style: right
+            style: align right
             children:
               - Atom.Button:
-                  icon: close
+                  icon: minus
                   callbacks:
                     - onClose
 
@@ -21,7 +21,7 @@ children:
             id: error
             style: tiny
         - Atom.Text:
-            style: small margin-bottom login-context
+            style: small margin-top margin-bottom login-context
             value: Fill the form with your credentials.
         - Molecule.Form:
             id: form
@@ -47,6 +47,7 @@ children:
       children:
         - Molecule.Navigation:
             id: navigation
+            style: align right
             children:
               - Atom.Button:
                   id    : submit

@@ -26,16 +26,21 @@ store =
                 'source/store/entity/*.coffee'
                 'source/store/atom/*.coffee'
                 'source/store/molecule/*.coffee'
-                'source/store/organism/*.coffee']
+                'source/store/organism/*.coffee'
+                'source/common/*/*.coffee']
   styl      : [ 'bower_components/stylmethods/vendor.styl'
                 'source/store/style/constants.styl'
+                # ATOMS
+                'source/store/style/atoms/*.styl'
                 # FLEXO
                 'source/store/style/flexo/flexo.theme.styl'
                 'source/store/style/flexo/flexo.page.styl'
                 'source/store/style/flexo/flexo.page.*.styl']
   thirds    :
     js      : [ 'bower_components/jquery/dist/jquery.min.js'
-                'bower_components/hope/hope.js']
+                'bower_components/hope/hope.js'
+                'bower_components/atoms/atoms.standalone.js'
+                'bower_components/atoms/atoms.app.js']
     css     : [ 'bower_components/flexo/dist/flexo.css']
 
 admin =
@@ -45,7 +50,8 @@ admin =
                 'source/admin/entity/*.coffee'
                 'source/admin/atom/*.coffee'
                 'source/admin/molecule/*.coffee'
-                'source/admin/organism/*.coffee']
+                'source/admin/organism/*.coffee'
+                'source/common/*/*.coffee']
   styl      : [ 'bower_components/stylmethods/vendor.styl'
                 'source/admin/style/constants.styl'
                 # ATOMS
@@ -55,7 +61,7 @@ admin =
                 'source/admin/style/flexo/flexo.styl'
                 'source/admin/style/flexo/flexo.page.styl'
                 'source/admin/style/flexo/flexo.page.*.styl']
-  yml       : [ 'source/admin/organism/*.yml']
+  yml       : [ 'source/*/organism/*.yml']
 
   thirds    :
     js      : [ 'bower_components/jquery/dist/jquery.min.js'
