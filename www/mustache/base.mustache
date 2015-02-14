@@ -43,6 +43,9 @@
         bio     : "{{session.bio}}",
         avatar  : "{{{session.avatar}}}"};
       {{/session}}
+      {{#owner}}
+      __.owner = {{owner}};
+      {{/owner}}
     </script>
   </body>
 </html>

@@ -2,16 +2,23 @@
 Hope        = require("zenserver").Hope
 User        = require "../common/models/user"
 Session     = require "../common/session"
+C           = require "../common/constants"
 
 module.exports = (server) ->
 
   server.post "/api/signup", (request, response) ->
     if request.required ["mail", "password"]
-      User.signup(request.parameters).then (error, user) ->
+      Hope.join([
+        User.search type: C.USER.TYPE.OWNER
+      , (error, users) ->
+        if users.length > 0
+          request.parameters.type = C.USER.TYPE.CUSTOMER
+        else
+          request.parameters.type = C.USER.TYPE.OWNER
+        User.signup request.parameters
+      ]).then (error, user) ->
         return response.conflict() if error?
-        user = user.parse()
-        response.json user
-        # mailer user.mail, "Welcome to shopio", "welcome", user
+        response.json user.parse()
 
 
   server.post "/api/login", (request, response) ->

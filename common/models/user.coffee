@@ -37,11 +37,9 @@ User.statics.login = (values) ->
   filter =
     mail    : values.mail
     password: values.password
-  @findOneAndUpdate filter, values, upsert: true, (error, value) =>
-    if not value?
-      @signup(values).then (error, value) -> promise.done error, value
-    else
-      promise.done error, value
+  @findOne filter, (error, value) =>
+    return promise.done true if value is null
+    promise.done error, value
   promise
 
 User.statics.search = (query, limit = 0, page = 1, sort = created_at: "desc") ->

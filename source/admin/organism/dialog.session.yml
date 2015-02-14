@@ -1,10 +1,12 @@
 id: session
 children:
   - Organism.Header:
+      id: header
       children:
         - Atom.Heading:
             value: Your account
         - Molecule.Navigation:
+            id: navigation
             style: right
             children:
               - Atom.Button:
@@ -16,8 +18,11 @@ children:
       id: section
       children:
         - Atom.Text:
-            style: small margin-bottom
-            value: For now shopio is only allowed for guests or members that promote us.
+            id: error
+            style: tiny
+        - Atom.Text:
+            style: small margin-bottom login-context
+            value: Fill the form with your credentials.
         - Molecule.Form:
             id: form
             events:
@@ -25,9 +30,8 @@ children:
             children:
               - Atom.Input:
                   name        : mail
-                  placeholder : Mail...
+                  placeholder : mail...
                   style       : align center
-                  value       : o1@shop.io
                   events:
                     - keyup
               - Atom.Input:
@@ -35,12 +39,8 @@ children:
                   name        : password
                   placeholder : Password...
                   style       : align center
-                  value       : o1
                   events:
                     - keyup
-              - Atom.Label:
-                  id          : error
-                  style       : align center error
 
   - Organism.Footer:
       id: footer
@@ -51,6 +51,6 @@ children:
               - Atom.Button:
                   id    : submit
                   text  : sign in
-                  api   : login
+                  api   : unknown
                   callbacks :
                     - onSubmit

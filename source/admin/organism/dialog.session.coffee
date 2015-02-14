@@ -4,6 +4,13 @@ class Atoms.Organism.Session extends Atoms.Organism.Dialog
 
   @url: "/assets/scaffold/dialog.session.json"
 
+  render: ->
+    super
+    @admin_mode = (Atoms.Url.path() is "/admin")
+    if @admin_mode
+      @header.navigation.el.hide()
+    else
+
   # -- Instance Methods --------------------------------------------------------
   login: ->
     @_context active = "login", disable = "signup"
@@ -15,8 +22,8 @@ class Atoms.Organism.Session extends Atoms.Organism.Dialog
 
   # -- Children Bubble Events --------------------------------------------------
   onFormChange: (event, form) ->
-    form.error.el.hide()
-    required = ["name", "password"]
+    @section.error.el.hide()
+    required = ["mail", "password"]
     valid = true
     valid = false for key, value of form.value() when key in required and value is ""
     @_footerActive valid
@@ -28,9 +35,12 @@ class Atoms.Organism.Session extends Atoms.Organism.Dialog
       do @_enableForm
       if response?.id?
         document.cookie = "shopio=#{response.id}"
-        window.location = "/admin/dashboard"
+        if @admin_mode
+          window.location = "/admin/dashboard"
+        else
+          window.location.reload()
       else
-        @section.form.error.el.html(error.message).show()
+        @section.error.el.html(error.message).show()
 
   onClose: ->
     do @hide
@@ -39,7 +49,7 @@ class Atoms.Organism.Session extends Atoms.Organism.Dialog
   # -- Private -----------------------------------------------------------------
   _context: (active, disable) ->
     @section.form.clean()
-    @section.form.error.el.hide()
+    @section.error.el.hide()
     @el.find(".#{disable}-context").hide()
     @el.find(".#{active}-context").show()
     @_footerActive false

@@ -9,7 +9,7 @@ Atoms.$ ->
   # -- Landing -----------------------------------------------------------------
   if page is "session"
     new Atoms.Organism.Session()
-    __.Dialog.Session.show()
+    do __.Dialog.Session[if __.owner then "login" else "signup"]
 
   if page is "admin"
     new Atoms.Organism.AdminAside()

@@ -7,6 +7,7 @@
         background-color: lighten(BACKGROUND, 2.5%)
         &, [data-atom-button], [data-atom-link]
           color: darken(BACKGROUND, 75%)
+          box-shadow: none
         &.accept > [data-organism-header]
           background-color: ACCEPT
         &.cancel > [data-organism-header]
@@ -17,9 +18,14 @@
           > [data-organism-header]
             &, [data-atom-button], [data-atom-link]
               color: WHITE
+        > [data-organism-section]
+          [data-atom-input]
+            line-height: (2 * U)
+            background-color: WHITE
+            margin-bottom: (U / 4)
         > [data-organism-footer]
-          background-color: darken(BACKGROUND, 2.5%)
-          border-top: solid 1px darken(BACKGROUND, 5%)
+          background-color: THEME
+          border-top: solid 1px darken(THEME, 5%)
         &:not(.side)
           &.show, &.hide
             vendor(animation-name, dialog-bottom)

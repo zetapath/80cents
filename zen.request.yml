@@ -14,7 +14,6 @@ tests:
 OWNERS:
   - mail              : o1@shop.io
     password          : o1
-    type              : 1
     name              : Owner nº1
     avatar            : http://cdn.tapquo.com/photos/soyjavi.jpg
 
