@@ -1,0 +1,32 @@
+"use strict"
+Test = require("zenrequest").Test
+
+module.exports = ->
+  customer = ZENrequest.USERS[0]
+  tasks = []
+  # -- Lines
+  for order in ZENrequest.ORDERS
+    tasks.push _addLine customer, line, index for line, index in order.lines
+    tasks.push _removeLine customer, line
+  # -- Order
+  # order = ZENrequest.ORDERS[0]
+  # order_id = order.lines[0].order
+  # tasks.push _update ()
+  # -- Order (owner)
+  tasks
+
+# -- Tasks ---------------------------------------------------------------------
+_addLine = (user, line, index) -> ->
+  line.product = ZENrequest.PRODUCTS[index].id
+  Test "POST", "api/order/line", line, _session(user), "#{user.mail} added a new line #{line.id} x #{line.quantity}", 200, (response) ->
+    line.id = response.id
+    line.order = response.order
+
+_removeLine = (user, line) -> ->
+  console.log ">", line
+  Test "DELETE", "api/order/line", line, _session(user), "#{user.mail} added a new line #{line.id} x #{line.quantity}", 200
+
+
+# -- Private methods -----------------------------------------------------------
+_session = (user = undefined) ->
+  if user?.id? then authorization: user.id else null

@@ -9,6 +9,7 @@ tests:
   - session
   - collection
   - product
+  - order
 
 # -- USERS ----------------------------------------------------------------------
 OWNERS:
@@ -81,3 +82,17 @@ PRODUCTS:
     description       : Organic Noodle
     type              : food
     price             : 6.95
+
+# -- ORDERS --------------------------------------------------------------------
+ORDERS:
+  - comment             : Need a tracking number.
+    shipping_contact    : Javi
+    shipping_address    : Ratchamondoen soi 5
+    shipping_city       : Chiang Mai
+    shipping_zip_code   : 00001
+    shipping_country    : thailand
+    shipping_mobile     : 095123131248
+    shipping_tel        : 095903940320
+    lines:
+      - quantity        : 1
+      - quantity        : 2
