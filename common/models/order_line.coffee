@@ -8,6 +8,9 @@ C           = require "../constants"
 OrderLine = new Schema
   order           : type: String, ref: "Order"
   product         : type: String, ref: "Product"
+  size            : type: String
+  color           : type: String
+  material        : type: String
   quantity        : type: Number, default: 0
   amount          : type: Number
   state           : type: Number, default: C.ORDER.LINE.STATE.PENDING
