@@ -11,14 +11,20 @@ module.exports = (zen) ->
     Hope.join([ ->
       Session request, response, redirect = true
     , ->
+      Collection.search visibility: true
+    , ->
       Collection.search _id: request.parameters.id, visibility: true, limit = 1
+    , ->
+      Product.search collection_id: request.parameters.id, visibility: true
     ]).then (errors, values) ->
       bindings =
-        page        : "home"
+        page        : "collection"
         asset       : "store"
         host        : C.HOST[global.ZEN.type.toUpperCase()]
         session     : values[0]
-        collection  : values[1]
+        collections : values[1]
+        collection  : values[2]?.parse()
+        products    : (product.parse() for product in values[3])
       response.page "base", bindings, ["store.header", "store.collection", "store.footer"]
 
 

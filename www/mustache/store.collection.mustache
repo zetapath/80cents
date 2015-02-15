@@ -1,0 +1,16 @@
+{{! -- COLLECTION ----------------------------------------------------------- }}
+<article class="slideshow" data-flex="vertical center" style="background-image: url(/assets/uploads/{{collection.images}});">
+  <div class="overlay"></div>
+  <h2>{{collection.title}}</h2>
+</article>
+
+{{! -- PRODUCTS ------------------------------------------------------------- }}
+<article>
+  <div class="container">
+    {{#products}}
+    <a href="/product/{{id}}" data-column="6" class="product bck" data-flex="vertical center" style="background-image: url(/assets/uploads/{{default_image}});">
+      <strong>{{title}}</strong>
+    </a>
+    {{/products}}
+  </div>
+</article>

@@ -46,6 +46,16 @@
       {{#owner}}
       __.owner = {{owner}};
       {{/owner}}
+      {{#collection}}
+      __.collection = {
+        id      : "{{collection.id}}",
+        title   : "{{collection.title}}"};
+      {{/collection}}
+      {{#product}}
+      __.product = {
+        id      : "{{product.id}}",
+        title   : "{{product.title}}"};
+      {{/product}}
     </script>
   </body>
 </html>
