@@ -1,8 +1,5 @@
 [data-page="product"]
   article
-    &.slideshow
-      height                              : 50vh
-
     .box
       // -- Title
       > h1
@@ -58,3 +55,23 @@
     nav
       &.thumbnails
         padding                           : (SPACE / 2)
+
+  #fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span
+    background-image: url('/assets/img/fancybox_sprite.png') !important
+  #fancybox-loading div
+    background: url('/assets/img/fancybox_loading.gif') center center no-repeat !important
+  .fancybox-nav
+    background: transparent url('/assets/img/blank.gif') !important
+  // .fancybox-overlay
+  //   background: url('/assets/img/fancybox_overlay.png') !important
+
+
+/*Retina graphics!*/
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5)
+  #fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span
+    background-image: url('/assets/img/fancybox_sprite@2x.png') !important
+    background-size: 44px 152px
+
+  #fancybox-loading div
+    background-image: url('/assets/img/fancybox_loading@2x.gif') !important
+    background-size: 24px 24px

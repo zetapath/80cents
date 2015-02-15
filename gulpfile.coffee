@@ -38,10 +38,12 @@ store =
                 'source/store/style/flexo/flexo.page.*.styl']
   thirds    :
     js      : [ 'bower_components/jquery/dist/jquery.min.js'
+                'bower_components/fancybox/source/jquery.fancybox.js'
                 'bower_components/hope/hope.js'
                 'bower_components/atoms/atoms.standalone.js'
                 'bower_components/atoms/atoms.app.js']
-    css     : [ 'bower_components/flexo/dist/flexo.css']
+    css     : [ 'bower_components/flexo/dist/flexo.css'
+                'bower_components/fancybox/source/jquery.fancybox.css']
 
 admin =
   coffee    : [ 'source/admin/app.coffee'

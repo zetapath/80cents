@@ -24,3 +24,14 @@ Atoms.$ ->
         el.quantity.val quantity - 1
       else if method is "plus" and quantity < 100
         el.quantity.val quantity + 1
+
+    # -- Thirds ----------------------------------------------------------------
+    $(".fancybox").fancybox
+      padding           : 0
+      beforeShow        : -> $.fancybox.wrap.bind "contextmenu", (e) -> false
+      openEffect        : 'elastic'
+      closeEffect       : 'elastic'
+      helpers:
+        overlay:
+          css:
+            background  : 'rgba(0,0,0,0.75) url("/assets/img/overlay.png") repeat 0 0'

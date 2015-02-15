@@ -9,11 +9,11 @@
     {{! -- PRODUCT ---------------------------------------------------------- }}
     <section data-column="5">
       <div class="box">
-        <img src="/assets/uploads/{{product.default_image}}" />
+        <a class="fancybox thumbnail" rel="group" href="/assets/uploads/{{product.default_image}}"><img src="/assets/uploads/{{product.default_image}}" /></a>
       </div>
       <nav class="thumbnails" data-flex="horizontal center">
       {{#product.images}}
-        <figure class="thumbnail" style="background-image: url(/assets/uploads/{{.}});"></figure>
+        <a class="fancybox thumbnail" rel="group" href="/assets/uploads/{{.}}"><figure class="thumbnail" style="background-image: url(/assets/uploads/{{.}});"></figure></a>
       {{/product.images}}
       </nav>
     </section>
