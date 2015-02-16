@@ -16,7 +16,7 @@ class Atoms.Organism.AdminArticle extends Atoms.Organism.Article
     if url.length is 3 then @context url[2] else @[url[2]] url[3]
 
     # -- Bindings
-    for formgroup in ["collection", "product"]
+    for formgroup in ["order", "collection", "product"]
       @section[formgroup].bind "progress", (value) =>
         @header.progress.value value
         setTimeout (=> @header.progress.refresh value: 0), 500 if value is 100

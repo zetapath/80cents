@@ -27,22 +27,14 @@ __.scaffold.form_order =
     "Atom.Label": style: "anchor"
   ,
     "Molecule.Div": children: [
-      "Atom.Heading": size: "h2", value: "Shipping Address"
+      "Atom.Heading": size: "h2", value: "Shipping & Billing"
     ,
-      "Atom.Text": value: "..."
+      "Atom.Text": value: "Addresses for the order"
     ]
   ,
-    "Molecule.FormAddress": id: "shipping"
+    "Molecule.Address": id: "shipping", style: "half"
   ,
-    "Atom.Label": style: "anchor"
-  ,
-    "Molecule.Div": children: [
-      "Atom.Heading": size: "h2", value: "Billing Address"
-    ,
-      "Atom.Text": value: "..."
-    ]
-  ,
-    "Molecule.FormAddress": id: "billing"
+    "Molecule.Address": id: "billing", style: "half"
   ,
     "Atom.Label": style: "anchor"
   ,

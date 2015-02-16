@@ -1,6 +1,6 @@
 "use strict"
 
-class Atoms.Molecule.FormAddress extends Atoms.Molecule.Form
+class Atoms.Molecule.Address extends Atoms.Molecule.Form
 
   @extends  : true
 
@@ -30,6 +30,10 @@ class Atoms.Molecule.FormAddress extends Atoms.Molecule.Form
     ,
       "Atom.Input": style: "half", name: "tel"
     ]
+
+  constructor: ->
+    super
+    @children[0].el.html "#{@attributes.id} Contact"
 
   value: (values) ->
     values = super values

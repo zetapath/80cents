@@ -32,9 +32,7 @@ Product = new Schema
   collection_id     : type: Schema.ObjectId, ref: "Collection"
   tags              : [type: String]
   # -- Search Engines
-  page_title        : type: String
-  meta_description  : type: String
-  url_handle        : type: String
+  search            : type: Object
   # -- Visibility
   visibility        : type: Boolean, default: true
   highlight         : type: Boolean, default: false
@@ -96,9 +94,7 @@ Product.methods.parse = ->
   images            : @images
   collection_id     : @collection_id?.parse?() or @collection_id
   tags              : @tags
-  page_title        : @page_title
-  meta_description  : @meta_description
-  url_handle        : @url_handle
+  search            : @search
   visibility        : @visibility
   highlight         : @highlight
   updated_at        : @updated_at
@@ -108,6 +104,7 @@ exports = module.exports = db.model "Product", Product
 
 # -- Private methods -----------------------------------------------------------
 __StringToArray = (values) ->
-  for key in ["tags", "sizes", "colors", "materials", "images"]
-    values[key] = values[key]?.toLowerCase().replace(/ /g,"").split(",") or []
+  for key in ["tags", "sizes", "colors", "materials"]
+    value = values[key]?.toLowerCase().replace(/ /g,"")
+    values[key] = if value is "" then [] else value.split(",")
   values

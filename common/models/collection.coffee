@@ -12,9 +12,7 @@ Collection = new Schema
   description       : type: String
   images            : [type: String]
   # -- Search Engines
-  page_title        : type: String
-  meta_description  : type: String
-  url_handle        : type: String
+  search            : type: Object
   # -- Visibility
   visibility        : type: Boolean, default: true
   # -- Dates
@@ -41,7 +39,6 @@ Collection.statics.search = (query, limit = 0, page = 1, populate = "", sort = c
 
 Collection.statics.findAndUpdate = (filter, values) ->
   promise = new Hope.Promise()
-  values = __StringToArray values
   @findOneAndUpdate filter, values, (error, value) ->
     promise.done error, value
   promise
@@ -58,17 +55,9 @@ Collection.methods.parse = ->
   title             : @title
   description       : @description
   images            : @images
-  page_title        : @page_title
-  meta_description  : @meta_description
-  url_handle        : @url_handle
+  search            : @search
   visibility        : @visibility
   updated_at        : @updated_at
   created_at        : @created_at
 
 exports = module.exports = db.model "Collection", Collection
-
-# -- Private methods -----------------------------------------------------------
-__StringToArray = (values) ->
-  for key in ["images"]
-    values[key] = values[key]?.toLowerCase().replace(/ /g,"").split(",") or []
-  values

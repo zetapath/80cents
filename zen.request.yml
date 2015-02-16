@@ -86,14 +86,15 @@ PRODUCTS:
 # -- ORDERS --------------------------------------------------------------------
 ORDERS:
   - comment             : Need a tracking number.
-    shipping_contact    : Javi
-    shipping_address    : Ratchamondoen soi 5
-    shipping_city       : Chiang Mai
-    shipping_zip_code   : 00001
-    shipping_country    : thailand
-    shipping_mobile     : 095123131248
-    shipping_tel        : 095903940320
-    billing_contact     : Zetapath LTD.
+    shipping:
+      contact           : Javi
+      address           : Ratchamondoen soi 5
+      city              : Chiang Mai
+      zipcode           : "00001"
+      country           : thailand
+      tel               : 095903940320
+    billing:
+      contact           : Zetapath LTD.
     lines:
       - quantity        : 1
         size            : S

@@ -127,19 +127,7 @@ __.scaffold.form_product =
       "Atom.Text": value: "Set up the page title, meta description and handle. These help define how this product shows up on search engines."
     ]
   ,
-    "Molecule.Form": children: [
-      "Atom.Label": value: "Page title"
-    ,
-      "Atom.Input": name: "page_title", placeholder: "less than 70 characters", maxlength: 70
-    ,
-      "Atom.Label": value: "Meta Description"
-    ,
-      "Atom.Textarea": name: "meta_description", placeholder: "less than 160 characters", maxlength: 160
-    ,
-      "Atom.Label": value: "URL & Handle"
-    ,
-      "Atom.Input": name: "url_handle", placeholder: "/products/"
-    ]
+    "Molecule.SearchEngine": id: "search"
   ,
     "Atom.Label": style: "anchor"
   ,

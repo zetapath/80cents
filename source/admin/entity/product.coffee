@@ -6,7 +6,6 @@ class __.Entity.Product extends Atoms.Class.Entity
           "stock", "barcode", "tax", "requires_shipping", "weight", "sizes",
           "colors", "materials", "default_image", "images", "collection_id",
           "tags", "search", "visibility", "highlight",
-          "page_title", "meta_description", "url_handle",
           "updated_at", "created_at",
 
 

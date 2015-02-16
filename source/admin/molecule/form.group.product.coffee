@@ -19,6 +19,8 @@ class Atoms.Molecule.Product extends Atoms.Molecule.FormGroup
           # -- Format specific values
           @entity[key] = @entity[key].join ", " for key in ["sizes", "materials", "colors", "tags"]
           @images.value @entity
+          @search.value @entity.search
+
           form.value @entity for form in @children when form.constructor.name is "Form"
           Atoms.Url.path "admin/product/#{@entity.id}"
           @trigger "progress", 100

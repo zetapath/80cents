@@ -13,7 +13,7 @@
       line-height               : FONT_SIZE_BIG
       opacity                   : 0.65
   > [data-molecule-form]
-    width                       : SIZE = 70%
+    width                       : 70%
     box-shadow                    0 SHADOW_HEIGHT (U / 3) darken(BACKGROUND, 10%)
     border-radius                 BORDER_RADIUS
     > .half
@@ -23,6 +23,11 @@
         margin-right            : 2%
     > [data-atom-label] + [data-atom-input][type="checkbox"]
       margin-left               : U
+    &.half
+      width                       : 32%
+      &:nth-child(even)
+        margin-left               : 2%
+
 
   > [data-atom-label]
     margin-bottom               : U

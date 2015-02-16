@@ -14,8 +14,8 @@ class Atoms.Molecule.FormGroup extends Atoms.Molecule.Div
 
     if valid
       # -- Format specific values
-      properties.images = @images?.value().join ", " if @images
       method = if @entity then "PUT" else "POST"
+      properties.images = @images?.value() if method is "PUT" and @images?
       __.proxy(method, @attributes.endpoint, properties, true).then (error, response) =>
         unless error
           __.Entity[@attributes.entity_name].createOrUpdate response
@@ -25,3 +25,6 @@ class Atoms.Molecule.FormGroup extends Atoms.Molecule.Div
     @trigger "progress", 10
     form.clean() for form in @children when form.constructor.name is "Form"
     @images?.value []
+    @search?.clean()
+    @shipping?.clean()
+    @billing?.clean()
