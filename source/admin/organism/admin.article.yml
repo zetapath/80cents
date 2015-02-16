@@ -38,12 +38,31 @@ children:
       id: section
       style: active
       children:
-        - Molecule.Collection:
-            id: collection
-        - Molecule.Product:
-            id: product
+        # -- Dashboard
         - Molecule.Div:
             id: dashboard
+
+        # -- Order
+        - Molecule.Order:
+            id: order
+        - Molecule.List:
+            id: orders
+            style: padding-all
+            events:
+              - select
+            callbacks:
+              - onOrder
+            bind:
+              entity      : "__.Entity.Order"
+              atom        : "Atom.Li"
+              events      : ["touch"]
+              create      : true
+              update      : true
+              destroy     : true
+
+        # -- Collection
+        - Molecule.Collection:
+            id: collection
         - Molecule.List:
             id: collections
             data:
@@ -61,6 +80,10 @@ children:
               create      : true
               update      : true
               destroy     : true
+
+        # -- Product
+        - Molecule.Product:
+            id: product
         - Molecule.List:
             id: products
             data:

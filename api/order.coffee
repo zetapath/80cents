@@ -6,7 +6,7 @@ Order       = require "../common/models/order"
 OrderLine   = require "../common/models/order_line"
 C           = require "../common/constants"
 # stripe      = require("stripe")(C.STRIPE.KEY)
-
+AVAILABLE   = ["comment", "shipping", "billing", "state", "tracking_number"]
 module.exports = (server) ->
 
   # -- Order Lines -------------------------------------------------------------
@@ -71,14 +71,8 @@ module.exports = (server) ->
         Session request, response
       , (error, @session) =>
         parameters = {}
-        for key, value of request.parameters
-          key = key.split "_"
-          if key[0] in ["comment", "shipping", "billing"]
-            if key.length is 1
-              parameters[key[0]] = value
-            else
-              parameters[key[0]] = parameters[key[0]] or {}
-              parameters[key[0]][key[1]] = value
+        for key, value of request.parameters when key in AVAILABLE
+          parameters[key] = value
         Order.updateAttributes _id: request.parameters.id, parameters
       ]).then (error, value) ->
         if error
@@ -86,7 +80,26 @@ module.exports = (server) ->
         else
           response.json order: value.parse()
 
-  # -- Only for Owner
+  # -- Order Customer/Owner ----------------------------------------------------
+  server.get "/api/order", (request, response) ->
+    Hope.shield([ ->
+      Session request, response, null, admin = true
+    , (error, session) ->
+      limit = 0
+      filter = {}
+      if request.parameters.id?
+        filter._id = request.parameters.id
+        limit = 1
+      Order.search filter, limit
+    ]).then (error, value) ->
+      return response.unauthorized() if error
+      if request.parameters.id
+        result = value.parse()
+      else
+        result = orders: (order.parse() for order in value)
+      response.json result
+
+  # -- Only for Owner ----------------------------------------------------------
   # server.put "/api/order/state", (request, response) ->
   #   available = (value for key, value of C.ORDER.STATE when C.MESSAGE[key])
   #   if request.required ["id", "state"] and request.parameters.state in available

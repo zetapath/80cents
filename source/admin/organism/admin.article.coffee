@@ -4,7 +4,7 @@ Atoms.Organism.Header.available.push "Atom.Link"
 
 class Atoms.Organism.AdminArticle extends Atoms.Organism.Article
 
-  @url : "/assets/scaffold/admin.article.json"
+  @url : "/assets/scaffold/admin/organism/admin.article.json"
 
   constructor: ->
     super
@@ -24,6 +24,8 @@ class Atoms.Organism.AdminArticle extends Atoms.Organism.Article
   # -- Children Bubble Events --------------------------------------------------
   onButton: (event, atom) -> do @[atom.attributes.callback]
 
+  onOrder: (atom) => @order atom.entity.id
+
   onCollection: (atom) -> @collection atom.entity.id
 
   onProduct: (atom) => @product atom.entity.id
@@ -39,6 +41,7 @@ class Atoms.Organism.AdminArticle extends Atoms.Organism.Article
     @section[id].el.show().siblings().hide()
     @fetch id, "Collection" if id is "collections"
     @fetch id, "Product" if id is "products"
+    @fetch id, "Order" if id is "orders"
 
   fetch: (id, entity) ->
     __.Entity[entity].destroyAll()
@@ -48,9 +51,11 @@ class Atoms.Organism.AdminArticle extends Atoms.Organism.Article
       @header.progress.value 100
       setTimeout (=> @header.progress.refresh value: 0), 500
 
-  product: (id) -> @showGroupForm id, "Products", "product"
+  order: (id) -> @showGroupForm id, "Orders", "order"
 
   collection: (id) -> @showGroupForm id, "Collections", "collection"
+
+  product: (id) -> @showGroupForm id, "Products", "product"
 
   showGroupForm: (id, title, form) ->
     @header.title.refresh text: title, href: "/admin/#{title.toLowerCase()}"

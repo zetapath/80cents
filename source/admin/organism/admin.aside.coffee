@@ -2,7 +2,7 @@
 
 class Atoms.Organism.AdminAside extends Atoms.Organism.Aside
 
-  @url : "/assets/scaffold/admin.aside.json"
+  @url : "/assets/scaffold/admin/organism/admin.aside.json"
 
   constructor: ->
     super

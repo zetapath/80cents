@@ -6,7 +6,7 @@ class Atoms.Molecule.FormGroup extends Atoms.Molecule.Div
   onSave: ->
     properties = {}
     valid = true
-    for form in @children when form.constructor.name is "Form" and valid
+    for form in @children when form.constructor.base is "Form" and valid
       for field in form.children when field.attributes.required and field.value() is ""
         valid = false
         break
@@ -14,8 +14,7 @@ class Atoms.Molecule.FormGroup extends Atoms.Molecule.Div
 
     if valid
       # -- Format specific values
-      properties.images = @images.value().join ", "
-
+      properties.images = @images?.value().join ", " if @images
       method = if @entity then "PUT" else "POST"
       __.proxy(method, @attributes.endpoint, properties, true).then (error, response) =>
         unless error
@@ -25,4 +24,4 @@ class Atoms.Molecule.FormGroup extends Atoms.Molecule.Div
   fetch: (@entity) ->
     @trigger "progress", 10
     form.clean() for form in @children when form.constructor.name is "Form"
-    @images.value []
+    @images?.value []
