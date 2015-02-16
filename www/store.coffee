@@ -72,6 +72,10 @@ module.exports = (zen) ->
       response.page "base", bindings, ["store.header", "store.order", "store.footer"]
 
 
+  zen.get "/profile/logout", (request, response) ->
+    response.session null
+    response.redirect "/"
+
 
   zen.get "/profile", (request, response) ->
     Hope.join([ ->
