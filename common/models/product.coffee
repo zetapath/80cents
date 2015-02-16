@@ -106,5 +106,5 @@ exports = module.exports = db.model "Product", Product
 __StringToArray = (values) ->
   for key in ["tags", "sizes", "colors", "materials"]
     value = values[key]?.toLowerCase().replace(/ /g,"")
-    values[key] = if value is "" then [] else value.split(",")
+    values[key] = if not value? or value is "" then [] else value.split(",")
   values

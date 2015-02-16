@@ -23,7 +23,6 @@ Collection = new Schema
 Collection.statics.create = (values) ->
   promise = new Hope.Promise()
   campaign = db.model "Collection", Collection
-  values = __StringToArray values
   new campaign(values).save (error, value) -> promise.done error, value
   promise
 
