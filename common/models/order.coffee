@@ -14,7 +14,6 @@ Order = new Schema
   comment         : type: String
   shipping        : type: Object
   billing         : type: Object
-  discount        : type: Number, default: 0
   payment_type    : type: String
   payment_token   : type: String
   tracking_number : type: String
@@ -33,7 +32,7 @@ Order.statics.findOrRegister = (query, attributes) ->
       new order(attributes).save (error, value) -> promise.done error, value
   promise
 
-Order.statics.search = (query, limit = 0, populate = "lines", sort = "created_at") ->
+Order.statics.search = (query, limit = 0, populate = [], sort = "created_at") ->
   promise = new Hope.Promise()
   @find(query).limit(limit).populate(populate).sort(sort).exec (error, value) ->
     if limit is 1 and not error
@@ -60,12 +59,10 @@ Order.methods.parse = ->
   id              : @_id.toString()
   user            : @user.parse?() or @user
   lines           : @lines
-  amount          : (@amount - ((@amount * @discount) / 100)).toFixed(2)
+  amount          : @amount?.toFixed(2)
   comment         : @comment
   shipping        : @shipping
   billing         : @billing
-  discount        : @discount
-  discount_amount : ((@amount * @discount) / 100).toFixed(2)
   payment_type    : @payment_type
   payment_token   : @payment_token
   tracking_number : @tracking_number

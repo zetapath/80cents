@@ -1,0 +1,28 @@
+[data-page="order"]
+  > article
+    padding                             : U 0 !important
+    &.slideshow
+      min-height                        : 20vh !important
+
+  table
+    td, th
+      // &:first-child
+      //   width                           : 100%
+      &.center
+        text-align                      : center
+      &.right
+        text-align                      : right
+      &.bold
+        font-weight                     : FONT_WEIGHT_BOLD
+    td
+      figure
+        width                           : SIZE = (U / 1.5)
+        height                          : SIZE
+        margin                          : 0 SPACE 0 0
+        background-color                : BOX
+      strong
+        margin-top                      : (SPACE / 2)
+    tr
+      &:last-child
+        td
+          border: none

@@ -1,0 +1,44 @@
+<article class="slideshow" data-flex="vertical center" style="background-image: url(/assets/uploads/{{session.avatar}});">
+  <div class="overlay"></div>
+  {{#cart}}<h2>Your cart</h2>{{/cart}}
+  {{^cart}}<h2>Order {{order.id}}</h2>{{/cart}}
+</article>
+
+<article>
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>{{^cart}}Tracking Number{{/cart}}</th>
+          <th class="center">Units</th>
+          <th class="center">Price</th>
+          <th class="center">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#lines}}
+        <tr data-line="{{id}}">
+          <td data-flex="horizontal grow">
+            <a href="/product/{{product.id}}" data-flex-grow="min"><figure style="background-image: url(/assets/uploads/{{product.default_image}});"></figure></a>
+            <strong>{{product.title}}</strong>
+          </td>
+          <td>
+            {{#cart}}<button data-action="delete">remove</button>{{/cart}}
+            {{^cart}}{{tracking_number}}{{/cart}}
+          </td>
+          <td class="center">{{quantity}}</td>
+          <td class="center">${{product.price}}</td>
+          <td class="center"><strong>${{amount}}</strong></td>
+        </tr>
+        {{/lines}}
+        <tr class="total">
+          <td colspan="5" class="right">
+            {{#cart}}<button class="primary" data-action="purchase">Purchase for ${{order.amount}}</button>{{/cart}}
+            {{^cart}}${{order.amount}}{{/cart}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</article>

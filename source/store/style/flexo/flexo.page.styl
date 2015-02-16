@@ -3,14 +3,18 @@ body
   > article
     &.slideshow
       position                          : relative
+      min-height                        : 45vh
       color                             : WHITE
       background-size                   : cover
-      > h2
+      > *
+        color                           : WHITE !important
+      > :not(div)
         z-index                         : 1
+        font-weight                     : bold
+      > h2
         margin-top                      : (1.5 * U)
         font-size                       : (U / 1.25)
         text-transform                  : Uppercase
-        font-weight                     : bold
       > .overlay
         z-index                         : 0
         position                        : absolute

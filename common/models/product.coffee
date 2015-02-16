@@ -80,8 +80,8 @@ Product.methods.parse = ->
   description       : @description
   type              : @type
   vendor            : @vendor
-  price             : @price
-  compare_at_price  : @compare_at_price
+  price             : @price.toFixed(2)
+  compare_at_price  : @compare_at_price?.toFixed(2)
   stock             : @stock
   barcode           : @barcode
   tax               : @tax
@@ -90,7 +90,7 @@ Product.methods.parse = ->
   sizes             : @sizes
   colors            : @colors
   materials         : @materials
-  default_image     :  @images[0]
+  default_image     : @images[0]
   images            : @images
   collection_id     : @collection_id?.parse?() or @collection_id
   tags              : @tags

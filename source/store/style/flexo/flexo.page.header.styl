@@ -8,7 +8,7 @@ body
     line-height                     : HEIGHT
 
     .logo
-      margin-right                  : U
+      margin-right                  : (U / 2)
       font-size                     : (U / 2)
       font-weight                   : FONT_WEIGHT_BOLD
       color                         : THEME
@@ -16,6 +16,7 @@ body
       // margin                        : 0 U
       a
         font-size                   : 85%
+        letter-spacing              : 1px
         font-weight                 : FONT_WEIGHT_BOLD
         text-transform              : Uppercase
         border-radius               : SPACE
@@ -23,7 +24,7 @@ body
         &:not(.icon)
           padding                     : (SPACE / 2) SPACE
           margin-right                : (SPACE / 2)
-          &:first-child, &:hover
+          &.active, &:hover
             background-color          : THEME
             color                     : WHITE
 

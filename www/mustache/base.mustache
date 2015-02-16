@@ -28,6 +28,8 @@
     {{> store.home}}
     {{> store.collection}}
     {{> store.product}}
+    {{> store.profile}}
+    {{> store.order}}
     {{> store.footer}}
 
     <script src="/assets/js/shopio.{{asset}}.dependencies.js"></script>
@@ -46,16 +48,9 @@
       {{#owner}}
       __.owner = {{owner}};
       {{/owner}}
-      {{#collection}}
-      __.collection = {
-        id      : "{{collection.id}}",
-        title   : "{{collection.title}}"};
-      {{/collection}}
-      {{#product}}
-      __.product = {
-        id      : "{{product.id}}",
-        title   : "{{product.title}}"};
-      {{/product}}
+      {{#collection}}__.collection = "{{collection.id}}";{{/collection}}
+      {{#product}}__.product = "{{product.id}}";{{/product}}
+      {{#order}}__.order = "{{order.id}}";{{/order}}
     </script>
   </body>
 </html>

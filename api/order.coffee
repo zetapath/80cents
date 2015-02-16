@@ -15,7 +15,7 @@ module.exports = (server) ->
       Hope.shield([ ->
         Session request, response
       , (error, @session) =>
-        filter = _id: request.parameters.product#, visibility: true
+        filter = _id: request.parameters.product, visibility: true
         Product.search filter, limit = 1
       , (error, @product) =>
         values =
@@ -86,7 +86,7 @@ module.exports = (server) ->
       Session request, response, null, admin = true
     , (error, session) ->
       limit = 0
-      filter = {}
+      filter = state: $gt: C.ORDER.STATE.SHOPPING
       if request.parameters.id?
         filter._id = request.parameters.id
         limit = 1
