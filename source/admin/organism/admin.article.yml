@@ -60,6 +60,24 @@ children:
               update      : true
               destroy     : true
 
+        # -- Customer
+        - Molecule.Customer:
+            id: customer
+        - Molecule.List:
+            id: customers
+            style: padding-all
+            events:
+              - select
+            callbacks:
+              - onCustomer
+            bind:
+              entity      : "__.Entity.Customer"
+              atom        : "Atom.Li"
+              events      : ["touch"]
+              create      : true
+              update      : true
+              destroy     : true
+
         # -- Collection
         - Molecule.Collection:
             id: collection

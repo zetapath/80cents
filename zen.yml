@@ -4,10 +4,11 @@ environment: development
 # -- RESTful services ----------------------------------------------------------
 api:
   - session
+  - order
+  - customer
   - collection
   - product
   - image
-  - order
 
 # -- HTML pages ----------------------------------------------------------------
 www:

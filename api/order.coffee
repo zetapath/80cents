@@ -87,6 +87,7 @@ module.exports = (server) ->
     , (error, session) ->
       limit = 0
       filter = state: $gt: C.ORDER.STATE.SHOPPING
+      filter.user = request.parameters.user if request.parameters.user
       if request.parameters.id?
         filter._id = request.parameters.id
         limit = 1

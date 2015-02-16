@@ -26,6 +26,8 @@ class Atoms.Organism.AdminArticle extends Atoms.Organism.Article
 
   onOrder: (atom) => @order atom.entity.id
 
+  onCustomer: (atom) => @customer atom.entity.id
+
   onCollection: (atom) -> @collection atom.entity.id
 
   onProduct: (atom) => @product atom.entity.id
@@ -42,6 +44,7 @@ class Atoms.Organism.AdminArticle extends Atoms.Organism.Article
     @fetch id, "Collection" if id is "collections"
     @fetch id, "Product" if id is "products"
     @fetch id, "Order" if id is "orders"
+    @fetch id, "Customer" if id is "customers"
 
   fetch: (id, entity) ->
     __.Entity[entity].destroyAll()
@@ -57,7 +60,10 @@ class Atoms.Organism.AdminArticle extends Atoms.Organism.Article
 
   product: (id) -> @showGroupForm id, "Products", "product"
 
+  customer: (id) -> @showGroupForm id, "Customers", "customer"
+
   showGroupForm: (id, title, form) ->
+    console.log id, title, form
     @header.title.refresh text: title, href: "/admin/#{title.toLowerCase()}"
     @header.subtitle.refresh value: "/ #{if id then 'edit' else 'new'}"
     do @hideHeaderButtons

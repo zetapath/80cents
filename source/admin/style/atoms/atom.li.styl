@@ -13,6 +13,10 @@
   [data-organism-article] > [data-organism-section]
     [data-atom-li]
       background-color: WHITE
+      > div
+        > span, > small
+          color: darken(BACKGROUND, 40%)
+
       &.anchor
         color: darken(BACKGROUND, 50%)
         background-color: darken(BACKGROUND, 2.5%)
@@ -26,10 +30,13 @@
         > figure
           height: (SIZE / 1.2)
           order: -1
-      > div
-        > span, > small
-          color: darken(BACKGROUND, 40%)
-
+      &:not(.thumb)
+        &:hover
+          background-color        : lighten(THEME, 25%)
+          strong, small, span
+            color                 : WHITE
+        &:last-child
+          border-bottom           : none !important
     &:not(.padding) [data-atom-li]
       &:not(.anchor)
         border-bottom: DIVIDER
