@@ -1,6 +1,6 @@
 [data-molecule-div="order"], [data-molecule-div="collection"], [data-molecule-div="product"]
   margin                        : U 0
-  > [data-molecule-div], > [data-molecule-form]
+  > [data-molecule-div], > [data-molecule-form], > [data-molecule-list]
     display                     : inline-block
     padding                     : 2%
     vertical-align              : top
@@ -12,22 +12,32 @@
       font-size                 : FONT_SIZE_TINY
       line-height               : FONT_SIZE_BIG
       opacity                   : 0.65
-  > [data-molecule-form]
-    width                       : 70%
+
+  > [data-molecule-form], > [data-molecule-list]
+    background-color            : WHITE
     box-shadow                    0 SHADOW_HEIGHT (U / 3) darken(BACKGROUND, 10%)
     border-radius                 BORDER_RADIUS
+    &:not(.half)
+      width                     : 70%
+
+    &.half
+      width                     : 32%
+      &:nth-child(even)
+        margin-left             : 2%
+
+  > [data-molecule-form]
     > .half
       display                   : inline-block
       width                     : 49% !important
       &:nth-child(odd)
         margin-right            : 2%
+    > .quarter
+      display                   : inline-block
+      width                     : 23% !important
+      &:nth-child(even)
+        margin                  : 0 2%
     > [data-atom-label] + [data-atom-input][type="checkbox"]
       margin-left               : U
-    &.half
-      width                       : 32%
-      &:nth-child(even)
-        margin-left               : 2%
-
 
   > [data-atom-label]
     margin-bottom               : U

@@ -39,17 +39,21 @@ __.scaffold.form_order =
     "Atom.Label": style: "anchor"
   ,
     "Molecule.Div": children: [
-      "Atom.Heading": size: "h2", value: "State"
+      "Atom.Heading": size: "h2", value: "State & Payment"
     ,
       "Atom.Text": value: "..."
     ]
   ,
     "Molecule.Form": children: [
-      "Atom.Label": style: "half", value: "State"
+      "Atom.Label": style: "quarter", value: "State"
     ,
-      "Atom.Label": style: "half", value: "Tracking Number"
+      "Atom.Label": style: "quarter", value: "Tracking Number"
     ,
-      "Atom.Select": style: "half", name: "state", options: [
+      "Atom.Label": style: "quarter", value: "Type"
+    ,
+      "Atom.Label": style: "quarter", value: "Token"
+    ,
+      "Atom.Select": style: "quarter", name: "state", options: [
         value: 0, label: "Shopping"
       ,
         value: 1, label: "Purchased"
@@ -61,26 +65,28 @@ __.scaffold.form_order =
         value: 4, label: "finished"
       ]
     ,
-      "Atom.Input": style: "half", name: "tracking_number"
+      "Atom.Input": style: "quarter", name: "tracking_number"
+    ,
+      "Atom.Input": style: "quarter", name: "payment_type", disabled: true
+    ,
+      "Atom.Input": style: "quarter", name: "payment_token", disabled: true
     ]
   ,
     "Atom.Label": style: "anchor"
   ,
     "Molecule.Div": children: [
-      "Atom.Heading": size: "h2", value: "Payment"
+      "Atom.Heading": size: "h2", value: "Lines"
     ,
       "Atom.Text": value: "..."
     ]
   ,
-    "Molecule.Form": children: [
-      "Atom.Label": style: "half", value: "Type"
-    ,
-      "Atom.Label": style: "half", value: "Token"
-    ,
-      "Atom.Input": style: "half", name: "payment_type"
-    ,
-      "Atom.Input": style: "half", name: "payment_token"
-    ]
+    "Molecule.List": events: ["select"], callbacks: ["onOrderLine"], bind:
+      entity      : "__.Entity.OrderLine"
+      atom        : "Atom.Li"
+      events      : ["touch"]
+      create      : true
+      update      : true
+      destroy     : true
   ,
     "Atom.Label": style: "anchor"
   ,

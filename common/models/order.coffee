@@ -33,9 +33,9 @@ Order.statics.findOrRegister = (query, attributes) ->
       new order(attributes).save (error, value) -> promise.done error, value
   promise
 
-Order.statics.search = (query, limit = 0, populate = "lines") ->
+Order.statics.search = (query, limit = 0, populate = "lines", sort = "created_at") ->
   promise = new Hope.Promise()
-  @find(query).limit(limit).exec (error, value) ->
+  @find(query).limit(limit).populate(populate).sort(sort).exec (error, value) ->
     if limit is 1 and not error
       error = code: 402, message: "Order not found." if value.length is 0
       value = value[0] if value.length isnt 0
@@ -58,7 +58,7 @@ Order.methods.saveInPromise = (parameters = {}) ->
 
 Order.methods.parse = ->
   id              : @_id.toString()
-  user            : @user
+  user            : @user.parse?() or @user
   lines           : @lines
   amount          : (@amount - ((@amount * @discount) / 100)).toFixed(2)
   comment         : @comment
