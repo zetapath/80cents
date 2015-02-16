@@ -70,18 +70,15 @@ module.exports = (server) ->
       Hope.shield([ ->
         Session request, response
       , (error, @session) =>
-        # Getting parameters
-        parameters = user : @session._id
+        parameters = {}
         for key, value of request.parameters
-          parameters[key] = value
-
-
-        for address in addresess
-          parameters.shipping_address = address._id if address.type is C.ADDRESS.SHIPPING_ADDRESS
-          parameters.billing_address = address._id if address.type is C.ADDRESS.BILLING_ADDRESS
-        parameters.comments = request.parameters.comments if request.parameters.comments
-        discount = C.COUPON[request.parameters.coupon]
-        parameters.discount = discount if discount
+          key = key.split "_"
+          if key[0] in ["comment", "shipping", "billing"]
+            if key.length is 1
+              parameters[key[0]] = value
+            else
+              parameters[key[0]] = parameters[key[0]] or {}
+              parameters[key[0]][key[1]] = value
         Order.updateAttributes _id: request.parameters.id, parameters
       ]).then (error, value) ->
         if error

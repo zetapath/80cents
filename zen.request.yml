@@ -93,6 +93,9 @@ ORDERS:
     shipping_country    : thailand
     shipping_mobile     : 095123131248
     shipping_tel        : 095903940320
+    billing_contact     : Zetapath LTD.
     lines:
       - quantity        : 1
+        size            : S
+        color           : black
       - quantity        : 2

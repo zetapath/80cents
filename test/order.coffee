@@ -9,9 +9,7 @@ module.exports = ->
     tasks.push _addLine customer, line, index for line, index in order.lines
     tasks.push _removeLine customer, line
   # -- Order
-  # order = ZENrequest.ORDERS[0]
-  # order_id = order.lines[0].order
-  # tasks.push _update ()
+  tasks.push _update customer, order for order in ZENrequest.ORDERS
   # -- Order (owner)
   tasks
 
@@ -23,9 +21,11 @@ _addLine = (user, line, index) -> ->
     line.order = response.order
 
 _removeLine = (user, line) -> ->
-  console.log ">", line
   Test "DELETE", "api/order/line", line, _session(user), "#{user.mail} added a new line #{line.id} x #{line.quantity}", 200
 
+_update = (user, order) -> ->
+  order.id = order.lines[0].order
+  Test "PUT", "api/order", order, _session(user), "#{user.mail} update order #{order.id}"
 
 # -- Private methods -----------------------------------------------------------
 _session = (user = undefined) ->
