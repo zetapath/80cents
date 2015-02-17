@@ -13,7 +13,7 @@
           <th>{{^cart}}Tracking Number{{/cart}}</th>
           <th class="center">Units</th>
           <th class="center">Price</th>
-          <th class="center">Total</th>
+          <th class="right">Total</th>
         </tr>
       </thead>
       <tbody>
@@ -29,7 +29,7 @@
           </td>
           <td class="center">{{quantity}}</td>
           <td class="center">${{product.price}}</td>
-          <td class="center"><strong>${{amount}}</strong></td>
+          <td class="right"><strong>${{amount}}</strong></td>
         </tr>
         {{/lines}}
         <tr class="total">

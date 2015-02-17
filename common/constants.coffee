@@ -14,12 +14,10 @@ module.exports =
       PROCESSED : 2
       SENT      : 3
       FINISHED  : 4
-
+    STATES: ["Shopping", "Purchased", "Processed", "Sent", "Finished"]
     LINE:
       STATE:
         PENDING   : 0
-
-  STATES: ["Shopping", "Purchased", "Processed", "Sent", "Finished"]
 
   STRIPE:
     KEY: "sk_live_?"

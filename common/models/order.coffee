@@ -32,7 +32,7 @@ Order.statics.findOrRegister = (query, attributes) ->
       new order(attributes).save (error, value) -> promise.done error, value
   promise
 
-Order.statics.search = (query, limit = 0, populate = [], sort = "created_at") ->
+Order.statics.search = (query, limit = 0, populate = [], sort = created_at: "desc") ->
   promise = new Hope.Promise()
   @find(query).limit(limit).populate(populate).sort(sort).exec (error, value) ->
     if limit is 1 and not error
@@ -67,6 +67,7 @@ Order.methods.parse = ->
   payment_token   : @payment_token
   tracking_number : @tracking_number
   state           : @state
+  state_label     : C.ORDER.STATES[@state]
   updated_at      : @updated_at
   created_at      : @created_at
 

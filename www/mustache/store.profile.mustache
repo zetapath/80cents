@@ -6,11 +6,42 @@
 
 <article>
   <div class="container">
-    <form data-column="12">
-      <label>Your name</label>
-      <input type="text" value="{{session.mail}}"/>
-    </form>
+    <div data-column="5" class="box bck">
+      <h2>Your Personal Data</h2>
+      <form action="/profile" method="post" enctype="multipart/form-data">
+        <label>Your name</label>
+        <input type="text" value="{{session.name}}" name="name"/>
+        <label>Your mail</label>
+        <input type="email" value="{{session.mail}}"  name="mail" disabled="true"/>
+        <nav class="align right">
+          <a href="/profile/logout" class="button">Logout</a>
+          <button data-action="save" class="primary">Save</button>
+        </nav>
+      </form>
+    </div>
 
-    <a href="/profile/logout" class="button">Logout</a>
+    <div data-column="7" class="box">
+      <h2>Your Orders</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>State</th>
+            <th>date</th>
+            <th class="right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#orders}}
+          <tr>
+            <td>{{id}} - <small><a href="/order/{{id}}">View</a></small></td>
+            <td><small>{{state_label}}</small></td>
+            <td><small>{{created_at}}</small></td>
+            <td class="right"><strong>${{amount}}</strong></td>
+          </tr>
+          {{/orders}}
+        </tbody>
+      </table>
+    </div>
   </div>
 </article>

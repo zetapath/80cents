@@ -66,8 +66,21 @@ input[type="url"], input[type="password"], textarea, select
 
 // -- TABLE ---------------------------------------------------------------------
 table
+  td, th
+    &.center
+      text-align                      : center
+    &.right
+      text-align                      : right
   th, td
     border-bottom           : 1px solid BOX
+  th
+    font-size               : FONT_SIZE_TINY
+    color                   : LABEL
+    padding                 : (SPACE / 2) SPACE
+  td
+    padding                 : SPACE
+  tr:last-child td
+    border-bottom           : none
 
 // -- CODE ---------------------------------------------------------------------
 code
