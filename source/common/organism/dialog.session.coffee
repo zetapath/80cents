@@ -34,7 +34,6 @@ class Atoms.Organism.Session extends Atoms.Organism.Dialog
     __.proxy("POST", api, @section.form.value()).then (error, response) =>
       do @_enableForm
       if response?.id?
-        document.cookie = "shopio=#{response.id}"
         if @admin_mode
           window.location = "/admin/dashboard"
         else

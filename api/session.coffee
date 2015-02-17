@@ -25,8 +25,9 @@ module.exports = (server) ->
   server.post "/api/login", (request, response) ->
     if request.required ["mail", "password"]
       User.login(request.parameters).then (error, user) ->
-        if error then response.unauthorized() else response.json user.parse()
-
+        return response.unauthorized() if error
+        response.session user.token
+        response.json user.parse()
 
   server.post "/api/logout", (request, response) ->
     response.logout()

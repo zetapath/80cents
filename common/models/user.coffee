@@ -5,6 +5,7 @@ Schema      = require("zenserver").Mongoose.Schema
 db          = require("zenserver").Mongo.connections.primary
 PassHash    = require "password-hash"
 C           = require "../constants"
+token       = require "../token"
 
 User = new Schema
   mail            : type: String, unique: true
@@ -12,6 +13,7 @@ User = new Schema
   name            : type: String
   avatar          : type: String
   type            : type: Number, default: C.USER.TYPE.CUSTOMER
+  token           : type: String
   # -- Dates
   updated_at      : type: Date
   created_at      : type: Date, default: Date.now
@@ -38,6 +40,8 @@ User.statics.login = (values) ->
     if user is null or not PassHash.verify values.password, user.password
       promise.done true
     else
+      user.token = token user._id
+      user.save()
       promise.done error, user
   promise
 
