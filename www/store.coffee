@@ -14,7 +14,7 @@ module.exports = (zen) ->
     Hope.join([ ->
       Session request, response, redirect = true
     , ->
-      Collection.search visibility: true
+      Collection.available()
     , ->
       Collection.search _id: request.parameters.id, visibility: true, limit = 1
     , ->
@@ -35,7 +35,7 @@ module.exports = (zen) ->
     Hope.join([ ->
       Session request, response, redirect = true
     , ->
-      Collection.search visibility: true
+      Collection.available()
     , ->
       filter = _id: request.parameters.id, visibility: true
       Product.search filter, limit = 1, null, populate = "collection_id"
@@ -54,7 +54,7 @@ module.exports = (zen) ->
     Hope.join([ ->
       Session request, response, redirect = true
     , ->
-      Collection.search visibility: true
+      Collection.available()
     , ->
       Product.search visibility: true, highlight: true
     ]).then (errors, values) ->

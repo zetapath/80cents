@@ -26,7 +26,7 @@ _showOrder = (request, response, id) =>
   Hope.shield([ =>
     Session request, response, redirect = true
   , (error, @session) =>
-    Collection.search visibility: true
+    Collection.available()
   , (error, @collections) =>
     filter = user: @session._id
     if id

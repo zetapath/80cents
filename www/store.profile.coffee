@@ -20,7 +20,7 @@ module.exports = (zen) ->
     Hope.shield([ ->
       Session request, response, redirect = true
     , (error, @session) =>
-      Collection.search visibility: true
+      Collection.available()
     , (error, @collections) =>
       Order.search user: @session._id, state: $gt: C.ORDER.STATE.SHOPPING
     ]).then (error, orders) =>
