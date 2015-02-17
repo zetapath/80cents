@@ -15,17 +15,17 @@ __.scaffold.form_product =
     ,
       "Atom.Label": value: "Title"
     ,
-      "Atom.Input": name: "title", placeholder: "e.g. Unicorn crest short sleeve tee", required: true
+      "Atom.Input": name: "title", placeholder: "e.g. Unicorn crest short sleeve tee", required: true, events: ["keyup"]
     ,
       "Atom.Label": value: "Description"
     ,
-      "Atom.Wysihtml5": name: "description",  id: "product"
+      "Atom.Wysihtml5": name: "description", id: "product", required: true, events: ["keyup"]
     ,
       "Atom.Label": style: "half", value: "Type"
     ,
       "Atom.Label": style: "half", value: "Vendor"
     ,
-      "Atom.Input": style: "half", name: "type", placeholder: "e.g. Bicycles, T-Shirts"
+      "Atom.Input": style: "half", name: "type", placeholder: "e.g. Bicycles, T-Shirts", required: true, events: ["keyup"]
     ,
       "Atom.Input": style: "half", name: "vendor", placeholder: "e.g. Apple, Shopify"
     ]
@@ -39,21 +39,39 @@ __.scaffold.form_product =
     ]
   ,
     "Molecule.Form": children: [
-      "Atom.Label": style: "half", value: "Price"
+      "Atom.Label": style: "quarter", value: "Price"
     ,
-      "Atom.Label": style: "half", value: "Compare at price"
+      "Atom.Label": style: "quarter", value: "Compare at price"
     ,
-      "Atom.Input": style: "half", name: "price", placeholder: "0.00"
+      "Atom.Label": style: "quarter", value: "SKU"
     ,
-      "Atom.Input": style: "half", name: "compare_at_price", placeholder: "0.00"
+      "Atom.Label": style: "quarter", value: "Barcode"
     ,
-      "Atom.Label": style: "half", value: "SKU"
+      "Atom.Input": style: "quarter", name: "price", placeholder: "0.00", required: true, events: ["keyup"]
     ,
-      "Atom.Label": style: "half", value: "Barcode"
+      "Atom.Input": style: "quarter", name: "compare_at_price", placeholder: "0.00"
+
     ,
-      "Atom.Input": style: "half margin-bottom", name: "stock", placeholder: "Stock Keeping Unit"
+      "Atom.Input": style: "quarter", name: "stock", placeholder: "Stock Keeping Unit"
     ,
-      "Atom.Input": style: "half", name: "barcode", placeholder: "e.g. UPC, ISBN"
+      "Atom.Input": style: "quarter margin-bottom", name: "barcode", placeholder: "e.g. UPC, ISBN"
+    # -- Variants
+    ,
+      "Atom.Label": style: "quarter", value: "Weight"
+    ,
+      "Atom.Label": style: "quarter", value: "Sizes"
+    ,
+      "Atom.Label": style: "quarter", value: "Colors"
+    ,
+      "Atom.Label": style: "quarter", value: "Materials"
+    ,
+      "Atom.Input": style: "quarter", name: "weight", placeholder: "0.0"
+    ,
+      "Atom.Input": style: "quarter", name: "sizes", placeholder: "e.g. S, L, XL.."
+    ,
+      "Atom.Input": style: "quarter", name: "colors", placeholder: "e.g. blue, green"
+    ,
+      "Atom.Input": style: "quarter margin-bottom", name: "materials", placeholder: "e.g. nylon, cotton"
     ,
       "Atom.Input": type: "checkbox", name: "tax"
     ,
@@ -61,24 +79,7 @@ __.scaffold.form_product =
     ,
       "Atom.Input": type: "checkbox", name: "requires_shipping"
     ,
-      "Atom.Label": style: "margin-bottom", value: "Requires shipping (not needed for services or digital goods)"
-    # -- Variants
-    ,
-      "Atom.Label": style: "half", value: "Weight"
-    ,
-      "Atom.Label": style: "half", value: "Sizes"
-    ,
-      "Atom.Input": style: "half", name: "weight", placeholder: "0.0"
-    ,
-      "Atom.Input": style: "half", name: "sizes", placeholder: "e.g. S, L, XL.."
-    ,
-      "Atom.Label": style: "half", value: "Colors"
-    ,
-      "Atom.Label": style: "half", value: "Materials"
-    ,
-      "Atom.Input": style: "half", name: "colors", placeholder: "e.g. blue, green"
-    ,
-      "Atom.Input": style: "half", name: "materials", placeholder: "e.g. nylon, cotton"
+      "Atom.Label": value: "Requires shipping (not needed for services or digital goods)"
     ]
   ,
     "Atom.Label": style: "anchor"

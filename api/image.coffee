@@ -26,18 +26,25 @@ module.exports = (server) ->
       ]).then (error, file) ->
         if error then response.unauthorized() else response.json file
 
-  # server.delete "/api/image", (request, response) ->
-  #   if request.required ["id", "url", "entity"]
-  #     Hope.shield([ ->
-  #       Session request, response
-  #     , (error, session) ->
-  #       Product.search _id: request.parameters.id, owner: session._id, limit = 1
-  #     ]).then (error, product) ->
-  #       index = product.images.indexOf request.parameters.url
-  #       if index > -1
-  #         product.images.splice index, 1
-  #         product.save()
-  #       if error then response.unauthorized() else response.ok()
+  server.delete "/api/image", (request, response) ->
+    if request.required ["id", "file", "entity"]
+      Hope.shield([ ->
+        Session request, response
+      , (error, session) ->
+        filter = _id: request.parameters.id, owner: session._id
+        if request.parameters.entity is "Product"
+          Product.search filter, limit = 1
+        else if request.parameters.entity is "Collection"
+          Collection.search filter, limit = 1
+      ]).then (error, entity) ->
+        return response.unauthorized() if error
+        index = entity.images.indexOf request.parameters.file
+        if index > -1
+          entity.images.splice index, 1
+          entity.save()
+          response.ok()
+        else
+          response.badRequest()
 
 # -- Private Methods -----------------------------------------------------------
 _upload = (file, entity) ->

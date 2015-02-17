@@ -37,10 +37,19 @@ class Atoms.Molecule.Images extends Atoms.Molecule.Form
     @file.el.trigger "click"
     false
 
-  onDestroy: (event, atom) =>
-    atom.destroy()
-    @attributes.files.splice @attributes.files.indexOf(atom.attributes.file), 1
-    # @TODO: Remove from here
+  onDestroy: (event, atom) ->
+    @progress.value 0
+    parameters =
+      file  : atom.attributes.file
+      id    : @entity.id
+      entity: @entity.constructor.name
+    @progress.value 50
+    __.proxy("DELETE", "image", parameters, background = true).then (error, response) =>
+      @progress.el.hide()
+      @progress.value 0
+      unless error
+        atom.destroy()
+        @attributes.files.splice @attributes.files.indexOf(atom.attributes.file), 1
     false
 
   onFileChange: (event) ->
@@ -62,6 +71,7 @@ class Atoms.Molecule.Images extends Atoms.Molecule.Form
         file  : file_url
         id    : @entity.id
         entity: @entity.constructor.name
+      @progress.value 50
       _connectMultipart("POST", "/api/image", parameters, callbacks).then (error, file) =>
         @progress.el.hide()
         @progress.value 0

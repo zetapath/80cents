@@ -15,7 +15,7 @@ __.scaffold.form_collection =
     ,
       "Atom.Label": value: "Title"
     ,
-      "Atom.Input": name: "title", placeholder: "e.g. Summer collection, Under $100, Staff picks", required: true
+      "Atom.Input": name: "title", placeholder: "e.g. Summer collection, Under $100, Staff picks", required: true, events: ["keyup"]
     ,
       "Atom.Label": value: "Description"
     ,

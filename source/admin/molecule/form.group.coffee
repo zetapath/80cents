@@ -9,13 +9,15 @@ class Atoms.Molecule.FormGroup extends Atoms.Molecule.Div
     for form in @children when form.constructor.base is "Form" and valid
       for field in form.children when field.attributes.required and field.value() is ""
         valid = false
+        field.el.focus()
         break
       properties[key] = value for key, value of form.value()
 
+    # console.log valid, properties
+    # return
     if valid
       # -- Format specific values
       method = if @entity then "PUT" else "POST"
-      properties.images = @images?.value() if method is "PUT" and @images?
       __.proxy(method, @attributes.endpoint, properties, true).then (error, response) =>
         unless error
           __.Entity[@attributes.entity_name].createOrUpdate response
