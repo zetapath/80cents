@@ -1,4 +1,5 @@
 "use strict"
+
 Hope        = require("zenserver").Hope
 User        = require "../common/models/user"
 Session     = require "../common/session"
@@ -8,7 +9,7 @@ module.exports = (server) ->
 
   server.post "/api/signup", (request, response) ->
     if request.required ["mail", "password"]
-      Hope.join([
+      Hope.chain([ ->
         User.search type: C.USER.TYPE.OWNER
       , (error, users) ->
         if users.length > 0

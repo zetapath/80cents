@@ -1,9 +1,10 @@
 "use strict"
 
-Hope    = require("zenserver").Hope
-Schema  = require("zenserver").Mongoose.Schema
-db      = require("zenserver").Mongo.connections.primary
-C       = require "../constants"
+Hope        = require("zenserver").Hope
+Schema      = require("zenserver").Mongoose.Schema
+db          = require("zenserver").Mongo.connections.primary
+PassHash    = require "password-hash"
+C           = require "../constants"
 
 User = new Schema
   mail            : type: String, unique: true
@@ -23,23 +24,21 @@ User.statics.create = (values) ->
   promise
 
 User.statics.signup = (values) ->
-  # @TODO: Security password
   promise = new Hope.Promise()
   @findOne(mail: values.mail).exec (error, value) ->
     return promise.done true if value?
     user = db.model "User", User
+    values.password = PassHash.generate values.password
     new user(values).save (error, value) -> promise.done error, value
   promise
 
 User.statics.login = (values) ->
-  # @TODO: Security password
   promise = new Hope.Promise()
-  filter =
-    mail    : values.mail
-    password: values.password
-  @findOne filter, (error, value) =>
-    return promise.done true if value is null
-    promise.done error, value
+  @findOne mail: values.mail, (error, user) =>
+    if user is null or not PassHash.verify values.password, user.password
+      promise.done true
+    else
+      promise.done error, user
   promise
 
 User.statics.search = (query, limit = 0, page = 1, sort = created_at: "desc") ->

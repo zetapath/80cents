@@ -8,6 +8,7 @@
     "coffee-script"             : "*",
     "nodemailer"                : "*",
     "nodemailer-smtp-transport" : "*",
+    "password-hash"             : "*",
     "premailer-api"             : "*",
     "shortid"                   : "*",
     "zenproxy"                  : "*",
