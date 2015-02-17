@@ -1,3 +1,31 @@
+// -- Profile ------------------------------------------------------------------
+[data-molecule-div="profile"]
+  height                          : (3.4 * U)
+  cursor                          : pointer
+  &:hover
+    background-color              : rgba(0,0,0,0.25)
+  [data-atom-figure]
+    float                         : left
+    margin                        : (U / 1.5)
+    width                         : SIZE = (2 * U)
+    height                        : SIZE
+    background-color              : DARK
+    border-radius                 : 50%
+  [data-atom-text]
+    &.small
+      padding-top                 : (U / 1.35)
+      padding-bottom              : (U / 8)
+      line-height                 : FONT_SIZE_NORMAL
+      font-weight                 : FONT_WEIGHT_BOLD
+      color                       : WHITE
+    &.tiny
+      margin-top                  : 0
+      line-height                 : FONT_SIZE_TINY
+      color                       : lighten(DARK, 50%)
+  > *
+    display                       : block
+
+// -- Form Group ---------------------------------------------------------------
 [data-organism-section]
   > [data-molecule-div]
     margin                        : U 0

@@ -2,6 +2,12 @@ id    : aside
 style : active
 children:
   - Organism.Header:
+      children:
+        - Molecule.Profile:
+            events:
+              - touch
+            callbacks:
+              - onProfile
 
   - Organism.Section:
       id: section

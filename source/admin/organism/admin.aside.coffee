@@ -17,3 +17,8 @@ class Atoms.Organism.AdminAside extends Atoms.Organism.Aside
     context = atom.attributes.text
     Atoms.Url.path "admin/#{context}"
     __.Article.AdminArticle.context context
+    false
+
+  onProfile: ->
+    console.log "onProfile"
+    false
