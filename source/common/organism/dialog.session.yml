@@ -22,7 +22,7 @@ children:
             style: tiny
         - Atom.Text:
             style: small margin-top margin-bottom login-context
-            value: Fill the form with your credentials.
+            value: Fill the form with youar credentials.
         - Molecule.Form:
             id: form
             events:

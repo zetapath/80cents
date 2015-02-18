@@ -72,7 +72,7 @@ class Atoms.Molecule.Images extends Atoms.Molecule.Form
         id    : @entity.id
         entity: @entity.constructor.name
       @progress.value 50
-      _connectMultipart("POST", "/api/image", parameters, callbacks).then (error, file) =>
+      __.multipart("POST", "/api/image", parameters, callbacks).then (error, file) =>
         @progress.el.hide()
         @progress.value 0
         @_addImage file.name unless error
@@ -85,20 +85,3 @@ class Atoms.Molecule.Images extends Atoms.Molecule.Form
       file      : file
       events    : ["touch"]
       callbacks : ["onDestroy"]
-
-_connectMultipart = (type, url, parameters, callbacks = {}) ->
-  promise = new Hope.Promise()
-  formData = new FormData()
-  formData.append(name, value) for name, value of parameters
-  xhr = new XMLHttpRequest()
-  xhr.responseType = "json"
-  onLoadComplete = -> promise.done null, @response
-  xhr.addEventListener "load", onLoadComplete, false
-
-  if callbacks.progress then xhr.upload.addEventListener "progress", callbacks.progress, false
-  if callbacks.error    then xhr.addEventListener "error", callbacks.error, false
-  if callbacks.abort    then xhr.addEventListener "abort", callbacks.abort, false
-
-  xhr.open "POST", url
-  xhr.send formData
-  promise

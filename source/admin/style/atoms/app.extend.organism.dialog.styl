@@ -1,15 +1,33 @@
+[data-organism-dialog]
+  [data-organism-section]
+    [data-atom-input]
+      padding-left                          : SIZE = (FORM_SIZE / 2)
+      padding-right                         : SIZE
+
 [data-organism-dialog="session"]
   [data-organism-section]
+
     [data-atom-text]
       &.tiny
         SIZE = (1.25 * U)
-        margin-left: -(SIZE)
-        margin-right: -(SIZE)
-        padding: 0 SIZE
-        font-weight: FONT_WEIGHT_BOLD
-        color: CANCEL
-        background-color: lighten(CANCEL, 50%)
+        margin-left                         : -(SIZE)
+        margin-right                        : -(SIZE)
+        padding                             : 0 SIZE
+        font-weight                         : FONT_WEIGHT_BOLD
+        color                               : CANCEL
+        background-color                    : lighten(CANCEL, 50%)
   [data-organism-footer]
     &.disabled
-      background-color : darken(BACKGROUND, 10%) !important
-      border-color: transparent !important
+      background-color                      : darken(BACKGROUND, 10%) !important
+      border-color                          : transparent !important
+
+[data-organism-dialog="profile"]
+  min-width                                 : 50vw
+  [data-organism-section]
+    [data-atom-figure]
+      display                               : inline-block
+      margin-right                          : U
+      width                                 : SIZE = (3.5 * U)
+      height                                : SIZE
+      + [data-atom-button]
+        vertical-align                      : top

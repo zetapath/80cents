@@ -8,11 +8,12 @@ C           = require "../constants"
 token       = require "../token"
 
 User = new Schema
+  type            : type: Number, default: C.USER.TYPE.CUSTOMER
   mail            : type: String, unique: true
   password        : type: String
   name            : type: String
   avatar          : type: String
-  type            : type: Number, default: C.USER.TYPE.CUSTOMER
+  address         : type: Object
   token           : type: String
   # -- Dates
   updated_at      : type: Date
@@ -68,6 +69,7 @@ User.methods.parse = ->
   mail          : @mail
   name          : @name
   avatar        : @avatar
+  address       : @address
   updated_at    : @updated_at
   created_at    : @created_at
 

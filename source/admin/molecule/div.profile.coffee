@@ -15,6 +15,9 @@ class Atoms.Molecule.Profile extends Atoms.Molecule.Div
 
   constructor: ->
     super
-    @figure.refresh url: __.session.avatar
-    @name.refresh value: __.session.name
-    @email.refresh value: __.session.mail
+    @refresh __.session
+
+  refresh: (data) ->
+    @figure.refresh url: "/assets/uploads/#{data.avatar}"
+    @name.refresh value: data.name
+    @email.refresh value: data.mail

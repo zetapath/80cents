@@ -2,9 +2,9 @@
 
 Atoms.Organism.Header.available.push "Atom.Link"
 
-class Atoms.Organism.AdminArticle extends Atoms.Organism.Article
+class Atoms.Organism.Content extends Atoms.Organism.Article
 
-  @url : "/assets/scaffold/admin/organism/admin.article.json"
+  @url : "/assets/scaffold/admin/organism/article.content.json"
 
   constructor: ->
     super
@@ -63,7 +63,6 @@ class Atoms.Organism.AdminArticle extends Atoms.Organism.Article
   customer: (id) -> @showGroupForm id, "Customers", "customer"
 
   showGroupForm: (id, title, form) ->
-    console.log id, title, form
     @header.title.refresh text: title, href: "/admin/#{title.toLowerCase()}"
     @header.subtitle.refresh value: "/ #{if id then 'edit' else 'new'}"
     do @hideHeaderButtons

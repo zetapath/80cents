@@ -1,8 +1,8 @@
 "use strict"
 
-class Atoms.Organism.AdminAside extends Atoms.Organism.Aside
+class Atoms.Organism.Menu extends Atoms.Organism.Aside
 
-  @url : "/assets/scaffold/admin/organism/admin.aside.json"
+  @url : "/assets/scaffold/admin/organism/aside.menu.json"
 
   constructor: ->
     super
@@ -16,9 +16,9 @@ class Atoms.Organism.AdminAside extends Atoms.Organism.Aside
   onOption: (event, atom) ->
     context = atom.attributes.text
     Atoms.Url.path "admin/#{context}"
-    __.Article.AdminArticle.context context
+    __.Article.Content.context context
     false
 
   onProfile: ->
-    console.log "onProfile"
+    __.Dialog.Profile.show()
     false

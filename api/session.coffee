@@ -34,10 +34,14 @@ module.exports = (server) ->
     response.ok()
 
 
+  server.get "/api/profile", (request, response) ->
+    Session(request, response).then (error, session) ->
+      response.json session.parse()
+
   server.put "/api/profile", (request, response) ->
     Session(request, response).then (error, session) ->
       parameters = {}
-      for key in [ "name", "avatar"] when request.parameters[key]?
+      for key in [ "name", "avatar", "address"] when request.parameters[key]?
         parameters[key] = request.parameters[key]
       User.findAndUpdate(_id: session._id, parameters).then (error, user) ->
         if error?

@@ -3,8 +3,9 @@
 fs          = require "fs"
 path        = require "path"
 Hope        = require("zenserver").Hope
-Product     = require "../common/models/product"
+User        = require "../common/models/user"
 Collection  = require "../common/models/collection"
+Product     = require "../common/models/product"
 Session     = require "../common/session"
 
 IMAGES_PATH = fs.realpathSync "#{__dirname}/../www/assets/uploads/"
@@ -21,6 +22,8 @@ module.exports = (server) ->
           Product.search filter, limit = 1
         else if request.parameters.entity is "Collection"
           Collection.search filter, limit = 1
+        else if request.parameters.entity is "User"
+          User.search _id: request.parameters.id, limit = 1
       , (error, entity) ->
         _upload request.parameters.file, entity
       ]).then (error, file) ->
@@ -49,11 +52,17 @@ module.exports = (server) ->
 # -- Private Methods -----------------------------------------------------------
 _upload = (file, entity) ->
   promise = new Hope.Promise()
-  file_name = "#{entity._id}_#{file.name}".replace(/ /g,"_").toLowerCase()
+  if entity.avatar
+    file_name = "#{entity._id}#{path.extname(file.name)}"
+  else
+    file_name = "#{entity._id}_#{file.name}".replace(/ /g,"_").toLowerCase()
   destiny = path.join IMAGES_PATH, file_name
   fs.rename file.path, destiny, (error, result)->
     return promise.done true if error?
-    entity.images.addToSet file_name
+    if entity.avatar
+      entity.avatar = file_name
+    else
+      entity.images.addToSet file_name
     entity.save()
     promise.done null, name: file_name
   promise

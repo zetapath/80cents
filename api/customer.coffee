@@ -20,7 +20,6 @@ module.exports = (server) ->
         result = value.parse()
       else
         result = customers: (user.parse() for user in value)
-        console.log result
       response.json result
 
   server.put "/api/customer", (request, response) ->

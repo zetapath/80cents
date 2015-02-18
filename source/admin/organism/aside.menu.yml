@@ -2,8 +2,10 @@ id    : aside
 style : active
 children:
   - Organism.Header:
+      id: header
       children:
         - Molecule.Profile:
+            id: profile
             events:
               - touch
             callbacks:

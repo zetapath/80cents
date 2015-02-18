@@ -12,5 +12,6 @@ Atoms.$ ->
     do __.Dialog.Session[if __.owner then "login" else "signup"]
 
   if page is "admin"
-    new Atoms.Organism.AdminAside()
-    new Atoms.Organism.AdminArticle()
+    new Atoms.Organism.Menu()
+    new Atoms.Organism.Content()
+    new Atoms.Organism.Profile()

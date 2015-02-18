@@ -23,10 +23,10 @@ www:
 statics:
   - url     : /assets
     folder  : /www/assets
-    maxage  : 3600
+    maxage  : 3600 #1 hour
   - file    : humans.txt
     folder  : /www/assets
-    maxage  : 3600
+    maxage  : 86400 #1 Day
   - file    : robots.txt
     folder  : /www/assets
 
@@ -35,7 +35,7 @@ session:
   cookie: shopio
   domain: ""
   path  : "/"
-  expire: 3600
+  expire: 604800 #7 days
   authorization: authorization
 
 # -- Deploy --------------------------------------------------------------------

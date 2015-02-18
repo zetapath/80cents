@@ -1,0 +1,69 @@
+id: profile
+children:
+  - Organism.Header:
+      id: header
+      children:
+        - Atom.Heading:
+            value: Your account
+        - Molecule.Navigation:
+            id: navigation
+            style: align right
+            children:
+              - Atom.Button:
+                  icon: close
+                  callbacks:
+                    - onClose
+
+  - Organism.Section:
+      id: section
+      children:
+        - Atom.Text:
+            id: error
+            style: tiny
+        - Molecule.Form:
+            id: form
+            events:
+              - change
+            children:
+              - Atom.Label:
+                  value       : Name
+              - Atom.Input:
+                  name        : name
+                  placeholder : name...
+              - Atom.Label:
+                  value       : Mail
+              - Atom.Input:
+                  name        : mail
+                  placeholder : mail...
+                  disabled    : true
+              - Atom.Label:
+                  value       : avatar
+              - Atom.Figure:
+                  id          : avatar
+                  url : /assets/img/avatar_default.jpg
+              - Atom.Button:
+                  text        : Change your avatar
+                  style       : theme
+                  callbacks   :
+                    - onChangeAvatar
+              - Atom.Input:
+                  id          : file
+                  type        : file
+                  events      :
+                    - change
+                  callbacks:
+                    - onFileChange
+        - Molecule.Address:
+            id: address
+  - Organism.Footer:
+      id: footer
+      children:
+        - Molecule.Navigation:
+            id: navigation
+            style: align right
+            children:
+              - Atom.Button:
+                  id    : submit
+                  text  : Save
+                  callbacks :
+                    - onSave
