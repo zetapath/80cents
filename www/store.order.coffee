@@ -5,6 +5,7 @@ Collection  = require "../common/models/collection"
 Product     = require "../common/models/product"
 Order       = require "../common/models/order"
 OrderLine   = require "../common/models/order_line"
+Page        = require "../common/models/page"
 Session     = require "../common/session"
 C           = require "../common/constants"
 
@@ -28,6 +29,8 @@ _showOrder = (request, response, id) =>
   , (error, @session) =>
     Collection.available()
   , (error, @collections) =>
+    Page.available()
+  , (error, @pages) =>
     filter = user: @session._id
     if id
       filter._id = id
@@ -46,6 +49,7 @@ _showOrder = (request, response, id) =>
       session     : @session.parse()
       cart        : if id then false else true
       collections : @collections
+      pages       : @pages
       order       : @order?.parse()
       lines       : (line.parse() for line in @lines or [])
     response.page "base", bindings, ["store.header", "store.order", "store.footer"]
