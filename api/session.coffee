@@ -27,7 +27,10 @@ module.exports = (server) ->
       User.login(request.parameters).then (error, user) ->
         return response.unauthorized() if error
         response.session user.token
-        response.json user.parse()
+        result = user.parse()
+        result.token = user.token
+        response.json result
+
 
   server.post "/api/logout", (request, response) ->
     response.logout()
@@ -37,6 +40,7 @@ module.exports = (server) ->
   server.get "/api/profile", (request, response) ->
     Session(request, response).then (error, session) ->
       response.json session.parse()
+
 
   server.put "/api/profile", (request, response) ->
     Session(request, response).then (error, session) ->
