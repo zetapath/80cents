@@ -61,17 +61,17 @@ __.scaffold.form_settings =
     ,
       "Atom.Label": style: "half", value: "Currency"
     ,
-      "Atom.Select": style: "half", name: "timezone"
+      "Atom.Select": style: "half", name: "timezone", options: __.const.timezone
     ,
-      "Atom.Select": style: "half", name: "currency"
+      "Atom.Select": style: "half", name: "currency", options: __.const.currency
     ,
       "Atom.Label": style: "half", value: "Unit system"
     ,
       "Atom.Label": style: "half", value: "Weight Unit"
     ,
-      "Atom.Select": style: "half", name: "unit_system"
+      "Atom.Select": style: "half", name: "unit_system", options: __.const.unit_system
     ,
-      "Atom.Select": style: "half", name: "weight_unit"
+      "Atom.Select": style: "half", name: "weight_unit", options: __.const.weight_unit
     ]
   ,
     "Atom.Label": style: "anchor"

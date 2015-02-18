@@ -1,6 +1,7 @@
 "use strict"
 
 __.scaffold = {}
+__.const = {}
 
 Atoms.$ ->
   Atoms.Url.options.absolute = true
