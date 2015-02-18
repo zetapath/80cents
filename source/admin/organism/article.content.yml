@@ -120,7 +120,11 @@ children:
               update      : true
               destroy     : true
 
-        # -- Product
+        # -- Settings
+        - Molecule.Settings:
+            id: settings
+
+        # -- Page
         - Molecule.Page:
             id: page
         - Molecule.List:

@@ -13,14 +13,12 @@ class Atoms.Molecule.FormGroup extends Atoms.Molecule.Div
         break
       properties[key] = value for key, value of form.value()
 
-    # console.log valid, properties
-    # return
     if valid
       # -- Format specific values
       method = if @entity then "PUT" else "POST"
       __.proxy(method, @attributes.endpoint, properties, true).then (error, response) =>
         unless error
-          __.Entity[@attributes.entity_name].createOrUpdate response
+          __.Entity[@attributes.entity_name]?.createOrUpdate response
           @trigger "progress", 100
 
   fetch: (@entity) ->
@@ -28,5 +26,6 @@ class Atoms.Molecule.FormGroup extends Atoms.Molecule.Div
     form.clean() for form in @children when form.constructor.name is "Form"
     @images?.value []
     @search?.clean()
+    @address?.clean()
     @shipping?.clean()
     @billing?.clean()

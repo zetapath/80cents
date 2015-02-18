@@ -1,4 +1,10 @@
 [data-atom-label]
-  font-weight                       : FONT_WEIGHT_BOLD
-  text-transform                    : Capitalize
-  color                             : darken(FORM_COLOR, 10%)
+  color                             : darken(FORM_COLOR, 50%)
+  &:not(.tip)
+    font-weight                     : FONT_WEIGHT_BOLD
+    text-transform                  : Capitalize
+  &.tip
+    vertical-align                  : top
+    font-size                       : FONT_SIZE_TINY
+    line-height                     : FONT_SIZE_BIG
+    opacity                         : 0.75

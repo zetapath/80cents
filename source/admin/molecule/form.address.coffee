@@ -10,13 +10,13 @@ class Atoms.Molecule.Address extends Atoms.Molecule.Form
     ,
       "Atom.Input": name: "contact"
     ,
-      "Atom.Label": value: "Address"
+      "Atom.Label": value: "Street"
     ,
       "Atom.Input": name: "address"
     ,
       "Atom.Label": style: "half", value: "City"
     ,
-      "Atom.Label": style: "half", value: "ZIP Code"
+      "Atom.Label": style: "half", value: "Postal / ZIP Code"
     ,
       "Atom.Input": style: "half", name: "city"
     ,
@@ -24,7 +24,7 @@ class Atoms.Molecule.Address extends Atoms.Molecule.Form
     ,
       "Atom.Label": style: "half", value: "Country"
     ,
-      "Atom.Label": style: "half", value: "Telephone"
+      "Atom.Label": style: "half", value: "Phone"
     ,
       "Atom.Input": style: "half", name: "country"
     ,

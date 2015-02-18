@@ -48,7 +48,14 @@ children:
                     - touch
 
               - Atom.Link:
-                  style: margin-top
+                  style: separator
+                  path: /admin/settings
+                  text: settings
+                  events:
+                    - touch
+
+              - Atom.Link:
+                  style: separator
                   path: /admin/pages
                   text: pages
                   events:

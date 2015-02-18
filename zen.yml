@@ -9,11 +9,11 @@ api:
   - collection
   - product
   - image
+  - settings
   - page
 
 # -- HTML pages ----------------------------------------------------------------
 www:
-  - store.profile
   - store.order
   - store.profile
   - store

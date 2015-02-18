@@ -48,6 +48,7 @@ class Atoms.Organism.Content extends Atoms.Organism.Article
     @fetch id, "Order" if id is "orders"
     @fetch id, "Page" if id is "pages"
     @fetch id, "Product" if id is "products"
+    @section.settings.fetch() if id is "settings"
 
   fetch: (id, entity) ->
     __.Entity[entity].destroyAll()
