@@ -29,4 +29,4 @@ _update = (user, order) -> ->
 
 # -- Private methods -----------------------------------------------------------
 _session = (user = undefined) ->
-  if user?.id? then authorization: user.id else null
+  if user?.token? then authorization: user.token else null

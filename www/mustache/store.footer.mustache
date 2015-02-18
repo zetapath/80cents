@@ -6,11 +6,7 @@
     <a href="/" class="icon pinterest"></a>
   </nav>
   <nav>
-    <a href="/about">about</a>
-    <a href="/faqs">faqs</a>
-    <a href="/order">order</a>
-    <a href="/tracking">tracking</a>
-    <a href="/contact">contact</a>
+    {{#pages}}<a href="/{{search.url_handle}}">{{title}}</a>{{/pages}}
   </nav>
   <small>
     COPYRIGHT © 2015 ZETAPATH LTD. ALL RIGHTS RESERVED.

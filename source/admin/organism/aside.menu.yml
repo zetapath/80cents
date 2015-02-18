@@ -47,4 +47,11 @@ children:
                   events:
                     - touch
 
+              - Atom.Link:
+                  style: margin-top
+                  path: /admin/pages
+                  text: pages
+                  events:
+                    - touch
+
   - Organism.Footer:

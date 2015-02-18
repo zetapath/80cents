@@ -9,12 +9,12 @@ api:
   - collection
   - product
   - image
+  - page
 
 # -- HTML pages ----------------------------------------------------------------
 www:
   - store.profile
   - store.order
-  - store.pages
   - store.profile
   - store
   - admin

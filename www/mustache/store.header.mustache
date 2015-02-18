@@ -2,10 +2,8 @@
   <div class="container"  data-flex="horizontal grow">
     <a href="/" class="logo" data-flex-grow="min"><img src="/assets/img/logo_header.png"/></a>
     <nav class="align left"data-flex-grow="max">
-      {{#collections}}
-        <a href="/collection/{{_id}}">{{title}}</a>
-      {{/collections}}
-      <a href="/about">About us</a>
+      {{#collections}}<a href="/collection/{{_id}}">{{title}}</a>{{/collections}}
+      {{#pages}}{{#header}}<a href="/{{search.url_handle}}">{{title}}</a>{{/header}}{{/pages}}
     </nav>
     <nav class="align right" data-flex-grow="min">
       {{#session}}

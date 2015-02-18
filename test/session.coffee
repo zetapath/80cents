@@ -20,7 +20,7 @@ _signup = (user) -> ->
 
 _login = (user) -> ->
   Test "POST", "api/login", user, null, "User #{user.mail} logged.", 200, (response) ->
-    user.id = response.id
+    user.token = response.token
 
 _update = (user) -> ->
   Test "PUT", "api/profile", user, _session(user), "User #{user.mail} change profile.", 200
@@ -30,4 +30,4 @@ _logout = (user) -> ->
 
 # -- Private methods -----------------------------------------------------------
 _session = (user = undefined) ->
-  if user?.id? then authorization: user.id else null
+  if user?.token? then authorization: user.token else null

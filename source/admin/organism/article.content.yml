@@ -119,3 +119,21 @@ children:
               create      : true
               update      : true
               destroy     : true
+
+        # -- Product
+        - Molecule.Page:
+            id: page
+        - Molecule.List:
+            id: pages
+            style: padding-all
+            events:
+              - select
+            callbacks:
+              - onPage
+            bind:
+              entity      : "__.Entity.Page"
+              atom        : "Atom.Li"
+              events      : ["touch"]
+              create      : true
+              update      : true
+              destroy     : true

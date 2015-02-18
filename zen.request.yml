@@ -10,6 +10,7 @@ tests:
   - collection
   - product
   - order
+  - page
 
 # -- USERS ----------------------------------------------------------------------
 OWNERS:
@@ -104,3 +105,26 @@ ORDERS:
         size            : S
         color           : black
       - quantity        : 2
+
+# -- PAGES ----------------------------------------------------------------------
+PAGES:
+  - title               : About us
+    content             : About us lorem ipsum...
+    header              : true
+    visibility          : true
+    search:
+      page_title        : About us
+      meta_description  : about us...
+      url_handle        : about
+  - title               : Faqs
+    content             : Faqs lorem ipsum...
+    visibility          : true
+  - title               : Order
+    content             : Order lorem ipsum...
+    visibility          : false
+  - title               : Tracking
+    content             : About us lorem ipsum...
+    visibility          : true
+  - title               : Contact
+    content             : About us lorem ipsum...
+    visibility          : true
