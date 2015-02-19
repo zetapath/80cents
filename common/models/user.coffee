@@ -11,9 +11,13 @@ User = new Schema
   type            : type: Number, default: C.USER.TYPE.CUSTOMER
   mail            : type: String, unique: true
   password        : type: String
-  name            : type: String
+  first_name      : type: String
+  last_name       : type: String
+  phone           : type: String
+  homepage        : type: String
+  bio             : type: String
   avatar          : type: String
-  address         : type: Object
+  # -- Security
   token           : type: String
   # -- Dates
   updated_at      : type: Date
@@ -67,9 +71,12 @@ User.statics.findAndUpdate = (filter, parameters) ->
 User.methods.parse = ->
   id            : @_id.toString()
   mail          : @mail
-  name          : @name
+  first_name    : @first_name
+  last_name     : @last_name
+  phone         : @phone
+  homepage      : @homepage
+  bio           : @bio
   avatar        : @avatar
-  address       : @address
   updated_at    : @updated_at
   created_at    : @created_at
 

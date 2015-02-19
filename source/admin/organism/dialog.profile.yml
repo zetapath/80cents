@@ -26,16 +26,40 @@ children:
               - change
             children:
               - Atom.Label:
-                  value       : Name
+                  style       : half
+                  value       : First Name
+              - Atom.Label:
+                  style       : half
+                  value       : Last Name
               - Atom.Input:
-                  name        : name
+                  style       : half
+                  name        : first_name
+                  placeholder : name...
+              - Atom.Input:
+                  style       : half
+                  name        : last_name
                   placeholder : name...
               - Atom.Label:
+                  style       : half
                   value       : Mail
+              - Atom.Label:
+                  style       : half
+                  value       : Phone
               - Atom.Input:
+                  style       : half
                   name        : mail
-                  placeholder : mail...
                   disabled    : true
+              - Atom.Input:
+                  style       : half
+                  name        : phone
+              - Atom.Label:
+                  value       : Hopemage (optional)
+              - Atom.Input:
+                  name        : homepage
+              - Atom.Label:
+                  value       : Bio (optional)
+              - Atom.Textarea:
+                  name        : bio
               - Atom.Label:
                   value       : avatar
               - Atom.Figure:
@@ -53,8 +77,8 @@ children:
                     - change
                   callbacks:
                     - onFileChange
-        - Molecule.Address:
-            id: address
+        # - Molecule.Address:
+        #     id: address
   - Organism.Footer:
       id: footer
       children:

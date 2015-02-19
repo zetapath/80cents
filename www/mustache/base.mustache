@@ -38,12 +38,11 @@
       __.host = "{{{host}}}";
       {{#session}}
       __.session = {
-        id      : "{{session.id}}",
-        mail    : "{{session.mail}}",
-        name    : "{{session.name}}",
-        username: "{{session.username}}",
-        bio     : "{{session.bio}}",
-        avatar  : "{{{session.avatar}}}"};
+        id        : "{{session.id}}",
+        mail      : "{{session.mail}}",
+        first_name: "{{session.first_name}}",
+        last_name : "{{session.last_name}}",
+        avatar    : "{{{session.avatar}}}"};
       {{/session}}
       {{#owner}}
       __.owner = {{owner}};

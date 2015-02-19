@@ -19,5 +19,5 @@ class Atoms.Molecule.Profile extends Atoms.Molecule.Div
 
   refresh: (data) ->
     @figure.refresh url: "/assets/uploads/#{data.avatar}"
-    @name.refresh value: data.name
+    @name.refresh value: data.first_name
     @email.refresh value: data.mail

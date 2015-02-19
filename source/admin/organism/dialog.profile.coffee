@@ -6,9 +6,9 @@ class Atoms.Organism.Profile extends Atoms.Organism.Dialog
 
   show: ->
     __.proxy("GET", "profile").then (error, @entity) =>
+      console.log @entity
       @section.form.value @entity
       @section.form.avatar.refresh url: "/assets/uploads/#{@entity.avatar}"
-      @section.address.value @entity.address
       super
 
   # -- Instance Methods --------------------------------------------------------
@@ -38,7 +38,6 @@ class Atoms.Organism.Profile extends Atoms.Organism.Dialog
 
   onSave: =>
     parameters = @section.form.value()
-    parameters.address = @section.address.value().address
     __.proxy("PUT", "profile", parameters).then (error, @entity) =>
       do @hide
       __.Aside.Menu.header.profile.refresh @entity
