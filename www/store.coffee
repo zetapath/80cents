@@ -20,13 +20,14 @@ module.exports = (zen) ->
     , ->
       Product.search collection_id: request.parameters.id, visibility: true
     ]).then (errors, values) ->
+      return response.redirect "/" unless values[2]
       bindings =
         page        : "collection"
         asset       : "store"
         host        : C.HOST[global.ZEN.type.toUpperCase()]
         session     : values[0]
         settings    : values[1]
-        collection  : values[2]?.parse()
+        collection  : values[2].parse()
         products    : (product.parse() for product in values[3])
       response.page "base", bindings, ["store.header", "store.collection", "store.footer"]
 
@@ -40,13 +41,14 @@ module.exports = (zen) ->
       filter = _id: request.parameters.id, visibility: true
       Product.search filter, limit = 1, null, populate = "collection_id"
     ]).then (errors, values) ->
+      return response.redirect "/" unless values[2]
       bindings =
         page        : "product"
         asset       : "store"
         host        : C.HOST[global.ZEN.type.toUpperCase()]
         session     : values[0]
         settings    : values[1]
-        product     : values[2]?.parse()
+        product     : values[2].parse()
       response.page "base", bindings, ["store.header", "store.product", "store.footer"]
 
 

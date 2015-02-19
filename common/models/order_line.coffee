@@ -52,8 +52,10 @@ OrderLine.statics.delete = (query) ->
 OrderLine.methods.parse = ->
   id              : @_id.toString()
   order           : @order
-  product         : @product?.parse() or @product
-  price           : @price?.toFixed(2)
+  product         : @product.parse?() or @product
+  size            : @size
+  color           : @color
+  material        : @material
   quantity        : @quantity
   amount          : @amount?.toFixed(2)
   state           : @state

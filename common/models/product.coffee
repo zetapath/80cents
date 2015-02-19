@@ -26,7 +26,6 @@ Product = new Schema
   colors            : [type: String]
   materials         : [type: String]
   # -- Images
-  default_image     : type: String
   images            : [type: String]
   # -- Collection
   collection_id     : type: Schema.ObjectId, ref: "Collection"
@@ -90,7 +89,7 @@ Product.methods.parse = ->
   sizes             : @sizes
   colors            : @colors
   materials         : @materials
-  default_image     : @images[0]
+  default_image     : @images[0] or null
   images            : @images
   collection_id     : @collection_id?.parse?() or @collection_id
   tags              : @tags

@@ -53,6 +53,7 @@ Collection.methods.parse = ->
   owner             : @owner?.parse?() or @owner
   title             : @title
   description       : @description
+  default_image     : @images[0] or null
   images            : @images
   search            : @search
   visibility        : @visibility
