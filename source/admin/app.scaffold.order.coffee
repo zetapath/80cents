@@ -32,9 +32,9 @@ __.scaffold.form_order =
       "Atom.Text": value: "Addresses for the order"
     ]
   ,
-    "Molecule.Address": id: "shipping", style: "half"
+    "Molecule.Address": id: "shipping", style: "half", title: "Billing Contact"
   ,
-    "Molecule.Address": id: "billing", style: "half"
+    "Molecule.Address": id: "billing", style: "half", title: "Shipping Contact"
   ,
     "Atom.Label": style: "anchor"
   ,

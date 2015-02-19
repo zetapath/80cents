@@ -8,6 +8,6 @@ class Atoms.Molecule.Settings extends Atoms.Molecule.FormGroup
   fetch: ->
     super
     __.proxy("GET", "settings", null, true).then (error, @entity) =>
-      @trigger "progress", 60
+      @trigger "progress", 100
       form.value @entity for form in @children when form.constructor.name is "Form"
       @address.value @entity.address

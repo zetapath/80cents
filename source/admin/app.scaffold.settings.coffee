@@ -46,7 +46,7 @@ __.scaffold.form_settings =
       "Atom.Text": value: "This address will appear on your invoices and will be used to calculate your shipping rates."
     ]
   ,
-    "Molecule.Address": id: "address"
+    "Molecule.Address": id: "address", title: "Legal Name of Business"
   ,
     "Atom.Label": style: "anchor"
   ,

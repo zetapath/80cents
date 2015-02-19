@@ -33,7 +33,7 @@ class Atoms.Molecule.Address extends Atoms.Molecule.Form
 
   constructor: ->
     super
-    @children[0].el.html "#{@attributes.id} Contact"
+    @children[0].el.html "#{@attributes.title}"
 
   value: (values) ->
     values = super values
