@@ -41,15 +41,6 @@ Page.statics.findAndUpdate = (filter, values) ->
     promise.done error, value
   promise
 
-Page.statics.available = ->
-  promise = new Hope.Promise()
-  if @results
-    promise.done null, @results
-  else
-    @search(visibility: true).then (error, value) =>
-      promise.done error, @results = value
-  promise
-
 # -- Instance methods ----------------------------------------------------------
 Page.methods.delete = ->
   promise = new Hope.Promise()

@@ -1,11 +1,9 @@
 "use strict"
 
 Hope        = require("zenserver").Hope
-Collection  = require "../common/models/collection"
-Product     = require "../common/models/product"
 Order       = require "../common/models/order"
 OrderLine   = require "../common/models/order_line"
-Page        = require "../common/models/page"
+Settings    = require "../common/models/settings"
 Session     = require "../common/session"
 C           = require "../common/constants"
 
@@ -27,10 +25,8 @@ _showOrder = (request, response, id) =>
   Hope.shield([ =>
     Session request, response, redirect = true
   , (error, @session) =>
-    Collection.available()
-  , (error, @collections) =>
-    Page.available()
-  , (error, @pages) =>
+    Settings.cache()
+  , (error, @settings) =>
     filter = user: @session._id
     if id
       filter._id = id
@@ -47,9 +43,8 @@ _showOrder = (request, response, id) =>
       asset       : "store"
       host        : C.HOST[global.ZEN.type.toUpperCase()]
       session     : @session.parse()
+      settings    : @settings
       cart        : if id then false else true
-      collections : @collections
-      pages       : @pages
       order       : @order?.parse()
       lines       : (line.parse() for line in @lines or [])
     response.page "base", bindings, ["store.header", "store.order", "store.footer"]

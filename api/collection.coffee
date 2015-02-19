@@ -1,6 +1,8 @@
 "use strict"
+
 Hope        = require("zenserver").Hope
 Collection  = require "../common/models/collection"
+Settings    = require "../common/models/settings"
 Session     = require "../common/session"
 
 module.exports = (server) ->
@@ -25,28 +27,47 @@ module.exports = (server) ->
 
 
   server.post "/api/collection", (request, response) ->
-    Session(request, response).then (error, session) ->
-      if request.required ["title"]
+    if request.required ["title"]
+      Hope.shield([ ->
+        Session request, response, null, owner = true
+      , (error, session) ->
         values = request.parameters
         values.owner = session._id
-        Collection.create(values).then (error, collection) ->
-          if error then response.unauthorized() else response.json collection.parse()
+        Collection.create values
+      , (error, @collection) =>
+        Collection.search visibility: true
+      , (error, collections) ->
+        collections = (id: c._id, title: c.title for c in collections)
+        Settings.findAndUpdate {}, collections: collections
+      ]).then (error, value) =>
+        if error then response.unauthorized() else response.json @collection.parse()
 
 
   server.put "/api/collection", (request, response) ->
-    Session(request, response).then (error, session) ->
-      if request.required ["id"]
+    if request.required ["id"]
+      Hope.shield([ ->
+        Session request, response, null, owner = true
+      , (error, session) ->
         filter =
           _id   : request.parameters.id
           owner : session._id
-        Collection.findAndUpdate(filter, request.parameters).then (error, collection) ->
-          if error then response.unauthorized() else response.json collection.parse()
+        Collection.findAndUpdate filter, request.parameters
+      , (error, @collection) =>
+        Collection.search visibility: true
+      , (error, collections) ->
+        collections = (id: c._id, title: c.title for c in collections)
+        Settings.findAndUpdate {}, collections: collections
+      ]).then (error, value) =>
+        if error then response.unauthorized() else response.json @collection.parse()
 
 
   server.delete "/api/collection", (request, response) ->
-    Session(request, response).then (error, session) ->
-      filter =
-          _id   : request.parameters.id
-          owner : session._id
-      Collection.findAndUpdate(filter, visibility: false).then (error, collection) ->
+    if request.required ["id"]
+      Hope.shield([ ->
+        Session request, response, null, owner = true
+      , (error, session) ->
+        filter =
+          _id   : ssession._id
+        Collection.findAndUpdate filter, visibility: false
+      ]).then (error, collection)->
         if error then response.unauthorized() else response.ok()

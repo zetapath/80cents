@@ -2,10 +2,9 @@
 
 Hope        = require("zenserver").Hope
 Collection  = require "../common/models/collection"
-Order       = require "../common/models/order"
-OrderLine   = require "../common/models/order_line"
 Page        = require "../common/models/page"
 Product     = require "../common/models/product"
+Settings    = require "../common/models/settings"
 Session     = require "../common/session"
 C           = require "../common/constants"
 
@@ -15,9 +14,7 @@ module.exports = (zen) ->
     Hope.join([ ->
       Session request, response, redirect = true
     , ->
-      Collection.available()
-    , ->
-      Page.available()
+      Settings.cache()
     , ->
       Collection.search _id: request.parameters.id, visibility: true, limit = 1
     , ->
@@ -28,10 +25,9 @@ module.exports = (zen) ->
         asset       : "store"
         host        : C.HOST[global.ZEN.type.toUpperCase()]
         session     : values[0]
-        collections : values[1]
-        pages       : values[2]
-        collection  : values[3]?.parse()
-        products    : (product.parse() for product in values[4])
+        settings    : values[1]
+        collection  : values[2]?.parse()
+        products    : (product.parse() for product in values[3])
       response.page "base", bindings, ["store.header", "store.collection", "store.footer"]
 
 
@@ -39,9 +35,7 @@ module.exports = (zen) ->
     Hope.join([ ->
       Session request, response, redirect = true
     , ->
-      Collection.available()
-    , ->
-      Page.available()
+      Settings.cache()
     , ->
       filter = _id: request.parameters.id, visibility: true
       Product.search filter, limit = 1, null, populate = "collection_id"
@@ -51,9 +45,8 @@ module.exports = (zen) ->
         asset       : "store"
         host        : C.HOST[global.ZEN.type.toUpperCase()]
         session     : values[0]
-        collections : values[1]
-        pages       : values[2]
-        product     : values[3]?.parse()
+        settings    : values[1]
+        product     : values[2]?.parse()
       response.page "base", bindings, ["store.header", "store.product", "store.footer"]
 
 
@@ -62,9 +55,7 @@ module.exports = (zen) ->
     Hope.join([ ->
       Session request, response, redirect = true
     , ->
-      Collection.available()
-    , ->
-      Page.available()
+      Settings.cache()
     , ->
       if home
         Product.search visibility: true, highlight: true
@@ -76,10 +67,12 @@ module.exports = (zen) ->
         asset       : "store"
         host        : C.HOST[global.ZEN.type.toUpperCase()]
         session     : values[0]
-        collections : values[1]
-        pages       : values[2]
+        settings    : values[1]
       if home
-        bindings.products = (product.parse() for product in values[3])
+        bindings.products = (product.parse() for product in values[2])
       else
-        bindings.page_data = values[3]?.parse()
+        bindings.content = values[2]?.parse()
+        bindings.meta =
+          title       : bindings.content?.meta?.page_title or bindings.settings.title
+          description : bindings.content?.meta?.meta_description or bindings.settings.description
       response.page "base", bindings, ["store.header", "store.home", "store.footer"]

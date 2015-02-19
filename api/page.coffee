@@ -1,6 +1,8 @@
 "use strict"
+
 Hope        = require("zenserver").Hope
 Page        = require "../common/models/page"
+Settings    = require "../common/models/settings"
 Session     = require "../common/session"
 
 module.exports = (server) ->
@@ -25,29 +27,47 @@ module.exports = (server) ->
 
 
   server.post "/api/page", (request, response) ->
-    Session(request, response).then (error, session) ->
-      if request.required ["title"]
+    if request.required ["title"]
+      Hope.shield([ ->
+        Session request, response, null, owner = true
+      , (error, session) ->
         values = request.parameters
         values.owner = session._id
-        console.log values
-        Page.create(values).then (error, page) ->
-          if error then response.unauthorized() else response.json page.parse()
+        Page.create values
+      , (error, @page) =>
+        Page.search visibility: true
+      , (error, pages) ->
+        pages = (title: p.title, header: p.header, url_handle: p.search?.url_handle for p in pages)
+        Settings.findAndUpdate {}, pages: pages
+      ]).then (error, value) =>
+        if error then response.unauthorized() else response.json @page.parse()
 
 
   server.put "/api/page", (request, response) ->
-    Session(request, response).then (error, session) ->
-      if request.required ["id"]
+    if request.required ["id"]
+      Hope.shield([ ->
+        Session request, response, null, owner = true
+      , (error, session) ->
         filter =
           _id   : request.parameters.id
           owner : session._id
-        Page.findAndUpdate(filter, request.parameters).then (error, page) ->
-          if error then response.unauthorized() else response.json page.parse()
+        Page.findAndUpdate filter, request.parameters
+      , (error, @page) =>
+        Page.search visibility: true
+      , (error, pages) ->
+        pages = (title: p.title, header: p.header, url_handle: p.search?.url_handle for p in pages)
+        Settings.findAndUpdate {}, pages: pages
+      ]).then (error, value) =>
+        if error then response.unauthorized() else response.json @page.parse()
 
 
   server.delete "/api/page", (request, response) ->
-    Session(request, response).then (error, session) ->
-      filter =
-          _id   : request.parameters.id
-          owner : session._id
-      Page.findAndUpdate(filter, visibility: false).then (error, page) ->
+    if request.required ["id"]
+      Hope.shield([ ->
+        Session request, response, null, owner = true
+      , (error, session) ->
+        filter =
+          _id   : ssession._id
+        Page.findAndUpdate filter, visibility: false
+      ]).then (error, page)->
         if error then response.unauthorized() else response.ok()

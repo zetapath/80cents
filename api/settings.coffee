@@ -27,4 +27,4 @@ module.exports = (server) ->
       filter = account_mail: @session.mail
       Settings.findAndUpdate filter, request.parameters
     ]).then (error, settings) ->
-      response.ok()
+      if error? then response.badRequest()  else response.ok()

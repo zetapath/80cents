@@ -20,6 +20,9 @@ Settings = new Schema
   weight_unit       : type: String
   # -- Google Analytics
   google_analytics  : type: String
+  # -- Cached Elements
+  collections       : type: Array
+  pages             : type: Array
   # -- Dates
   updated_at        : type: Date, default: Date.now
   created_at        : type: Date, default: Date.now
@@ -43,7 +46,8 @@ Settings.statics.search = (query) ->
 
 Settings.statics.findAndUpdate = (filter, values) ->
   promise = new Hope.Promise()
-  @findOneAndUpdate filter, values, (error, value) ->
+  @findOneAndUpdate filter, values, (error, value) =>
+    @cached = value?.parse()
     promise.done error, value
   promise
 
@@ -52,8 +56,8 @@ Settings.statics.cache = ->
   if @cached
     promise.done null, @cached
   else
-    @search(visibility: true).then (error, value) =>
-      promise.done error, @cached = value
+    @search().then (error, value) =>
+      promise.done error, @cached = value?.parse() or {}
   promise
 
 # -- Instance methods ----------------------------------------------------------
@@ -75,6 +79,8 @@ Settings.methods.parse = ->
   unit_system       : @unit_system
   weight_unit       : @weight_unit
   google_analytics  : @google_analytics
+  collections       : @collections
+  pages             : @pages
   updated_at        : @updated_at
   created_at        : @created_at
 

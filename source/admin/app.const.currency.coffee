@@ -1,6 +1,8 @@
 "use strict"
 
 __.const.currency = [
+  value: "USD", label: "United States Dollars (USD)"
+,
   value: "EUR", label: "Euro (EUR)"
 ,
   value: "GBP", label: "United Kingdom Pounds (GBP)"
