@@ -14,7 +14,7 @@ Order = new Schema
   comment         : type: String
   shipping        : type: Object
   billing         : type: Object
-  payment_type    : type: String
+  payment_type    : type: Number
   payment_token   : type: String
   tracking_number : type: String
   state           : type: Number, default: C.ORDER.STATE.SHOPPING

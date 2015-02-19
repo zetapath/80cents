@@ -1,6 +1,6 @@
-<article class="slideshow" data-flex="vertical center" style="background-image: url(/assets/uploads/{{session.avatar}});">
+<article class="slideshow" data-flex="vertical center" style="background-image: url();">
   <div class="overlay"></div>
-  {{#cart}}<h2>Your cart</h2>{{/cart}}
+  {{#cart}}<h2>Your cart <span>{{order.amount}}{{settings.currency}}</span></h2>{{/cart}}
   {{^cart}}<h2>Order {{order.id}}</h2>{{/cart}}
 </article>
 
@@ -28,15 +28,19 @@
             {{^cart}}{{tracking_number}}{{/cart}}
           </td>
           <td class="center">{{quantity}}</td>
-          <td class="center">${{product.price}}</td>
-          <td class="right"><strong>${{amount}}</strong></td>
+          <td class="center">{{product.price}}{{settings.currency}}</td>
+          <td class="right"><strong>{{amount}}{{settings.currency}}</strong></td>
         </tr>
         {{/lines}}
         <tr class="total">
+          {{#cart}}
           <td colspan="5" class="right">
-            {{#cart}}<button class="primary" data-action="purchase">Purchase for ${{order.amount}}</button>{{/cart}}
-            {{^cart}}${{order.amount}}{{/cart}}
+            <a href="/checkout" class="button primary big" data-action="purchase">Check out {{order.amount}}{{settings.currency}}</a>
           </td>
+          {{/cart}}
+          {{^cart}}
+            <td colspan="5" class="right">{{order.amount}}{{settings.currency}}</td>
+          {{/cart}}
         </tr>
       </tbody>
     </table>

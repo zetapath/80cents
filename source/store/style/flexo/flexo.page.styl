@@ -17,9 +17,13 @@ body
         z-index                         : 1
         font-weight                     : bold
       > h2
-        margin-top                      : (1.5 * U)
+        margin                          : (1.5 * U) 0 0 0
         font-size                       : (U / 1.25)
         text-transform                  : Uppercase
+        text-align                      : center
+        > span
+          display                       : block
+          font-size                     : 75%
       > .overlay
         z-index                         : 0
         position                        : absolute
@@ -34,6 +38,7 @@ body
 
     .box
       box-shadow                          0 0 0 1px BOX
+      border-radius                     : BORDER_RADIUS
       // -- Title
       > h1, >h2
         margin-bottom                     : 0

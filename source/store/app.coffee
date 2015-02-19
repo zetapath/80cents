@@ -1,7 +1,8 @@
 "use strict"
 
+__.const = {}
+
 Atoms.$ ->
-  console.log "0"
   __.page = Atoms.$("body").attr "data-page"
   unless __.session
     new Atoms.Organism.Session()

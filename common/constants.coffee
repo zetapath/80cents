@@ -19,6 +19,12 @@ module.exports =
       STATE:
         PENDING   : 0
 
+    PAYMENT:
+      UNDEFINED     : 0
+      CREDIT_CARD   : 1
+      PAYPAL        : 2
+      BANK_TRANSFER : 3
+
   STRIPE:
     KEY: "sk_live_?"
     # KEY: "sk_test_?"

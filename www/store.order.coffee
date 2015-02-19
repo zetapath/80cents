@@ -20,6 +20,27 @@ module.exports = (zen) ->
       response.redirect "/"
 
 
+  zen.get "/checkout", (request, response) ->
+    Hope.shield([ =>
+      Session request, response, redirect = true
+    , (error, @session) =>
+      Settings.cache()
+    , (error, @settings) =>
+      filter =
+        user : @session._id
+        state: C.ORDER.STATE.SHOPPING
+      Order.search filter, limit = 1
+    ]).then (error, @order) =>
+      return response.redirect "/" if not @session or not @order
+      bindings =
+        page        : "checkout"
+        asset       : "store"
+        host        : C.HOST[global.ZEN.type.toUpperCase()]
+        session     : @session.parse()
+        settings    : @settings
+        order       : @order.parse()
+      response.page "base", bindings, ["store.header", "store.checkout", "store.footer"]
+
 # -- Private Methods -----------------------------------------------------------
 _showOrder = (request, response, id) =>
   Hope.shield([ =>

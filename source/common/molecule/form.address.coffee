@@ -31,8 +31,14 @@ class Atoms.Molecule.Address extends Atoms.Molecule.Form
       "Atom.Input": style: "half", name: "tel"
     ]
 
-  constructor: ->
-    super
+  constructor: (attributes) ->
+    if attributes.required or attributes.disabled
+      attributes.events = ["change"]
+      attributes.callbacks = ["onAddressChange"]
+      for child, value in @constructor.default.children when child["Atom.Input"]
+        child["Atom.Input"].events = ["keyup"]
+        child["Atom.Input"].disabled = attributes.disabled if attributes.disabled
+    super attributes
     @children[0].el.html "#{@attributes.title}"
 
   value: (values) ->

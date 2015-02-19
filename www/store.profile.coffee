@@ -30,6 +30,7 @@ module.exports = (zen) ->
         session     : @session.parse()
         settings    : @settings
         orders      : (order.parse() for order in orders)
+        has_orders  : (orders.length > 0)
       response.page "base", bindings, ["store.header", "store.profile", "store.footer"]
 
 

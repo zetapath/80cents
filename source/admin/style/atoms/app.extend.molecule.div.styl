@@ -43,6 +43,7 @@
         line-height               : FONT_SIZE_BIG
         opacity                   : 0.65
 
+
     > [data-molecule-form], > [data-molecule-list]
       background-color            : WHITE
       box-shadow                    0 SHADOW_HEIGHT (U / 3) darken(BACKGROUND, 10%)
@@ -53,6 +54,11 @@
         width                     : 32%
         &:nth-child(even)
           margin-left             : 2%
+
+    > [data-molecule-form]
+      [data-atom-input]:not([type=range]):not([type=checkbox]):not([data-atom-input=autocomplete]), [data-atom-input=autocomplete] > input, [data-atom-select], [data-atom-textarea]
+        padding-top: (FORM_SIZE / 4)
+        padding-bottom: (FORM_SIZE / 4)
 
     > [data-atom-label]
       margin-bottom               : U

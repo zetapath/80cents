@@ -21,7 +21,7 @@
     <section data-column="7" class="box text">
       <h1>{{product.title}}</h1>
       <a href="/collection/{{product.collection_id.id}}">{{product.collection_id.title}}</a>
-      <strong>$ {{product.price}}</strong>
+      <strong>{{product.price}}{{settings.currency}}</strong>
       <small><strong>Availability: In stock</strong></small>
       <p>{{{product.description}}}</p>
       <form data-flex="horizontal" method="null">

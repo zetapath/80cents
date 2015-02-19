@@ -3,16 +3,22 @@
   <h2>Your Profile</h2>
 </article>
 
-
 <article>
   <div class="container">
     <div data-column="5" class="box bck">
       <h2>Your Personal Data</h2>
       <form action="/profile" method="post" enctype="multipart/form-data">
-        <label>Your name</label>
-        <input type="text" value="{{session.name}}" name="name"/>
+        <label>First name</label>
+        <input type="text" value="{{session.first_name}}" name="first_name"/>
+        <label>Last name</label>
+        <input type="text" value="{{session.last_name}}" name="last_name"/>
         <label>Your mail</label>
         <input type="email" value="{{session.mail}}"  name="mail" disabled="true"/>
+        <label>Home page</label>
+        <input type="text" value="{{session.homepage}}" name="homepage"/>
+        <label>Bio</label>
+        <textarea name="bio">{{session.bio}}"</textarea>
+
         <nav class="align right">
           <a href="/profile/logout" class="button">Logout</a>
           <button data-action="save" class="primary">Save</button>
@@ -20,6 +26,7 @@
       </form>
     </div>
 
+    {{#has_orders}}
     <div data-column="7" class="box">
       <h2>Your Orders</h2>
       <table>
@@ -43,5 +50,6 @@
         </tbody>
       </table>
     </div>
+    {{/has_orders}}
   </div>
 </article>
