@@ -33,13 +33,13 @@ class Atoms.Organism.Checkout extends Atoms.Organism.Section
 
   constructor: ->
     super
-    __.proxy("GET", "order", id: __.order).then (error, response) =>
-      @billing.address.value response.billing or {}
-      @shipping.address.value response.shipping or {}
+    __.proxy("GET", "order", id: __.order).then (error, order) =>
+      @billing.address.value order.billing or {}
+      @shipping.address.value order.shipping or {}
       @purchase.payment.refresh
-        options   : __.const.payment
-        disabled  : (response.state isnt __.const.ORDER.STATE.SHOPPING)
-      @purchase.payment.value response.payment_type
+        options   : order.available_payments
+        disabled  : (order.state isnt __.const.ORDER.STATE.SHOPPING)
+      @purchase.payment.value order.payment_type
       do @__validPurchase
 
 

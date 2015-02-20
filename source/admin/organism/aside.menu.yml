@@ -48,17 +48,26 @@ children:
                     - touch
 
               - Atom.Link:
-                  style: separator
+                  path: /admin/pages
+                  text: pages
+                  events:
+                    - touch
+
+              - Atom.Link:
+                  style: anchor
                   path: /admin/settings
                   text: settings
                   events:
                     - touch
 
               - Atom.Link:
-                  style: separator
-                  path: /admin/pages
-                  text: pages
+                  path: /admin/payments
+                  text: payments
                   events:
                     - touch
+
+              # - Atom.Link:
+              #     path: /admin/shipping
+              #     text: shipping
 
   - Organism.Footer:

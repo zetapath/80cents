@@ -21,7 +21,7 @@ module.exports =
 
     PAYMENT:
       UNDEFINED     : 0
-      CREDIT_CARD   : 1
+      STRIPE        : 1
       PAYPAL        : 2
       BANK_TRANSFER : 3
 

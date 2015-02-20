@@ -20,6 +20,8 @@ Settings = new Schema
   weight_unit       : type: String
   # -- Google Analytics
   google_analytics  : type: String
+  # -- Payments
+  payments          : type: Object
   # -- Cached Elements
   collections       : type: Array
   pages             : type: Array
@@ -81,6 +83,7 @@ Settings.methods.parse = ->
   google_analytics  : @google_analytics
   collections       : @collections
   pages             : @pages
+  payments          : @payments
   updated_at        : @updated_at
   created_at        : @created_at
 

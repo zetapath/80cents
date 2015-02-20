@@ -16,7 +16,7 @@ class Atoms.Organism.Content extends Atoms.Organism.Article
     if url.length is 3 then @context url[2] else @[url[2]] url[3]
 
     # -- Bindings
-    for formgroup in ["order", "collection", "product", "settings"]
+    for formgroup in ["order", "collection", "product", "settings", "payments"]
       @section[formgroup].bind "progress", (value) =>
         @header.progress.value value
         setTimeout (=> @header.progress.refresh value: 0), 500 if value is 100
@@ -48,7 +48,9 @@ class Atoms.Organism.Content extends Atoms.Organism.Article
     @fetch id, "Order" if id is "orders"
     @fetch id, "Page" if id is "pages"
     @fetch id, "Product" if id is "products"
+    # -- Settings
     @section.settings.fetch() if id is "settings"
+    @section.payments.fetch() if id is "payments"
 
   fetch: (id, entity) ->
     __.Entity[entity].destroyAll()

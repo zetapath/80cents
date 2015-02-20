@@ -7,7 +7,7 @@ C           = require "../common/constants"
 module.exports = (zen) ->
 
   zen.get "/admin/:context/:id", (request, response) ->
-    Session(request, response, redirect = true).then (error, session) ->
+    Session(request, response, redirect = true, owner = true).then (error, session) ->
       return response.redirect "/admin" if not session
       bindings =
         page    : "admin"
@@ -18,7 +18,7 @@ module.exports = (zen) ->
 
 
   zen.get "/admin/:context", (request, response) ->
-    Session(request, response, redirect = true).then (error, session) ->
+    Session(request, response, redirect = true, owner = true).then (error, session) ->
       return response.redirect "/admin" if not session
       bindings =
         page    : "admin"
@@ -29,7 +29,7 @@ module.exports = (zen) ->
 
 
   zen.get "/admin", (request, response) ->
-    Session(request, response, redirect = true).then (error, session) ->
+    Session(request, response, redirect = true, owner = true).then (error, session) ->
       return response.redirect "/admin/dashboard" if session
 
       User.search(type: C.USER.TYPE.OWNER).then (error, users) ->

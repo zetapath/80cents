@@ -5,6 +5,7 @@ Session     = require "../common/session"
 Product     = require "../common/models/product"
 Order       = require "../common/models/order"
 OrderLine   = require "../common/models/order_line"
+Settings    = require "../common/models/settings"
 C           = require "../common/constants"
 AVAILABLE   = ["comment", "shipping", "billing", "state", "payment_type", "tracking_number"]
 
@@ -69,13 +70,13 @@ module.exports = (server) ->
     if request.required ["id"]
       Hope.shield([ ->
         Session request, response
-      , (error, @session) =>
+      , (error, session) ->
         parameters = {}
         for key, value of request.parameters when key in AVAILABLE
           parameters[key] = value
         filter =
           _id   : request.parameters.id
-          user  : @session._id
+          user  : session._id
         Order.updateAttributes filter, parameters
       ]).then (error, value) ->
         if error
@@ -87,21 +88,26 @@ module.exports = (server) ->
   server.get "/api/order", (request, response) ->
     Hope.shield([ ->
       Session request, response, null
-    , (error, session) ->
+    , (error, @session) =>
+        Settings.cache()
+    , (error, @settings) =>
       limit = 0
-      if session.type is C.USER.TYPE.OWNER
+      if @session.type is C.USER.TYPE.OWNER
         filter = state: $gt: C.ORDER.STATE.SHOPPING
         filter.user = request.parameters.user if request.parameters.user
       else
-        filter = user: session._id
+        filter = user: @session._id
       if request.parameters.id?
         filter._id = request.parameters.id
         limit = 1
       Order.search filter, limit
-    ]).then (error, value) ->
+    ]).then (error, value) =>
       return response.unauthorized() if error
       if request.parameters.id
         result = value.parse()
+        result.available_payments = []
+        for payment, data of @settings.payments or []
+          result.available_payments.push label: payment, value: data.type
       else
         result = orders: (order.parse() for order in value)
       response.json result
