@@ -8,7 +8,7 @@
     <nav class="align right" data-flex-grow="min">
       {{#session}}
       {{#session.shopping}}
-      <a href="/cart" class="cart icon cart">{{amount}}{{settings.currency}}<small>{{lines.length}}</small></a>
+      <a href="/cart" class="icon cart" data-shopio="cart"><span>{{amount}}</span>{{settings.currency}}<small>{{lines.length}}</small></a>
       {{/session.shopping}}
       <a href="/profile" class="icon user"></a>
       {{/session}}

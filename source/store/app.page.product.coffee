@@ -12,8 +12,10 @@ Atoms.$ ->
           parameters =
             product   : __.product
             quantity  : el.quantity.val()
-          __.proxy("POST", "order/line", parameters).then (error, response) ->
-            console.log "POST/order/line", error, response
+          __.proxy("POST", "order/line", parameters).then (error, order) ->
+            cart = Atoms.$("header [data-shopio='cart']")
+            cart.children("span").html order.amount
+            cart.children("small").html order.lines.length
         else
           __.Dialog.Session.login()
       else if method is "minus" and quantity > 1

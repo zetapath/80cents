@@ -43,7 +43,7 @@ module.exports = (server) ->
         if error
           response.json message: error.message, error.code
         else
-          response.json @line.parse()
+          response.json @order.parse()
 
   server.delete "/api/order/line", (request, response) ->
     if request.required ["id", "order"]

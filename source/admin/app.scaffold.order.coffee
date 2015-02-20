@@ -91,8 +91,6 @@ __.scaffold.form_order =
     "Atom.Label": style: "anchor"
   ,
     "Molecule.Navigation": children: [
-      "Atom.Button": style: "cancel", text: "Remove", callbacks: ["onRemove"], disabled: true
-    ,
       "Atom.Button": style: "theme", text: "Save", callbacks: ["onSave"]
     ]
   ]
