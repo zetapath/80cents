@@ -14,16 +14,19 @@ api:
 
 # -- HTML pages ----------------------------------------------------------------
 www:
+  - admin
   - store.order
   - store.profile
   - store
-  - admin
 
 # -- Static resources ----------------------------------------------------------
 statics:
   - url     : /assets
     folder  : /www/assets
     maxage  : 3600 #1 hour
+  - url     : /uploads
+    folder  : /www/assets/uploads
+    maxage  : 60 #60 seconds
   - file    : humans.txt
     folder  : /www/assets
     maxage  : 86400 #1 Day
