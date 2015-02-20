@@ -10,8 +10,6 @@
     <meta name="author" content="@zetapath">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
-
     <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
     <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)">
     <meta name="apple-mobile-web-app-title" content="shopio">
@@ -19,11 +17,12 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="cleartype" content="on">
-
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/assets/css/shopio.{{asset}}.dependencies.css">
     <link rel="stylesheet" href="/assets/css/shopio.{{asset}}.css">
   </head>
   <body data-page="{{page}}" data-atoms="app">
+    {{> 404 }}
     {{> store.header}}
     {{> store.home}}
     {{> store.collection}}
@@ -45,9 +44,7 @@
         last_name : "{{session.last_name}}",
         avatar    : "{{{session.avatar}}}"};
       {{/session}}
-      {{#owner}}
-      __.owner = {{owner}};
-      {{/owner}}
+      {{#owner}}__.owner = {{owner}};{{/owner}}
       {{#collection}}__.collection = "{{collection.id}}";{{/collection}}
       {{#product}}__.product = "{{product.id}}";{{/product}}
       {{#order}}__.order = "{{order.id}}";{{/order}}

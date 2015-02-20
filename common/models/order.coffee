@@ -47,6 +47,16 @@ Order.statics.updateAttributes = (query, parameters) ->
   @findOneAndUpdate query, parameters, (error, value) -> promise.done error, value
   promise
 
+Order.statics.shopping = (session) ->
+  promise = new Hope.Promise()
+  if session
+    @search(user: session, state: C.ORDER.STATE.SHOPPING).then (error, orders) ->
+      order = if orders?.length > 0 then orders[0].parse()  else null
+      promise.done error, order
+  else
+    promise.done true, null
+  promise
+
 # -- Instance methods ----------------------------------------------------------
 Order.methods.saveInPromise = (parameters = {}) ->
   promise = new Hope.Promise()

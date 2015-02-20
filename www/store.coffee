@@ -12,7 +12,7 @@ module.exports = (zen) ->
 
   zen.get "/collection/:id", (request, response) ->
     Hope.join([ ->
-      Session request, response, redirect = true
+      Session request, response, redirect = true, owner = false, shopping = true
     , ->
       Settings.cache()
     , ->
@@ -34,7 +34,7 @@ module.exports = (zen) ->
 
   zen.get "/product/:id", (request, response) ->
     Hope.join([ ->
-      Session request, response, redirect = true
+      Session request, response, redirect = true, owner = false, shopping = true
     , ->
       Settings.cache()
     , ->
@@ -55,7 +55,7 @@ module.exports = (zen) ->
   zen.get "/:page", (request, response) ->
     home = request.parameters.page is ''
     Hope.join([ ->
-      Session request, response, redirect = true
+      Session request, response, redirect = true, owner = false, shopping = true
     , ->
       Settings.cache()
     , ->
@@ -64,6 +64,7 @@ module.exports = (zen) ->
       else
         Page.search "search.url_handle": request.parameters.page, limit = 1
     ]).then (errors, values) ->
+      return response.page "base", page: "error", ["404"] if not home and errors[2] isnt null
       bindings =
         page        : if home then "home" else "page"
         asset       : "store"

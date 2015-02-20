@@ -3,7 +3,7 @@
   <h2>Your Profile</h2>
 </article>
 
-<article>
+<article id="profile_info">
   <div class="container">
     <div data-column="5" class="box bck">
       <h2>Your Personal Data</h2>
@@ -18,8 +18,7 @@
         <input type="text" value="{{session.homepage}}" name="homepage"/>
         <label>Bio</label>
         <textarea name="bio">{{session.bio}}"</textarea>
-
-        <nav class="align right">
+        <nav>
           <a href="/profile/logout" class="button">Logout</a>
           <button data-action="save" class="primary">Save</button>
         </nav>

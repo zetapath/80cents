@@ -16,21 +16,21 @@ module.exports = (zen) ->
 
   zen.get "/profile", (request, response) ->
     Hope.shield([ ->
-      Session request, response, redirect = true
+      Session request, response, redirect = true, owner = false, shopping = true
     , (error, @session) =>
       Settings.cache()
     , (error, @settings) =>
       Order.search user: @session._id, state: $gt: C.ORDER.STATE.SHOPPING
-    ]).then (error, orders) =>
+    ]).then (error, @orders) =>
       return response.redirect "/" if error
       bindings =
         page        : "profile"
         asset       : "store"
         host        : C.HOST[global.ZEN.type.toUpperCase()]
-        session     : @session.parse()
+        session     : @session
         settings    : @settings
-        orders      : (order.parse() for order in orders)
-        has_orders  : (orders.length > 0)
+        orders      : (order.parse() for order in @orders)
+        has_orders  : (@orders.length > 0)
       response.page "base", bindings, ["store.header", "store.profile", "store.footer"]
 
 
