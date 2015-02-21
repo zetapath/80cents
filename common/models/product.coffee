@@ -79,7 +79,7 @@ Product.methods.parse = ->
   description       : @description
   type              : @type
   vendor            : @vendor
-  price             : @price.toFixed(2)
+  price             : @price?.toFixed(2)
   compare_at_price  : @compare_at_price?.toFixed(2)
   stock             : @stock
   barcode           : @barcode

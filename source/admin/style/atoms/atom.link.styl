@@ -22,8 +22,17 @@
         background-color    : darken(DARK, 25%)
       &.active
         color               : WHITE
-      &.separator
+      &.anchor
+        margin-top          : (2 * U)
         border-top          : solid 1px lighten(DARK, 5%)
+        position            : relative
+        &:before
+          content           : "Store"
+          position          : absolute
+          top               : -(2 * U)
+          font-size         : 90%
+          font-weight       : FONT_WEIGHT_BOLD
+          color             : lighten(DARK, 25%)
       > .icon
         color               : WHITE
       > small

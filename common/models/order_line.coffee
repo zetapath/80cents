@@ -10,7 +10,6 @@ OrderLine = new Schema
   product         : type: String, ref: "Product"
   size            : type: String
   color           : type: String
-  material        : type: String
   quantity        : type: Number, default: 0
   amount          : type: Number
   state           : type: Number, default: C.ORDER.LINE.STATE.PENDING
@@ -55,7 +54,6 @@ OrderLine.methods.parse = ->
   product         : @product.parse?() or @product
   size            : @size
   color           : @color
-  material        : @material
   quantity        : @quantity
   amount          : @amount?.toFixed(2)
   state           : @state

@@ -29,6 +29,8 @@ module.exports = (server) ->
           order   : @order._id
           product : @product._id
           quantity: request.parameters.quantity
+          color   : request.parameters.color
+          size    : request.parameters.size
           amount  : (@product.price * request.parameters.quantity)
         OrderLine.register values
       , (error, @line) =>

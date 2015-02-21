@@ -33,14 +33,28 @@ class Atoms.Organism.Checkout extends Atoms.Organism.Section
 
   constructor: ->
     super
-    __.proxy("GET", "order", id: __.order).then (error, order) =>
-      @billing.address.value order.billing or {}
-      @shipping.address.value order.shipping or {}
+    __.proxy("GET", "order", id: __.order).then (error, @order) =>
+      @billing.address.value @order.billing or {}
+      @shipping.address.value @order.shipping or {}
       @purchase.payment.refresh
-        options   : order.available_payments
-        disabled  : (order.state isnt __.const.ORDER.STATE.SHOPPING)
-      @purchase.payment.value order.payment_type
+        options   : @order.available_payments
+        disabled  : (@order.state isnt __.const.ORDER.STATE.SHOPPING)
+      @purchase.payment.value @order.payment_type
       do @__validPurchase
+
+    @stripe = StripeCheckout.configure
+      # key   : "pk_live_iKiZde4F0KbB8LC1fT5jUeF3"
+      key   : "pk_test_pGXz0QlpwU1DBnHYuoJOXbH5"
+      image : "/assets/img/payment_stripe.jpg"
+      token : (token) =>
+        parameters =
+          id    : @order.id
+          token : token.id
+          type  : 1
+        __.proxy("PUT", "order/checkout", parameters).then (error, response) ->
+          window.location = "/profile"
+
+    window.addEventListener "popstate", => @handler.close()
 
 
   # -- Children Bubble Events --------------------------------------------------
@@ -63,8 +77,15 @@ class Atoms.Organism.Checkout extends Atoms.Organism.Section
       billing     : @billing.address.value().address
       shipping    : @shipping.address.value().address
       payment_type: @purchase.payment.value()
-    __.proxy("PUT", "order", parameters).then (error, response) ->
+    __.proxy("PUT", "order", parameters).then (error, response) =>
       console.log "PUT/order", error, response
+
+      amount = @order.amount.toString().replace(".", "")
+      @stripe.open
+        name        : "Nomada.io"
+        description : "#{@order.lines.length} products ($#{amount})"
+        amount      : amount
+        email       : __.session.mail
 
 
   # -- Private Events ----------------------------------------------------------

@@ -1,29 +1,32 @@
-[data-page="page"]
-  article
-    &:not(.slideshow)
-      font-size                         : FONT_SIZE_NORMAL
-
 body
-  // -- Article
+
+  .margin-right
+    margin-right              : SPACE
+  .margin-left
+    margin-left               : SPACE
+
   > article
     &.slideshow
       position                          : relative
-      min-height                        : 45vh
+      min-height                        : 40vh
+      margin-top                        : HEADER_HEIGHT
       color                             : WHITE
       background-size                   : cover
       > *
         color                           : WHITE !important
+        margin                          : 0
       > :not(div)
         z-index                         : 1
-        font-weight                     : bold
       > h2
-        margin                          : (1.5 * U) 0 0 0
-        font-size                       : (U / 1.25)
+        margin                          : 0
+        font-size                       : U
+        font-weight                     : FONT_WEIGHT_BOLD
         text-transform                  : Uppercase
         text-align                      : center
-        > span
-          display                       : block
-          font-size                     : 75%
+        border-bottom                   : solid 2px rgba(255,255,255,0.75)
+      > *:not(h2)
+        font-weight                     : FONT_WEIGHT_NORMAL
+        opacity                         : 0.75
       > .overlay
         z-index                         : 0
         position                        : absolute
@@ -57,58 +60,63 @@ body
   figure
     background-size                     : cover
 
-// -- Icons
-@font-face
-  font-family: 'icomoon'
-  src:url('fonts/icomoon.eot?-cfck9c')
-  src:url('fonts/icomoon.eot?#iefix-cfck9c') format('embedded-opentype'), url('fonts/icomoon.woff?-cfck9c') format('woff'), url('fonts/icomoon.ttf?-cfck9c') format('truetype'), url('fonts/icomoon.svg?-cfck9c#icomoon') format('svg')
-  font-weight: normal
-  font-style: normal
 
-.icon
-  font-family: 'icomoon'
-  speak: none
-  font-style: normal
-  font-weight: normal
-  font-variant: normal
-  text-transform: none
-  line-height: 1
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
+  // -- Product list
+  [data-shopio=products]
+    > a
+      SIZE = 268px
+      margin                    : SPACE
+      font-weight               : FONT_WEIGHT_BOLD
+      > figure
+        margin                  : 0
+        width                   : SIZE
+        height                  : SIZE
+        background-color        : THEME
+        &, & > *
+          transition              all TRANSITION_DURATION
+        > button
+          background-color      : COLOR
+          color                 : WHITE
+          opacity               : 0
+          transform               translateY(100%)
+          &:hover
+            background-color    : THEME
+      > strong
+        margin-top              : SPACE
+        font-size               : FONT_SIZE_BIG
+        text-transform          : Uppercase
+        color                   : COLOR
+      > small
+        margin-top              : (SPACE / 2)
+        font-size               : FONT_SIZE_NORMAL
+        color                   : THEME
+      &:hover
+        > figure
+          box-shadow              inset 0 0 0 100rem alpha(THEME, 35%)
+          > button
+            opacity               : 1
+            transform             translateY(0%)
 
-  &.home:before
-    content: "\e900"
-  &.cart:before
-    content: "\e93a"
-  &.credit-card:before
-    content: "\e93f"
-  &.user:before
-    content: "\e971"
-  &.search:before
-    content: "\e986"
-  &.heart:before
-    content: "\e9da"
-  &.plus:before
-    content: "\ea0a"
-  &.minus:before
-    content: "\ea0b"
-  &.cross:before
-    content: "\ea0f"
-  &.checkmark:before
-    content: "\ea10"
-  &.ctrl:before
-    content: "\ea50"
-  &.bold:before
-    content: "\ea62"
-  &.underline:before
-    content: "\ea63"
-  &.italic:before
-    content: "\ea64"
-  &.facebook:before
-    content: "\ea8c"
-  &.instagram:before
-    content: "\ea90"
-  &.twitter:before
-    content: "\ea91"
-  &.pinterest:before
-    content: "\ead0"
+      &.highlight
+        width                   : (2.1 * SIZE)
+        height                  : SIZE
+        box-shadow              : inset 0 0 0 100rem alpha(COLOR, 35%)
+        > figure
+          display               : none
+        > strong
+          color                 : WHITE
+          font-size             : (1.25 * FONT_SIZE_BIG)
+        > small
+          padding               : (SPACE / 2) SPACE
+          background-color      : COLOR
+          color                 : WHITE
+          opacity               : 0
+          border-radius         : BORDER_RADIUS
+          transform               translateY(100%)
+          transition              all TRANSITION_DURATION
+        &:hover
+          > small
+            opacity             : 1
+            transform             translateY(0%)
+            &:hover
+              background-color  : THEME

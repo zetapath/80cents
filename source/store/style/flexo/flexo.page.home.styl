@@ -2,8 +2,17 @@
   article
     &.slideshow
       height                      : 100vh
+      margin-top                  : 0
+      background-image            : url("/assets/img/bck_landing.jpg")
+      > h2
+        margin                    : U 0 (1.25 * SPACE) 0 !important
+        line-height               : (1.75 * U)
+
     &:not(.slideshow)
       .product
         height                    : 35vh
         color                     : WHITE
         background-size           : cover
+        transition                  all ANIMATION_DURATION
+        &:hover
+          box-shadow                inset 0 0 0 100rem alpha(THEME, 50%)

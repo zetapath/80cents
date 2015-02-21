@@ -2,45 +2,56 @@ body
   > header
     z-index                         : 2
     position                        : fixed
+    top                             : 0
+    left                            : 0
+    right                           : 0
     width                           : 100%
     padding                         : 0 SPACE
-    height                          : HEIGHT = (1.5 * U)
-    line-height                     : HEIGHT
-
+    height                          : HEADER_HEIGHT
+    line-height                     : HEADER_HEIGHT
+    background-color                : WHITE
+    transition                        all TRANSITION_DURATION
+    &.scroll
+      height                        : HEADER_HEIGHT = (HEADER_HEIGHT / 1.5)
+      line-height                   : HEADER_HEIGHT
+      background-color              : rgba(255,255,255,0.95)
+      border-bottom                 : solid 1px BOX
     .logo
       margin-right                  : (U / 2)
       font-size                     : (U / 2)
       font-weight                   : FONT_WEIGHT_BOLD
       color                         : THEME
     nav
-      // margin                        : 0 U
       a
-        font-size                   : 85%
+        padding                     : (SPACE / 2) SPACE
+        font-size                   : FONT_SIZE_SMALL
         letter-spacing              : 1px
         font-weight                 : FONT_WEIGHT_BOLD
         text-transform              : Uppercase
+        text-align                  : center
         border-radius               : SPACE
-        transition                    background TRANSITION_DURATION
-        &:not(.icon)
-          padding                     : (SPACE / 2) SPACE
-          margin-right                : (SPACE / 2)
-          &.active, &:hover
-            background-color          : THEME
-            color                     : WHITE
-
-        &.cart
+        &.active, &:hover
+          background-color          : THEME !important
+          color                     : WHITE
+        &[data-shopio=cart]
+          background-color          : COLOR
+          color                     : WHITE
+          > .icon
+            margin-right            : (SPACE / 2)
+            vertical-align          : middle
+            font-size               : FONT_SIZE_TINY
           > small
-            display                 : inline-block
-            padding                 : 0 (SPACE / 4)
-            height                  : SIZE = (U / 3.5)
-            font-size               : 11px !important
-            font-weight             : FONT_WEIGHT_BOLD
-            text-align              : center
-            line-height             : SIZE
-            background-color        : COLOR
-            color                   : WHITE
-            border-radius           : (SIZE / 2)
-
-      .icon
-        margin-left                 : SPACE
-        font-size                   : FONT_SIZE_NORMAL
+            display                 : none
+  &:not([data-page="home"])
+    > header nav > a
+      margin-right                  : (SPACE / 2)
+  &[data-page="home"]
+    > header
+      nav
+        text-align                  : right
+        > a
+          transition                  color TRANSITION_DURATION
+      &:not(.scroll)
+        background-color            : transparent
+        nav > a
+          color                     : WHITE

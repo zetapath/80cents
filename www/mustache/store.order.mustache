@@ -20,8 +20,11 @@
         {{#lines}}
         <tr data-line="{{id}}">
           <td data-flex="horizontal grow">
-            <a href="/product/{{product.id}}" data-flex-grow="min"><figure style="background-image: url(/assets/uploads/{{product.default_image}});"></figure></a>
-            <strong>{{product.title}}</strong>
+            <figure style="background-image: url(/assets/uploads/{{product.default_image}});" data-flex-grow="min"></figure>
+            <div data-flex="vertical">
+              <a href="/product/{{product.id}}"><strong>{{product.title}}</strong></a>
+              <small><a href="/collection/{{product.collection_id}}">{{product.collection_id}}</a> {{color}} {{size}}</small>
+            </div>
           </td>
           <td>
             {{#cart}}<button data-action="delete">remove</button>{{/cart}}

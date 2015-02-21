@@ -1,19 +1,17 @@
-<header class="bck white">
+<header>
   <div class="container"  data-flex="horizontal grow">
     <a href="/" class="logo" data-flex-grow="min"><img src="/assets/img/logo_header.png"/></a>
-    <nav class="align left"data-flex-grow="max">
+    <nav data-flex-grow="max" data-shopio="collections">
       {{#settings.collections}}<a href="/collection/{{id}}">{{title}}</a>{{/settings.collections}}
       {{#settings.pages}}{{#header}}<a href="/{{url_handle}}">{{title}}</a>{{/header}}{{/settings.pages}}
     </nav>
-    <nav class="align right" data-flex-grow="min">
+    <nav data-flex-grow="min" data-shopio="session">
       {{#session}}
-      {{#session.shopping}}
-      <a href="/cart" class="icon cart" data-shopio="cart"><span>{{amount}}</span>{{settings.currency}}<small>{{lines.length}}</small></a>
-      {{/session.shopping}}
-      <a href="/profile" class="icon user"></a>
+      <a href="/profile">Account</a>
+      <a href="/cart" data-shopio="cart" class="margin-left"><span class="icon cart"></span><small>{{shopping.lines.length}}</small><strong>{{shopping.amount}}{{settings.currency}}</strong></a>
       {{/session}}
       {{^session}}
-      <button data-action="session" class="primary">sign in</button>
+      <button data-action="session" class="primary margin-left">sign in</button>
       {{/session}}
     </nav>
   </div>

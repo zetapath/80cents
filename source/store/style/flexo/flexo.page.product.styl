@@ -1,41 +1,58 @@
 [data-page="product"]
   article
-    .box
+    section
       // -- Title
       > h1
         margin-bottom                     : 0
-        font-size                         : 150%
+        font-size                         : (FONT_SIZE_NORMAL * 2.5)
         font-weight                       : FONT_WEIGHT_BOLD
         text-transform                    : Uppercase
       // -- Price
       > strong
         margin                            : SPACE 0 (SPACE / 4)
-        font-size                         : 200%
+        font-size                         : (FONT_SIZE_NORMAL * 1.5)
+        font-weight                       : FONT_WEIGHT_BOLD
+        > span
+          margin-right                    : SPACE
+          color                           : lighten(COLOR, 50%)
+          text-decoration                 : line-through
+      // -- Heading
+      > h6
+        margin                            : (SPACE * 2) 0 0 0
+        font-size                         : (FONT_SIZE_NORMAL * 1.25)
         font-weight                       : FONT_WEIGHT_BOLD
       // -- Description
       > p
-        margin                            : (1.5 * SPACE) 0 (2 * SPACE) 0
-        font-size                         : 90%
-        color                             : lighten(COLOR, 25%)
+        margin                            : (1.5 * SPACE) 0
+        font-size                         : 92.5%
+        font-weight                       : FONT_WEIGHT_NORMAL
+        color                             : lighten(COLOR, 50%)
       // -- Form
       > form
+        HEIGHT  = (U / 1.6) !important
         > *
-          padding                         : 0px !important
-          height                          : SIZE = (U / 2) !important
-          width                           : SIZE
+          width                           : auto
+          vertical-align                  : top
+          height                          : HEIGHT
+          line-height                     : HEIGHT
+        > label
+          display                         : inline-block
+        > input
           text-align                      : center
-          border-radius                   : 0px
-          vertical-align                  : top
+        > button.icon, input
+          padding                         : 0px !important
+          width                           : HEIGHT
         > button
-          font-weight                     : FONT_WEIGHT_NORMAL
-          background-color                : BACKGROUND
-          &:hover
-            background-color              : COLOR
-            color                         : WHITE
-      // -- Actions
+          &.icon
+            font-weight                     : FONT_WEIGHT_NORMAL
+            background-color                : BACKGROUND
+            &:hover
+              background-color              : COLOR
+              color                         : WHITE
+      // -- Extra Information
       > nav
-        > button
-          vertical-align                  : top
+        > *
+          display                           : block
 
     // -- Images & Figures
     img, figure
@@ -64,7 +81,6 @@
     background: transparent url('/assets/img/blank.gif') !important
   // .fancybox-overlay
   //   background: url('/assets/img/fancybox_overlay.png') !important
-
 
 /*Retina graphics!*/
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5)

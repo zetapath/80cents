@@ -21,27 +21,43 @@
 
     <section data-column="7" class="box text">
       <h1>{{product.title}}</h1>
-      <a href="/collection/{{product.collection_id.id}}">{{product.collection_id.title}}</a>
-      <strong>{{product.price}}{{settings.currency}}</strong>
       <small><strong>Availability: In stock</strong></small>
+      <strong>{{#product.compare_at_price}}<span>{{product.compare_at_price}}{{settings.currency}}</span>{{/product.compare_at_price}}{{product.price}}{{settings.currency}}</strong>
       <p>{{{product.description}}}</p>
+
       <form data-flex="horizontal" method="null">
         <button class="icon minus" data-action="minus"></button>
-        <input type="text" value="1" maxlength="2" id="quantity" disabled/>
-        <button class="icon plus" data-action="plus"></button>
+        <input type="text" name="quantity" value="1" maxlength="2" disabled/>
+        <button class="icon plus margin-right" data-action="plus"></button>
+        {{! -- Options }}
+        {{#product.if.colors}}
+        <label>Color:</label>
+        <select class="margin-right" name="color">{{#product.colors}}<option>{{.}}</option>{{/product.colors}}</select>
+        {{/product.if.colors}}
+        {{#product.if.sizes}}
+        <label>Size:</label>
+        <select class="margin-right" name="size">{{#product.sizes}}<option>{{.}}</option>{{/product.sizes}}</select>
+        {{/product.if.sizes}}
+        {{! -- /Options }}
+        <button class="primary" data-action="add"><span class="icon plus"></span>Add to Cart</button>
       </form>
       <nav>
-        <button class="primary" data-action="add"><span class="icon plus"></span>Add to Cart</button>
-        <button class="icon heart"></button>
-      </nav>
-      <nav>
+        {{! -- Extra information }}
         <small>
-        <strong>tags:</strong>
-        {{#product.tags}}
-        <a href="/tag/{{.}}">{{.}}</a>
-        {{/product.tags}}
+          <strong>Category:</strong> <a href="/collection/{{product.collection_id.id}}">{{product.collection_id.title}}</a>
         </small>
+        {{#product.if.tags}}
+        <small>
+          <strong>Tags:</strong> {{#product.tags}}<a href="/tag/{{.}}">{{.}}</a> {{/product.tags}}
+        </small>
+        {{/product.if.tags}}
+        {{#product.if.materials}}
+        <small>
+          <strong>Materials:</strong> {{#product.materials}}<span>{{.}}</span> {{/product.materials}}
+        </small>
+        {{/product.if.materials}}
       </nav>
+
     </section>
     {{! -- RELATED PRODUCTS ------------------------------------------------- }}
     {{! -- REVIEWS ---------------------------------------------------------- }}

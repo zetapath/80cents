@@ -11,6 +11,7 @@
     "password-hash"             : "*",
     "premailer-api"             : "*",
     "shortid"                   : "*",
+    "stripe"                    : "*",
     "zenproxy"                  : "*",
     "zenserver"                 : "*"
   },

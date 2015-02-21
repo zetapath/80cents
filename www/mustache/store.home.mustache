@@ -1,23 +1,19 @@
 <article class="bck color slideshow" data-flex="vertical center">
   <div class="overlay"></div>
-  {{#content}}
-    <h2>{{title}}</h2>
-  {{/content}}
-  {{^content}}
-    <h2>Wellcome the backery</h2>
-    <h6><i>We love to create special flavor every day</i></h6>
-  {{/content}}
-
-
+  <h2>Wellcome the backery</h2>
+  <h4>We love to create special flavor every day</h4>
 </article>
 
 <article>
   <div class="container">
+    <h3>Featured Products</h3>
+  </div>
+  <nav data-shopio="products" class="container" data-flex="horizontal center wrap">
     {{#products}}
-    <a href="/product/{{id}}" data-column="6" class="product bck" data-flex="vertical center" style="background-image: url(/assets/uploads/{{default_image}});">
+    <a href="/product/{{id}}" class="product highlight" data-flex="vertical center" style="background-image: url(/assets/uploads/{{default_image}});">
       <strong>{{title}}</strong>
+      <small>{{price}}{{settings.currency}}</small>
     </a>
     {{/products}}
-    {{#content}}{{{content}}}{{/content}}
-  </div>
+  </nav>
 </article>

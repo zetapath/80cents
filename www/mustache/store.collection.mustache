@@ -6,11 +6,15 @@
 
 {{! -- PRODUCTS ------------------------------------------------------------- }}
 <article>
-  <div class="container">
+  <nav class="container" data-shopio="products" data-flex="horizontal center wrap">
     {{#products}}
-    <a href="/product/{{id}}" data-column="6" class="product bck" data-flex="vertical center" style="background-image: url(/assets/uploads/{{default_image}});">
+    <a href="/product/{{id}}" data-flex="vertical center">
+      <figure data-flex="vertical center" style="background-image: url(/assets/uploads/{{default_image}});">
+        <button>View product</button>
+      </figure>
       <strong>{{title}}</strong>
+      <small>{{price}}{{settings.currency}}</small>
     </a>
     {{/products}}
-  </div>
+  </nav>
 </article>

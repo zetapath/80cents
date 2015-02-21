@@ -5,25 +5,11 @@
 
 // -- BASE ---------------------------------------------------------------------
 body
+  font-family               : FONT_FAMILY
+  font-size                 : FONT_SIZE
   color                     : COLOR
   background-color          : WHITE
 
-.bck
-  background-color          : BACKGROUND
-  &.theme
-    background-color        : THEME
-  &.color
-    background-color        : COLOR
-  &.white
-    background-color        : WHITE
-.color
-  &.white
-    color                   : WHITE
-  &.theme
-    color                   : THEME
-
-.row
-  margin-bottom             : 1.5rem
 
 // -- LINK ---------------------------------------------------------------------
 a
@@ -38,7 +24,7 @@ a
   text-transform            : uppercase
   letter-spacing            : .1rem
   color                     : lighten(COLOR, 50%)
-  border                    : 1px solid BOX
+  border                    : none
   border-radius             : BORDER_RADIUS
   margin-bottom             : 0
   > .icon
@@ -91,9 +77,3 @@ table
     padding                 : SPACE
   tr:last-child td
     border-bottom           : none
-
-// -- CODE ---------------------------------------------------------------------
-code
-  background                : darken(BACKGROUND, 5%)
-  border                    : 1px solid darken(BACKGROUND, 10%)
-  border-radius             : BORDER_RADIUS

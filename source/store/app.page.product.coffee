@@ -2,7 +2,11 @@
 
 Atoms.$ ->
   if __.page is "product"
-    el = quantity: Atoms.$ "input#quantity"
+    el =
+      quantity: Atoms.$ "input[name=quantity]"
+      color   : Atoms.$ "select[name=color]"
+      name    : Atoms.$ "select[name=name]"
+
     Atoms.$("article button[data-action]").on "click", (event) ->
       event.preventDefault()
       method = $(event.target).attr "data-action"
@@ -12,9 +16,11 @@ Atoms.$ ->
           parameters =
             product   : __.product
             quantity  : el.quantity.val()
+            color     : el.color?.val()
+            size      : el.name?.val()
           __.proxy("POST", "order/line", parameters).then (error, order) ->
             cart = Atoms.$("header [data-shopio='cart']")
-            cart.children("span").html order.amount
+            cart.children("strong").html order.amount
             cart.children("small").html order.lines.length
         else
           __.Dialog.Session.login()
