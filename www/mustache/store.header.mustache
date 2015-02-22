@@ -8,7 +8,7 @@
     <nav data-flex-grow="min" data-shopio="session">
       {{#session}}
       <a href="/profile">Account</a>
-      <a href="/cart" data-shopio="cart" class="margin-left"><span class="icon cart"></span><small>{{shopping.lines.length}}</small><strong>{{shopping.amount}}{{settings.currency}}</strong></a>
+      <a href="/cart" data-shopio="cart" class="margin-left"><span class="icon cart"></span><small>{{shopping.lines.length}}</small><strong>{{shopping.amount}}</strong>{{settings.currency}}</a>
       {{/session}}
       {{^session}}
       <button data-action="session" class="primary margin-left">sign in</button>

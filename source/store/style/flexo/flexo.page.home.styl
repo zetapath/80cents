@@ -16,3 +16,14 @@
         transition                  all ANIMATION_DURATION
         &:hover
           box-shadow                inset 0 0 0 100rem alpha(THEME, 50%)
+
+    h3
+      text-align                  : center
+      &:before, &:after
+        content                   : ""
+        margin                    : (SPACE / 2) SPACE
+        display                   : inline-block
+        width                     : U
+        height                    : (SPACE / 6)
+        background-color          : COLOR
+        opacity                   : 0.85

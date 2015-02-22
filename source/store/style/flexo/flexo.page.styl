@@ -1,10 +1,12 @@
 body
-
+  .margin-top
+    margin-top                          : SPACE
   .margin-right
-    margin-right              : SPACE
+    margin-right                        : SPACE
+  .margin-bottom
+    margin-bottom                       : SPACE
   .margin-left
-    margin-left               : SPACE
-
+    margin-left                         : SPACE
   > article
     &.slideshow
       position                          : relative
@@ -37,7 +39,7 @@ body
         background                      : url("/assets/img/overlay.png") repeat 0 0
 
     &:not(.slideshow)
-      padding                           : (1.5 * U) 0
+      padding                           : U 0
 
     .box
       box-shadow                          0 0 0 1px BOX
@@ -98,25 +100,21 @@ body
             transform             translateY(0%)
 
       &.highlight
-        width                   : (2.1 * SIZE)
-        height                  : SIZE
-        box-shadow              : inset 0 0 0 100rem alpha(COLOR, 35%)
-        > figure
-          display               : none
+        width                   : SIZE = (1.35 * SIZE)
+        min-height              : SIZE
+        box-shadow              : inset 0 0 0 100rem alpha(COLOR, 50%)
+        background-position     : 50% 50%
         > strong
           color                 : WHITE
-          font-size             : (1.25 * FONT_SIZE_BIG)
-        > small
-          padding               : (SPACE / 2) SPACE
-          background-color      : COLOR
-          color                 : WHITE
-          opacity               : 0
-          border-radius         : BORDER_RADIUS
-          transform               translateY(100%)
+          font-size             : (U / 2)
+          line-height           : (U / 1.5)
+          text-shadow           : 0 0 SPACE rgba(0,0,0,0.25)
+          box-shadow            : 0 2px rgba(255,255,255,0.75)
           transition              all TRANSITION_DURATION
+        > span
+          font-weight           : FONT_WEIGHT_NORMAL
+          opacity               : 0.75
+          padding               : (SPACE / 2) SPACE
         &:hover
-          > small
-            opacity             : 1
-            transform             translateY(0%)
-            &:hover
-              background-color  : THEME
+          > *
+            text-shadow           : 0 0 SPACE rgba(0,0,0,0.5)

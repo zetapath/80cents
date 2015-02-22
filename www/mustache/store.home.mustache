@@ -6,14 +6,27 @@
 
 <article>
   <div class="container">
-    <h3>Featured Products</h3>
+    <h3>Choose your style</h3>
+    <nav data-shopio="products" data-flex="horizontal center wrap" class="margin-bottom">
+      {{#collections}}
+      <a href="/collection/{{id}}" class="product highlight" data-flex="vertical center" style="background-image: url(/assets/uploads/{{default_image}});">
+        <strong>{{title}}</strong>
+        <span>{{description}}</span>
+      </a>
+      {{/collections}}
+    </nav>
+
+    <h3 class="margin-top">Featured Products</h3>
+    <nav data-shopio="products" data-flex="horizontal center wrap">
+      {{#products}}
+      <a href="/product/{{id}}" data-flex="vertical center">
+        <figure data-flex="vertical center" style="background-image: url(/assets/uploads/{{default_image}});">
+          <button>View product</button>
+        </figure>
+        <strong>{{title}}</strong>
+        <small>{{price}}{{settings.currency}}</small>
+      </a>
+      {{/products}}
+    </nav>
   </div>
-  <nav data-shopio="products" class="container" data-flex="horizontal center wrap">
-    {{#products}}
-    <a href="/product/{{id}}" class="product highlight" data-flex="vertical center" style="background-image: url(/assets/uploads/{{default_image}});">
-      <strong>{{title}}</strong>
-      <small>{{price}}{{settings.currency}}</small>
-    </a>
-    {{/products}}
-  </nav>
 </article>

@@ -43,6 +43,7 @@ module.exports = (zen) ->
     ]).then (errors, values) ->
       return response.redirect "/" unless values[2]
       product = values[2].parse()
+      product.images.shift()
       product.if = {}
       for condition in ["colors", "sizes", "materials", "tags"]
         product.if[condition] = product[condition].length > 0
@@ -53,7 +54,6 @@ module.exports = (zen) ->
         session     : values[0]
         settings    : values[1]
         product     : product
-
       response.page "base", bindings, ["store.header", "store.product", "store.footer"]
 
 
@@ -63,6 +63,8 @@ module.exports = (zen) ->
       Session request, response, redirect = true, owner = false, shopping = true
     , ->
       Settings.cache()
+    , ->
+      Collection.search visibility: true
     , ->
       if home
         Product.search visibility: true, highlight: true
@@ -76,10 +78,11 @@ module.exports = (zen) ->
         host        : C.HOST[global.ZEN.type.toUpperCase()]
         session     : values[0]
         settings    : values[1]
+        collections : (collection.parse() for collection in values[2])
       if home
-        bindings.products = (product.parse() for product in values[2])
+        bindings.products = (product.parse() for product in values[3])
       else
-        bindings.content = values[2]?.parse()
+        bindings.content = values[3]?.parse()
         bindings.meta =
           title       : bindings.content?.meta?.page_title or bindings.settings.title
           description : bindings.content?.meta?.meta_description or bindings.settings.description
