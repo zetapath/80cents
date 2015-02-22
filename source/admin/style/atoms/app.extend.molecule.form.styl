@@ -9,6 +9,12 @@
     width                             : 23% !important
     &:nth-child(even)
       margin                          : 0 2%
+  > [data-atom-input][type="checkbox"]
+    margin                            : (U / 2) 0 0 0
+    + [data-atom-label]
+      margin-top                      : (U / 2)
+
+
   > [data-atom-label] + [data-atom-input][type="checkbox"]
     margin-left                       : U
   > [data-atom-input][type="file"]

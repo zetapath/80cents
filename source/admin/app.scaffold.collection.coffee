@@ -22,19 +22,19 @@ __.scaffold.form_collection =
       "Atom.Wysihtml5": name: "description", id: "collection"
     ]
   ,
-    "Atom.Label": style: "anchor"
+    "Atom.Label": style: "anchor entity"
   ,
-    "Molecule.Div": children: [
+    "Molecule.Div": style: "entity", children: [
       "Atom.Heading": size: "h2", value: "Images"
     ,
       "Atom.Text": value: "Upload and edit images of this product. Drag to reorder images."
     ]
   ,
-    "Molecule.Images": id: "images"
+    "Molecule.Images": style: "entity", id: "images"
   ,
     "Atom.Label": style: "anchor"
   ,
-    "Molecule.Div": children: [
+    "Molecule.Div": style: "entity", children: [
       "Atom.Heading": size: "h2", value: "Search engines"
     ,
       "Atom.Text": value: "Set up the page title, meta description and handle. These help define how this product shows up on search engines."
@@ -51,9 +51,9 @@ __.scaffold.form_collection =
     ]
   ,
     "Molecule.Form": children: [
-      "Atom.Label": value: "Visible"
+      "Atom.Input": type: "checkbox", name: "visibility", checked: false
     ,
-      "Atom.Switch": name: "visibility"
+      "Atom.Label": value: "Visible in store"
     ]
   ,
     "Atom.Label": style: "anchor"

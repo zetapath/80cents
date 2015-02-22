@@ -15,7 +15,7 @@ class __.Entity.Collection extends Atoms.Class.Entity
 
   # -- Instance Methods
   parse: ->
-    style       : "thumb #{unless @visibility then 'hidden'}"
+    style       : "thumb #{'offline' unless @visibility}"
     image       : "#{__.host}assets/uploads/#{@images[0]}"
     text        : @title
     description : @price

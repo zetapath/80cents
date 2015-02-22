@@ -19,8 +19,15 @@ class Atoms.Molecule.FormGroup extends Atoms.Molecule.Div
       __.proxy(method, @attributes.endpoint, properties, true).then (error, response) =>
         unless error
           __.Entity[@attributes.entity_name]?.createOrUpdate response
+          unless @entity
+            window.location = "/admin/#{@attributes.endpoint}/#{response.id}"
           @trigger "progress", 100
 
+  onRemove: ->
+    __.proxy("DELETE", @attributes.endpoint, id: @entity.id).then =>
+      window.location = "/admin/#{@attributes.endpoint}s"
+
+  # -- Private Methods --------------------------------------------------------
   fetch: (@entity) ->
     @trigger "progress", 10
     form.clean() for form in @children when form.constructor.name is "Form"
@@ -29,3 +36,5 @@ class Atoms.Molecule.FormGroup extends Atoms.Molecule.Div
     @address?.clean()
     @shipping?.clean()
     @billing?.clean()
+    @el.find("[data-atom-button].cancel")[if @entity then "removeAttr" else "attr"] "disabled", true
+    @el.find(".entity")[if @entity then "show" else "hide"]()

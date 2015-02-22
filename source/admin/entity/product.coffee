@@ -19,7 +19,7 @@ class __.Entity.Product extends Atoms.Class.Entity
 
   # -- Instance Methods
   parse: ->
-    style       : "thumb#{if @visibility then ' hidden' else ''}"
+    style       : "thumb #{unless @visibility then 'offline' else ''}"
     image       : "#{__.host}assets/uploads/#{@default_image}"
     text        : @title
     description : @price

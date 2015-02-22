@@ -82,15 +82,15 @@ __.scaffold.form_product =
       "Atom.Label": value: "Requires shipping (not needed for services or digital goods)"
     ]
   ,
-    "Atom.Label": style: "anchor"
+    "Atom.Label": style: "anchor entity"
   ,
-    "Molecule.Div": children: [
+    "Molecule.Div": style: "entity", children: [
       "Atom.Heading": size: "h2", value: "Images"
     ,
       "Atom.Text": value: "Upload and edit images of this product. Drag to reorder images."
     ]
   ,
-    "Molecule.Images": id: "images"
+    "Molecule.Images": style: "entity", id: "images"
   ,
     "Atom.Label": style: "anchor"
   ,
@@ -139,13 +139,13 @@ __.scaffold.form_product =
     ]
   ,
     "Molecule.Form": children: [
+      "Atom.Input": type: "checkbox", name: "visibility"
+    ,
       "Atom.Label": value: "Visible"
     ,
-      "Atom.Switch": name: "visibility"
+      "Atom.Input": type: "checkbox", name: "highlight"
     ,
       "Atom.Label": value: "Highlight in Home Page"
-    ,
-      "Atom.Switch": name: "highlight"
     ]
   ,
     "Atom.Label": style: "anchor"
