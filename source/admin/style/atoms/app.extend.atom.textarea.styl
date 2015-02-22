@@ -11,16 +11,70 @@
       display               : block
       height                : UNIT
       float                 : left
+    SIZE = (1.25 * UNIT)
     > [data-wysihtml5-command]
-      width                 : UNIT
-      margin-right          : 1px
-      text-align            : center
-      color                 : COLOR
-      background-color      : darken(BACKGROUND, 5%) !important
+      position              : relative
+      list-style            : none
+      display               : inline-block
+      cursor                : pointer
+      width                 : SIZE
+      height                : SIZE
+      background-color      : darken(BACKGROUND, 2.5%)
+      margin-left           : 1px
+      &:after
+        content             : ""
+        position            : absolute
+        left                : 0
+        right               : 0
+        top                 : (U / 6)
+        bottom              : 0
+        background-image    : url("/assets/img/wysihtml5_commands.png")
+        background-repeat   : no-repeat
+      &:hover
+        background-color    : darken(BACKGROUND, 25%)
       &:not([unselectable="on"])
         background-color    : COLOR
-        color               : WHITE
-      &.bold
+    > [data-wysihtml5-dialog]
+      // display               : none
+      background-color      : darken(BACKGROUND, 2.5%)
+      > *
+        font-size           : FONT_SIZE_TINY
+      > input
+        display             : inline-block
+        vertical-align      : top
+        margin-top          : 3px
+        padding             : 1px (U / 5) 2px (U / 5)
+        border              : none
+        -webkit-appearance  : none
+        -moz-appearance     : none
+        appearance          : none
+        outline             : none
+        -webkit-user-select : text
+      > a
+        margin-right        : 1px
+        padding             : (U / 8) (U / 3) (U / 10) (U / 3)
+        vertical-align      : middle
         font-weight         : FONT_WEIGHT_BOLD
-    > div
-      font-size             : FONT_SIZE_SMALL
+        text-transform      : Uppercase
+        background-color    : lighten(DARK, 20%)
+        color               : WHITE
+        cursor              : pointer
+        &:hover
+          background-color  : DARK
+
+    [data-wysihtml5-command="bold"]:after
+      background-position   : 4px center
+    [data-wysihtml5-command="italic"]:after
+      background-position   : -66px center
+    [data-wysihtml5-command="insertUnorderedList"]:after
+      background-position   : -135px center
+    [data-wysihtml5-command="insertOrderedList"]:after
+      background-position   : -217px center
+    [data-wysihtml5-command="formatBlock"][data-wysihtml5-command-value="h1"]:after
+      background-position   : -344px center
+    [data-wysihtml5-command="formatBlock"][data-wysihtml5-command-value="h2"]:after
+      background-position   : -428px center
+    [data-wysihtml5-command="createLink"]:after
+      background-position   : -290px center
+    [data-wysihtml5-command="insertImage"]:after
+      background-position   : -533px center
