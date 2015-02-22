@@ -66,8 +66,8 @@ module.exports = (server) ->
       Hope.shield([ ->
         Session request, response, null, owner = true
       , (error, session) ->
-        filter =
-          _id   : ssession._id
-        Page.findAndUpdate filter, visibility: false
-      ]).then (error, page)->
+        Page.search _id: request.parameters.id, owner: session, limit = 1
+      , (error, page) ->
+        page.delete()
+      ]).then (error, value)->
         if error then response.unauthorized() else response.ok()
