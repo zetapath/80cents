@@ -129,6 +129,7 @@
     &:not(.no-block):not(.loading)
       > [data-organism-dialog]
         background-color: lighten(BACKGROUND, 2.5%)
+        border-radius: SPACE
         &, [data-atom-button], [data-atom-link]
           color: darken(BACKGROUND, 75%)
         > [data-organism-header]
@@ -136,11 +137,39 @@
           line-height: U
           color: WHITE
           background-color: THEME
-          [data-atom-button]
-            border: transparent
+          border-radius: SPACE SPACE 0 0
+          [data-molecule-navigation]
+            float: right
+            [data-atom-button]
+              border: transparent
+              color: lighten(THEME, 50%)
+              &:hover
+                color: lighten(THEME, 75%)
+
+        > [data-organism-section]
+          [data-atom-text]
+            text-align: center
+            margin: (SPACE / 2) 0 0 0
+            &:not(.error)
+              font-size: FONT_SIZE_SMALL
+              color: darken(BACKGROUND, 50%)
+            &.error
+              font-size: FONT_SIZE_TINY
+              color :red
+              background-color: lighten(red, 75%)
+              border-radius: SPACE
+          [data-atom-input]
+            margin: (SPACE / 4) 0
+
         > [data-organism-footer]
-          background-color: darken(BACKGROUND, 2.5%)
+          background-color: BACKGROUND = darken(BACKGROUND, 2.5%)
           border-top: solid 1px darken(BACKGROUND, 5%)
+          border-radius: 0 0 SPACE SPACE
+
+          [data-atom-button][disabled]
+            background-color: BACKGROUND
+            color: darken(BACKGROUND, 25%)
+
         &:not(.side)
           &.show, &.hide
             vendor(animation-name, dialog-bottom)
@@ -169,7 +198,8 @@
           [data-atom-icon]
             font-size               : (1.5 * U)
           [data-atom-text]
-            font-size               : (U / 2.5)
+            font-size               : (U / 2.5) !important
+            color                   : WHITE !important
 
     &.loading
       > [data-organism-dialog]

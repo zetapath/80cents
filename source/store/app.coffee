@@ -8,7 +8,6 @@ Atoms.$ ->
     new Atoms.Organism.Session()
     Atoms.$("[data-action=session]").on "click", (event) -> __.Dialog.Session.login()
 
-
   __.el =
     document  : $ document
     header    : $ "header"
