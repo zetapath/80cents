@@ -1,0 +1,28 @@
+[data-atoms=app]
+  .loading-animation
+    &::before, &::after
+      background-color: WHITE
+
+  .loading-animation
+    width: SIZE = U
+    height: SIZE
+    &::before, &::after
+      content: ""
+      position: absolute
+      width: SIZE
+      height: SIZE
+      transform scale(0.0)
+      border-radius: 50%
+    SPEED = 1.5s
+    &::before
+      animation dialog-loading SPEED 0 infinite
+    &::after
+      animation dialog-loading SPEED (SPEED / 2) infinite
+
+
+@keyframes dialog-loading
+  0%
+    transform scale(0.0)
+  100%
+    transform scale(1.0)
+    opacity: 0

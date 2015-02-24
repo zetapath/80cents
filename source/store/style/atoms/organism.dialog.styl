@@ -31,8 +31,6 @@
     visibility: hidden
   &.active
     visibility: visible
-    background: url("/assets/img/overlay.png") repeat 0 0
-    background-opacity: 0.5
 
   > [data-organism-dialog]
     backface-visibility hidden
@@ -44,15 +42,15 @@
     position: relative
     > .loading-animation
       position: absolute
-      width: SIZE = (3.5 * U)
-      height: SIZE
+      width: U
+      height: U
       top: 50%
       left: 50%
-      margin-left: -(SIZE / 2)
-      margin-top: -(SIZE / 2)
+      margin-left: -(U / 2)
+      margin-top: -(U / 2)
       &::before, &::after
-        width: SIZE
-        height: SIZE
+        width: U
+        height: U
 
   > [data-organism-dialog=push]
     PADDING = (.75 * PADDING)
@@ -122,12 +120,12 @@
         right: 0px
 
 
-
 // -- THEME --------------------------------------------------------------------
 [data-system=dialog]
   &:not(.active)
     display: none
   &.active
+    background                      : rgba(0,0,0,0.25) url("/assets/img/overlay.png") repeat 0 0
     &:not(.no-block):not(.loading)
       > [data-organism-dialog]
         background-color: lighten(BACKGROUND, 2.5%)
@@ -140,8 +138,6 @@
           background-color: THEME
           [data-atom-button]
             border: transparent
-        // > [data-organism-section]
-        //   margin-top: SPACE
         > [data-organism-footer]
           background-color: darken(BACKGROUND, 2.5%)
           border-top: solid 1px darken(BACKGROUND, 5%)
@@ -156,9 +152,27 @@
             &.show, &.hide
               vendor(animation-name, dialog-right)
 
+      > [data-organism-dialog="success"]
+        width                     : SIZE = (4 * U)
+        height                    : SIZE
+        background-color          : rgba(0,0,0,0.5)
+        color                     : WHITE
+        border-radius             : (SIZE / 4)
+        [data-organism-section]
+          display-flex()
+          flex-direction column
+          align-items center
+          align-content center
+          justify-content center
+          > *
+            margin-top              : (U / 4)
+          [data-atom-icon]
+            font-size               : (1.5 * U)
+          [data-atom-text]
+            font-size               : (U / 2.5)
+
     &.loading
       > [data-organism-dialog]
-        background-color: rgba(0,0,0,0.5)
         &.show, &.hide
           vendor(animation-name, dialog-loading-show)
 

@@ -19,9 +19,13 @@ Atoms.$ ->
             color     : el.color?.val()
             size      : el.name?.val()
           __.proxy("POST", "order/line", parameters).then (error, order) ->
-            cart = Atoms.$("header [data-shopio='cart']")
-            cart.children("strong").html order.amount
-            cart.children("small").html order.lines.length
+            if error
+              __.Dialog.Success.show "cross", "Something was wrong"
+            else
+              __.Dialog.Success.show "checkmark", "Product Added"
+              cart = Atoms.$("header [data-shopio='cart']")
+              cart.children("strong").html order.amount
+              cart.children("small").html order.lines.length
         else
           __.Dialog.Session.login()
       else if method is "minus" and quantity > 1
