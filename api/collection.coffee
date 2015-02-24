@@ -69,5 +69,10 @@ module.exports = (server) ->
         Collection.search _id: request.parameters.id, owner: session, limit = 1
       , (error, collection) ->
         collection.delete()
+      , ->
+        Collection.search visibility: true
+      , (error, collections) ->
+        collections = (id: c._id, title: c.title for c in collections)
+        Settings.findAndUpdate {}, collections: collections
       ]).then (error, value)->
         if error then response.unauthorized() else response.ok()

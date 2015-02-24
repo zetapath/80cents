@@ -69,5 +69,10 @@ module.exports = (server) ->
         Page.search _id: request.parameters.id, owner: session, limit = 1
       , (error, page) ->
         page.delete()
+      , ->
+        Page.search visibility: true
+      , (error, pages) ->
+        pages = (title: p.title, header: p.header, url_handle: p.search?.url_handle for p in pages)
+        Settings.findAndUpdate {}, pages: pages
       ]).then (error, value)->
         if error then response.unauthorized() else response.ok()
