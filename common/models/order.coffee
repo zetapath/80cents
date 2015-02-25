@@ -1,6 +1,7 @@
 "use strict"
 
 shortId     = require("shortid")
+moment      = require("moment")
 Hope        = require("zenserver").Hope
 Schema      = require("zenserver").Mongoose.Schema
 db          = require("zenserver").Mongo.connections.primary
@@ -78,7 +79,7 @@ Order.methods.parse = ->
   tracking_number : @tracking_number
   state           : @state
   state_label     : C.ORDER.STATES[@state]
-  updated_at      : @updated_at
-  created_at      : @created_at
+  updated_at      : moment(@updated_at).format("MMMM Do YYYY")
+  created_at      : moment(@created_at).format("MMMM Do YYYY")
 
 exports = module.exports = db.model "Order", Order
