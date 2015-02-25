@@ -91,7 +91,7 @@ module.exports = (server) ->
     Hope.shield([ ->
       Session request, response, null
     , (error, @session) =>
-        Settings.cache()
+      Settings.cache()
     , (error, @settings) =>
       limit = 0
       if @session.type is C.USER.TYPE.OWNER
@@ -107,9 +107,7 @@ module.exports = (server) ->
       return response.unauthorized() if error
       if request.parameters.id
         result = value.parse()
-        result.available_payments = []
-        for payment, data of @settings.payments or []
-          result.available_payments.push label: payment, value: data.type
+        result.settings = @settings
       else
         result = orders: (order.parse() for order in value)
       response.json result
