@@ -52,7 +52,7 @@ children:
             id: order
         - Molecule.List:
             id: orders
-            style: padding-all
+            style: padding-all vertical
             events:
               - select
             callbacks:
@@ -70,7 +70,7 @@ children:
             id: customer
         - Molecule.List:
             id: customers
-            style: padding-all
+            style: padding-all vertical
             events:
               - select
             callbacks:
@@ -88,6 +88,7 @@ children:
             id: collection
         - Molecule.List:
             id: collections
+            style: horizontal
             data:
               flex        : horizontal wrap
               flex-items  : start
@@ -109,6 +110,7 @@ children:
             id: product
         - Molecule.List:
             id: products
+            style: horizontal
             data:
               flex        : horizontal wrap
               flex-items  : start
@@ -130,7 +132,7 @@ children:
             id: page
         - Molecule.List:
             id: pages
-            style: padding-all
+            style: padding-all vertical
             events:
               - select
             callbacks:

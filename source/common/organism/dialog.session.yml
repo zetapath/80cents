@@ -41,7 +41,7 @@ children:
         - Atom.Text:
             id: error
             style: tiny error
-            value: 29019049034
+
   - Organism.Footer:
       id: footer
       children:
