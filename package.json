@@ -6,6 +6,7 @@
   "author"                      : "Javi Jimenez Villar",
   "dependencies": {
     "coffee-script"             : "*",
+    "moment"                    : "*",
     "nodemailer"                : "*",
     "nodemailer-smtp-transport" : "*",
     "password-hash"             : "*",
