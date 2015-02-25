@@ -34,6 +34,22 @@ class Atoms.Organism.Content extends Atoms.Organism.Article
 
   onPage: (atom) => @page atom.entity.id
 
+  onFilterChange: (event, form) ->
+    filter = form.value()
+
+    console.log form.value()
+    @section.products.select (item) ->
+      valid = true
+      if filter.title and item.title?.toLowerCase().indexOf(filter.title.toLowerCase()) is -1
+        valid = false
+      if filter.description and item.description?.toLowerCase().indexOf(filter.description.toLowerCase()) is -1
+        valid = false
+      if filter.min and parseInt(item.price) < parseInt(filter.min)
+        valid = false
+      if filter.max and parseInt(item.price) > parseInt(filter.max)
+        valid = false
+      return item if valid
+
   # -- Private Events ----------------------------------------------------------
   context: (id) =>
     @header.progress.value 0
@@ -51,6 +67,8 @@ class Atoms.Organism.Content extends Atoms.Organism.Article
     # -- Settings
     @section.settings.fetch() if id is "settings"
     @section.payments.fetch() if id is "payments"
+    # -- Filters
+    @section["#{id}_filter"]?.el.show()
 
   fetch: (id, entity) ->
     __.Entity[entity].destroyAll()
@@ -59,7 +77,6 @@ class Atoms.Organism.Content extends Atoms.Organism.Article
       __.Entity[entity].createOrUpdate item for item in response[id]
       @header.progress.value 100
       setTimeout (=> @header.progress.refresh value: 0), 500
-
 
   collection: (id) -> @showGroupForm id, "Collections", "collection"
 

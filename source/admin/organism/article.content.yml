@@ -108,6 +108,12 @@ children:
         # -- Product
         - Molecule.Product:
             id: product
+        - Molecule.Filter:
+            id: products_filter
+            events:
+              - change
+            callbacks:
+              - onFilterChange
         - Molecule.List:
             id: products
             style: horizontal
