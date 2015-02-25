@@ -15,7 +15,6 @@ children:
       id: section
       children:
         - Molecule.Navigation:
-            id: navigation
             events:
               - select
             callbacks:
@@ -23,51 +22,65 @@ children:
             children:
               - Atom.Link:
                   path: /admin/dashboard
+                  icon: graph1
                   text: dashboard
                   events:
                     - touch
               - Atom.Link:
                   path: /admin/orders
+                  icon: cart
                   text: orders
                   events:
                     - touch
               - Atom.Link:
                   path: /admin/customers
+                  icon: users
                   text: customers
                   events:
                     - touch
               - Atom.Link:
                   path: /admin/collections
+                  icon: box1
                   text: collections
                   events:
                     - touch
               - Atom.Link:
                   path: /admin/products
+                  icon: ticket
                   text: products
+                  info: ??
                   events:
                     - touch
 
               - Atom.Link:
                   path: /admin/pages
+                  icon: news-paper
                   text: pages
                   events:
                     - touch
 
+        - Molecule.Navigation:
+            events:
+              - select
+            callbacks:
+              - onOption
+            children:
               - Atom.Link:
                   style: anchor
                   path: /admin/settings
+                  icon: config
                   text: settings
                   events:
                     - touch
 
               - Atom.Link:
                   path: /admin/payments
+                  icon: cash
                   text: payments
                   events:
                     - touch
 
-              # - Atom.Link:
-              #     path: /admin/shipping
-              #     text: shipping
-
-  - Organism.Footer:
+              - Atom.Link:
+                  path: /admin/shipping
+                  icon: plane
+                  text: shipping

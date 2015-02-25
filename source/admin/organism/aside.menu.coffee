@@ -8,8 +8,10 @@ class Atoms.Organism.Menu extends Atoms.Organism.Aside
     super
     do @render
     id = Atoms.Url.path().split("/").slice(-1)[0]
-    for link in @section.navigation.children
-      link.el[if link.attributes.text is id then "addClass" else "removeClass"] "active"
+
+    for navigation in @section.children
+      for link in navigation.children
+        link.el[if link.attributes.text is id then "addClass" else "removeClass"] "active"
 
 
   # -- Children Bubble Events --------------------------------------------------

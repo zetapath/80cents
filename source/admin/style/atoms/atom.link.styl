@@ -15,28 +15,25 @@
       padding               : 0 U
       font-weight           : normal
       font-size             : FONT_SIZE_TINY
-      text-transform        : Capitalize
+      text-transform        : capitalize
+      > .icon
+        color               : lighten(DARK, 40%)
+        font-size           : U !important
+        margin-right        : (U / 4)
+      > small
+        background-color    : darken(DARK, 10%)
+        font-size           : FONT_SIZE_TINY
+        color               : WHITE
+        border-radius       : BORDER_RADIUS
+
       &:not(.active)
         color               : lighten(DARK, 50%)
       &.active, &:hover
         background-color    : darken(DARK, 25%)
       &.active
         color               : WHITE
-      &.anchor
-        margin-top          : (2 * U)
-        border-top          : solid 1px lighten(DARK, 5%)
-        position            : relative
-        &:before
-          content           : "Store"
-          position          : absolute
-          top               : -(2 * U)
-          font-size         : 90%
-          font-weight       : FONT_WEIGHT_BOLD
-          color             : lighten(DARK, 25%)
-      > .icon
-        color               : WHITE
-      > small
-        background-color    : THEME
-        font-weight         : bold
-        color               : WHITE
-        border-radius       : BORDER_RADIUS
+        > .icon
+          color             : THEME
+        > small
+          background-color  : THEME
+
