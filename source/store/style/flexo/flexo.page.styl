@@ -41,6 +41,19 @@ body
     &:not(.slideshow)
       padding                           : U 0
 
+    h3
+      text-align                  : center
+      &.margin-top
+        margin-top                : U
+      &:before, &:after
+        content                   : ""
+        margin                    : (SPACE / 2) SPACE
+        display                   : inline-block
+        width                     : U
+        height                    : (SPACE / 6)
+        background-color          : COLOR
+        opacity                   : 0.85
+
     .box
       box-shadow                          0 0 0 1px BOX
       border-radius                     : BORDER_RADIUS

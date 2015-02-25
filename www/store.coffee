@@ -33,16 +33,22 @@ module.exports = (zen) ->
 
 
   zen.get "/product/:id", (request, response) ->
-    Hope.join([ ->
+    Hope.shield([ ->
       Session request, response, redirect = true, owner = false, shopping = true
-    , ->
+    , (error, @session) =>
       Settings.cache()
-    , ->
+    , (error, @settings) =>
       filter = _id: request.parameters.id, visibility: true
       Product.search filter, limit = 1, null, populate = "collection_id"
-    ]).then (errors, values) ->
-      return response.redirect "/" unless values[2]
-      product = values[2].parse()
+    , (error, @product) =>
+      filter =
+        _id           : $nin: [@product._id]
+        collection_id : @product.collection_id
+        visibility    : true
+      Product.search filter, limit = 4
+    ]).then (error, products) =>
+      return response.redirect "/" if error
+      product = @product.parse()
       product.images.shift()
       product.if = {}
       for condition in ["colors", "sizes", "materials", "tags"]
@@ -51,9 +57,10 @@ module.exports = (zen) ->
         page        : "product"
         asset       : "store"
         host        : C.HOST[global.ZEN.type.toUpperCase()]
-        session     : values[0]
-        settings    : values[1]
+        session     : @session
+        settings    : @settings
         product     : product
+        related     : (product.parse() for product in products)
       response.page "base", bindings, ["store.header", "store.product", "store.footer"]
 
 
