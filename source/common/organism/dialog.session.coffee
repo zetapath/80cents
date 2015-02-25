@@ -7,9 +7,6 @@ class Atoms.Organism.Session extends Atoms.Organism.Dialog
   render: ->
     super
     @admin_mode = (Atoms.Url.path() is "/admin")
-    if @admin_mode
-      @header.navigation.el.hide()
-    else
 
   # -- Instance Methods --------------------------------------------------------
   login: ->

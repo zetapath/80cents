@@ -12,16 +12,12 @@
           box-shadow: none
         &, [data-atom-button], [data-atom-link]
           color: darken(BACKGROUND, 75%)
-        &.accept > [data-organism-header]
-          background-color: ACCEPT
-        &.cancel > [data-organism-header]
-          background-color: CANCEL
-        &.warning > [data-organism-header]
-          background-color: WARNING
-        &.accept, &.cancel, &.warning
-          > [data-organism-header]
-            &, [data-atom-button], [data-atom-link]
-              color: WHITE
+        > [data-organism-header]
+          height : HEIGHT = (3 * U)
+          > *
+            line-height: HEIGHT
+          > [data-atom-heading]
+            font-weight: FONT_WEIGHT_NORMAL
         > [data-organism-section]
           [data-atom-input]
             line-height: (2 * U)

@@ -7,12 +7,26 @@
       border                                : solid 1px FORM_COLOR !important
 
 [data-organism-dialog="session"]
+  min-width                                 : (20 * U)
+  [data-organism-header]
+    > [data-atom-heading]
+      padding                               : 0 !important
+      width                                 : 100%
+      text-align                            : center
+    > [data-molecule-navigation]
+      display                               : none !important
+
   [data-organism-section]
+    [data-atom-input]
+      font-size                             : FONT_SIZE_NORMAL !important
+      line-height                           : (3 * FONT_SIZE_NORMAL) !important
     [data-atom-text]
+      text-align                            : center
+      &:not(.tiny)
+        font-size                           : FONT_SIZE_SMALL
       &.tiny
         SIZE = (1.25 * U)
-        margin-left                         : -(SIZE)
-        margin-right                        : -(SIZE)
+        margin                              : SIZE -(SIZE)
         padding                             : 0 SIZE
         font-weight                         : FONT_WEIGHT_BOLD
         color                               : CANCEL
