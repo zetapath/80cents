@@ -83,6 +83,14 @@ children:
       id: footer
       children:
         - Molecule.Navigation:
+            style: align left
+            children:
+              - Atom.Button:
+                  text      : Logout
+                  callbacks :
+                    - onLogout
+
+        - Molecule.Navigation:
             id: navigation
             style: align right
             children:

@@ -17,6 +17,10 @@ module.exports = (zen) ->
       response.page "base", bindings, []
 
 
+  zen.get "/admin/logout", (request, response) ->
+    response.logout()
+    response.redirect "/admin"
+
   zen.get "/admin/:context", (request, response) ->
     Session(request, response, redirect = true, owner = true).then (error, session) ->
       return response.redirect "/admin" if not session

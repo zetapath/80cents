@@ -36,6 +36,9 @@ class Atoms.Organism.Profile extends Atoms.Organism.Dialog
         __.Aside.Menu.header.profile.refresh @entity
 
 
+  onLogout: ->
+    window.location = "/admin/logout"
+
   onSave: =>
     parameters = @section.form.value()
     __.proxy("PUT", "profile", parameters).then (error, @entity) =>
