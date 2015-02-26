@@ -41,9 +41,13 @@ __.scaffold.form_page =
     ]
   ,
     "Molecule.Form": children: [
+      "Atom.Input": type: "checkbox", name: "visibility"
+    ,
       "Atom.Label": value: "Visible"
     ,
-      "Atom.Switch": name: "visibility"
+      "Atom.Input": type: "checkbox", name: "header"
+    ,
+      "Atom.Label": value: "Header menu"
     ]
   ,
     "Atom.Label": style: "anchor"

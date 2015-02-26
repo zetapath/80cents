@@ -82,16 +82,6 @@ __.scaffold.form_product =
       "Atom.Label": value: "Requires shipping (not needed for services or digital goods)"
     ]
   ,
-    "Atom.Label": style: "anchor entity"
-  ,
-    "Molecule.Div": style: "entity", children: [
-      "Atom.Heading": size: "h2", value: "Images"
-    ,
-      "Atom.Text": value: "Upload and edit images of this product. Drag to reorder images."
-    ]
-  ,
-    "Molecule.Images": style: "entity", id: "images"
-  ,
     "Atom.Label": style: "anchor"
   ,
     "Molecule.Div": children: [
@@ -105,6 +95,16 @@ __.scaffold.form_product =
     ,
       "Atom.Select": id: "id", name: "collection_id", options: []
     ]
+  ,
+    "Atom.Label": style: "anchor entity"
+  ,
+    "Molecule.Div": style: "entity", children: [
+      "Atom.Heading": size: "h2", value: "Images"
+    ,
+      "Atom.Text": value: "Upload and edit images of this product. Drag to reorder images."
+    ]
+  ,
+    "Molecule.Images": style: "entity", id: "images"
   ,
     "Atom.Label": style: "anchor"
   ,

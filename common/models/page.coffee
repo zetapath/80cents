@@ -53,6 +53,7 @@ Page.methods.parse = ->
   title             : @title
   content           : @content
   search            : @search
+  header            : @header
   visibility        : @visibility
   updated_at        : @updated_at
   created_at        : @created_at
