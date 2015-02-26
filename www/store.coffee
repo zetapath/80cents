@@ -64,6 +64,28 @@ module.exports = (zen) ->
       response.page "base", bindings, ["store.header", "store.product", "store.footer"]
 
 
+  zen.get "/tag/:id", (request, response) ->
+    Hope.join([ ->
+      Session request, response, redirect = true, owner = false, shopping = true
+    , ->
+      Settings.cache()
+    , ->
+      Product.search
+        tags      : $in: [request.parameters.id]
+        visibility: true
+    ]).then (errors, values) ->
+      return response.redirect "/" if values[2].length is 0
+      bindings =
+        page        : "collection"
+        asset       : "store"
+        host        : C.HOST[global.ZEN.type.toUpperCase()]
+        session     : values[0]
+        settings    : values[1]
+        products    : (product.parse() for product in values[2])
+        collection  : title: request.parameters.id
+      response.page "base", bindings, ["store.header", "store.collection", "store.footer"]
+
+
   zen.get "/:page", (request, response) ->
     home = request.parameters.page is ''
     Hope.join([ ->

@@ -1,5 +1,5 @@
 {{! -- COLLECTION ----------------------------------------------------------- }}
-<article class="slideshow" data-flex="vertical center" style="background-image: url(/assets/uploads/{{collection.default_image}});">
+<article class="slideshow" data-flex="vertical center" {{#collection.default_image}}style="background-image: url(/assets/uploads/{{collection.default_image}});"{{/collection.default_image}}>
   <div class="overlay"></div>
   <h2>{{collection.title}}</h2>
 </article>
