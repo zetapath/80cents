@@ -50,5 +50,6 @@
       {{#product}}__.product = "{{product.id}}";{{/product}}
       {{#order}}__.order = "{{order.id}}";{{/order}}
     </script>
+    {{#settings.google_analytics}}<script>{{{settings.google_analytics}}}</script>{{/settings.google_analytics}}
   </body>
 </html>

@@ -85,7 +85,7 @@ __.scaffold.form_settings =
     "Molecule.Form": children: [
       "Atom.Label": value: "Google Analytics account"
     ,
-      "Atom.Textarea": name: "ganalytics", placeholder: "Paste your code from Google Here"
+      "Atom.Textarea": name: "google_analytics", placeholder: "Paste your code from Google Here", style: "code"
     ]
   ,
     "Atom.Label": style: "anchor"
