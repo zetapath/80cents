@@ -9,15 +9,14 @@ class Atoms.Molecule.Order extends Atoms.Molecule.FormGroup
     super
     __.Entity.OrderLine.destroyAll()
     if @entity
-      __.proxy("GET", "order", id: @entity , true).then (error, product) =>
+      __.proxy("GET", "order", id: @entity , true).then (error, order) =>
         @trigger "progress", 60
-        @entity = __.Entity.Order.createOrUpdate product
+        @entity = __.Entity.Order.createOrUpdate order
 
         @el.show()
         form.value @entity for form in @children when form.constructor.name is "Form"
         @shipping.value @entity.shipping
         @billing.value @entity.billing
-
         __.Entity.OrderLine.createOrUpdate line for line in @entity.lines
 
         Atoms.Url.path "admin/order/#{@entity.id}"

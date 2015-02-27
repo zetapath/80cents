@@ -11,6 +11,8 @@ __.scaffold.form_order =
     ]
   ,
     "Molecule.Form": children: [
+      "Atom.Input": style: "hidden", name: "user"
+    ,
       "Atom.Label": style: "half", value: "Id"
     ,
       "Atom.Label": style: "half", value: "Amount"
@@ -32,9 +34,9 @@ __.scaffold.form_order =
       "Atom.Text": value: "Addresses for the order"
     ]
   ,
-    "Molecule.Address": id: "shipping", style: "half", title: "Billing Contact"
+    "Molecule.Address": id: "shipping", style: "half", title: "Shipping Contact"
   ,
-    "Molecule.Address": id: "billing", style: "half", title: "Shipping Contact"
+    "Molecule.Address": id: "billing", style: "half", title: "Billing Contact"
   ,
     "Atom.Label": style: "anchor"
   ,

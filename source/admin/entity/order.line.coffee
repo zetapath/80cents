@@ -14,6 +14,7 @@ class __.Entity.OrderLine extends Atoms.Class.Entity
 
   # -- Instance Methods
   parse: ->
-    text        : @id
+    image       : "#{__.host}assets/uploads/#{@product.default_image}"
+    text        : @product.title
     description : @amount
     info        : "#{@quantity} units"

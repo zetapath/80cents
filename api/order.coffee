@@ -76,15 +76,17 @@ module.exports = (server) ->
         parameters = {}
         for key, value of request.parameters when key in AVAILABLE
           parameters[key] = value
-        filter =
-          _id   : request.parameters.id
-          user  : session._id
+        filter = _id: request.parameters.id
+        if session.type is C.USER.TYPE.OWNER
+          filter.user = request.parameters.user if request.parameters.user
+        else
+          filter = user: session._id
         Order.updateAttributes filter, parameters
       ]).then (error, value) ->
         if error
           response.json message: error.code, error.message
         else
-          response.json order: value.parse()
+          response.json order: value?.parse()
 
   # -- Owner/Customer ----------------------------------------------------------
   server.get "/api/order", (request, response) ->
@@ -93,7 +95,6 @@ module.exports = (server) ->
     , (error, @session) =>
       Settings.cache()
     , (error, @settings) =>
-      limit = 0
       if @session.type is C.USER.TYPE.OWNER
         filter = state: $gt: C.ORDER.STATE.SHOPPING
         filter.user = request.parameters.user if request.parameters.user
@@ -103,11 +104,14 @@ module.exports = (server) ->
         filter._id = request.parameters.id
         limit = 1
       Order.search filter, limit
-    ]).then (error, value) =>
+    , (error, @order) =>
+      OrderLine.search order: @order._id
+    ]).then (error, @lines) =>
       return response.unauthorized() if error
       if request.parameters.id
-        result = value.parse()
+        result = @order.parse()
         result.settings = @settings
+        result.lines = (line.parse() for line in @lines)
       else
-        result = orders: (order.parse() for order in value)
+        result = orders: (order.parse() for order in @order)
       response.json result
