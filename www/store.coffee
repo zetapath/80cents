@@ -29,7 +29,12 @@ module.exports = (zen) ->
         settings    : values[1]
         collection  : values[2].parse()
         products    : (product.parse() for product in values[3])
-      response.page "base", bindings, ["store.header", "store.collection", "store.footer"]
+        meta        : _customizeMeta values[1], values[2]
+      response.page "base", bindings, [
+        "store.header"
+        "store.collection"
+        "partial.products"
+        "store.footer"]
 
 
   zen.get "/product/:id", (request, response) ->
@@ -38,7 +43,12 @@ module.exports = (zen) ->
     , (error, @session) =>
       Settings.cache()
     , (error, @settings) =>
-      filter = _id: request.parameters.id, visibility: true
+      filter =
+        $or: [
+          _id                 : request.parameters.id
+        ,
+          "search.url_handle" : request.parameters.id]
+        visibility: true
       Product.search filter, limit = 1, null, populate = "collection_id"
     , (error, @product) =>
       filter =
@@ -60,8 +70,13 @@ module.exports = (zen) ->
         session     : @session
         settings    : @settings
         product     : product
-        related     : (product.parse() for product in products)
-      response.page "base", bindings, ["store.header", "store.product", "store.footer"]
+        products    : (product.parse() for product in products)
+        meta        : _customizeMeta @settings, @product
+      response.page "base", bindings, [
+        "store.header"
+        "store.product"
+        "partial.products"
+        "store.footer"]
 
 
   zen.get "/tag/:id", (request, response) ->
@@ -83,7 +98,11 @@ module.exports = (zen) ->
         settings    : values[1]
         products    : (product.parse() for product in values[2])
         collection  : title: request.parameters.id
-      response.page "base", bindings, ["store.header", "store.collection", "store.footer"]
+      response.page "base", bindings, [
+        "store.header"
+        "store.collection"
+        "partial.products"
+        "store.footer"]
 
 
   zen.get "/:page", (request, response) ->
@@ -112,8 +131,16 @@ module.exports = (zen) ->
         bindings.products = (product.parse() for product in values[3])
       else
         bindings.content = values[3]?.parse()
-        bindings.meta =
-          title       : bindings.content?.meta?.page_title or bindings.settings.title
-          description : bindings.content?.meta?.meta_description or bindings.settings.description
+        bindings.meta = _customizeMeta bindings.settings, bindings.content
       partial = if home then "home" else "page"
-      response.page "base", bindings, ["store.header", "store.#{partial}", "store.footer"]
+      response.page "base", bindings, [
+        "store.header"
+        "store.#{partial}"
+        # "partial.products"
+        "store.footer"]
+
+
+_customizeMeta = (settings, values) ->
+  meta =
+    title       : values?.search?.page_title or settings.title
+    description : values?.search?.meta_description or settings.description

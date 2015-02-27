@@ -15,15 +15,5 @@
     {{/collections}}
   </nav>
   <h3 class="margin-top">Featured Products</h3>
-  <nav data-shopio="products" data-flex="horizontal center wrap">
-    {{#products}}
-    <a href="/product/{{id}}" data-flex="vertical center">
-      <figure data-flex="vertical center" style="background-image: url(/assets/uploads/{{default_image}});">
-        <button>View product</button>
-      </figure>
-      <strong>{{title}}</strong>
-      <small>{{price}}{{settings.currency}}</small>
-    </a>
-    {{/products}}
-  </nav>
+  {{> partial.products}}
 </article>

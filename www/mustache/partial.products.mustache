@@ -1,0 +1,12 @@
+<nav data-shopio="products" data-flex="horizontal center wrap">
+  {{#products}}
+  <a href="/product/{{shortcut}}" data-flex="vertical center">
+    <figure data-flex="vertical center" style="background-image: url(/assets/uploads/{{default_image}});">
+      <button>View product</button>
+    </figure>
+    <small class="uppercase">category</small>
+    <strong class="uppercase">{{title}}</strong>
+    <small>{{price}}{{settings.currency}}</small>
+  </a>
+  {{/products}}
+</nav>
