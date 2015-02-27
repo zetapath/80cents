@@ -21,7 +21,6 @@ class Atoms.Molecule.Customer extends Atoms.Molecule.FormGroup
         form.value @entity for form in @children when form.constructor.name is "Form"
         # -- Orders
         __.Entity.Order.createOrUpdate order for order in values[1].orders
-        console.log __.Entity.Order.all()
 
         Atoms.Url.path "admin/customer/#{@entity.id}"
         @trigger "progress", 100

@@ -6,7 +6,6 @@ class Atoms.Organism.Profile extends Atoms.Organism.Dialog
 
   show: ->
     __.proxy("GET", "profile").then (error, @entity) =>
-      console.log @entity
       @section.form.value @entity
       @section.form.avatar.refresh url: "/assets/uploads/#{@entity.avatar}"
       super

@@ -27,6 +27,5 @@ class Atoms.Molecule.Payments extends Atoms.Molecule.FormGroup
     super
     __.proxy("GET", "settings", null, true).then (error, @entity) =>
       @trigger "progress", 100
-      console.log @entity
       for payment in ["paypal", "stripe", "bank_transfer"]
         @[payment]?.value @entity.payments?[payment]

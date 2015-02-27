@@ -1,0 +1,21 @@
+[data-organism-header]
+  background-color: red
+
+  > [data-atom-icon]
+    position                      : absolute
+    height                        : SIZE = (3.4 * U)
+    width                         : SIZE
+    display                       : block !important
+    top                           : 0
+    right                         : 0
+    font-size                     : (2 * U)
+    text-align                    : center
+    line-height                   : SIZE
+    color                         : WHITE
+    background-color              : THEME
+    transform                       translateX(200%)
+    transition                      all (2 * ANIMATION_DURATION) ANIMATION_DURATION
+    &.active
+      opacity                     : 1
+      transform                     translateX(0)
+      transition                    all ANIMATION_DURATION

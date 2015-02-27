@@ -16,10 +16,8 @@ class Atoms.Organism.Content extends Atoms.Organism.Article
     if url.length is 3 then @context url[2] else @[url[2]] url[3]
 
     # -- Bindings
-    for formgroup in ["order", "collection", "product", "settings", "payments"]
-      @section[formgroup].bind "progress", (value) =>
-        @header.progress.value value
-        setTimeout (=> @header.progress.refresh value: 0), 500 if value is 100
+    for formgroup in ["order", "customer", "collection", "product", "settings", "payments"]
+      @section[formgroup].bind "progress", @progress
 
   # -- Children Bubble Events --------------------------------------------------
   onButton: (event, atom) -> do @[atom.attributes.callback]
@@ -37,7 +35,6 @@ class Atoms.Organism.Content extends Atoms.Organism.Article
   onFilterChange: (event, form) ->
     filter = form.value()
 
-    console.log form.value()
     @section.products.select (item) ->
       valid = true
       if filter.title and item.title?.toLowerCase().indexOf(filter.title.toLowerCase()) is -1
@@ -53,6 +50,9 @@ class Atoms.Organism.Content extends Atoms.Organism.Article
   # -- Private Events ----------------------------------------------------------
   context: (id) =>
     @header.progress.value 0
+    @header.ok.el.removeClass "active"
+    @header.ok.el.hide()
+
     @header.title.refresh text: id, href: "/admin/#{id}"
     @header.subtitle.refresh value: null
     for button in @header.navigation.children
@@ -97,3 +97,12 @@ class Atoms.Organism.Content extends Atoms.Organism.Article
 
   hideHeaderButtons: ->
     @header.navigation.el.children().hide()
+
+  progress: (value) =>
+    @header.progress.value value
+    if value is 100
+      @header.ok.el.addClass "active"
+      setTimeout =>
+        @header.progress.refresh value: 0
+        @header.ok.el.removeClass "active"
+      , 500

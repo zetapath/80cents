@@ -38,6 +38,9 @@ children:
                   callback: page
         - Atom.Progress:
             id: progress
+        - Atom.Icon:
+            id: ok
+            icon: check
 
   - Organism.Section:
       id: section
