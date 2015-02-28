@@ -2,6 +2,8 @@
 
 Hope        = require("zenserver").Hope
 User        = require "../common/models/user"
+Settings    = require "../common/models/settings"
+mailer      = require "../common/mailer"
 Session     = require "../common/session"
 C           = require "../common/constants"
 
@@ -10,6 +12,8 @@ module.exports = (server) ->
   server.post "/api/signup", (request, response) ->
     if request.required ["mail", "password"]
       Hope.chain([ ->
+        Settings.cache()
+      , (error, @settings) =>
         User.search type: C.USER.TYPE.OWNER
       , (error, users) ->
         if users.length > 0
@@ -17,9 +21,13 @@ module.exports = (server) ->
         else
           request.parameters.type = C.USER.TYPE.OWNER
         User.signup request.parameters
-      ]).then (error, user) ->
+      ]).then (error, @user) =>
         return response.conflict() if error?
-        response.json user.parse()
+        response.json @user.parse()
+        if @user.type isnt C.USER.TYPE.OWNER
+          mailer @user.mail, "Welcome to #{@settings.name}", "welcome",
+            settings  : @settings
+            user      : @user
 
 
   server.post "/api/login", (request, response) ->

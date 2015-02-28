@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width"/>
+    <link href='http://fonts.googleapis.com/css?family=Podkova:400,700' rel='stylesheet' type='text/css'>
+    <style>
+      body {
+        width:100% !important;
+        min-width: 100%;
+        -webkit-text-size-adjust:100%;
+        -ms-text-size-adjust:100%;
+        margin:0;
+        padding:0;}
+
+      img {
+        outline:none;
+        text-decoration:none;
+        -ms-interpolation-mode: bicubic;
+        width: auto;
+        max-width: 100%;
+        float: left;
+        clear: both;
+        display: block;
+        border: none;}
+
+      center {
+        width: 100%;
+        min-width: 580px;}
+
+      table {
+        border-spacing: 0;
+        border-collapse: collapse;
+        height: 100%;
+        width: 100%;}
+
+      td {
+        word-break: break-word;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        hyphens: auto;
+        border-collapse: collapse !important;}
+
+      table, tr, td {
+        padding: 0;
+        vertical-align: top;
+        text-align: left;}
+
+        table.content {
+          max-width: 512px;
+          display: block;
+          margin: 16px 0;}
+
+      .logo {
+        max-height: 36px;}
+
+      .ghost {
+        opacity: 0.5;}
+
+      /* Typography */
+      body, h1, h2, h3, h4, h5, h6, p, td {
+        color: #4c4c4c;
+        font-family:  "Podkova", "Helvetica", "Arial", sans-serif;
+        font-size: 16px;
+        font-weight: lighter;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+        line-height: 1.3;}
+
+      h1 {
+        font-size: 32px;}
+
+      h2 {
+        font-size: 20px;}
+
+
+      h1, h2 {
+        word-break: normal;}
+
+      p {
+        margin: 16px 0;}
+
+      hr {
+        border: none;
+        margin: 32px;}
+
+      h1, strong {
+        font-weight: bold;}
+
+      a {
+        color: #b99d61;
+        text-decoration: none;}
+
+        a:hover, a:active, a:visited {
+          color: #b99d61 !important;}
+
+      .order {
+        margin: 2rem 0;}
+        .order thead {
+          border-bottom: solid 1px #4c4c4c; }
+        .order td {
+          line-height: 2rem;}
+        .order .center {
+          text-align: center;}
+        .order .right {
+          text-align: right;}
+
+      @media only screen and (max-width: 600px) {
+        center {
+          min-width: 100%;}
+
+        table.content {
+          max-width: 320px;}
+      }
+    </style>
+  </head>
+
+  <body>
+    <table class="body">
+      <tr>
+        <td class="center" align="center" valign="top">
+          <center>
+            <table class="header content">
+              <tr>
+                <td>
+                  <a href="{{settings.url}}">
+                    <img src="{{settings.url}}/assets/img/{{settings.logo}}" class="logo">
+                  </a>
+                </td>
+              </tr>
+            </table>
+
+            <table class="content">
+              <tr>
+                <td>
+                  {{> mail.welcome}}
+                  {{> mail.order}}
+                  <p><small class="ghost">ps. any questions? Just hit reply and we’ll get right back to you.</small></p>
+
+                </td>
+              </tr>
+            </table>
+          </center>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
