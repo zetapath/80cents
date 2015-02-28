@@ -1,13 +1,13 @@
 "use strict"
+stripe      = require("stripe")
 Hope        = require("zenserver").Hope
-Session     = require "../common/session"
 Product     = require "../common/models/product"
 Order       = require "../common/models/order"
 OrderLine   = require "../common/models/order_line"
 Settings    = require "../common/models/settings"
+mailer      = require "../common/mailer"
+Session     = require "../common/session"
 C           = require "../common/constants"
-stripe      = require("stripe")
-# stripe      = require("stripe")(settings.payments.stripe.secret_key)
 
 module.exports = (server) ->
 
@@ -29,6 +29,8 @@ module.exports = (server) ->
           payment_token : token
         Order.updateAttributes filter, values
       , (error, @order) =>
+        OrderLine.search order: @order._id
+      , (error, @lines) =>
         promise = new Hope.Promise()
         values =
           amount      : @order.amount.toFixed(2).toString().replace(".", ""),
@@ -40,15 +42,12 @@ module.exports = (server) ->
           promise.done error, charge
         promise
       ]).then (error, charge) =>
-        console.log error, charge
         if error
           response.json message: error.code, error.message
         else
           response.ok()
-          # mailer = new Mail
-          # mailer.send
-          #   file    : C.ORDER.STATES[C.ORDER.STATE.PURCHASED].toLowerCase()
-          #   to      : @session.mail
-          #   subject : "Nomada.io order"
-          #   user    : @session.parse()
-          #   order   : @order.parse()
+          mailer @session.mail, "Your order from #{@settings.name}", "order",
+            settings  : @settings
+            user      : @session
+            order     : @order
+
