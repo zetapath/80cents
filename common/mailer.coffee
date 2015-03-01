@@ -27,7 +27,7 @@ module.exports = (to, subject, file, bindings) ->
         html    : email.html
       # -- Send email
       transport.sendMail data, (error, value) ->
-        console.log "transport.sendMail", error, value
+        console.log " *", "[MAIL]", "#{subject} to #{to}"
 
 # -- Private methods -----------------------------------------------------------
 __cachedMustache = {}

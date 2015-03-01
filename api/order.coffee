@@ -6,6 +6,8 @@ Product     = require "../common/models/product"
 Order       = require "../common/models/order"
 OrderLine   = require "../common/models/order_line"
 Settings    = require "../common/models/settings"
+User        = require "../common/models/user"
+mailer      = require "../common/mailer"
 C           = require "../common/constants"
 AVAILABLE   = ["comment", "shipping", "billing", "state", "payment_type", "tracking_number"]
 
@@ -72,21 +74,34 @@ module.exports = (server) ->
     if request.required ["id"]
       Hope.shield([ ->
         Session request, response
-      , (error, session) ->
+      , (error, @session) =>
+        Settings.cache()
+      , (error, @settings) =>
         parameters = {}
         for key, value of request.parameters when key in AVAILABLE
           parameters[key] = value
         filter = _id: request.parameters.id
-        if session.type is C.USER.TYPE.OWNER
+        if @session.type is C.USER.TYPE.OWNER
           filter.user = request.parameters.user if request.parameters.user
         else
-          filter = user: session._id
+          filter = user: @session._id
         Order.updateAttributes filter, parameters
-      ]).then (error, value) ->
+      , (error, @order) =>
+        OrderLine.search order: @order._id
+      , (error, @lines) =>
+        User.search _id: @order.user, limit = 1
+      ]).then (error, @user) =>
         if error
           response.json message: error.code, error.message
         else
-          response.json order: value?.parse()
+          response.json order: @order.parse()
+          if @session.type is C.USER.TYPE.OWNER
+            order = @order.parse()
+            mailer @user.mail, "#{@settings.name} - Order #{order.id} #{order.state_label}", "order",
+              settings  : @settings
+              user      : @user
+              order     : order
+              lines     : (line.parse() for line in @lines)
 
   # -- Owner/Customer ----------------------------------------------------------
   server.get "/api/order", (request, response) ->

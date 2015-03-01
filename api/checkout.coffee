@@ -46,8 +46,9 @@ module.exports = (server) ->
           response.json message: error.code, error.message
         else
           response.ok()
-          mailer @session.mail, "Your order from #{@settings.name}", "order",
+          order = @order.parse()
+          mailer @session.mail, "#{@settings.name} - Order #{order.id} #{order.state_label}", "order",
             settings  : @settings
             user      : @session
-            order     : @order
-
+            order     : order
+            lines     : (line.parse() for line in @lines)

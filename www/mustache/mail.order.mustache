@@ -1,8 +1,8 @@
-<h1>Order processed</h1>
-<h2 class="ghost">Each product has independent tracking number</h2>
+<h1>Order {{order.state_label}}</h1>
+<h2 class="ghost">Below you will find your order information</h2>
 <hr/>
 <p>Dear <strong>{{user.name}}</strong>,</p>
-<p>Your Order no. <strong><a href="{{settings.url}}/order/{{order._id}}">{{order.id}}</a></strong> has been accepted. In the next 72 hours will prepare your order for shipping. </p>
+<p>Your Order no. <strong><a href="{{settings.url}}/order/{{order.id}}">{{order.id}}</a></strong> has been {{order.state_label}}.</p>
 
 <table class="order">
   <thead>
@@ -30,7 +30,9 @@
   </tbody>
 </table>
 
-<p>Remember that all our products include shipping costs. So the price will never increase. For reduce shipping times each product have their own tracking number.</p>
+{{#order.tracking_number}}
+<p>Your order tracking number is <strong>{{order.tracking_number}}</strong>.</p>
+{{/order.tracking_number}}
 
 <p>Sincerely,</p>
 <a href="{{settings.url}}"><strong>{{settings.name}}</strong></a>
