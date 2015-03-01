@@ -38,6 +38,8 @@ class Atoms.Organism.Session extends Atoms.Organism.Dialog
       else
         @section.error.el.html(error.message).show()
 
+  onContext: (event, atom) -> do @[atom.attributes.context]
+
   onClose: ->
     do @hide
     false

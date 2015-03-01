@@ -18,7 +18,6 @@ children:
       id: section
       children:
         - Atom.Text:
-            style: login-context
             value: Fill the form with your credentials.
         - Molecule.Form:
             id: form
@@ -38,6 +37,26 @@ children:
                   style       : align center
                   events:
                     - keyup
+        - Molecule.Navigation:
+            events:
+              - select
+            callbacks:
+              - onContext
+            children:
+              - Atom.Link:
+                  href  : /signup
+                  text  : Click here if you haven't an account.
+                  style : login-context
+                  context: signup
+                  events:
+                    - touch
+              - Atom.Link:
+                  href  : /login
+                  text  : Click here if you have an account.
+                  style : signup-context
+                  context: login
+                  events:
+                    - touch
         - Atom.Text:
             id: error
             style: tiny error

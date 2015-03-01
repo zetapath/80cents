@@ -9,7 +9,16 @@ C           = require "../common/constants"
 
 module.exports = (zen) ->
 
-  zen.get "/profile/logout", (request, response) ->
+  zen.get "/login", (request, response) ->
+    Session(request, response, redirect = true).then (error, session) ->
+      return response.redirect "/profile" if session
+      response.page "base",
+        page        : "login"
+        asset       : "store"
+        host        : C.HOST[global.ZEN.type.toUpperCase()]
+
+
+  zen.get "/logout", (request, response) ->
     response.session null
     response.redirect "/"
 
