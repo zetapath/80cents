@@ -55,7 +55,7 @@ _upload = (file, entity) ->
   if entity.avatar
     file_name = "#{entity._id}#{path.extname(file.name)}"
   else
-    file_name = "#{entity._id}_#{file.name}".replace(/ /g,"_").toLowerCase()
+    file_name = "#{file.name}".replace(/ /g,"_").toLowerCase()
   destiny = path.join IMAGES_PATH, file_name
   fs.rename file.path, destiny, (error, result)->
     return promise.done true if error?
