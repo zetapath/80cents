@@ -16,7 +16,7 @@ class Atoms.Organism.Content extends Atoms.Organism.Article
     if url.length is 3 then @context url[2] else @[url[2]] url[3]
 
     # -- Bindings
-    for formgroup in ["order", "customer", "collection", "product", "settings", "payments"]
+    for formgroup in ["order", "customer", "collection", "product", "page", "settings", "payments"]
       @section[formgroup].bind "progress", @progress
 
   # -- Children Bubble Events --------------------------------------------------
