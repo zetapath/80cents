@@ -15,5 +15,3 @@ mongo:
     host    : localhost
     port    : 27017
     db      : shopio
-    # user    : admin
-    # password: password

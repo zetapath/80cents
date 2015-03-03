@@ -6,28 +6,30 @@ nodemailer    = require "nodemailer"
 smtpTransport = require 'nodemailer-smtp-transport'
 fs            = require "fs"
 premailer     = require "premailer-api"
-transport     = nodemailer.createTransport smtpTransport
+if global.ZEN.mail
+  transport   = nodemailer.createTransport smtpTransport
                   host  : global.ZEN.mail.host
                   auth  :
                     user: global.ZEN.mail.user
                     pass: global.ZEN.mail.password
 
 module.exports = (to, subject, file, bindings) ->
-  files = {}
-  files["mail.#{file}"] = __mustache "mail.#{file}"
-  body = Mustache.render __mustache("base.mail"), bindings, files
+  if transport
+    files = {}
+    files["mail.#{file}"] = __mustache "mail.#{file}"
+    body = Mustache.render __mustache("base.mail"), bindings, files
 
-  premailer.prepare html: body, (error, email) =>
-    unless error
-      # -- Mail data
-      data =
-        from    : "#{bindings.settings.name} <#{global.ZEN.mail.user}>"
-        to      : to
-        subject : subject
-        html    : email.html
-      # -- Send email
-      transport.sendMail data, (error, value) ->
-        console.log " *", "[MAIL]", "#{subject} to #{to}"
+    premailer.prepare html: body, (error, email) =>
+      unless error
+        # -- Mail data
+        data =
+          from    : "#{bindings.settings.name} <#{global.ZEN.mail.user}>"
+          to      : to
+          subject : subject
+          html    : email.html
+        # -- Send email
+        transport.sendMail data, (error, value) ->
+          console.log " *", "[MAIL]", "#{subject} to #{to}"
 
 # -- Private methods -----------------------------------------------------------
 __cachedMustache = {}
