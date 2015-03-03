@@ -47,6 +47,22 @@ class Atoms.Organism.Content extends Atoms.Organism.Article
         valid = false
       return item if valid
 
+   onFilterOrderChange: (event, form) ->
+    filter = form.value()
+    @section.orders.select (item) ->
+      valid = true
+      if filter.id and item.id?.toLowerCase().indexOf(filter.id.toLowerCase()) is -1
+        valid = false
+      if filter.state and item.state.toString() isnt filter.state.toString()
+        valid = false
+      if filter.tracking and item.tracking_number?.toLowerCase().indexOf(filter.tracking.toLowerCase()) is -1
+        valid = false
+      if filter.min and parseInt(item.amount) < parseInt(filter.min)
+        valid = false
+      if filter.max and parseInt(item.amount) > parseInt(filter.max)
+        valid = false
+      return item if valid
+
   # -- Private Events ----------------------------------------------------------
   context: (id) =>
     @header.progress.value 0

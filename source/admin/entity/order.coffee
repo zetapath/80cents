@@ -19,5 +19,5 @@ class __.Entity.Order extends Atoms.Class.Entity
   # -- Instance Methods
   parse: ->
     text        : @id
-    description : @amount
-    info        : moment(@created_at).fromNow()
+    description : "#{@lines.length} products - #{@amount}"
+    info        : @created_at

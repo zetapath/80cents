@@ -53,6 +53,12 @@ children:
         # -- Order
         - Molecule.Order:
             id: order
+        - Molecule.FilterOrder:
+            id: orders_filter
+            events:
+              - change
+            callbacks:
+              - onFilterOrderChange
         - Molecule.List:
             id: orders
             style: padding-all vertical

@@ -24,7 +24,7 @@
     min-height                        : (16 * U)
     font-size                         : 12px
 
-[data-molecule-form="filter"]
+[data-molecule-form="filter"], [data-molecule-form="filterorder"]
   z-index                             : 1
   position                            : fixed
   left                                : 0
@@ -32,8 +32,8 @@
   padding                             : (U / 2) U
   background-color                    : lighten(BACKGROUND, 50%) !important
   box-shadow                          : 0 1px darken(BACKGROUND, 5%)
-  > [data-atom-input]
-    line-height                       : (2 * U)
+  > [data-atom-input], > [data-atom-select]
+    line-height                       : (2 * U) !important
     &:not(:last-child)
       margin-right                    : U
     &:not([type=number])
