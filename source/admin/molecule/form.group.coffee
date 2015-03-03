@@ -4,6 +4,8 @@ class Atoms.Molecule.FormGroup extends Atoms.Molecule.Div
 
   # -- Children Bubble Events --------------------------------------------------
   onSave: ->
+    @trigger "progress", 0
+
     properties = {}
     valid = true
     for form in @children when form.constructor.base is "Form" and valid
@@ -12,6 +14,7 @@ class Atoms.Molecule.FormGroup extends Atoms.Molecule.Div
         field.el.focus()
         break
       properties[key] = value for key, value of form.value()
+    @trigger "progress", 20
 
     if valid
       # -- Format specific values

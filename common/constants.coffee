@@ -32,4 +32,4 @@ module.exports =
   # -- ENVIRONMENT URL ---------------------------------------------------------
   HOST:
     DEVELOPMENT   : "#{global.ZEN.protocol}://#{global.ZEN.host}:#{global.ZEN.port}/"
-    PRODUCTION    : "https://"
+    PRODUCTION    : "#{global.ZEN.protocol}://#{global.ZEN.host}/"
