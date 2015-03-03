@@ -123,7 +123,8 @@ module.exports = (zen) ->
       Collection.search visibility: true
     , ->
       if home
-        Product.search visibility: true, highlight: true
+        query = visibility: true, highlight: true
+        Product.search query, limit = 0, page = 1, populate = ["collection_id"]
       else
         Page.search "search.url_handle": request.parameters.page, limit = 1
     ]).then (errors, values) ->
