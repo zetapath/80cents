@@ -12,6 +12,7 @@ C           = require "../common/constants"
 module.exports = (zen) ->
 
   zen.get "/collection/:id", (request, response) ->
+    @session = @settings = @collection = @products = undefined
     Hope.shield([ ->
       Session request, response, redirect = true, owner = false, shopping = true
     , (error, @session) =>
@@ -44,6 +45,7 @@ module.exports = (zen) ->
 
 
   zen.get "/product/:id", (request, response) ->
+    @session = @settings = @product = undefined
     Hope.shield([ ->
       Session request, response, redirect = true, owner = false, shopping = true
     , (error, @session) =>

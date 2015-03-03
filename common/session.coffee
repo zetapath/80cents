@@ -22,7 +22,7 @@ module.exports = (request, response, redirect = false, owner = false, shopping =
         promise.done error, session
   else
     if redirect
-      promise.done true
+      promise.done undefined, undefined
     else
       do response.logout
       do response.unauthorized
