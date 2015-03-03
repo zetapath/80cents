@@ -34,7 +34,7 @@ __.scaffold.form_collection =
   ,
     "Atom.Label": style: "anchor"
   ,
-    "Molecule.Div": style: "entity", children: [
+    "Molecule.Div": children: [
       "Atom.Heading": size: "h2", value: "Search engines"
     ,
       "Atom.Text": value: "Set up the page title, meta description and handle. These help define how this product shows up on search engines."

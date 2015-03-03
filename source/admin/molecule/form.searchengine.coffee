@@ -14,9 +14,11 @@ class Atoms.Molecule.SearchEngine extends Atoms.Molecule.Form
     ,
       "Atom.Textarea": name: "meta_description", placeholder: "less than 160 characters", maxlength: 160
     ,
-      "Atom.Label": value: "URL & Handle"
+      "Atom.Label": value: "URL handle"
     ,
-      "Atom.Input": name: "url_handle", placeholder: "http://"
+      "Atom.Input": name: "url_handle", placeholder: "less than 20 characters"
+    ,
+      "Atom.Label": style: "tip", value: "Is a specific endpoint for the current category."
     ]
 
   value: (values) ->

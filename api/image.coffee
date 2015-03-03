@@ -52,14 +52,14 @@ module.exports = (server) ->
 # -- Private Methods -----------------------------------------------------------
 _upload = (file, entity) ->
   promise = new Hope.Promise()
-  if entity.avatar
+  if entity.avatar?
     file_name = "#{entity._id}#{path.extname(file.name)}"
   else
     file_name = "#{file.name}".replace(/ /g,"_").toLowerCase()
   destiny = path.join IMAGES_PATH, file_name
   fs.rename file.path, destiny, (error, result)->
     return promise.done true if error?
-    if entity.avatar
+    if entity.avatar?
       entity.avatar = file_name
     else
       entity.images.addToSet file_name

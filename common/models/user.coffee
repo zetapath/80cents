@@ -16,7 +16,7 @@ User = new Schema
   phone           : type: String
   homepage        : type: String
   bio             : type: String
-  avatar          : type: String
+  avatar          : type: String, default: "avatar.jpg"
   # -- Security
   token           : type: String
   # -- Dates

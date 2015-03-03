@@ -17,7 +17,9 @@ class Atoms.Molecule.Payments extends Atoms.Molecule.FormGroup
     payments.stripe.type = 1 if payments.stripe?
     payments.paypal.type = 2 if payments.paypal?
     # -- Format specific values
-    properties = payments: payments
+    properties =
+      id      : @entity.id
+      payments: payments
     __.proxy("PUT", @attributes.endpoint, properties, true).then (error, response) =>
       @trigger "progress", 100 unless error
 

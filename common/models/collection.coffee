@@ -49,7 +49,8 @@ Collection.methods.delete = ->
   promise
 
 Collection.methods.parse = ->
-  id              : @_id.toString()
+  id                : @_id.toString()
+  shortcut          : @search?.url_handle or @_id.toString()
   owner             : @owner?.parse?() or @owner
   title             : @title
   description       : @description

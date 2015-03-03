@@ -1,6 +1,7 @@
 "use strict"
 
 Hope        = require("zenserver").Hope
+Mongoose    = require("zenserver").Mongoose
 Collection  = require "../common/models/collection"
 Page        = require "../common/models/page"
 Product     = require "../common/models/product"
@@ -11,25 +12,30 @@ C           = require "../common/constants"
 module.exports = (zen) ->
 
   zen.get "/collection/:id", (request, response) ->
-    Hope.join([ ->
+    Hope.shield([ ->
       Session request, response, redirect = true, owner = false, shopping = true
-    , ->
+    , (error, @session) =>
       Settings.cache()
-    , ->
-      Collection.search _id: request.parameters.id, visibility: true, limit = 1
-    , ->
-      Product.search collection_id: request.parameters.id, visibility: true
-    ]).then (errors, values) ->
-      return response.redirect "/" unless values[2]
+    , (error, @settings) =>
+      filter = visibility: true
+      if Mongoose.Types.ObjectId.isValid(request.parameters.id)
+        filter["_id"] = request.parameters.id
+      else
+        filter["search.url_handle"] = request.parameters.id
+      Collection.search filter, limit = 1
+    , (error, @collection) =>
+      Product.search collection_id: @collection, visibility: true
+    ]).then (error, @products) =>
+      return response.redirect "/" unless @collection
       bindings =
         page        : "collection"
         asset       : "store"
         host        : C.HOST[global.ZEN.type.toUpperCase()]
-        session     : values[0]
-        settings    : values[1]
-        collection  : values[2].parse()
-        products    : (product.parse() for product in values[3])
-        meta        : _customizeMeta values[1], values[2]
+        session     : @session
+        settings    : @settings
+        collection  : @collection.parse()
+        products    : (product.parse() for product in @products)
+        meta        : _customizeMeta @settings, @collection
       response.page "base", bindings, [
         "store.header"
         "store.collection"
@@ -136,7 +142,7 @@ module.exports = (zen) ->
       response.page "base", bindings, [
         "store.header"
         "store.#{partial}"
-        # "partial.products"
+        "partial.products"
         "store.footer"]
 
 

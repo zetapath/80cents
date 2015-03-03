@@ -38,12 +38,14 @@ Settings.statics.create = (values) ->
 
 Settings.statics.search = (query) ->
   promise = new Hope.Promise()
-  @find(query).limit(1).exec (error, value) ->
+  @find(query).limit(1).exec (error, value) =>
     if error or value.length is 0
-      error = code: 402, message: "Not found." if value.length is 0
+      @create().then (error, value) ->
+        error = code: 402, message: "Not found." if value.length is 0
+        promise.done error, value
     else
       value = value[0]
-    promise.done error, value
+      promise.done error, value
   promise
 
 Settings.statics.findAndUpdate = (filter, values) ->

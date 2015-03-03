@@ -24,7 +24,7 @@ module.exports = (server) ->
     Hope.shield([ ->
       Session request, response, redirect = false, owner = true
     , (error, @session) =>
-      filter = account_mail: @session.mail
+      filter = _id: request.parameters.id
       Settings.findAndUpdate filter, request.parameters
     ]).then (error, settings) ->
       if error? then response.badRequest()  else response.ok()

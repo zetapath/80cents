@@ -37,8 +37,7 @@ module.exports = (server) ->
       , (error, @collection) =>
         Collection.search visibility: true
       , (error, collections) ->
-        collections = (id: c._id, title: c.title for c in collections)
-        Settings.findAndUpdate {}, collections: collections
+        Settings.findAndUpdate {}, collections: _cache collections
       ]).then (error, value) =>
         if error then response.unauthorized() else response.json @collection.parse()
 
@@ -55,8 +54,7 @@ module.exports = (server) ->
       , (error, @collection) =>
         Collection.search visibility: true
       , (error, collections) ->
-        collections = (id: c._id, title: c.title for c in collections)
-        Settings.findAndUpdate {}, collections: collections
+        Settings.findAndUpdate {}, collections: _cache collections
       ]).then (error, value) =>
         if error then response.unauthorized() else response.json @collection.parse()
 
@@ -72,7 +70,11 @@ module.exports = (server) ->
       , ->
         Collection.search visibility: true
       , (error, collections) ->
-        collections = (id: c._id, title: c.title for c in collections)
-        Settings.findAndUpdate {}, collections: collections
+        Settings.findAndUpdate {}, collections: _cache collections
       ]).then (error, value)->
         if error then response.unauthorized() else response.ok()
+
+
+_cache = (collections) ->
+  (id: c.search?.url_handle or c._id.toString(), title: c.title for c in collections)
+
