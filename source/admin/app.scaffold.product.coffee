@@ -10,7 +10,7 @@ __.scaffold.form_product =
       "Atom.Text": value: "Write a name and description, and provide a type and vendor to categorize this product."
     ]
   ,
-    "Molecule.Form": children: [
+    "Molecule.Form": id: "general", children: [
       "Atom.Input": name: "id", style: "hidden"
     ,
       "Atom.Label": value: "Title"
@@ -21,11 +21,11 @@ __.scaffold.form_product =
     ,
       "Atom.Wysihtml5": name: "description", id: "product", required: true, events: ["keyup"]
     ,
-      "Atom.Label": style: "half", value: "Type"
+      "Atom.Label": style: "half", value: "Collection"
     ,
       "Atom.Label": style: "half", value: "Vendor"
     ,
-      "Atom.Input": style: "half", name: "type", placeholder: "e.g. Bicycles, T-Shirts", required: true, events: ["keyup"]
+      "Atom.Select": style: "half", id: "collection", name: "collection_id", options: []
     ,
       "Atom.Input": style: "half", name: "vendor", placeholder: "e.g. Apple, Shopify"
     ]
@@ -83,18 +83,6 @@ __.scaffold.form_product =
     ]
   ,
     "Atom.Label": style: "anchor"
-  ,
-    "Molecule.Div": children: [
-      "Atom.Heading": size: "h2", value: "Collections"
-    ,
-      "Atom.Text": value: "Collections can be used to group products together."
-    ]
-  ,
-    "Molecule.Form": id: "collection", children: [
-      "Atom.Label": value: "Available collections"
-    ,
-      "Atom.Select": id: "id", name: "collection_id", options: []
-    ]
   ,
     "Atom.Label": style: "anchor entity"
   ,

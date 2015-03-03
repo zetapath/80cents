@@ -23,7 +23,7 @@ module.exports = (server) ->
         User.signup request.parameters
       ]).then (error, @user) =>
         return response.conflict() if error?
-        response.session user.token
+        response.session @user.token
         response.json @user.parse()
         if @user.type isnt C.USER.TYPE.OWNER
           mailer @user.mail, "Welcome to #{@settings.name}", "welcome",

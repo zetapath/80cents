@@ -1,5 +1,5 @@
 # -- Environment ---------------------------------------------------------------
-environment: development
+environment: production
 
 # -- RESTful services ----------------------------------------------------------
 api:

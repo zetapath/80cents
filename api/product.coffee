@@ -39,7 +39,7 @@ module.exports = (server) ->
 
 
   server.post "/api/product", (request, response) ->
-    if request.required ["title", "description", "type", "price"]
+    if request.required ["title", "description", "price"]
       Session(request, response).then (error, session) ->
         values = request.parameters
         values.owner = session._id

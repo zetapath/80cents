@@ -23,7 +23,7 @@ __.scaffold.form_settings =
     ,
       "Atom.Label": value: "Homepage meta description"
     ,
-      "Atom.Textarea": style: "margin-bottom anchor", name: "description", placeholder: "Enter a descriptio to avoid ranking poorly on search engines like Google."
+      "Atom.Textarea": style: "margin-bottom anchor", name: "description", placeholder: "Enter a description to avoid ranking poorly on search engines like Google."
     ,
       "Atom.Label": style: "half", value: "Account email"
     ,

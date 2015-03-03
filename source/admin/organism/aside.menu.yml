@@ -48,7 +48,7 @@ children:
                   path: /admin/products
                   icon: ticket
                   text: products
-                  info: ??
+                  # info: ??
                   events:
                     - touch
 

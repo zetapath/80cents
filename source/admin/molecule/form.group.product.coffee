@@ -9,7 +9,7 @@ class Atoms.Molecule.Product extends Atoms.Molecule.FormGroup
     super
     __.proxy("GET", "collection", null, true).then (error, @collections) =>
       @trigger "progress", 30
-      @collection.id.refresh
+      @general.collection.refresh
         options: (label: c.title, value: c.id for c in @collections.collections)
       if @entity
         __.proxy("GET", "product", id: @entity, true).then (error, product) =>

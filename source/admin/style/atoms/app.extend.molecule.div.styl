@@ -3,8 +3,6 @@
   flex-grow                       : 2
   height                          : (3.4 * U)
   cursor                          : pointer
-  &:hover
-    background-color              : rgba(0,0,0,0.25)
   [data-atom-figure]
     float                         : left
     margin                        : (U / 1.5)
@@ -23,6 +21,11 @@
       margin-top                  : 0
       line-height                 : FONT_SIZE_TINY
       color                       : lighten(DARK, 50%)
+      overflow                    : hidden
+      white-space                 : nowrap
+      text-overflow               : ellipsis
+      display                     : block
+
   > *
     display                       : block
 
