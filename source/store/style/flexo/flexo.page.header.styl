@@ -11,16 +11,17 @@ body
     line-height                     : HEADER_HEIGHT
     background-color                : WHITE
     transition                        all TRANSITION_DURATION
-    &.scroll
-      height                        : HEADER_HEIGHT = (HEADER_HEIGHT / 1.5)
-      line-height                   : HEADER_HEIGHT
-      background-color              : rgba(255,255,255,0.95)
-      border-bottom                 : solid 1px BOX
+
     .logo
       margin-right                  : (U / 2)
-      font-size                     : (U / 2)
-      font-weight                   : FONT_WEIGHT_BOLD
+      width                         : 146px
+      height                        : 175px
       color                         : THEME
+      background-image              : url("/assets/img/logo.png")
+      background-size               : cover
+      transform                       translateY(0%)
+      transition                      all TRANSITION_DURATION
+
     nav
       a
         padding                     : (SPACE / 2) SPACE
@@ -45,6 +46,14 @@ body
             display                 : none
           > strong
             margin-right            : (SPACE / 5)
+
+    &.scroll
+      height                        : HEADER_HEIGHT = (HEADER_HEIGHT / 1.5)
+      line-height                   : HEADER_HEIGHT
+      background-color              : rgba(255,255,255,0.95)
+      border-bottom                 : solid 1px BOX
+      .logo
+        transform                     translateY(-10%)
 
   &:not([data-page="home"])
     > header nav > a
