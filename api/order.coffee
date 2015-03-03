@@ -100,6 +100,7 @@ module.exports = (server) ->
             mailer @user.mail, "#{@settings.name} - Order #{order.id} #{order.state_label}", "order",
               settings  : @settings
               user      : @user
+              host      : C.HOST[global.ZEN.type.toUpperCase()]
               order     : order
               lines     : (line.parse() for line in @lines)
 

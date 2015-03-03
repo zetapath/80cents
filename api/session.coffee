@@ -28,6 +28,7 @@ module.exports = (server) ->
         if @user.type isnt C.USER.TYPE.OWNER
           mailer @user.mail, "Welcome to #{@settings.name}", "welcome",
             settings  : @settings
+            host      : C.HOST[global.ZEN.type.toUpperCase()]
             user      : @user
 
 
