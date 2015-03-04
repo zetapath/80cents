@@ -2,12 +2,12 @@
 
 class Atoms.Organism.Profile extends Atoms.Organism.Dialog
 
-  @url : "/assets/scaffold/admin/organism/dialog.profile.json"
+  @url : "/assets/core/scaffold/admin/organism/dialog.profile.json"
 
   show: ->
     __.proxy("GET", "profile").then (error, @entity) =>
       @section.form.value @entity
-      @section.form.avatar.refresh url: "/assets/uploads/#{@entity.avatar}"
+      @section.form.avatar.refresh url: "/uploads/#{@entity.avatar}"
       super
 
   # -- Instance Methods --------------------------------------------------------
@@ -30,7 +30,7 @@ class Atoms.Organism.Profile extends Atoms.Organism.Dialog
         id    : @entity.id
         entity: "User"
       __.multipart("POST", "/api/image", parameters).then (error, file) =>
-        @section.form.avatar.refresh url: "/assets/uploads/#{file.name}"
+        @section.form.avatar.refresh url: "/uploads/#{file.name}"
         @entity.avatar = file.name
         __.Aside.Menu.header.profile.refresh @entity
 

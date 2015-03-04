@@ -16,6 +16,6 @@ class __.Entity.Collection extends Atoms.Class.Entity
   # -- Instance Methods
   parse: ->
     style       : "thumb #{'offline' unless @visibility}"
-    image       : "#{__.host}assets/uploads/#{@images[0]}"
+    image       : "#{__.host}uploads/#{@images[0]}"
     text        : @title
     description : moment(@created_at).fromNow()

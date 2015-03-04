@@ -2,7 +2,7 @@
 
 class Atoms.Organism.Menu extends Atoms.Organism.Aside
 
-  @url : "/assets/scaffold/admin/organism/aside.menu.json"
+  @url : "/assets/core/scaffold/admin/organism/aside.menu.json"
 
   constructor: ->
     super

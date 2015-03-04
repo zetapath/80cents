@@ -18,6 +18,6 @@ class Atoms.Molecule.Profile extends Atoms.Molecule.Div
     @refresh __.session
 
   refresh: (data) ->
-    @figure.refresh url: "/assets/uploads/#{data.avatar}"
+    @figure.refresh url: "/uploads/#{data.avatar}"
     @name.refresh value: data.first_name
     @email.refresh value: data.mail

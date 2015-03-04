@@ -4,7 +4,7 @@ Atoms.Organism.Header.available.push "Atom.Link"
 
 class Atoms.Organism.Content extends Atoms.Organism.Article
 
-  @url : "/assets/scaffold/admin/organism/article.content.json"
+  @url : "/assets/core/scaffold/admin/organism/article.content.json"
 
   constructor: ->
     super

@@ -1,5 +1,5 @@
 {{! -- COLLECTION ----------------------------------------------------------- }}
-<article class="slideshow" data-flex="vertical center" style="background-image: url(/assets/uploads/{{product.collection_id.default_image}});">
+<article class="slideshow" data-flex="vertical center" style="background-image: url(/uploads/{{product.collection_id.default_image}});">
   <div class="overlay"></div>
   <h2>{{product.collection_id.title}}</h2>
 </article>
@@ -10,11 +10,11 @@
     {{! -- INFO ------------------------------------------------------------- }}
     <section data-column="5">
       <div class="box">
-        <a class="fancybox thumbnail" rel="group" href="/assets/uploads/{{product.default_image}}"><img src="/assets/uploads/{{product.default_image}}" /></a>
+        <a class="fancybox thumbnail" rel="group" href="/uploads/{{product.default_image}}"><img src="/uploads/{{product.default_image}}" /></a>
       </div>
       <nav class="thumbnails" data-flex="horizontal center">
       {{#product.images}}
-        <a class="fancybox thumbnail" rel="group" href="/assets/uploads/{{.}}"><figure class="thumbnail" style="background-image: url(/assets/uploads/{{.}});"></figure></a>
+        <a class="fancybox thumbnail" rel="group" href="/uploads/{{.}}"><figure class="thumbnail" style="background-image: url(/uploads/{{.}});"></figure></a>
       {{/product.images}}
       </nav>
     </section>

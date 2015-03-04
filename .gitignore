@@ -1,8 +1,4 @@
 zen.error.json
-www/assets/scaffold/*
-www/assets/uploads/*.jpeg
-www/assets/uploads/*.jpg
-www/assets/uploads/*.png
-www/assets/*/shopio*.*
 bower_components
 node_modules
+uploads

@@ -1,7 +1,7 @@
 {
-  "name"                        : "shopio",
-  "version"                     : "0.2.17",
-  "description"                 : "Shopio is everything you need to sell anywhere (with your own io.js or nodejs servers) — Edit",
+  "name"                        : "80cents",
+  "version"                     : "0.3.4",
+  "description"                 : "80cents is everything you need to sell anywhere (with your own io.js or nodejs servers) — Edit",
   "homepage"                    : "http://zetapath.com",
   "author"                      : "Javi Jimenez Villar",
   "dependencies": {
@@ -13,7 +13,6 @@
     "premailer-api"             : "*",
     "shortid"                   : "*",
     "stripe"                    : "*",
-    "zenproxy"                  : "*",
     "zenserver"                 : "*"
   },
   "devDependencies" : {
@@ -29,7 +28,7 @@
     "zenrequest"                : "*"
   },
   "scripts"         : {
-    "start"                     : "node zen zen",
+    "start"                     : "node zen",
     "postinstall"               : "bower install"
   },
   "engines"                     : { "node": "*"}

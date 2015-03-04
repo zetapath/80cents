@@ -20,7 +20,7 @@ class __.Entity.Product extends Atoms.Class.Entity
   # -- Instance Methods
   parse: ->
     style       : "thumb #{unless @visibility then 'offline' else ''}"
-    image       : "#{__.host}assets/uploads/#{@default_image}"
+    image       : "#{__.host}uploads/#{@default_image}"
     text        : @title
     description : moment(@updated_at).fromNow()
     info        : @price

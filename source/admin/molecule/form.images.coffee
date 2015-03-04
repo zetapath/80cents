@@ -81,7 +81,7 @@ class Atoms.Molecule.Images extends Atoms.Molecule.Form
   _addImage: (file) ->
     @attributes.files.push file
     @images.appendChild "Atom.Figure",
-      url       : "#{__.host}assets/uploads/#{file}"
+      url       : "#{__.host}uploads/#{file}"
       file      : file
       events    : ["touch"]
       callbacks : ["onDestroy"]

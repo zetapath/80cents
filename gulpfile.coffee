@@ -13,7 +13,7 @@ yml     = require 'gulp-yml'
 pkg     = require './package.json'
 
 # -- FILES ---------------------------------------------------------------------
-assets = 'www/assets/'
+assets = 'assets/'
 source =
   coffee: 'source/**/*.coffee'
   styl  : 'source/**/*.styl'
@@ -90,16 +90,16 @@ banner = [
 gulp.task 'thirds', ->
   gulp.src(store.thirds.js)
     .pipe(concat(pkg.name + '.store.dependencies.js'))
-    .pipe(gulp.dest(assets + '/js'))
+    .pipe(gulp.dest(assets))
   gulp.src(store.thirds.css)
     .pipe(concat(pkg.name + '.store.dependencies.css'))
-    .pipe(gulp.dest(assets + '/css'))
+    .pipe(gulp.dest(assets))
   gulp.src(admin.thirds.js)
     .pipe(concat(pkg.name + '.admin.dependencies.js'))
-    .pipe(gulp.dest(assets + '/js'))
+    .pipe(gulp.dest(assets))
   gulp.src(admin.thirds.css)
     .pipe(concat(pkg.name + '.admin.dependencies.css'))
-    .pipe(gulp.dest(assets + '/css'))
+    .pipe(gulp.dest(assets))
 
 gulp.task 'coffee', ->
   gulp.src(store.coffee)
@@ -107,25 +107,25 @@ gulp.task 'coffee', ->
     .pipe(coffee().on('error', gutil.log))
     .pipe(uglify({mangle: false}))
     .pipe(header(banner, {pkg: pkg}))
-    .pipe(gulp.dest(assets + '/js'))
+    .pipe(gulp.dest(assets))
   gulp.src(admin.coffee)
     .pipe(concat(pkg.name + '.admin.coffee'))
     .pipe(coffee().on('error', gutil.log))
     .pipe(uglify({mangle: false}))
     .pipe(header(banner, {pkg: pkg}))
-    .pipe(gulp.dest(assets + '/js'))
+    .pipe(gulp.dest(assets))
 
 gulp.task 'styl', ->
   gulp.src(store.styl)
     .pipe(concat(pkg.name + '.store.styl'))
     .pipe(stylus({compress: true, errors: true}))
     .pipe(header(banner, {pkg: pkg}))
-    .pipe(gulp.dest(assets + '/css'))
+    .pipe(gulp.dest(assets))
   gulp.src(admin.styl)
     .pipe(concat(pkg.name + '.admin.styl'))
     .pipe(stylus({compress: true, errors: true}))
     .pipe(header(banner, {pkg: pkg}))
-    .pipe(gulp.dest(assets + '/css'))
+    .pipe(gulp.dest(assets))
 
 gulp.task 'yml', ->
   gulp.src(admin.yml)

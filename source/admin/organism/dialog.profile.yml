@@ -64,7 +64,7 @@ children:
                   value       : avatar
               - Atom.Figure:
                   id          : avatar
-                  url : /assets/img/avatar_default.jpg
+                  url         : /img/avatar.jpg
               - Atom.Button:
                   text        : Change your avatar
                   style       : theme

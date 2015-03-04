@@ -14,7 +14,7 @@ class __.Entity.Customer extends Atoms.Class.Entity
 
   # -- Instance Methods
   parse: ->
-    image       : @avatar or "/assets/img/avatar_default.jpg"
+    image       : @avatar or "/img/avatar.jpg"
     text        : @name
     description : @mail
     info        : moment(@created_at).fromNow()

@@ -1,5 +1,5 @@
 # -- Environment ---------------------------------------------------------------
-environment: production
+environment: development
 
 # -- RESTful services ----------------------------------------------------------
 api:
@@ -22,21 +22,20 @@ www:
 
 # -- Static resources ----------------------------------------------------------
 statics:
-  - url     : /assets
-    folder  : /www/assets
+  - url     : /assets/core
+    folder  : /assets
     maxage  : 3600 #1 hour
+  # -- Custom
   - url     : /uploads
-    folder  : /www/assets/uploads
+    folder  : /uploads
     maxage  : 60 #60 seconds
-  - file    : humans.txt
-    folder  : /www/assets
-    maxage  : 86400 #1 Day
-  - file    : robots.txt
-    folder  : /www/assets
+  - url     : /img
+    folder  : /img
+    maxage  : 60 #60 seconds
 
 # -- session -------------------------------------------------------------------
 session:
-  cookie: shopio
+  cookie: 80cents
   domain: ""
   path  : "/"
   expire: 604800 #7 days

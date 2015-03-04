@@ -42,4 +42,4 @@ Atoms.$ ->
       helpers:
         overlay:
           css:
-            background  : 'rgba(0,0,0,0.75) url("/assets/img/overlay.png") repeat 0 0'
+            background  : 'rgba(0,0,0,0.75) url("/img/overlay.png") repeat 0 0'

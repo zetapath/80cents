@@ -8,7 +8,12 @@ Collection  = require "../common/models/collection"
 Product     = require "../common/models/product"
 Session     = require "../common/session"
 
-IMAGES_PATH = fs.realpathSync "#{__dirname}/../www/assets/uploads/"
+IMAGES_PATH = (global.ZEN.path or "#{__dirname}/..") + "/uploads/"
+
+console.log IMAGES_PATH
+
+fs.mkdirSync IMAGES_PATH unless fs.existsSync IMAGES_PATH
+IMAGES_PATH = fs.realpathSync IMAGES_PATH
 
 module.exports = (server) ->
 
