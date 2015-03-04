@@ -22,5 +22,5 @@ class __.Entity.Product extends Atoms.Class.Entity
     style       : "thumb #{unless @visibility then 'offline' else ''}"
     image       : "#{__.host}assets/uploads/#{@default_image}"
     text        : @title
-    description : @price
-    info        : moment(@created_at).fromNow()
+    description : moment(@updated_at).fromNow()
+    info        : @price

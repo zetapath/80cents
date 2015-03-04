@@ -48,7 +48,7 @@ Product.statics.create = (values) ->
   new campaign(values).save (error, value) -> promise.done error, value
   promise
 
-Product.statics.search = (query, limit = 0, page = 1, populate = "", sort = created_at: "desc") ->
+Product.statics.search = (query, limit = 0, page = 1, populate = "", sort = updated_at: "desc") ->
   promise = new Hope.Promise()
   range =  if page > 1 then limit * (page - 1) else 0
   @find(query).skip(range).limit(limit).populate(populate).sort(sort).exec (error, value) ->
@@ -62,6 +62,7 @@ Product.statics.findAndUpdate = (filter, values) ->
   promise = new Hope.Promise()
   # -- Specific formats
   values = __StringToArray values
+  values.updated_at = new Date()
   @findOneAndUpdate filter, values, (error, value) ->
     promise.done error, value
   promise

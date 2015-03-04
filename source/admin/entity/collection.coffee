@@ -18,5 +18,4 @@ class __.Entity.Collection extends Atoms.Class.Entity
     style       : "thumb #{'offline' unless @visibility}"
     image       : "#{__.host}assets/uploads/#{@images[0]}"
     text        : @title
-    description : @price
-    info        : moment(@created_at).fromNow()
+    description : moment(@created_at).fromNow()

@@ -37,6 +37,7 @@ Page.statics.search = (query, limit = 0, page = 1, populate = "", sort = created
 
 Page.statics.findAndUpdate = (filter, values) ->
   promise = new Hope.Promise()
+  values.updated_at = new Date()
   @findOneAndUpdate filter, values, (error, value) ->
     promise.done error, value
   promise

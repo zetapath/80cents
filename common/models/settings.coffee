@@ -50,6 +50,7 @@ Settings.statics.search = (query) ->
 
 Settings.statics.findAndUpdate = (filter, values) ->
   promise = new Hope.Promise()
+  values.updated_at = new Date()
   @findOneAndUpdate filter, values, (error, value) =>
     @cached = value?.parse()
     promise.done error, value
