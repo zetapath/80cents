@@ -41,13 +41,6 @@ session:
   expire: 604800 #7 days
   authorization: authorization
 
-# -- Deploy --------------------------------------------------------------------
-deploy:
-  - "git pull"
-  - "bower install --allow-root"
-  - "gulp init"
-  - "pm2 restart OIZIO"
-
 # -- CORS Properties -----------------------------------------------------------
 headers:
   Access-Control-Allow-Origin: "*"
