@@ -14,11 +14,7 @@
         <input type="text" value="{{session.last_name}}" name="last_name"/>
         <label>Your mail</label>
         <input type="email" value="{{session.mail}}"  name="mail" disabled="true"/>
-        <label>Home page</label>
-        <input type="text" value="{{session.homepage}}" name="homepage"/>
-        <label>Bio</label>
-        <textarea name="bio">{{session.bio}}</textarea>
-        <nav>
+        <nav class="align right">
           <a href="/logout" class="button">Logout</a>
           <button data-action="save" class="primary">Save</button>
         </nav>

@@ -13,9 +13,6 @@ User = new Schema
   password        : type: String
   first_name      : type: String
   last_name       : type: String
-  phone           : type: String
-  homepage        : type: String
-  bio             : type: String
   avatar          : type: String, default: "avatar.jpg"
   # -- Security
   token           : type: String
@@ -71,11 +68,8 @@ User.statics.findAndUpdate = (filter, parameters) ->
 User.methods.parse = ->
   id            : @_id.toString()
   mail          : @mail
-  first_name    : @first_name
+  first_name    : @first_name or @mail
   last_name     : @last_name
-  phone         : @phone
-  homepage      : @homepage
-  bio           : @bio
   avatar        : @avatar
   updated_at    : @updated_at
   created_at    : @created_at

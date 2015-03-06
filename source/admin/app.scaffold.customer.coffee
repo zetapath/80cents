@@ -13,9 +13,13 @@ __.scaffold.form_customer =
     "Molecule.Form": children: [
       "Atom.Input": name: "id", style: "hidden"
     ,
-      "Atom.Label": value: "Name"
+      "Atom.Label": style: "half", value: "First Name"
     ,
-      "Atom.Input": name: "name", placeholder: "e.g. Summer collection, Under $100, Staff picks", required: true
+      "Atom.Label": style: "half", value: "Last Name"
+    ,
+      "Atom.Input": style: "half", name: "first_name"
+    ,
+      "Atom.Input": style: "half", name: "last_name"
     ,
       "Atom.Label": value: "Mail"
     ,

@@ -55,7 +55,7 @@ module.exports = (server) ->
   server.put "/api/profile", (request, response) ->
     Session(request, response).then (error, session) ->
       parameters = {}
-      keys = ["first_name", "last_name", "phone", "homepage", "bio", "avatar"]
+      keys = ["first_name", "last_name", "avatar"]
       for key in keys when request.parameters[key]?
         parameters[key] = request.parameters[key]
       User.findAndUpdate(_id: session._id, parameters).then (error, user) ->

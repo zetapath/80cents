@@ -2,7 +2,7 @@
 
 class __.Entity.Customer extends Atoms.Class.Entity
 
-  @fields "id", "mail", "name", "avatar", "updated_at", "created_at"
+  @fields "id", "mail", "first_name", "last_name", "avatar", "updated_at", "created_at"
 
   # -- Static Methods
   @createOrUpdate: (attributes) =>
