@@ -10,8 +10,6 @@ Session     = require "../common/session"
 
 IMAGES_PATH = (global.ZEN.path or "#{__dirname}/..") + "/uploads/"
 
-console.log IMAGES_PATH
-
 fs.mkdirSync IMAGES_PATH unless fs.existsSync IMAGES_PATH
 IMAGES_PATH = fs.realpathSync IMAGES_PATH
 
