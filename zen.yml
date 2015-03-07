@@ -30,7 +30,7 @@ statics:
     folder  : /uploads
     maxage  : 60 #60 seconds
   - url     : /img
-    folder  : /img
+    folder  : /assets/img
     maxage  : 60 #60 seconds
 
 # -- session -------------------------------------------------------------------
