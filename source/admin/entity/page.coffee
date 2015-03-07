@@ -16,5 +16,4 @@ class __.Entity.Page extends Atoms.Class.Entity
   # -- Instance Methods
   parse: ->
     text        : @title
-    description : @content
     info        : moment(@updated_at).fromNow()
