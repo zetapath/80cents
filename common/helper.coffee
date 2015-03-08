@@ -6,6 +6,7 @@ module.exports =
     theme = "/assets/core/80cents.theme.default"
     if global.ZEN.theme?.folder and global.ZEN.theme?.name
       theme = "#{global.ZEN.theme.folder}/#{global.ZEN.theme.name}"
+    theme
 
   customizeMeta: (settings, values) ->
     meta =
