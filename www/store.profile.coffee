@@ -6,6 +6,7 @@ Settings    = require "../common/models/settings"
 User        = require "../common/models/user"
 Session     = require "../common/session"
 C           = require "../common/constants"
+helper      = require "../common/helper"
 
 module.exports = (zen) ->
 
@@ -14,8 +15,8 @@ module.exports = (zen) ->
       return response.redirect "/profile" if session
       response.page "base",
         page        : "login"
-        asset       : "store"
         host        : C.HOST[global.ZEN.type.toUpperCase()]
+        theme       : helper.getTheme()
 
 
   zen.get "/logout", (request, response) ->
@@ -34,12 +35,12 @@ module.exports = (zen) ->
       return response.redirect "/" if error
       bindings =
         page        : "profile"
-        asset       : "store"
         host        : C.HOST[global.ZEN.type.toUpperCase()]
         session     : @session
         settings    : @settings
         orders      : (order.parse() for order in @orders)
         has_orders  : (@orders.length > 0)
+        theme       : helper.getTheme()
       response.page "base", bindings, ["store.header", "store.profile", "store.footer"]
 
 

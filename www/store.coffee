@@ -8,6 +8,7 @@ Product     = require "../common/models/product"
 Settings    = require "../common/models/settings"
 Session     = require "../common/session"
 C           = require "../common/constants"
+helper      = require "../common/helper"
 
 module.exports = (zen) ->
 
@@ -30,13 +31,13 @@ module.exports = (zen) ->
       return response.redirect "/" unless @collection
       bindings =
         page        : "collection"
-        asset       : "store"
         host        : C.HOST[global.ZEN.type.toUpperCase()]
         session     : @session
         settings    : @settings
         collection  : @collection.parse()
         products    : (product.parse() for product in @products)
-        meta        : _customizeMeta @settings, @collection
+        meta        : helper.customizeMeta @settings, @collection
+        theme       : helper.getTheme()
       response.page "base", bindings, [
         "store.header"
         "store.collection"
@@ -73,13 +74,13 @@ module.exports = (zen) ->
         product.if[condition] = product[condition].length > 0
       bindings =
         page        : "product"
-        asset       : "store"
         host        : C.HOST[global.ZEN.type.toUpperCase()]
         session     : @session
         settings    : @settings
         product     : product
         products    : (product.parse() for product in products)
-        meta        : _customizeMeta @settings, @product
+        meta        : helper.customizeMeta @settings, @product
+        theme       : helper.getTheme()
       response.page "base", bindings, [
         "store.header"
         "store.product"
@@ -100,12 +101,12 @@ module.exports = (zen) ->
       return response.redirect "/" if values[2].length is 0
       bindings =
         page        : "collection"
-        asset       : "store"
         host        : C.HOST[global.ZEN.type.toUpperCase()]
         session     : values[0]
         settings    : values[1]
         products    : (product.parse() for product in values[2])
         collection  : title: request.parameters.id
+        theme       : helper.getTheme()
       response.page "base", bindings, [
         "store.header"
         "store.collection"
@@ -129,27 +130,22 @@ module.exports = (zen) ->
         Page.search "search.url_handle": request.parameters.page, limit = 1
     ]).then (errors, values) ->
       return response.page "base", page: "error", ["404"] if not home and errors[2] isnt null
+
       bindings =
         page        : if home then "home" else "page"
-        asset       : "store"
         host        : C.HOST[global.ZEN.type.toUpperCase()]
         session     : values[0]
         settings    : values[1]
         collections : (collection.parse() for collection in values[2])
+        theme       : helper.getTheme()
       if home
         bindings.products = (product.parse() for product in values[3])
       else
         bindings.content = values[3]?.parse()
-        bindings.meta = _customizeMeta bindings.settings, bindings.content
+        bindings.meta = helper.customizeMeta bindings.settings, bindings.content
       partial = if home then "home" else "page"
       response.page "base", bindings, [
         "store.header"
         "store.#{partial}"
         "partial.products"
         "store.footer"]
-
-
-_customizeMeta = (settings, values) ->
-  meta =
-    title       : values?.search?.page_title or settings.title
-    description : values?.search?.meta_description or settings.description

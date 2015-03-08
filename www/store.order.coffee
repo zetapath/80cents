@@ -6,6 +6,7 @@ OrderLine   = require "../common/models/order_line"
 Settings    = require "../common/models/settings"
 Session     = require "../common/session"
 C           = require "../common/constants"
+helper      = require "../common/helper"
 
 module.exports = (zen) ->
 
@@ -34,11 +35,11 @@ module.exports = (zen) ->
       return response.redirect "/" if not @session or not @order
       bindings =
         page        : "checkout"
-        asset       : "store"
         host        : C.HOST[global.ZEN.type.toUpperCase()]
         session     : @session
         settings    : @settings
         order       : @order.parse()
+        theme       : helper.getTheme()
       response.page "base", bindings, ["store.header", "store.checkout", "store.footer"]
 
 # -- Private Methods -----------------------------------------------------------
@@ -61,11 +62,11 @@ _showOrder = (request, response, id) =>
     return response.redirect "/" if not @session or not @order
     bindings =
       page        : "order"
-      asset       : "store"
       host        : C.HOST[global.ZEN.type.toUpperCase()]
       session     : @session
       settings    : @settings
       cart        : if id then false else true
       order       : @order?.parse()
       lines       : (line.parse() for line in @lines or [])
+      theme       : helper.getTheme()
     response.page "base", bindings, ["store.header", "store.order", "store.footer"]
