@@ -12,7 +12,8 @@ module.exports = (zen) ->
       bindings =
         page    : "admin"
         session : session
-        asset   : "admin"
+        asset   : ".admin"
+        theme   : "/assets/core/80cents.admin"
         host    : C.HOST[global.ZEN.type.toUpperCase()]
       response.page "base", bindings, []
 
@@ -27,7 +28,8 @@ module.exports = (zen) ->
       bindings =
         page    : "admin"
         session : session
-        asset   : "admin"
+        asset   : ".admin"
+        theme   : "/assets/core/80cents.admin"
         host    : C.HOST[global.ZEN.type.toUpperCase()]
       response.page "base", bindings, []
 
@@ -39,6 +41,7 @@ module.exports = (zen) ->
       User.search(type: C.USER.TYPE.OWNER).then (error, users) ->
         response.page "base",
           page  : "session"
-          asset : "admin"
+          asset : ".admin"
+          theme : "/assets/core/80cents.admin"
           host  : C.HOST[global.ZEN.type.toUpperCase()]
           owner : (users.length > 0)
