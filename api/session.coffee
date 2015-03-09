@@ -24,7 +24,9 @@ module.exports = (server) ->
       ]).then (error, @user) =>
         return response.conflict() if error?
         response.session @user.token
-        response.json @user.parse()
+        user = @user.parse()
+        user.token = @user.token
+        response.json user
         if @user.type isnt C.USER.TYPE.OWNER
           mailer @user.mail, "Welcome to #{@settings.name}", "welcome",
             settings  : @settings

@@ -33,6 +33,7 @@ User.statics.signup = (values) ->
     return promise.done true if value?
     user = db.model "User", User
     values.password = PassHash.generate values.password
+    values.token = token values.password
     new user(values).save (error, value) -> promise.done error, value
   promise
 
