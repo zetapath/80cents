@@ -59,7 +59,7 @@ _showOrder = (request, response, id) =>
   , (error, @order) =>
     OrderLine.search order: @order._id
   ]).then (error, @lines) =>
-    return response.redirect "/" if not @session or not @order
+    return response.redirect "/" if not @session or not @order or @lines?.length is 0
     bindings =
       page        : "order"
       host        : C.HOST[global.ZEN.type.toUpperCase()]
