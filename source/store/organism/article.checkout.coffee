@@ -52,7 +52,7 @@ class Atoms.Organism.Checkout extends Atoms.Organism.Section
       if @order.settings.payments.stripe?
         @stripe = StripeCheckout.configure
           key   : @order.settings.payments.stripe.publishable_key
-          image : "/img/payment_stripe.jpg"
+          image : "/img/stripe.png"
           token : (token) =>
             parameters =
               id    : @order.id
