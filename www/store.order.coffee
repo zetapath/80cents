@@ -44,12 +44,13 @@ module.exports = (zen) ->
 
 # -- Private Methods -----------------------------------------------------------
 _showOrder = (request, response, id) =>
+  @session = undefined
   Hope.shield([ =>
     Session request, response, redirect = true, owner = false, shopping = true
   , (error, @session) =>
     Settings.cache()
   , (error, @settings) =>
-    filter = user: @session._id
+    filter = user: @session?._id
     if id
       filter._id = id
       filter.state = $gt: C.ORDER.STATE.SHOPPING
