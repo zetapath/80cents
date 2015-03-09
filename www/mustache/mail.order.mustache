@@ -2,7 +2,7 @@
 <h2 class="ghost">Below you will find your order information</h2>
 <hr/>
 <p>Dear <strong>{{user.name}}</strong>,</p>
-<p>Your Order no. <strong><a href="{{host}}/order/{{order.id}}">{{order.id}}</a></strong> has been {{order.state_label}}.</p>
+<p>Your Order no. <strong><a href="{{host}}order/{{order.id}}">{{order.id}}</a></strong> has been {{order.state_label}}.</p>
 
 <table class="order">
   <thead>
@@ -17,7 +17,7 @@
     {{#lines}}
     <tr data-line="{{id}}">
       <td data-flex="horizontal grow">
-        <a href="/product/{{product.id}}"><strong>{{product.title}}</strong></a>
+        <a href="{{host}}product/{{product.id}}"><strong>{{product.title}}</strong></a>
       </td>
       <td class="center">{{quantity}}</td>
       <td class="center">{{product.price}}{{settings.currency}}</td>
