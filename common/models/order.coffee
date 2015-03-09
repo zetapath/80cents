@@ -25,12 +25,19 @@ Order = new Schema
 # -- Static methods ------------------------------------------------------------
 Order.statics.findOrRegister = (query, attributes) ->
   promise = new Hope.Promise()
-  @findOne query, (error, result) ->
+  @findOne query, (error, result) =>
     if result or error
       promise.done error, result
     else
-      order = db.model "Order", Order
-      new order(attributes).save (error, value) -> promise.done error, value
+      filter =
+        user  : attributes.user
+        state : $nin: [C.ORDER.STATE.SHOPPING]
+      @search(filter, limit = 1).then (error, order) ->
+        if order
+          attributes.shipping = order.shipping
+          attributes.billing = order.billing
+        order = db.model "Order", Order
+        new order(attributes).save (error, value) -> promise.done error, value
   promise
 
 Order.statics.search = (query, limit = 0, populate = [], sort = created_at: "desc") ->
