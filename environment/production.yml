@@ -1,0 +1,24 @@
+# -- General Info --------------------------------------------------------------
+type        : production
+protocol    : http
+host        : the8848.co
+port        : 1337
+timezone    : Europe/Amsterdam
+
+# -- Mustache template ---------------------------------------------------------
+mustache:
+  cache: false
+
+# -- Services ------------------------------------------------------------------
+mongo:
+  - name    : primary
+    host    : ds039231.mongolab.com
+    port    : 39231
+    db      : the8848
+    user    : backpacker
+    password: s0l1dsn4k3
+
+mail:
+  host      : "oxmail.registrar-servers.com"
+  user      : "admin@the8848.co"
+  password  : "!1pEmZ4fYf:Y$"

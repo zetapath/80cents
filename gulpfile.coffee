@@ -89,10 +89,10 @@ banner = [
 # -- TASKS ---------------------------------------------------------------------
 gulp.task 'thirds', ->
   gulp.src(store.thirds.js)
-    .pipe(concat(pkg.name + '.store.dependencies.js'))
+    .pipe(concat(pkg.name + '.dependencies.js'))
     .pipe(gulp.dest(assets))
   gulp.src(store.thirds.css)
-    .pipe(concat(pkg.name + '.store.dependencies.css'))
+    .pipe(concat(pkg.name + '.dependencies.css'))
     .pipe(gulp.dest(assets))
   gulp.src(admin.thirds.js)
     .pipe(concat(pkg.name + '.admin.dependencies.js'))
@@ -103,7 +103,7 @@ gulp.task 'thirds', ->
 
 gulp.task 'coffee', ->
   gulp.src(store.coffee)
-    .pipe(concat(pkg.name + '.store.coffee'))
+    .pipe(concat(pkg.name + '.coffee'))
     .pipe(coffee().on('error', gutil.log))
     .pipe(uglify({mangle: false}))
     .pipe(header(banner, {pkg: pkg}))
@@ -117,7 +117,7 @@ gulp.task 'coffee', ->
 
 gulp.task 'styl', ->
   gulp.src(store.styl)
-    .pipe(concat(pkg.name + '.store.styl'))
+    .pipe(concat(pkg.name + '.theme.default.styl'))
     .pipe(stylus({compress: true, errors: true}))
     .pipe(header(banner, {pkg: pkg}))
     .pipe(gulp.dest(assets))
