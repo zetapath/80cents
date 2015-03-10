@@ -1,6 +1,6 @@
 /**
  * 80cents - 80cents is everything you need to sell anywhere (with your own io.js or nodejs servers) — Edit
- * @version v0.3.9
+ * @version v0.3.10
  * @link    http://zetapath.com
  * @author   ()
  * @license 
