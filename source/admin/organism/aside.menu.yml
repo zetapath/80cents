@@ -51,7 +51,12 @@ children:
                   # info: ??
                   events:
                     - touch
-
+              - Atom.Link:
+                  path: /admin/discounts
+                  icon: medal
+                  text: discounts
+                  events:
+                    - touch
               - Atom.Link:
                   path: /admin/pages
                   icon: news-paper

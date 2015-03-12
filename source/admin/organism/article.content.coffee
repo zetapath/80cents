@@ -32,6 +32,8 @@ class Atoms.Organism.Content extends Atoms.Organism.Article
 
   onPage: (atom) => @page atom.entity.id
 
+  onDiscount: (atom) => @discount atom.entity.id
+
   onFilterChange: (event, form) ->
     filter = form.value()
 
@@ -77,6 +79,7 @@ class Atoms.Organism.Content extends Atoms.Organism.Article
     @section[id].el.show().siblings().hide()
     @fetch id, "Collection" if id is "collections"
     @fetch id, "Customer" if id is "customers"
+    @fetch id, "Discount" if id is "discounts"
     @fetch id, "Order" if id is "orders"
     @fetch id, "Page" if id is "pages"
     @fetch id, "Product" if id is "products"
@@ -101,6 +104,8 @@ class Atoms.Organism.Content extends Atoms.Organism.Article
   order: (id) -> @showGroupForm id, "Orders", "order"
 
   page: (id) -> @showGroupForm id, "Pages", "page"
+
+  discount: (id) -> @showGroupForm id, "Discounts", "discount"
 
   product: (id) -> @showGroupForm id, "Products", "product"
 

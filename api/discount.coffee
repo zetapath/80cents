@@ -31,6 +31,7 @@ module.exports = (server) ->
     , (error, session) ->
       values = request.parameters
       values.owner = session._id
+      values.collection_id = undefined if values.collection_id is ""
       Discount.create values
     ]).then (error, discount) ->
       if error then response.unauthorized() else response.json discount.parse()
@@ -44,6 +45,7 @@ module.exports = (server) ->
         filter =
           _id   : request.parameters.id
           owner : session._id
+        request.parameters.collection_id = undefined if request.parameters.collection_id is ""
         Discount.findAndUpdate filter, request.parameters
       ]).then (error, discount) ->
         if error then response.unauthorized() else response.json discount.parse()

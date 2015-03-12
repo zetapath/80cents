@@ -10,8 +10,8 @@ tests:
   - collection
   - product
   - discount
-  # - order
-  # - page
+  - order
+  - page
 
 # -- USERS ----------------------------------------------------------------------
 OWNERS:

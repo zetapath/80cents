@@ -36,6 +36,11 @@ children:
                   context: pages
                   text: Add a Page
                   callback: page
+              - Atom.Button:
+                  style: theme
+                  context: discounts
+                  text: Add a discount
+                  callback: discount
         - Atom.Progress:
             id: progress
         - Atom.Icon:
@@ -136,6 +141,24 @@ children:
               - onProduct
             bind:
               entity      : "__.Entity.Product"
+              atom        : "Atom.Li"
+              events      : ["touch"]
+              create      : true
+              update      : true
+              destroy     : true
+
+        # -- Discount
+        - Molecule.Discount:
+            id: discount
+        - Molecule.List:
+            id: discounts
+            style: padding-all vertical
+            events:
+              - select
+            callbacks:
+              - onDiscount
+            bind:
+              entity      : "__.Entity.Discount"
               atom        : "Atom.Li"
               events      : ["touch"]
               create      : true

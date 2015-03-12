@@ -26,7 +26,7 @@ Discount.statics.create = (values) ->
   new campaign(values).save (error, value) -> promise.done error, value
   promise
 
-Discount.statics.search = (query, limit = 0, page = 1, populate = "", sort = created_at: "asc") ->
+Discount.statics.search = (query, limit = 0, page = 1, populate = "", sort = updated_at: "desc") ->
   promise = new Hope.Promise()
   range =  if page > 1 then limit * (page - 1) else 0
   @find(query).skip(range).limit(limit).populate(populate).sort(sort).exec (error, value) ->
