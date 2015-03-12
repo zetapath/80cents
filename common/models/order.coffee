@@ -19,6 +19,7 @@ Order = new Schema
   payment_token   : type: String
   tracking_number : type: String
   state           : type: Number, default: C.ORDER.STATE.SHOPPING
+  discount        : type: Schema.ObjectId, ref: "Discount"
   updated_at      : type: Date
   created_at      : type: Date, default: Date.now
 
@@ -86,6 +87,7 @@ Order.methods.parse = ->
   tracking_number : @tracking_number
   state           : @state
   state_label     : C.ORDER.STATES[@state]
+  discount        : @discount?.parse?() or @discount
   updated_at      : moment(@updated_at).format("MMMM Do YYYY")
   created_at      : moment(@created_at).format("MMMM Do YYYY")
 

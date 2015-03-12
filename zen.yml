@@ -11,6 +11,7 @@ api:
   - image
   - settings
   - page
+  - discount
   - checkout
 
 # -- HTML pages ----------------------------------------------------------------

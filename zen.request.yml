@@ -9,8 +9,9 @@ tests:
   - session
   - collection
   - product
-  - order
-  - page
+  - discount
+  # - order
+  # - page
 
 # -- USERS ----------------------------------------------------------------------
 OWNERS:
@@ -128,3 +129,14 @@ PAGES:
   - title               : Contact
     content             : About us lorem ipsum...
     visibility          : true
+
+# -- DISCOUNTS -----------------------------------------------------------------
+DISCOUNTS:
+  - description         : 5% discount in all store
+    percent             : 5
+  - description         : 10% discount in a determinate category
+    percent             : 10
+    collection_id       : true
+  - description         : 5 currency discount in a determinate product
+    amount              : 5
+    product             : true
