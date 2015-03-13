@@ -91,8 +91,9 @@ class Atoms.Organism.Checkout extends Atoms.Organism.Section
     __.proxy("PUT", "order", parameters).then (error, response) =>
       @stripe.open
         name        : @order.settings.name
-        description : "#{@order.lines.length} products ($#{@order.amount})"
+        # description : "#{@order.lines.length} products (#{@order.settings.currency}#{@order.amount})"
         amount      : @order.amount.toString().replace(".", "")
+        currency    : @order.settings.currency
         email       : __.session.mail
 
 

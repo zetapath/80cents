@@ -1,6 +1,6 @@
 <article class="slideshow" data-flex="vertical center">
   <div class="overlay"></div>
-  {{#cart}}<h2>Your cart <span>{{order.amount}}{{settings.currency}}</span></h2>{{/cart}}
+  {{#cart}}<h2>Your cart <span>{{order.amount}}{{settings.currency_shortcut}}</span></h2>{{/cart}}
   {{^cart}}<h2>Order {{order.id}}</h2>{{/cart}}
 </article>
 
@@ -31,8 +31,8 @@
             {{^cart}}{{tracking_number}}{{/cart}}
           </td>
           <td class="center">{{quantity}}</td>
-          <td class="center">{{product.price}}{{settings.currency}}</td>
-          <td class="right"><strong>{{amount}}{{settings.currency}}</strong></td>
+          <td class="center">{{product.price}}{{settings.currency_shortcut}}</td>
+          <td class="right"><strong>{{amount}}{{settings.currency_shortcut}}</strong></td>
         </tr>
         {{/lines}}
         {{#order.discount}}
@@ -43,7 +43,7 @@
               <small>{{description}}</small>
             </div>
           </td>
-          <td class="right"><strong>-{{order.amount_discount}}{{settings.currency}}</strong></td>
+          <td class="right"><strong>-{{order.amount_discount}}{{settings.currency_shortcut}}</strong></td>
         </tr>
         {{/order.discount}}
         <tr class="total">
@@ -58,11 +58,11 @@
            {{/order.discount }}
           </td>
           <td class="right">
-            <a href="/checkout" class="button primary big" data-action="purchase">Check out {{order.amount}}{{settings.currency}}</a>
+            <a href="/checkout" class="button primary big" data-action="purchase">Check out {{order.amount}}{{settings.currency_shortcut}}</a>
           </td>
         {{/cart}}
         {{^cart}}
-          <td colspan="5" class="right">{{order.amount}}{{settings.currency}}</td>
+          <td colspan="5" class="right">{{order.amount}}{{settings.currency_shortcut}}</td>
         {{/cart}}
         </tr>
       </tbody>

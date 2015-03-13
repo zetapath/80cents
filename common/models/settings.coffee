@@ -81,6 +81,7 @@ Settings.methods.parse = ->
   address           : @address
   timezone          : @timezone
   currency          : @currency
+  currency_shortcut : _currencyShortcut @currency
   unit_system       : @unit_system
   weight_unit       : @weight_unit
   google_analytics  : @google_analytics
@@ -91,3 +92,9 @@ Settings.methods.parse = ->
   created_at        : @created_at
 
 exports = module.exports = db.model "Settings", Settings
+
+# -- Private methods -----------------------------------------------------------
+_currencyShortcut = (currency) ->
+  currency = "$" if currency is "USD"
+  currency = "€" if currency is "EUR"
+  currency
