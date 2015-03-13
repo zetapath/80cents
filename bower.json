@@ -1,6 +1,6 @@
 {
     "name": "80cents",
-    "version": "0.3.10",
+    "version": "0.3.13",
     "directory": "bower_components",
     "componentsDirectory": "bower_components",
     "ignore": [
