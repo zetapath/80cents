@@ -60,10 +60,16 @@ module.exports = (zen) ->
         visibility: true
       Product.search filter, limit = 1, null, populate = "collection_id"
     , (error, @product) =>
+      price = @product.price * 0.05
       filter =
         _id           : $nin: [@product._id]
         collection_id : @product.collection_id
         visibility    : true
+        $and          : [
+          price:  $gte : (@product.price - price)
+        ,
+          price:  $lte : (@product.price + price)
+        ]
       Product.search filter, limit = 4
     ]).then (error, products) =>
       return response.redirect "/" if error
