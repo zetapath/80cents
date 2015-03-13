@@ -56,7 +56,7 @@ _showOrder = (request, response, id) =>
       filter.state = $gt: C.ORDER.STATE.SHOPPING
     else
       filter = state: C.ORDER.STATE.SHOPPING
-    Order.search filter, limit = 1
+    Order.search filter, limit = 1, populate = ["discount"]
   , (error, @order) =>
     OrderLine.search order: @order._id
   ]).then (error, @lines) =>

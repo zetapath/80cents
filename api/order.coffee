@@ -2,6 +2,7 @@
 
 Hope        = require("zenserver").Hope
 Session     = require "../common/session"
+Discount    = require "../common/models/discount"
 Product     = require "../common/models/product"
 Order       = require "../common/models/order"
 OrderLine   = require "../common/models/order_line"
@@ -43,6 +44,8 @@ module.exports = (server) ->
         @order.amount = amount
         @order.lines.addToSet @line._id
         @order.saveInPromise()
+      , (error, value) =>
+        _amountDiscount @order
       ]).then (error, value) =>
         if error
           response.json message: error.message, error.code
@@ -64,11 +67,31 @@ module.exports = (server) ->
         index = @order.lines.indexOf @line._id
         @order.lines.splice index, 1 if index > -1
         @order.saveInPromise()
+      , (error, value) =>
+        _amountDiscount @order
       ]).then (error, value) ->
         if error
           response.json message: error.message, error.code
         else
           response.ok()
+
+  server.put "/api/order/discount", (request, response) ->
+    if request.required ["code", "order"]
+      @discount = undefined
+      Hope.shield([ ->
+        Session request, response
+      , (error, session) ->
+        filter =
+          code  : request.parameters.code
+          active: true
+        Discount.search filter, limit = 1
+      , (error, @discount) =>
+        Order.search _id: request.parameters.order, limit = 1
+      , (error, @order) =>
+        _amountDiscount @order, @discount
+      ]).then (error, value) =>
+        return response.unauthorized() if error
+        response.json @discount.parse()
 
   server.put "/api/order", (request, response) ->
     if request.required ["id"]
@@ -131,3 +154,21 @@ module.exports = (server) ->
       else
         result = orders: (order.parse() for order in @order)
       response.json result
+
+_amountDiscount = (order, discount) ->
+  promise = new Hope.Promise()
+  if order.discount or discount
+    order.discount = discount._id if discount
+    filter =
+      _id   : order.discount
+      active: true
+    Discount.search(filter, limit = 1).then (error, discount) ->
+      return promise.done error, null if error
+      if discount.percent
+        order.amount_discount = (order.amount * discount.percent) / 100
+      else if discount.amount
+        order.amount_discount = discount.amount
+      order.saveInPromise().then (error, value) -> promise.done error, value
+  else
+    promise.done false, true
+  promise

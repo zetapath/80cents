@@ -12,6 +12,7 @@ Order = new Schema
   user            : type: Schema.ObjectId, ref: "User"
   lines           : [type: Schema.ObjectId, ref: "OrderLine"]
   amount          : type: Number, default: 0
+  amount_discount : type: Number, default: 0
   comment         : type: String
   shipping        : type: Object
   billing         : type: Object
@@ -78,7 +79,7 @@ Order.methods.parse = ->
   id              : @_id.toString()
   user            : @user.parse?() or @user
   lines           : @lines
-  amount          : @amount?.toFixed(2)
+  amount          : (@amount - @amount_discount).toFixed(2)
   comment         : @comment
   shipping        : @shipping
   billing         : @billing
@@ -88,6 +89,7 @@ Order.methods.parse = ->
   state           : @state
   state_label     : C.ORDER.STATES[@state]
   discount        : @discount?.parse?() or @discount
+  amount_discount : @amount_discount.toFixed(2)
   updated_at      : moment(@updated_at).format("MMMM Do YYYY")
   created_at      : moment(@created_at).format("MMMM Do YYYY")
 

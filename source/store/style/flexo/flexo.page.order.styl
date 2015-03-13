@@ -14,3 +14,14 @@
         border                          : solid 1px BOX
       button
         border                          : solid 1px BOX
+
+      &.discount
+        > *
+          display                       : inline-block
+          font-size                     : FONT_SIZE_TINY
+        > small
+          font-size                     : FONT_SIZE_TINY
+          color                         : darken(BACKGROUND, 25%)
+        > input
+          margin                        : 0 (SPACE / 2)
+          max-width                     : 25%

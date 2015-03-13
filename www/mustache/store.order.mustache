@@ -35,15 +35,35 @@
           <td class="right"><strong>{{amount}}{{settings.currency}}</strong></td>
         </tr>
         {{/lines}}
+        {{#order.discount}}
+        <tr data-line="{{id}}">
+          <td colspan="4">
+            <div data-flex="vertical">
+              <strong>Coupon {{code}}</strong>
+              <small>{{description}}</small>
+            </div>
+          </td>
+          <td class="right"><strong>-{{order.amount_discount}}{{settings.currency}}</strong></td>
+        </tr>
+        {{/order.discount}}
         <tr class="total">
-          {{#cart}}
-          <td colspan="5" class="right">
+        {{#cart}}
+          <td colspan="4" class="discount">
+           {{^order.discount }}
+            {{#cart}}
+            <small>If you have any coupon code please use it here:</small>
+            <input type="text" placeholder="coupon" maxlength="32">
+            <button class="tiny" data-action="discount">Add</button>
+            {{/cart}}
+           {{/order.discount }}
+          </td>
+          <td class="right">
             <a href="/checkout" class="button primary big" data-action="purchase">Check out {{order.amount}}{{settings.currency}}</a>
           </td>
-          {{/cart}}
-          {{^cart}}
-            <td colspan="5" class="right">{{order.amount}}{{settings.currency}}</td>
-          {{/cart}}
+        {{/cart}}
+        {{^cart}}
+          <td colspan="5" class="right">{{order.amount}}{{settings.currency}}</td>
+        {{/cart}}
         </tr>
       </tbody>
     </table>
