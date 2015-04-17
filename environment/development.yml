@@ -12,6 +12,8 @@ mustache:
 # -- Services ------------------------------------------------------------------
 mongo:
   - name    : primary
-    host    : localhost
-    port    : 27017
-    db      : shopio
+    host    : ds039231.mongolab.com
+    port    : 39231
+    db      : the8848
+    user    : backpacker
+    password: s0l1dsn4k3

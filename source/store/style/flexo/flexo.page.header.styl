@@ -1,12 +1,3 @@
-@media screen and (max-device-width: 480px)
-  body > header
-    .logo
-      width                         : 90px !important
-      height                        : 104px !important
-      margin-right                  : 0 !important
-    nav
-      > a:not([data-shopio=cart])
-        display                     : none
 body
   > header
     z-index                         : 2
@@ -14,15 +5,13 @@ body
     top                             : 0
     left                            : 0
     right                           : 0
-    width                           : 100%
     padding                         : 0 SPACE
     height                          : HEADER_HEIGHT
     line-height                     : HEADER_HEIGHT
     background-color                : WHITE
     transition                        all TRANSITION_DURATION
-
     .logo
-      margin-right                  : (U / 2)
+      margin-right                  : SPACE
       width                         : 146px
       height                        : 175px
       color                         : THEME
@@ -40,6 +29,8 @@ body
         text-transform              : Uppercase
         text-align                  : center
         border-radius               : SPACE
+        &:not([data-shopio=cart])> .icon
+          display                   : none
         &.active, &:hover
           background-color          : THEME !important
           color                     : WHITE
@@ -67,16 +58,50 @@ body
   &:not([data-page="home"])
     > header nav > a
       margin-right                  : (SPACE / 2)
+
   &[data-page="home"]
     > header
       nav
         text-align                  : right
         > a
           transition                  color TRANSITION_DURATION
-
       &:not(.scroll)
         background-color            : transparent
         nav > a
           color                     : WHITE
           &[data-shopio=cart]
             background-color        : THEME
+
+@media screen and (max-device-width: 480px)
+  body > header
+    background-color                : transparent
+    padding                         : 0 (SPACE / 2)
+    .logo
+      height                        : 104px
+      width                         : WIDTH = 90px
+      min-width                     : WIDTH
+      margin-right                  : 0
+    nav
+      &[data-shopio=session]
+        > a
+          &:not([data-shopio=cart])
+            background-color        : COLOR
+            color                   : WHITE
+            padding-left            : SPACE = (SPACE / 1.75)
+            padding-right           : SPACE
+            abbr
+              display               : none
+            .icon
+              display               : inline-block
+          &[data-shopio=cart]
+            margin                  : 0
+
+      &:not([data-shopio=session])
+        > a
+          display: none
+
+    &.scroll
+      background-color              : transparent
+      border-bottom                 : none
+      nav a
+        background-color            : THEME

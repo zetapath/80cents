@@ -98,3 +98,44 @@
   #fancybox-loading div
     background-image: url('/assets/core/img/fancybox_loading@2x.gif') !important
     background-size: 24px 24px
+
+@media screen and (max-device-width: 480px)
+  [data-page="product"]
+    > article
+      section
+        > h1
+          font-size                       : (FONT_SIZE_NORMAL * 2)
+        > strong
+          margin                          : 0
+        nav.thumbnails
+          padding                         : (SPACE / 2) 0 SPACE 0 !important
+          figure.thumbnail
+            margin                        : (SPACE / 10)
+            height                        : SIZE = (U / 1.25)
+            width                         : SIZE
+
+        > ul
+          margin                          : 0 SPACE
+          font-size                       : 90%
+          line-height                     : 125%
+          > li
+            margin-bottom                 : (SPACE / 2)
+        [data-action=add]
+          width                           : 100%
+          margin-bottom                   : SPACE
+      > nav
+        > a
+          flex-direction                    row
+          width                           : 100%
+          margin                          : (SPACE / 4) (SPACE / 2)
+          > figure
+            width                         : SIZE = U
+            height                        : SIZE
+            margin-right                  : (SPACE / 2)
+          > div
+            flex-grow                       2
+            justify-content                 flex-start
+            align-content                   flex-start
+            align-items                     flex-start
+            > strong
+              font-size                   : FONT_SIZE_NORMAL

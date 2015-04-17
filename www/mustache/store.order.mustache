@@ -1,6 +1,6 @@
 <article class="slideshow" data-flex="vertical center">
   <div class="overlay"></div>
-  {{#cart}}<h2>Your cart <span>{{order.amount}}{{settings.currency_shortcut}}</span></h2>{{/cart}}
+  {{#cart}}<h2>Your cart</h2><h4>{{order.amount}}{{settings.currency_shortcut}}</h4>{{/cart}}
   {{^cart}}<h2>Order {{order.id}}</h2>{{/cart}}
 </article>
 
@@ -48,16 +48,16 @@
         {{/order.discount}}
         <tr class="total">
         {{#cart}}
-          <td colspan="4" class="discount">
-           {{^order.discount }}
-            {{#cart}}
-            <small>If you have any coupon code please use it here:</small>
-            <input type="text" placeholder="coupon" maxlength="32">
-            <button class="tiny" data-action="discount">Add</button>
-            {{/cart}}
-           {{/order.discount }}
-          </td>
-          <td class="right">
+          <td colspan="5" class="discount">
+            <div>
+            {{^order.discount }}
+              {{#cart}}
+              <small>If you have any coupon code please use it here:</small>
+              <input type="text" placeholder="coupon" maxlength="32">
+              <button class="tiny" data-action="discount">Add</button>
+              {{/cart}}
+            {{/order.discount }}
+            </div>
             <a href="/checkout" class="button primary big" data-action="purchase">Check out {{order.amount}}{{settings.currency_shortcut}}</a>
           </td>
         {{/cart}}

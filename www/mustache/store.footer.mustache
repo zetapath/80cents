@@ -1,4 +1,10 @@
 <footer class="bck align center" data-flex="vertical grow">
+  <nav>
+    {{#settings.pages}}<a href="/{{url_handle}}">{{title}}</a>{{/settings.pages}}
+  </nav>
+  <small>
+    COPYRIGHT © 2015 {{settings.address.contact}}. ALL RIGHTS RESERVED.
+  </small>
   {{!
   <nav class="networks">
     <a href="/" class="icon twitter"></a>
@@ -7,10 +13,4 @@
     <a href="/" class="icon pinterest"></a>
   </nav>
   }}
-  <nav>
-    {{#settings.pages}}<a href="/{{url_handle}}">{{title}}</a>{{/settings.pages}}
-  </nav>
-  <small>
-    COPYRIGHT © 2015 {{settings.address.contact}}. ALL RIGHTS RESERVED.
-  </small>
 </footer>

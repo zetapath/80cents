@@ -8,9 +8,11 @@
   <h3>Choose your style</h3>
   <nav data-shopio="products" data-flex="horizontal center wrap" class="margin-bottom">
     {{#collections}}
-    <a href="/collection/{{shortcut}}" class="product highlight" data-flex="vertical center" style="background-image: url(/uploads/{{default_image}});">
-      <strong>{{title}}</strong>
-      <span>{{description}}</span>
+    <a href="/collection/{{shortcut}}" class="product highlight" data-flex="vertical center" style="background-image: url(/uploads/{{default_image}});" data-shopio-collection={{id}}>
+      <div data-flex="vertical center">
+        <strong>{{title}}</strong>
+        <span>{{description}}</span>
+      </div>
     </a>
     {{/collections}}
   </nav>
