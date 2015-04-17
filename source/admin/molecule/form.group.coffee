@@ -37,6 +37,7 @@ class Atoms.Molecule.FormGroup extends Atoms.Molecule.Div
     @images?.value []
     @search?.clean()
     @address?.clean()
+    @networks?.clean()
     @shipping?.clean()
     @billing?.clean()
     @el.find("[data-atom-button].cancel")[if @entity then "removeAttr" else "attr"] "disabled", true

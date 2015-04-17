@@ -1,29 +1,29 @@
 body
   > footer
-    padding                             : (2 * SPACE) 0 SPACE 0
-    background-color                    : darken(BACKGROUND, 1%)
-    > *
-      margin                            : SPACE 0
+    padding                             : (2 * SPACE) 0
+    background-color                    : lighten(THEME, 80%)
+    > nav
+      &.networks
+        border-top                      : solid 1px BOX
+        padding                         : SPACE 0 (SPACE / 2) 0
+      &:not(.networks)
+        margin-bottom                   : SPACE
+      > a
+        margin                          : 0 (SPACE / 2)
+        &:not(.icon)
+          font-size                     : FONT_SIZE_SMALL
+          font-weight                   : FONT_WEIGHT_BOLD
+        &.icon
+          font-size                     : FONT_SIZE_BIG
     > small
-      padding-top                       : (2 * SPACE)
-      border-top                        : solid 1px BOX
       text-transform                    : Uppercase
-    a
-      margin                            : 0 (SPACE / 2)
-      &:not(.icon)
-        font-size                         : FONT_SIZE_SMALL
-        font-weight                       : FONT_WEIGHT_BOLDgi
+    > nav.networks, > small
+      opacity                           : 0.75
 
 @media screen and (max-device-width: 480px)
   body > footer
-    padding                             : SPACE = (SPACE / 2) 0
-    > *
-      margin                            : 0
+    padding                             : SPACE 0 (SPACE / 2) 0
     a:not(.icon)
-      font-size                         : FONT_SIZE_TINY
-    a.icon, > small
-      opacity                           : 0.5
+      font-size                         : (0.85 * FONT_SIZE_TINY)
     > small
-      padding-top                       : (SPACE / 2)
-      border-top                        : none
       font-size                         : (0.75 * FONT_SIZE_TINY)

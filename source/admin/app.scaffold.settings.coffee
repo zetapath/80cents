@@ -51,6 +51,16 @@ __.scaffold.form_settings =
     "Atom.Label": style: "anchor"
   ,
     "Molecule.Div": children: [
+      "Atom.Heading": size: "h2", value: "Social Networks"
+    ,
+      "Atom.Text": value: "Set you social networks links."
+    ]
+  ,
+    "Molecule.Networks": id: "networks"
+  ,
+    "Atom.Label": style: "anchor"
+  ,
+    "Molecule.Div": children: [
       "Atom.Heading": size: "h2", value: "Standards & formats"
     ,
       "Atom.Text": value: "Standards and formats are used to calculate such things as product price, shipping weight and the time an order was placed."

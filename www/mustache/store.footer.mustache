@@ -2,15 +2,12 @@
   <nav>
     {{#settings.pages}}<a href="/{{url_handle}}">{{title}}</a>{{/settings.pages}}
   </nav>
+  <nav class="networks">
+    {{#settings.networks}}
+    <a href="{{url}}" class="icon {{type}}"></a>
+    {{/settings.networks}}
+  </nav>
   <small>
     COPYRIGHT © 2015 {{settings.address.contact}}. ALL RIGHTS RESERVED.
   </small>
-  {{!
-  <nav class="networks">
-    <a href="/" class="icon twitter"></a>
-    <a href="/" class="icon facebook"></a>
-    <a href="/" class="icon instagram"></a>
-    <a href="/" class="icon pinterest"></a>
-  </nav>
-  }}
 </footer>

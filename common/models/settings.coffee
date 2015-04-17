@@ -22,6 +22,8 @@ Settings = new Schema
   google_analytics  : type: String
   # -- Payments
   payments          : type: Object
+  # -- Networks
+  networks          : type: Object
   # -- Cached Elements
   collections       : type: Array
   pages             : type: Array
@@ -62,7 +64,9 @@ Settings.statics.cache = ->
     promise.done null, @cached
   else
     @search().then (error, value) =>
-      promise.done error, @cached = value?.parse() or {}
+      value = value?.parse() or {}
+      value.networks = (type: type, url: url for type, url of value.networks when url isnt "")
+      promise.done error, @cached = value
   promise
 
 # -- Instance methods ----------------------------------------------------------
@@ -79,6 +83,7 @@ Settings.methods.parse = ->
   account_mail      : @account_mail
   customer_mail     : @customer_mail
   address           : @address
+  networks          : @networks
   timezone          : @timezone
   currency          : @currency
   currency_shortcut : _currencyShortcut @currency

@@ -19,7 +19,6 @@ module.exports = (server) ->
           response.json settings.parse()
       response.json settings.parse()
 
-
   server.put "/api/settings", (request, response) ->
     Hope.shield([ ->
       Session request, response, redirect = false, owner = true
