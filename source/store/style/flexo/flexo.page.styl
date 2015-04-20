@@ -8,6 +8,9 @@ body
   .margin-left
     margin-left                         : SPACE
 
+  figure
+    background-size                     : cover
+
   > article
     &.slideshow
       position                          : relative
@@ -72,9 +75,6 @@ body
           display                       : block
       &:not(.text)
         padding                         : SPACE
-  figure
-    background-size                     : cover
-
 
   // -- Product list
   [data-shopio=products]
@@ -136,6 +136,16 @@ body
         &:hover
           > *
             text-shadow                 : 0 0 SPACE rgba(0,0,0,0.5)
+
+
+  [data-shopio-collection], [data-shopio-product]
+    transition                            all ANIMATION_DURATION ANIMATION_EASE
+    &:not(.active)
+      opacity                           : 0
+      transform                           translateY(50%)
+    &.active
+      opacity                           : 1
+      transform                           translateY(0%)
 
 @media screen and (max-device-width: 480px)
   body

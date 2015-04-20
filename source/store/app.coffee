@@ -5,10 +5,25 @@ __.const = {}
 Atoms.$ ->
   # -- Define global variables
   __.page = Atoms.$("body").attr "data-page"
-  __.el =
+  __.mod =
     document  : $ document
     header    : $ "header"
     slideshow : $ "article.slideshow"
+    height    : window.innerHeight or document.documentElement.offsetHeight
+    items     : (el: $(el), px: el.offsetTop for el in $ "[data-shopio-collection], [data-shopio-product]")
+    scroll    : (event) ->
+      px = __.mod.document.scrollTop()
+      percent = (__.mod.document.scrollTop() * 100) / __.mod.slideshow.height()
+      # -- Header
+      if percent > 25
+        __.mod.header.addClass "scroll"
+        __.mod.slideshow.addClass "scroll"
+      else
+        __.mod.header.removeClass "scroll"
+        __.mod.slideshow.removeClass "scroll"
+      # -- Items
+      px += (__.mod.height / 1.25)
+      item.el.addClass "active" for item in __.mod.items when  px >= item.px
 
   # -- Detect session
   unless __.session
@@ -21,15 +36,9 @@ Atoms.$ ->
 
   # -- Button events
   Atoms.$("[data-action=menu]").on "click", (event) ->
-    __.el.header.children("[data-action=menu]").toggleClass "active"
-    __.el.header.children("[data-shopio=menu]").toggleClass "active"
+    __.mod.header.children("[data-action=menu]").toggleClass "active"
+    __.mod.header.children("[data-shopio=menu]").toggleClass "active"
 
   # -- Detect scroll
-  Atoms.$(document).on "scroll", (event) ->
-    percent = (__.el.document.scrollTop() * 100) / __.el.slideshow.height()
-    if percent > 25
-      __.el.header.addClass "scroll"
-      __.el.slideshow.addClass "scroll"
-    else
-      __.el.header.removeClass "scroll"
-      __.el.slideshow.removeClass "scroll"
+  do __.mod.scroll
+  Atoms.$(document).on "scroll", __.mod.scroll
