@@ -77,11 +77,11 @@ Your shop is running at **http://localhost:1337**
 Manage your account at **http://localhost:1337/admin**. After admin registration let's start with basic information about your store:
 
 #### Settings
-In this section you can edit information about your store as Name, Homepage, Metas and e.mail addresses to contact.
+In this section you can edit information about your store as Name, Homepage, Metas and Mail addresses for contact. Also, you can configure your shop address. This information will appears on your invoice.
 
 ![image](https://dl.dropboxusercontent.com/u/41546005/80cents/Setting.1.1.png)
 
-Then you can configure your shop address that will appear on your invoice as well as Time Zone, Currency, Unit System and Weight Unit. Also, in this section, you can set your code from Google Analytics.
+Then you can edit Standard and Format for products details.
 
 ![image](https://dl.dropboxusercontent.com/u/41546005/80cents/Setting.1.2.png)
 
@@ -98,7 +98,9 @@ The next step is to add products to categories. Select **Products** from aside a
 ![image](https://dl.dropboxusercontent.com/u/41546005/80cents/Products.1.1.png)
 
 #### Discounts
-Coming soon
+In this section you can define discounts for your customers. Define a code, description and if the discount is in percent or money. Also, you can configure your discount for entire order, collection or product.
+
+![image](https://dl.dropboxusercontent.com/u/41546005/80cents/Discount.1.1.png)
 
 #### Pages
 Coming soon
