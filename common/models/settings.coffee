@@ -14,6 +14,7 @@ Settings = new Schema
   # -- Store Address
   address           : type: Object
   # -- Standards & Formats
+  language          : type: String, default: "en-US"
   timezone          : type: String
   currency          : type: String
   unit_system       : type: String
@@ -84,6 +85,7 @@ Settings.methods.parse = ->
   customer_mail     : @customer_mail
   address           : @address
   networks          : @networks
+  language          : @language
   timezone          : @timezone
   currency          : @currency
   currency_shortcut : _currencyShortcut @currency

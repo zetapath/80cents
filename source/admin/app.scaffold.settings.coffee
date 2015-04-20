@@ -67,6 +67,10 @@ __.scaffold.form_settings =
     ]
   ,
     "Molecule.Form": children: [
+      "Atom.Label": value: "Language"
+    ,
+      "Atom.Input": name: "language"
+    ,
       "Atom.Label": style: "half", value: "Timezone"
     ,
       "Atom.Label": style: "half", value: "Currency"
