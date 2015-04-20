@@ -7,20 +7,21 @@ class Atoms.Organism.Menu extends Atoms.Organism.Aside
   constructor: ->
     super
     do @render
-    id = Atoms.Url.path().split("/").slice(-1)[0]
-
-    for navigation in @section.children
-      for link in navigation.children
-        link.el[if link.attributes.text is id then "addClass" else "removeClass"] "active"
+    @activeItem Atoms.Url.path().split("/").slice(-1)[0]
 
 
   # -- Children Bubble Events --------------------------------------------------
   onOption: (event, atom) ->
-    context = atom.attributes.text
-    Atoms.Url.path "admin/#{context}"
-    __.Article.Content.context context
+    @activeItem id = atom.attributes.text
+    Atoms.Url.path "admin/#{id}"
+    __.Article.Content.context id
     false
 
   onProfile: ->
     __.Dialog.Profile.show()
     false
+
+  activeItem: (id) ->
+    for navigation in @section.children
+      for link in navigation.children
+        link.el[if link.attributes.text is id then "addClass" else "removeClass"] "active"
