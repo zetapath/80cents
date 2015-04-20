@@ -2,6 +2,9 @@
 A real and easy NodeJS service for create ecommerce platforms.
 http://80cents.org
 
+![image](https://dl.dropboxusercontent.com/u/41546005/80cents/The8848.png)
+
+---
 - [Instalation](#instalation)
   - [Files](#files)
   - [Commands](#commands)
@@ -105,7 +108,7 @@ In this section you can define discounts for your customers. Define a code, desc
 #### Pages
 Use this section to add static pages as *About*, *Shipping*, *Returns*, *Terms of use* or any other that you need.
 
-Links for *Pages* are shown at footer. You can check *Header Menu* box for have links at header.
+Links for *Pages* are shown at footer. You can check *Header Menu* checkbox for have links at header.
 
 ![image](https://dl.dropboxusercontent.com/u/41546005/80cents/Pages.1.1.png)
 
