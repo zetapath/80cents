@@ -110,7 +110,9 @@ Links for *Pages* are shown at footer. You can check *Header Menu* box for have 
 ![image](https://dl.dropboxusercontent.com/u/41546005/80cents/Pages.1.1.png)
 
 #### Payments
-Coming soon
+With 80 cents you can choose as payment between PayPal or Stripe. You just need configure your keys.
+
+![image](https://dl.dropboxusercontent.com/u/41546005/80cents/Payments.1.1.png)
 
 ---
 ### Customize
