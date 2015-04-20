@@ -103,7 +103,11 @@ In this section you can define discounts for your customers. Define a code, desc
 ![image](https://dl.dropboxusercontent.com/u/41546005/80cents/Discount.1.1.png)
 
 #### Pages
-Coming soon
+Use this section to add static pages as *About*, *Shipping*, *Returns*, *Terms of use* or any other that you need.
+
+Links for *Pages* are shown at footer. You can check *Header Menu* box for have links at header.
+
+![image](https://dl.dropboxusercontent.com/u/41546005/80cents/Pages.1.1.png)
 
 #### Payments
 Coming soon
