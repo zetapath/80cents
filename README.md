@@ -3,7 +3,6 @@ A real and easy NodeJS service for create ecommerce platforms.
 http://80cents.org
 
 - [Instalation](#instalation)
-  - []
   - [Files](#files)
   - [Commands](#commands)
   - [Running your store](#running-your-store)
@@ -17,7 +16,7 @@ http://80cents.org
 - [Customize](#)
   - [Theme](#)
   - [Templates](#)
-  - [JavaScript](#)
+  - [Endpoints](#)
 
 ---
 ### Installation
@@ -28,7 +27,7 @@ npm install 80cents
 ```
 
 #### Files
-After install NPM package, you need create the following structure of files and folders:
+After install NPM package, you need create the following structure of files and folders. If you want you can [download](https://github.com/zetapath/80cents.site/raw/gh-pages/example.zip) our example:
 
 ```
 .
@@ -44,12 +43,12 @@ After install NPM package, you need create the following structure of files and 
 
 80cents it's powered by [ZEN-server](https://github.com/soyjavi/zen-server). You can find proper settings for these files in the next links:
 
-- [development.yml](https://github.com/cat2608/kedai/blob/master/environment/development.yml)
-- [80cents.js](https://github.com/cat2608/kedai/blob/master/80cents.js)
-- [80cents.yml](https://github.com/cat2608/kedai/blob/master/80cents.yml)
-- [bower.json](https://github.com/cat2608/kedai/blob/master/bower.json)
-- [gulpfile.coffee](https://github.com/cat2608/kedai/blob/master/gulpfile.coffee)
-- [package.json](https://github.com/cat2608/kedai/blob/master/package.json)
+- [development.yml](https://github.com/zetapath/80cents.site/blob/gh-pages/example/environment/development.yml) (one of your environments for run the current instance)
+- [80cents.js](https://github.com/zetapath/80cents.site/blob/gh-pages/example/80cents.js) (main running NodeJS file)
+- [80cents.yml](https://github.com/zetapath/80cents.site/blob/gh-pages/example/80cents.yml) (configuration of your 80cents instance)
+- [bower.json](https://github.com/zetapath/80cents.site/blob/gh-pages/example/bower.json) (bower dependencies)
+- [gulpfile.coffee](https://github.com/zetapath/80cents.site/blob/gh-pages/example/gulpfile.coffee) (gulp tasks config file)
+- [package.json](https://github.com/zetapath/80cents.site/blob/gh-pages/example/package.json) (node package dependencies)
 
 #### Commands
 Install dependencies and bower components:
@@ -75,14 +74,14 @@ Your shop is running at **http://localhost:1337**
 
 ---
 ### Quick start
-Manage your account at **http://localhost:1337/admin**. After admin registration let's start with basic infromation about your store:
+Manage your account at **http://localhost:1337/admin**. After admin registration let's start with basic information about your store:
 
 #### Settings
 In this section you can edit information about your store as Name, Homepage, Metas and e.mail addresses to contact.
 
 ![image](https://dl.dropboxusercontent.com/u/41546005/80cents/Setting.1.1.png)
 
-Then you can configure your shop address that will appear on your invoice as well as Time Zone, Currency, Uniy System and Weight Unit. Also, in this section, you can set your code from Google Analytics.
+Then you can configure your shop address that will appear on your invoice as well as Time Zone, Currency, Unit System and Weight Unit. Also, in this section, you can set your code from Google Analytics.
 
 ![image](https://dl.dropboxusercontent.com/u/41546005/80cents/Setting.1.2.png)
 
@@ -98,15 +97,21 @@ The next step is to add products to categories. Select **Products** from aside a
 
 ![image](https://dl.dropboxusercontent.com/u/41546005/80cents/Products.1.1.png)
 
-### Discounts
+#### Discounts
 Coming soon
 
-### Pages
+#### Pages
 Coming soon
 
-### Payments
+#### Payments
 Coming soon
 
 ---
 ### Customize
 Coming soon
+
+#### Theme
+
+#### Templates
+
+#### Endpoints
