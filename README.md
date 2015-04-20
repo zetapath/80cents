@@ -52,7 +52,7 @@ Manage your account at **http://localhost:1337/admin**. After admin registration
 
 ### Settings
 
-First, start by setting the basic information about your store:
+In this section you can edit information about your store as Name, Homepage, Metas and e.mail addresses to contact.
 
 ![image](https://dl.dropboxusercontent.com/u/41546005/80cents/Setting.1.1.png)
 
@@ -64,9 +64,15 @@ Then you can configure your shop address that will appear on your invoice as wel
 
 Start building your store creating some collections, in this example we are building a shop for sell or buy tech devices so we need a *Mobile*, *Tablets* and *Desktop* categories.
 
-From options on the left, select **Collections** and click on *Add a Collection* button.
+Select **Collections** from aside and click on *Add a Collection* button. Fill the form and after saving basic information you can upload images for this category.
 
 ![image](https://dl.dropboxusercontent.com/u/41546005/80cents/Collection.1.1.png)
+
+### Products
+
+The next step is to add products to categories. Select **Products** from aside and create a new one and edit product's information.
+
+![image](https://dl.dropboxusercontent.com/u/41546005/80cents/Products.1.1.png)
 
 
 
