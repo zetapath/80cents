@@ -22,8 +22,8 @@ Collection = new Schema
 # -- Static methods ------------------------------------------------------------
 Collection.statics.create = (values) ->
   promise = new Hope.Promise()
-  campaign = db.model "Collection", Collection
-  new campaign(values).save (error, value) -> promise.done error, value
+  collection_model = db.model "Collection", Collection
+  new collection_model(values).save (error, value) -> promise.done error, value
   promise
 
 Collection.statics.search = (query, limit = 0, page = 1, populate = "", sort = created_at: "asc") ->

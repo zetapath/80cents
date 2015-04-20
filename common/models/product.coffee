@@ -42,10 +42,10 @@ Product = new Schema
 # -- Static methods ------------------------------------------------------------
 Product.statics.create = (values) ->
   promise = new Hope.Promise()
-  campaign = db.model "Product", Product
+  product = db.model "Product", Product
   # -- Specific formats
   values = __StringToArray values
-  new campaign(values).save (error, value) -> promise.done error, value
+  new product(values).save (error, value) -> promise.done error, value
   promise
 
 Product.statics.search = (query, limit = 0, page = 1, populate = "", sort = updated_at: "desc") ->

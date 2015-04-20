@@ -21,8 +21,8 @@ Page = new Schema
 # -- Static methods ------------------------------------------------------------
 Page.statics.create = (values) ->
   promise = new Hope.Promise()
-  campaign = db.model "Page", Page
-  new campaign(values).save (error, value) -> promise.done error, value
+  page = db.model "Page", Page
+  new page(values).save (error, value) -> promise.done error, value
   promise
 
 Page.statics.search = (query, limit = 0, page = 1, populate = "", sort = created_at: "asc") ->

@@ -22,8 +22,8 @@ Discount = new Schema
 # -- Static methods ------------------------------------------------------------
 Discount.statics.create = (values) ->
   promise = new Hope.Promise()
-  campaign = db.model "Discount", Discount
-  new campaign(values).save (error, value) -> promise.done error, value
+  discount = db.model "Discount", Discount
+  new discount(values).save (error, value) -> promise.done error, value
   promise
 
 Discount.statics.search = (query, limit = 0, page = 1, populate = "", sort = updated_at: "desc") ->

@@ -35,8 +35,8 @@ Settings = new Schema
 # -- Static methods ------------------------------------------------------------
 Settings.statics.create = (values) ->
   promise = new Hope.Promise()
-  campaign = db.model "Settings", Settings
-  new campaign(values).save (error, value) -> promise.done error, value
+  settings = db.model "Settings", Settings
+  new settings(values).save (error, value) -> promise.done error, value
   promise
 
 Settings.statics.search = (query) ->
