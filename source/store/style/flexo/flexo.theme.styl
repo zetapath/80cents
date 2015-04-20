@@ -1,43 +1,40 @@
 // -- MEDIAQUERIES -------------------------------------------------------------
 @media (min-width: 1200px)
   .container
-    max-width               : 1200px
+    max-width                 : 1200px
 
 // -- BASE ---------------------------------------------------------------------
 body
-  font-family               : FONT_FAMILY
-  font-size                 : FONT_SIZE
-  color                     : COLOR
-  background-color          : WHITE
+  font-family                 : FONT_FAMILY
+  font-size                   : FONT_SIZE
+  color                       : COLOR
+  background-color            : WHITE
 
   .container
-    overflow                : hidden
-
+    overflow                  : hidden
 
 // -- LINK ---------------------------------------------------------------------
 a
-  text-decoration           : none
-  color                     : COLOR
+  text-decoration             : none
+  color                       : COLOR
   &:hover, &:active
-    color                   : THEME
+    color                     : THEME
 
 // -- BUTTON -------------------------------------------------------------------
 .button, button, input[type="submit"], input[type="reset"], input[type="button"]
-  font-weight               : bold
-  text-transform            : uppercase
-  letter-spacing            : .1rem
-  color                     : lighten(COLOR, 50%)
-  border                    : none
-  border-radius             : BORDER_RADIUS
-  margin-bottom             : 0
-  // > .icon
-  //   margin-right            : (SPACE / 1.25)
+  font-weight                 : bold
+  text-transform              : uppercase
+  letter-spacing              : .1rem
+  color                       : lighten(COLOR, 50%)
+  border                      : none
+  border-radius               : BORDER_RADIUS
+  margin-bottom               : 0
   &.big
-    padding                 : (SPACE / 2) (SPACE * 2)
-    height                  : auto
-    font-size               : FONT_SIZE_SMALL
+    padding                   : (SPACE / 2) (SPACE * 2)
+    height                    : auto
+    font-size                 : FONT_SIZE_SMALL
   &.anchor
-    width                   : 100%
+    width                     : 100%
   &:not([disabled])
     &:hover, &:focus
       color                   : darken(BACKGROUND, 75%)
@@ -54,29 +51,29 @@ a
     color                     : lighten(BACKGROUND, 75%)
     background-color          : BOX
 
-  // -- FORM ---------------------------------------------------------------------
+// -- FORM ---------------------------------------------------------------------
 input[type="email"], input[type="search"], input[type="text"], input[type="tel"],
 input[type="url"], input[type="password"], textarea, select
-  background-color          : WHITE
-  border                    : 1px solid BOX
-  border-radius             : BORDER_RADIUS
+  background-color            : WHITE
+  border                      : 1px solid BOX
+  border-radius               : BORDER_RADIUS
   &:focus
-    border                  : 1px solid darken(BACKGROUND, 30%)
+    border                    : 1px solid darken(BACKGROUND, 30%)
 
-// -- TABLE ---------------------------------------------------------------------
+// -- TABLE --------------------------------------------------------------------
 table
   td, th
     &.center
-      text-align                      : center
+      text-align              : center
     &.right
-      text-align                      : right
+      text-align              : right
   th, td
-    border-bottom           : 1px solid BOX
+    border-bottom             : 1px solid BOX
   th
-    font-size               : FONT_SIZE_TINY
-    color                   : LABEL
-    padding                 : (SPACE / 2) SPACE
+    font-size                 : FONT_SIZE_TINY
+    color                     : LABEL
+    padding                   : (SPACE / 2) SPACE
   td
-    padding                 : SPACE
+    padding                   : SPACE
   tr:last-child td
-    border-bottom           : none
+    border-bottom             : none

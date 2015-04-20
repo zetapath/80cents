@@ -10,7 +10,9 @@ body
     line-height                     : HEADER_HEIGHT
     background-color                : WHITE
     transition                        all TRANSITION_DURATION
-    .logo
+    > .logo, > button
+      z-index                       : 1980
+    > .logo
       margin-right                  : SPACE
       width                         : 146px
       height                        : 175px
@@ -19,11 +21,10 @@ body
       background-size               : cover
       transform                       translateY(0%)
       transition                      all TRANSITION_DURATION
-
-    nav
-      a
+    > nav
+      > a
         padding                     : (SPACE / 2) SPACE
-        font-size                   : FONT_SIZE_SMALL
+        font-size                   : FONT_SIZE_TINY
         letter-spacing              : 1px
         font-weight                 : FONT_WEIGHT_BOLD
         text-transform              : Uppercase
@@ -31,9 +32,6 @@ body
         border-radius               : SPACE
         &:not([data-shopio=cart])> .icon
           display                   : none
-        &.active, &:hover
-          background-color          : THEME !important
-          color                     : WHITE
         &[data-shopio=cart]
           background-color          : COLOR
           color                     : WHITE
@@ -46,33 +44,59 @@ body
             display                 : none
           > strong
             margin-right            : (SPACE / 5)
+    > button
+      max-width                     : SIZE = (U / 2)
+      height                        : SIZE
+      line-height                   : SIZE
+      margin-top                    : (1.5 * SPACE)
+      padding                       : 0
+      margin-left                   : (SPACE / 2)
+      font-size                     : FONT_SIZE_NORMAL
+      transition                      all TRANSITION_DURATION ANIMATION_EASE
+      &, &:active, &:focus, &:visited
+        color                       : WHITE !important
+      &.active
+        margin-top                  : (SPACE / 2)
+        font-size                   : FONT_SIZE_BIG
+        color                       : COLOR !important
+        transform                     rotateZ(45deg)
 
     &.scroll
-      height                        : HEADER_HEIGHT = (HEADER_HEIGHT / 1.5)
-      line-height                   : HEADER_HEIGHT
-      background-color              : rgba(255,255,255,0.95)
+      background-color              : rgba(WHITE,0.95)
       border-bottom                 : solid 1px BOX
       .logo
         transform                     translateY(-10%)
 
   &:not([data-page="home"])
-    > header nav > a
+    > header > nav > a
       margin-right                  : (SPACE / 2)
 
   &[data-page="home"]
     > header
-      nav
+      > nav
+        margin-left                 : (SPACE / 2)
         text-align                  : right
         > a
           transition                  color TRANSITION_DURATION
       &:not(.scroll)
         background-color            : transparent
-        nav > a
+        > nav > a
           color                     : WHITE
           &[data-shopio=cart]
             background-color        : THEME
 
-@media screen and (max-device-width: 480px)
+// -- MEDIAQUERIES -------------------------------------------------------------
+@media screen and (min-device-width: 769px)
+  body > header
+    > nav
+      > a
+        &.active, &:hover
+          background-color          : THEME !important
+          color                     : WHITE
+    > button
+      display                       : none
+
+@media screen and (max-device-width: 768px)
   body > header
     background-color                : transparent
     padding                         : 0 (SPACE / 2)
@@ -81,8 +105,28 @@ body
       width                         : WIDTH = 90px
       min-width                     : WIDTH
       margin-right                  : 0
-    nav
+    > nav
+      &[data-shopio=menu]
+        position                    : absolute
+        top                         : 0
+        left                        : 0
+        width                       : 100%
+        height                      : auto
+        padding                     : (2 * SPACE) 0 SPACE 0
+        line-height                 : (1.5 * SPACE)
+        background-color            : alpha(WHITE, 90%)
+        transform                     translateY(-100%)
+        transition                    all TRANSITION_DURATION ANIMATION_EASE
+        > a
+          display                   : block
+          margin                    : 0
+          color                     : COLOR !important
+        &.active
+          transform                   translateY(0%)
+
       &[data-shopio=session]
+        flex-grow                     1
+        text-align                  : right
         > a
           &:not([data-shopio=cart])
             padding-left            : SPACE = (SPACE / 1.75)
@@ -97,12 +141,11 @@ body
           &[data-shopio=cart]
             margin                  : 0
 
-      &:not([data-shopio=session])
-        > a
-          display: none
-
     &.scroll
       background-color              : transparent
       border-bottom                 : none
-      nav a
-        background-color            : THEME
+      > nav[data-shopio=session]
+        a
+          background-color          : THEME
+      > button
+        max-width                   : 0px
