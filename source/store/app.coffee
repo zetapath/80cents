@@ -23,13 +23,15 @@ Atoms.$ ->
         __.mod.header.removeClass "scroll"
         __.mod.slideshow.removeClass "scroll"
       # -- Items
-      px += (__.mod.height / 1.25)
-      item.el.addClass "active" for item in __.mod.items when  px >= item.px
+      if __.mod.items.length > 0
+        px += (__.mod.height / 1.25)
+        item.el.addClass "active" for item in __.mod.items when  px >= item.px
       # -- Reviews
-      px += (__.mod.height / 2.5)
-      if px >= __.mod.reviews[0].offsetTop and not __.mod.reviews.hasClass "active"
-        __.mod.reviews.addClass "active"
-        new Atoms.Molecule.Reviews product: __.mod.reviews.attr "data-shopio-reviews"
+      if __.mod.reviews.length > 0
+        px += (__.mod.height / 2.5)
+        if px >= __.mod.reviews[0].offsetTop and not __.mod.reviews.hasClass "active"
+          __.mod.reviews.addClass "active"
+          new Atoms.Molecule.Reviews product: __.mod.reviews.attr "data-shopio-reviews"
 
 
   # -- Detect session

@@ -1,6 +1,6 @@
 {
   "name"                        : "80cents",
-  "version"                     : "0.4.21",
+  "version"                     : "0.4.22",
   "description"                 : "A real and easy NodeJS service for create ecommerce platforms.",
   "homepage"                    : "http://zetapath.com",
   "author": {
