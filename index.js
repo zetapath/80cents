@@ -16,8 +16,8 @@ module.exports = {
 
     // -- Default Endpoints
     var endpoints = {
-      api: ["session", "order", "customer", "collection", "product", "image",
-            "settings", "page", "discount", "checkout"],
+      api: ["session", "order", "customer", "collection", "product", "review",
+            "image", "settings", "page", "discount", "checkout"],
       www: ["admin", "store.order", "store.profile", "store"]
     };
     var context, endpoint, values, _i, _len;

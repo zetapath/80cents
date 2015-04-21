@@ -1,9 +1,18 @@
 {
   "name"                        : "80cents",
-  "version"                     : "0.4.17",
-  "description"                 : "80cents is everything you need to sell anywhere (with your own io.js or nodejs servers) — Edit",
+  "version"                     : "0.4.20",
+  "description"                 : "A real and easy NodeJS service for create ecommerce platforms.",
   "homepage"                    : "http://zetapath.com",
-  "author"                      : "Javi Jimenez Villar",
+  "author": {
+    "name": "Javi Jimenez",
+    "email": "javi.jimenez.villar@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Catalina Oyaneder",
+      "email": "cat2608@gmail.com"
+    }
+  ],
   "dependencies": {
     "coffee-script"             : "*",
     "moment"                    : "*",

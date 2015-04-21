@@ -9,85 +9,94 @@ tests:
   - session
   - collection
   - product
+  - review
   - discount
   - order
   - page
 
-# -- USERS ----------------------------------------------------------------------
+# -- USERS ---------------------------------------------------------------------
 OWNERS:
-  - mail              : o1@shop.io
-    password          : o1
-    name              : Owner nº1
-    avatar            : http://cdn.tapquo.com/photos/soyjavi.jpg
+  - mail                : o1@shop.io
+    password            : o1
+    name                : Owner nº1
+    avatar              : http://cdn.tapquo.com/photos/soyjavi.jpg
 
 USERS:
-  - mail              : u1@shop.io
-    password          : u1
-    name              : User nº1
-  - mail              : u2@shop.io
-    password          : u2
-    name              : User nº2
+  - mail                : u1@shop.io
+    password            : u1
+    name                : User nº1
+  - mail                : u2@shop.io
+    password            : u2
+    name                : User nº2
 
 # -- COLLECTIONS ---------------------------------------------------------------
 COLLECTIONS:
-  - title             : Organic Food
-    description       : organic food
-    image             : http://
+  - title               : Organic Food
+    description         : organic food
+    image               : http://
     search:
       page_title        : organic food
       meta_description  : food rice
       url_handle        : organic_food
-    visibility        : true
-  - title             : Accesories
-    description       : Accesories with thailand cotton
-    image             : http://
+    visibility          : true
+  - title               : Accesories
+    description         : Accesories with thailand cotton
+    image               : http://
     search:
       page_title        : accesories
       meta_description  : accesories with thailand cotton
       url_handle        : accesories
-    visibility        : true
-  - title             : Clothes
-    description       : Clothes with thailand cotton
-    image             : http://
+    visibility          : true
+  - title               : Clothes
+    description         : Clothes with thailand cotton
+    image               : http://
     search:
       page_title        : clothes
       meta_description  : clothes with thailand cotton
       url_handle        : clothes
-    visibility        : true
+    visibility          : true
 
 # -- PRODUCTS ------------------------------------------------------------------
 PRODUCTS:
-  - title             : Rice
-    description       : Organic Black Rice
-    type              : food
-    vendor            : Farm Story House
-    price             : 10.95
-    compare_at_price  : 14.95
-    stock             : 100
-    barcode           : none
-    tax               : true
-    requires_shipping : true
-    weight            : 1
-    sizes             :
-    colors            :
-    materials         :
-    default_image     : http://4
-    images            :
+  - title               : Rice
+    description         : Organic Black Rice
+    type                : food
+    vendor              : Farm Story House
+    price               : 10.95
+    compare_at_price    : 14.95
+    stock               : 100
+    barcode             : none
+    tax                 : true
+    requires_shipping   : true
+    weight              : 1
+    sizes               :
+    colors              :
+    materials           :
+    default_image       : http://4
+    images              :
       - "http://1"
       - "http://2"
       - "http://3"
-    collection        : ?
-    tags              :
+    collection          : ?
+    tags                :
     search:
       page_title        : rice
       meta_description  : organic black rice
       url_handle        : rice
-    visibility        : true
-    highlight         : true
-  - title             : Noodle
-    description       : Organic Noodle
-    type              : food
-    price             : 6.95
+    visibility          : true
+    highlight           : true
+  - title               : Noodle
+    description         : Organic Noodle
+    type                : food
+    price               : 6.95
+
+# -- REVIEWS -------------------------------------------------------------------
+REVIEWS:
+  - title               : Amazing product...
+    description         : I like it...
+    rating              : 4
+  - description         : The quality is poor...
+    rating              : 1
 
 # -- ORDERS --------------------------------------------------------------------
 ORDERS:
@@ -107,7 +116,7 @@ ORDERS:
         color           : black
       - quantity        : 2
 
-# -- PAGES ----------------------------------------------------------------------
+# -- PAGES ---------------------------------------------------------------------
 PAGES:
   - title               : About us
     content             : About us lorem ipsum...

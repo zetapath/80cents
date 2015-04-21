@@ -7,7 +7,7 @@ db          = require("zenserver").Mongo.connections.primary
 
 Review = new Schema
   user              : type: Schema.ObjectId, ref: "User"
-  product           : type: Schema.ObjectId, ref: "Product"
+  product           : type: String, ref: "Product"
   # -- Details
   title             : type: String
   description       : type: String
@@ -23,7 +23,7 @@ Review.statics.create = (values) ->
   new review(values).save (error, value) -> promise.done error, value
   promise
 
-Review.statics.search = (query, limit = 0, page = 1, populate = "user", sort = updated_at: "desc") ->
+Review.statics.search = (query, limit = 0, page = 1, populate = "user", sort = created_at: "asc") ->
   promise = new Hope.Promise()
   range =  if page > 1 then limit * (page - 1) else 0
   @find(query).skip(range).limit(limit).populate(populate).sort(sort).exec (error, value) ->
@@ -35,8 +35,6 @@ Review.statics.search = (query, limit = 0, page = 1, populate = "user", sort = u
 
 Review.statics.findAndUpdate = (filter, values) ->
   promise = new Hope.Promise()
-  # -- Specific formats
-  values = __StringToArray values
   values.updated_at = new Date()
   @findOneAndUpdate filter, values, (error, value) ->
     promise.done error, value

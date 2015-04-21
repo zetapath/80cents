@@ -80,6 +80,45 @@
       &.thumbnails
         padding                           : (SPACE / 2)
 
+    // -- Reviews
+    [data-shopio-reviews] > div
+      li
+        list-style                        : none
+        display-flex()
+        > figure
+          width                           : SIZE = U
+          min-width                       : SIZE
+          height                          : SIZE
+          margin                          : 0 SPACE 0 0
+          border-radius                   : (SPACE / 2)
+        > div
+          flex-grow                         2
+          margin-top                      : (SPACE / 4)
+          > *
+            display                       : block
+          > small
+            font-size                     : FONT_SIZE_TINY
+            line-height                   : FONT_SIZE_SMALL
+            > span
+              opacity                     : 0.5
+            > strong
+              font-weight                 : FONT_WEIGHT_BOLD
+              color                       : THEME
+          > p
+            margin                        : 0
+
+      > div
+        padding                           : (SPACE / 2) SPACE
+        background                        : BACKGROUND
+        border-radius                     : (SPACE / 2)
+        > form
+          > label
+            margin-bottom                 : 0
+          > input, textarea
+            margin-bottom                 : (SPACE / 2)
+          // label, input
+          //   display                       : none
+
   #fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span
     background-image: url('/assets/core/img/fancybox_sprite.png') !important
   #fancybox-loading div
