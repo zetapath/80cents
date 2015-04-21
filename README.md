@@ -2,8 +2,6 @@
 A real and easy NodeJS service for create ecommerce platforms.
 http://80cents.org
 
-![image](https://dl.dropboxusercontent.com/u/41546005/80cents/The8848.png)
-
 ---
 - [Instalation](#instalation)
   - [Files](#files)
