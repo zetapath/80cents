@@ -52,6 +52,12 @@ children:
                   events:
                     - touch
               - Atom.Link:
+                  path: /admin/reviews
+                  icon: comment
+                  text: reviews
+                  events:
+                    - touch
+              - Atom.Link:
                   path: /admin/discounts
                   icon: medal
                   text: discounts

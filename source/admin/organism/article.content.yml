@@ -147,6 +147,30 @@ children:
               update      : true
               destroy     : true
 
+        # -- Review
+        - Molecule.Review:
+            id: review
+        # - Molecule.FilterReview:
+        #     id: reviews_filter
+        #     events:
+        #       - change
+        #     callbacks:
+        #       - onFilterChange
+        - Molecule.List:
+            id: reviews
+            style: padding-all vertical
+            events:
+              - select
+            callbacks:
+              - onReview
+            bind:
+              entity      : "__.Entity.Review"
+              atom        : "Atom.Li"
+              events      : ["touch"]
+              create      : true
+              update      : true
+              destroy     : true
+
         # -- Discount
         - Molecule.Discount:
             id: discount

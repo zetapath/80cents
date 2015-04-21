@@ -16,7 +16,7 @@ class Atoms.Organism.Content extends Atoms.Organism.Article
     if url.length is 3 then @context url[2] else @[url[2]] url[3]
 
     # -- Bindings
-    for formgroup in ["order", "customer", "collection", "product", "page", "settings", "payments"]
+    for formgroup in ["order", "customer", "collection", "product", "review", "page", "settings", "payments"]
       @section[formgroup].bind "progress", @progress
 
   # -- Children Bubble Events --------------------------------------------------
@@ -29,6 +29,8 @@ class Atoms.Organism.Content extends Atoms.Organism.Article
   onCollection: (atom) -> @collection atom.entity.id
 
   onProduct: (atom) => @product atom.entity.id
+
+  onReview: (atom) => @review atom.entity.id
 
   onPage: (atom) => @page atom.entity.id
 
@@ -83,6 +85,7 @@ class Atoms.Organism.Content extends Atoms.Organism.Article
     @fetch id, "Order" if id is "orders"
     @fetch id, "Page" if id is "pages"
     @fetch id, "Product" if id is "products"
+    @fetch id, "Review" if id is "reviews"
     # -- Settings
     @section.settings.fetch() if id is "settings"
     @section.payments.fetch() if id is "payments"
@@ -103,11 +106,13 @@ class Atoms.Organism.Content extends Atoms.Organism.Article
 
   order: (id) -> @showGroupForm id, "Orders", "order"
 
-  page: (id) -> @showGroupForm id, "Pages", "page"
+  product: (id) -> @showGroupForm id, "Products", "product"
+
+  review: (id) -> @showGroupForm id, "Reviews", "review"
 
   discount: (id) -> @showGroupForm id, "Discounts", "discount"
 
-  product: (id) -> @showGroupForm id, "Products", "product"
+  page: (id) -> @showGroupForm id, "Pages", "page"
 
   showGroupForm: (id, title, form) ->
     @header.title.refresh text: title, href: "/admin/#{title.toLowerCase()}"
