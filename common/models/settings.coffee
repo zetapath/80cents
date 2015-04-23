@@ -51,12 +51,13 @@ Settings.statics.search = (query) ->
       promise.done error, value
   promise
 
-Settings.statics.findAndUpdate = (filter, values) ->
+Settings.statics.findAndUpdate = (filter = {}, values) ->
   promise = new Hope.Promise()
   values.updated_at = new Date()
   @findOneAndUpdate filter, values, (error, value) =>
-    @cached = value?.parse()
-    promise.done error, value
+    return promise.done true, null if error
+    @cached = null
+    @cache().then (error, value) -> promise.done error, value
   promise
 
 Settings.statics.cache = ->
