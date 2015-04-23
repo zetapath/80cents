@@ -1,7 +1,8 @@
 ## 80cents
 A real and easy NodeJS service for create ecommerce platforms.
 http://80cents.org
-
+---
+[![Package Quality](http://npm.packagequality.com/badge/80cents.png)](http://packagequality.com/#?package=80cents)
 ---
 - [Instalation](#instalation)
   - [Files](#files)
