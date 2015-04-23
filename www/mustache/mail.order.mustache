@@ -20,12 +20,12 @@
         <a href="{{host}}product/{{product.id}}"><strong>{{product.title}}</strong></a>
       </td>
       <td class="center">{{quantity}}</td>
-      <td class="center">{{product.price}}{{settings.currency_shortcut}}</td>
-      <td class="right"><strong>{{amount}}{{settings.currency_shortcut}}</strong></td>
+      <td class="center">{{product.price}} {{settings.currency_shortcut}}</td>
+      <td class="right"><strong>{{amount}} {{settings.currency_shortcut}}</strong></td>
     </tr>
     {{/lines}}
     <tr>
-      <td colspan="4" class="right">{{order.amount}}{{settings.currency_shortcut}}</td>
+      <td colspan="4" class="right">{{order.amount}} {{settings.currency_shortcut}}</td>
     </tr>
   </tbody>
 </table>

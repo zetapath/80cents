@@ -1,11 +1,10 @@
 <article class="bck color slideshow" data-flex="vertical center">
   <div class="overlay"></div>
-  <h2>Bring your life</h2>
-  <h4>And make it personal.</h4>
+  <h1>{{settings.name}}</h1>
 </article>
 
 <article>
-  <h3>Choose your style</h3>
+  <h3>Collections</h3>
   <nav data-shopio="products" data-flex="horizontal center wrap" class="margin-bottom">
     {{#collections}}
     <a href="/collection/{{shortcut}}" class="product highlight" data-flex="vertical center" style="background-image: url(/uploads/{{default_image}});" data-shopio-collection={{id}}>
