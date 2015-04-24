@@ -1,5 +1,8 @@
 "use strict"
 
+label =
+  "1": "Credit Card"
+  "2": "Paypal"
 
 class Atoms.Organism.Checkout extends Atoms.Organism.Section
 
@@ -43,7 +46,7 @@ class Atoms.Organism.Checkout extends Atoms.Organism.Section
       @billing.address.value @order.billing or {}
       @shipping.address.value @order.shipping or {}
       @purchase.payment.refresh
-        options   : (label: key, value: data.type for key, data of @order.settings.payments)
+        options   : (label: label[data.type], value: data.type for key, data of @order.settings.payments)
         disabled  : (@order.state isnt __.const.ORDER.STATE.SHOPPING)
       @purchase.payment.value @order.payment_type
       @purchase.comment.value @order.comment
@@ -109,5 +112,3 @@ class Atoms.Organism.Checkout extends Atoms.Organism.Section
 
     @purchase.submit.refresh disabled: (not valid)
     valid
-
-

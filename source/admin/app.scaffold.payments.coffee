@@ -13,9 +13,9 @@ __.scaffold.form_payments =
     "Molecule.Form": id: "paypal", children: [
       "Atom.Label": style: "half", value: "Token"
     ,
-      "Atom.Label": style: "half"
+      "Atom.Label"
     ,
-      "Atom.Input": style: "half", name: "token", required: true
+      "Atom.Input": name: "token", required: true, disabled: true
     ]
   ,
     "Atom.Label": style: "anchor"
