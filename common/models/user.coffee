@@ -16,6 +16,7 @@ User = new Schema
   avatar          : type: String, default: "avatar.jpg"
   # -- Security
   token           : type: String
+  active          : type: Boolean, default: true
   # -- Dates
   updated_at      : type: Date
   created_at      : type: Date, default: Date.now
@@ -72,6 +73,7 @@ User.methods.parse = ->
   first_name    : @first_name or @mail
   last_name     : @last_name
   avatar        : @avatar
+  active        : @active
   updated_at    : @updated_at
   created_at    : @created_at
 

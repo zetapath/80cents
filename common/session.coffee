@@ -9,7 +9,9 @@ module.exports = (request, response, redirect = false, owner = false, shopping =
   promise = new Hope.Promise()
   token = request.session
   if token
-    filter = "token": token
+    filter =
+      token   : token
+      active  : true
     filter.type = C.USER.TYPE.OWNER if owner
     User.search(filter, limit = 1).then (error, session) ->
       unless session?
