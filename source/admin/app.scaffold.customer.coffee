@@ -48,7 +48,9 @@ __.scaffold.form_customer =
   ,
     "Atom.Label": style: "anchor"
   ,
-    "Molecule.Navigation": children: [
+    "Molecule.Navigation": id: "options", children: [
+      "Atom.Button": id: "cancel", style: "cancel", text: "Deactivate", callbacks: ["onRemove"], disabled: true
+    ,
       "Atom.Button": style: "theme", text: "Save", callbacks: ["onSave"]
     ]
   ]

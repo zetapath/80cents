@@ -2,7 +2,8 @@
 
 class __.Entity.Customer extends Atoms.Class.Entity
 
-  @fields "id", "mail", "first_name", "last_name", "avatar", "updated_at", "created_at"
+  @fields "id", "mail", "first_name", "last_name", "avatar", "active",
+          "updated_at", "created_at"
 
   # -- Static Methods
   @createOrUpdate: (attributes) =>
@@ -14,7 +15,8 @@ class __.Entity.Customer extends Atoms.Class.Entity
 
   # -- Instance Methods
   parse: ->
+    style       : if @active then "active" else "banned"
     image       : @avatar or "/img/avatar.jpg"
     text        : @name
-    description : @mail
+    description : @mail + (unless @active then " - Banned" else "")
     info        : moment(@created_at).fromNow()
