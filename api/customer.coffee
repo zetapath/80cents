@@ -31,3 +31,17 @@ module.exports = (server) ->
         User.findAndUpdate filter, request.parameters
       ]).then (error, user) ->
         if error then response.unauthorized() else response.json user.parse()
+
+  server.delete "/api/customer", (request, response) ->
+    if request.required ["id"]
+      Hope.shield([ ->
+        Session request, response, null, owner = true
+      , (error, session) ->
+        filter =
+            _id   : request.parameters.id
+            type  : C.USER.TYPE.CUSTOMER
+
+        fields = active : unless request.parameters.active then false else true
+        User.findAndUpdate filter, fields
+      ]).then (error, user) ->
+        if error then response.unauthorized() else response.json user.parse()
