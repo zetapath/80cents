@@ -1,43 +1,46 @@
 {
-  "name"                        : "80cents",
-  "version"                     : "0.4.24",
-  "description"                 : "A real and easy NodeJS service for create ecommerce platforms.",
-  "homepage"                    : "http://zetapath.com",
+  "name"        : "80cents",
+  "version"     : "0.4.24",
+  "description" : "A real and easy NodeJS service for create ecommerce platforms.",
+  "homepage"    : "http://zetapath.com",
   "author": {
-    "name": "Javi Jimenez",
+    "name" : "Javi Jimenez",
     "email": "javi.jimenez.villar@gmail.com"
   },
   "contributors": [
     {
-      "name": "Catalina Oyaneder",
+      "name" : "Catalina Oyaneder",
       "email": "cat2608@gmail.com"
     }
   ],
   "dependencies": {
-    "coffee-script"             : "*",
-    "moment"                    : "*",
-    "nodemailer"                : "*",
-    "nodemailer-smtp-transport" : "*",
-    "password-hash"             : "*",
-    "premailer-api"             : "*",
-    "shortid"                   : "*",
-    "stripe"                    : "*",
+    "coffee-script"             : "^1.9.2",
+    "jwt-simple"                : "^0.3.0",
+    "moment"                    : "^2.10.3",
+    "nodemailer"                : "^1.3.4",
+    "nodemailer-smtp-transport" : "^1.0.3",
+    "password-hash"             : "^1.2.2",
+    "premailer-api"             : "^1.0.3",
+    "shortid"                   : "^2.2.2",
+    "stripe"                    : "^3.3.4",
     "zenserver"                 : "*"
   },
-  "devDependencies" : {
-    "gulp"                      : "*",
-    "gulp-coffee"               : "*",
-    "gulp-concat"               : "*",
-    "gulp-flatten"              : "*",
-    "gulp-header"               : "*",
-    "gulp-stylus"               : "*",
-    "gulp-uglify"               : "*",
-    "gulp-util"                 : "*",
-    "gulp-yml"                  : "*",
-    "zenrequest"                : "*"
+  "devDependencies": {
+    "gulp"        : "*",
+    "gulp-coffee" : "*",
+    "gulp-concat" : "*",
+    "gulp-flatten": "*",
+    "gulp-header" : "*",
+    "gulp-stylus" : "*",
+    "gulp-uglify" : "*",
+    "gulp-util"   : "*",
+    "gulp-yml"    : "*",
+    "zenrequest"  : "*"
   },
-  "scripts" : {
-    "start"                     : "node zen"
+  "scripts": {
+    "start": "node zen"
   },
-  "engines"                     : { "node": "*"}
+  "engines": {
+    "node" : "*"
+  }
 }

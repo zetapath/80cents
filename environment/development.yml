@@ -5,6 +5,10 @@ host        : localhost
 port        : 1337
 timezone    : Europe/Amsterdam
 
+# -- Authentication ------------------------------------------------------------
+token    : HunLauSchDepReg
+encoding : HS512
+
 # -- Mustache template ---------------------------------------------------------
 mustache:
   cache: false
