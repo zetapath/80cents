@@ -6,6 +6,8 @@ db          = require("zenserver").Mongo.connections.primary
 
 Settings = new Schema
   # -- Details
+  ready             : type: Boolean, default: false
+  # -- Details
   name              : type: String
   title             : type: String
   description       : type: String
@@ -79,6 +81,7 @@ Settings.methods.delete = ->
 
 Settings.methods.parse = ->
   id                : @_id.toString()
+  ready             : @ready
   name              : @name
   title             : @title
   description       : @description

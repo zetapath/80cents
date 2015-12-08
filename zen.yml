@@ -17,10 +17,14 @@ api:
 
 # -- HTML pages ----------------------------------------------------------------
 www:
-  - admin
+  - session
+  - store.collection
   - store.order
+  - store.product
   - store.profile
-  - store
+  - store.tag
+  - index
+  - admin
 
 # -- Static resources ----------------------------------------------------------
 statics:

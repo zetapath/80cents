@@ -38,7 +38,8 @@
     "zenrequest"  : "*"
   },
   "scripts": {
-    "start": "node zen"
+    "start": "node zen",
+    "test": "node zen.request"
   },
   "engines": {
     "node" : "*"
