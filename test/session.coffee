@@ -6,6 +6,7 @@ module.exports = ->
   tasks = []
   # -- Owners
   tasks.push _signup(user) for user in ZENrequest.OWNERS
+  tasks.push _signupAlready(user) for user in ZENrequest.OWNERS
   tasks.push _login(user) for user in ZENrequest.OWNERS
   # -- Customers (normal users)
   tasks.push _signup(user) for user in ZENrequest.USERS
@@ -16,7 +17,10 @@ module.exports = ->
 
 # PROMISES ---------------------------------------------------------------------
 _signup = (user) -> ->
-  Test "POST", "api/signup", user, null, "User #{user.mail} registered.", 409
+  Test "POST", "api/signup", user, null, "User #{user.mail} registered.", 200
+
+_signupAlready = (user) -> ->
+  Test "POST", "api/signup", user, null, "User #{user.mail} already registered.", 409
 
 _login = (user) -> ->
   Test "POST", "api/login", user, null, "User #{user.mail} logged.", 200, (response) ->

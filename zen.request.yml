@@ -31,37 +31,45 @@ USERS:
 
 # -- COLLECTIONS ---------------------------------------------------------------
 COLLECTIONS:
-  - title               : Organic Food
-    description         : organic food
+  - title               : women
+    description         : Women Clothing
     image               : http://
     search:
-      page_title        : organic food
-      meta_description  : food rice
+      page_title        : women
+      meta_description  : 80cents women clothing
       url_handle        : organic_food
     visibility          : true
-  - title               : Accesories
-    description         : Accesories with thailand cotton
+  - title               : men
+    description         : men Clothing
+    image               : http://
+    search:
+      page_title        : men
+      meta_description  : 80cents men clothing
+      url_handle        : organic_food
+    visibility          : true
+  - title               : kids
+    description         : Kids Clothing
+    image               : http://
+    search:
+      page_title        : kids
+      meta_description  : 80cents kids clothing
+      url_handle        : organic_food
+    visibility          : false
+  - title               : accesories
+    description         : Accesories
     image               : http://
     search:
       page_title        : accesories
-      meta_description  : accesories with thailand cotton
-      url_handle        : accesories
-    visibility          : true
-  - title               : Clothes
-    description         : Clothes with thailand cotton
-    image               : http://
-    search:
-      page_title        : clothes
-      meta_description  : clothes with thailand cotton
-      url_handle        : clothes
+      meta_description  : 80cents accesories
+      url_handle        : organic_food
     visibility          : true
 
 # -- PRODUCTS ------------------------------------------------------------------
 PRODUCTS:
-  - title               : Rice
-    description         : Organic Black Rice
-    type                : food
-    vendor              : Farm Story House
+  - title               : Handmade Cotton Dress
+    description         : Lorem ipsum...
+    type                : dress
+    vendor              : Kosita Wear.
     price               : 10.95
     compare_at_price    : 14.95
     stock               : 100
@@ -69,26 +77,34 @@ PRODUCTS:
     tax                 : true
     requires_shipping   : true
     weight              : 1
-    sizes               :
-    colors              :
-    materials           :
+    sizes               : XS, S, M, L, D
+    colors              : white
+    materials           : cotton
     default_image       : http://4
     images              :
       - "http://1"
       - "http://2"
       - "http://3"
-    collection          : ?
-    tags                :
+    collection          : women
+    tags                : dress, cotton, women
     search:
-      page_title        : rice
-      meta_description  : organic black rice
-      url_handle        : rice
+      page_title        : Handmade Cotton Dress
+      meta_description  : lorem_ipsum
+      url_handle        : dress
     visibility          : true
     highlight           : true
-  - title               : Noodle
-    description         : Organic Noodle
-    type                : food
+  - title               : Fisherman Pants
+    description         : lorem ipsum....
+    type                : pant
+    price               : 16.95
+    collection          : men
+    visibility          : true
+  - title               : Ring
+    description         : lorem ipsum....
+    type                : accesories
     price               : 6.95
+    collection          : women
+    visibility          : false
 
 # -- REVIEWS -------------------------------------------------------------------
 REVIEWS:
