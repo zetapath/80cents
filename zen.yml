@@ -23,8 +23,8 @@ www:
   - store.product
   - store.profile
   - store.tag
-  - index
   - admin
+  - index
 
 # -- Static resources ----------------------------------------------------------
 statics:
