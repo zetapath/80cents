@@ -2,14 +2,15 @@
 
 Hope        = require("zenserver").Hope
 Mongoose    = require("zenserver").Mongoose
-Settings    = require "../common/models/settings"
-Session     = require "../common/session"
-C           = require "../common/constants"
-helper      = require "../common/helper"
+Settings    = require "../../common/models/settings"
+Session     = require "../../common/session"
+C           = require "../../common/constants"
+helper      = require "../../common/helper"
 
 module.exports = (zen) ->
 
   zen.get "/login", (request, response) ->
+    console.log '/login'
     Settings.cache().then (error, settings) ->
       bindings =
         page        : "login"

@@ -18,13 +18,13 @@ api:
 # -- HTML pages ----------------------------------------------------------------
 www:
   - session
-  - store.collection
-  - store.order
-  - store.product
-  - store.profile
-  - store.tag
   - admin
-  - index
+  - store/store.collection
+  - store/store.order
+  - store/store.product
+  - store/store.profile
+  - store/store.tag
+  - store
 
 # -- Static resources ----------------------------------------------------------
 statics:

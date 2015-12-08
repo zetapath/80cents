@@ -1,12 +1,12 @@
 "use strict"
 
 Hope        = require("zenserver").Hope
-Order       = require "../common/models/order"
-OrderLine   = require "../common/models/order_line"
-Settings    = require "../common/models/settings"
-Session     = require "../common/session"
-C           = require "../common/constants"
-helper      = require "../common/helper"
+Order       = require "../../common/models/order"
+OrderLine   = require "../../common/models/order_line"
+Settings    = require "../../common/models/settings"
+Session     = require "../../common/session"
+C           = require "../../common/constants"
+helper      = require "../../common/helper"
 
 module.exports = (zen) ->
 

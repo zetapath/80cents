@@ -2,12 +2,12 @@
 
 Hope        = require("zenserver").Hope
 Mongoose    = require("zenserver").Mongoose
-Collection  = require "../common/models/collection"
-Product     = require "../common/models/product"
-Settings    = require "../common/models/settings"
-Session     = require "../common/session"
-C           = require "../common/constants"
-helper      = require "../common/helper"
+Collection  = require "../../common/models/collection"
+Product     = require "../../common/models/product"
+Settings    = require "../../common/models/settings"
+Session     = require "../../common/session"
+C           = require "../../common/constants"
+helper      = require "../../common/helper"
 
 module.exports = (zen) ->
 
