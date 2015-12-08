@@ -10,8 +10,8 @@ Atoms.$ ->
     header    : $ "header"
     slideshow : $ "article.slideshow"
     height    : window.innerHeight or document.documentElement.offsetHeight
-    items     : (el: $(el), px: el.offsetTop for el in $ "[data-shopio-collection], [data-shopio-product]")
-    reviews   : $("[data-shopio-reviews]").first()
+    items     : (el: $(el), px: el.offsetTop for el in $ "[data-collection], [data-product]")
+    reviews   : $("[data-reviews]").first()
     scroll    : (event) ->
       px = __.mod.document.scrollTop()
       percent = (__.mod.document.scrollTop() * 100) / __.mod.slideshow.height()
@@ -31,7 +31,7 @@ Atoms.$ ->
         px += (__.mod.height / 2.5)
         if px >= __.mod.reviews[0].offsetTop and not __.mod.reviews.hasClass "active"
           __.mod.reviews.addClass "active"
-          new Atoms.Molecule.Reviews product: __.mod.reviews.attr "data-shopio-reviews"
+          new Atoms.Molecule.Reviews product: __.mod.reviews.attr "data-reviews"
 
 
   # -- Detect session
@@ -46,7 +46,7 @@ Atoms.$ ->
   # -- Button events
   Atoms.$("[data-action=menu]").on "click", (event) ->
     __.mod.header.children("[data-action=menu]").toggleClass "active"
-    __.mod.header.children("[data-shopio=menu]").toggleClass "active"
+    __.mod.header.children("[data-=menu]").toggleClass "active"
 
   # -- Detect scroll
   do __.mod.scroll

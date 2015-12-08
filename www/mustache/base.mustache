@@ -18,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="cleartype" content="on">
     <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/assets/core/80cents{{asset}}.dependencies.css">
+    <link rel="stylesheet" href="/assets/core/80cents.{{asset}}.css">
     <link rel="stylesheet" href="{{theme}}.css">
   </head>
   <body data-page="{{page}}">
@@ -34,6 +34,7 @@
     {{> store.checkout}}
     {{> store.footer}}
 
+    <!--
     <script src="/assets/core/80cents{{asset}}.dependencies.js"></script>
     <script src="/assets/core/80cents{{asset}}.js"></script>
     <script>
@@ -52,5 +53,6 @@
       {{#order}}__.order = "{{order.id}}";{{/order}}
     </script>
     {{#settings.google_analytics}}<script>{{{settings.google_analytics}}}</script>{{/settings.google_analytics}}
+    -->
   </body>
 </html>

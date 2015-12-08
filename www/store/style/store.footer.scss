@@ -1,0 +1,41 @@
+body {
+  > footer {
+    padding: (2 * $UNIT) 0;
+    > nav {
+      &.networks {
+        padding: $UNIT 0 ($UNIT / 2) 0;
+      }
+      &:not(.networks) {
+        margin-bottom: $UNIT;
+      }
+      > a {
+        margin: 0 ($UNIT / 2);
+        &:not(.icon) {
+          font-size: $FONT-SIZE-SMALL;
+          font-weight: bold;
+        }
+        &.icon {
+          font-size: $FONT-SIZE-LARGE;
+        }
+      }
+    }
+    > small {
+      text-transform: Uppercase;
+    }
+    > nav.networks, > small {
+      opacity: .75;
+    }
+  }
+}
+
+@media screen and (max-device-width: 480px) {
+  body > footer {
+    padding: UNIT 0;
+    a:not(.icon) {
+      font-size: (.85 * $FONT-SIZE-TINY);
+    }
+    > small {
+      font-size: (.75 * $FONT-SIZE-TINY);
+    }
+  }
+}

@@ -1,0 +1,147 @@
+body {
+  > header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: $Z-INDEX-HIGH;
+    height: $HEADER-HEIGHT;
+    padding: 0 $UNIT;
+    line-height: $HEADER-HEIGHT;
+    transition: all $ANIMATION-DURATION;
+    > .logo, > button {
+      z-index: $Z-INDEX-HIGHEST;
+      flex-grow: 0;
+    }
+    > .logo {
+      width: 14.6 * $UNIT;
+      height: 17.5 * $UNIT;
+      margin-right: $UNIT;
+      background-image: url("/img/logo.png");
+      background-size: cover;
+      transition: all $ANIMATION-DURATION;
+      transform: translateY(0%);
+    }
+    > nav > a {
+      padding: ($UNIT / 2) $UNIT;
+      font-size: $FONT-SIZE-TINY;
+      font-weight: bold;
+      text-align: center;
+      text-transform: Uppercase;
+      letter-spacing: 1px;
+      &:not([data-=cart]) > .icon {
+        display: none;
+      }
+      &[data-=cart] {
+        text-shadow: 0 1px 1px rgba(0,0,0,.25);
+        > .icon {
+          margin-right: ($UNIT / 2);
+          font-size: $FONT-SIZE-TINY;
+          vertical-align: middle;
+        }
+        > small {
+          display: none;
+        }
+        > strong {
+          margin-right: ($UNIT / 5);
+        }
+      }
+    }
+    > button {
+      max-width: SIZE = (U / 2);
+      height: SIZE;
+      padding: 0;
+      margin-top: (1.5 * $UNIT);
+      margin-left: ($UNIT / 2);
+      font-size: FONT_SIZE_NORMAL;
+      line-height: SIZE;
+      transition: all $ANIMATION-DURATION $ANIMATION-EASE;
+      &.active {
+        margin-top: ($UNIT / 2);
+        font-size: FONT_SIZE_BIG;
+        transform: rotateZ(45deg);
+      }
+    }
+    &.scroll .logo {
+      transform: translateY(-10%);
+    }
+  }
+  &:not([data-page="home"]) {
+    > header > nav > a {
+      margin-right: ($UNIT / 2);
+    }
+  }
+  &[data-page="home"] {
+    > header > nav {
+      margin-left: ($UNIT / 2);
+      text-align: right;
+      > a {
+        transition: color $ANIMATION-DURATION;
+      }
+    }
+  }
+}
+
+// -- MEDIAQUERIES -------------------------------------------------------------
+@media screen and (min-device-width: 769px) {
+  body > header {
+    > button {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-device-width: 768px) {
+  body > header {
+    padding: 0 ($UNIT / 2);
+    .logo {
+      width: WIDTH = 90px;
+      min-width: WIDTH;
+      height: 104px;
+      margin-right: 0;
+    }
+    > nav
+    &[data-=menu] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      padding: (2 * $UNIT) 0 $UNIT 0;
+      line-height: (1.5 * $UNIT);
+      transition: all $ANIMATION-DURATION $ANIMATION-EASE;
+      transform: translateY(-100%);
+      > a {
+        display: block;
+        margin: 0;
+      }
+      &.active {
+        transform: translateY(0%);
+      }
+    }
+    &[data-=session] {
+      flex-grow: 1;
+      text-align: right;
+      > a {
+        &:not([data-=cart]) {
+          padding-right: $UNIT;
+          padding-left: $UNIT = ($UNIT / 1.75);
+          margin-right: 0;
+          abbr {
+            display: none;
+          }
+          .icon {
+            display: inline-block;
+          }
+          &[data-=cart] {
+            margin: 0;
+          }
+        }
+      }
+    }
+    &.scroll > button {
+      max-width: 0;
+    }
+  }
+}

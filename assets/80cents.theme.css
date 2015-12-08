@@ -1,0 +1,6 @@
+body {
+  background-color: #f9f9f9;
+  font-size: 1.6rem; }
+
+body > header {
+  background-color: #f44336; }

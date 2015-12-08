@@ -1,0 +1,41 @@
+// -- Material Design Colors
+$WHITE: #fff;
+$BLACK: #000;
+$RED: #f44336;
+$PINK: #e91e63;
+$PURPLE: #9c27b0;
+$DEEP_PURPLE: #673ab7;
+$INDIGO: #3f51b5;
+$BLUE: #2196f3;
+$LIGHT_BLUE: #03a9f4;
+$CYAN: #00bcd4;
+$TEAL: #009688;
+$GREEN: #4caf50;
+$LIGHT_GREEN: #8bc34a;
+$LIME: #cddc39;
+$YELLOW: #ffeb3b;
+$AMBER: #ffc107;
+$ORANGE: #ff9800;
+$DEEP_ORANGE: #ff5722;
+$BROWN: #795548;
+$GREY: #9e9e9e;
+$BLUE_GREY: #607d8b;
+
+// -- Theme
+$PRIMARY: $GREY;
+$PRIMARY_DARK: darken($PRIMARY, 25%);
+$PRIMARY_LIGHT: lighten($PRIMARY, 25%);
+$ACCENT: $RED;
+$TEXT: #212121;
+$TEXT_SECONDARY: #727272;
+$DIVIDER: lighten(#b6b6b6, 75%);
+$BACKGROUND: #f9f9f9;
+
+// -- Size
+$UNIT: 1rem;
+$FONT-SIZE: 1.6 * $UNIT;
+
+// -- Fonts
+$FONT_FAMILY: "Helvetica Neue", "Helvetica", "sans-serif";
+$FONT_WEIGHT_NORMAL: 400;
+$FONT_WEIGHT_BOLD: 700;

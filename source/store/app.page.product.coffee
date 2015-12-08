@@ -23,7 +23,7 @@ Atoms.$ ->
               __.Dialog.Success.show "cross", "Something was wrong"
             else
               __.Dialog.Success.show "checkmark", "Product Added"
-              cart = Atoms.$("header [data-shopio='cart']")
+              cart = Atoms.$("header [data-='cart']")
               cart.children("strong").html order.amount
               cart.children("small").html order.lines.length
         else

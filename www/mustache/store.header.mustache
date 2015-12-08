@@ -1,15 +1,15 @@
-<header data-flex="horizontal grow">
-  <a href="/" class="logo" data-flex-grow="min"></a>
-  <nav data-flex-grow="max" data-shopio="menu">
+<header>
+  <a href="/" class="logo"></a>
+  <nav data-="menu">
     {{#settings.collections}}<a href="/collection/{{id}}">{{title}}</a>{{/settings.collections}}
     {{#settings.pages}}{{#header}}<a href="/{{url_handle}}">{{title}}</a>{{/header}}{{/settings.pages}}
     {{#session}}
     <a href="/profile"><span class="icon user"></span><abbr>Account</abbr></a>
     {{/session}}
   </nav>
-  <nav data-flex-grow="min" data-shopio="session">
+  <nav data-="session">
     {{#session}}
-    <a href="/cart" data-shopio="cart"><span class="icon cart"></span><small>{{shopping.lines.length}}</small><strong>{{#shopping.amount}}{{shopping.amount}}{{/shopping.amount}}{{^shopping.amount}}0.00{{/shopping.amount}}</strong>{{settings.currency_shortcut}}</a>
+    <a href="/cart" data-="cart"><span class="icon cart"></span><small>{{shopping.lines.length}}</small><strong>{{#shopping.amount}}{{shopping.amount}}{{/shopping.amount}}{{^shopping.amount}}0.00{{/shopping.amount}}</strong>{{settings.currency_shortcut}}</a>
     {{/session}}
     {{^session}}
     <button data-action="session" class="primary margin-left">sign in</button>

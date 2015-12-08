@@ -3,7 +3,7 @@
 class Atoms.Molecule.Reviews extends Atoms.Molecule.Div
 
   @default:
-    container : "[data-shopio-reviews]"
+    container : "[data-reviews]"
     children: [
       "Molecule.List":
         events    : ["select"]

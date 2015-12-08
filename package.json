@@ -1,47 +1,70 @@
 {
-  "name"        : "80cents",
-  "version"     : "0.4.24",
-  "description" : "A real and easy NodeJS service for create ecommerce platforms.",
-  "homepage"    : "http://zetapath.com",
+  "name": "80cents",
+  "version": "0.5.0",
+  "description": "A real and easy NodeJS service for create ecommerce platforms.",
+  "homepage": "http://zetapath.com",
   "author": {
-    "name" : "Javi Jimenez",
+    "name": "Javi Jimenez",
     "email": "javi.jimenez.villar@gmail.com"
   },
   "contributors": [
     {
-      "name" : "Catalina Oyaneder",
+      "name": "Catalina Oyaneder",
       "email": "cat2608@gmail.com"
     }
   ],
   "dependencies": {
-    "coffee-script"             : "^1.9.2",
-    "jwt-simple"                : "^0.3.0",
-    "moment"                    : "^2.10.3",
-    "nodemailer"                : "^1.3.4",
-    "nodemailer-smtp-transport" : "^1.0.3",
-    "password-hash"             : "^1.2.2",
-    "premailer-api"             : "^1.0.3",
-    "shortid"                   : "^2.2.2",
-    "stripe"                    : "^3.3.4",
-    "zenserver"                 : "*"
+    "coffee-script": "^1.9.2",
+    "jwt-simple": "^0.3.0",
+    "moment": "^2.10.3",
+    "nodemailer": "^1.3.4",
+    "nodemailer-smtp-transport": "^1.0.3",
+    "password-hash": "^1.2.2",
+    "premailer-api": "^1.0.3",
+    "shortid": "^2.2.2",
+    "stripe": "^3.3.4",
+    "zenserver": "*"
   },
   "devDependencies": {
-    "gulp"        : "*",
-    "gulp-coffee" : "*",
-    "gulp-concat" : "*",
-    "gulp-flatten": "*",
-    "gulp-header" : "*",
-    "gulp-stylus" : "*",
-    "gulp-uglify" : "*",
-    "gulp-util"   : "*",
-    "gulp-yml"    : "*",
-    "zenrequest"  : "*"
+    "autoprefixer": "^6.0.3",
+    "babel-core": "^6.1.4",
+    "babel-eslint": "^4.1.5",
+    "babel-loader": "^6.0.1",
+    "babel-plugin-react-transform": "^1.1.1",
+    "babel-preset-es2015": "^6.1.4",
+    "babel-preset-react": "^6.1.4",
+    "classnames": "^2.2.1",
+    "cross-env": "^1.0.1",
+    "css-loader": "^0.21.0",
+    "express": "^4.13.3",
+    "extract-text-webpack-plugin": "^0.9.0",
+    "fancybox": "^3.0.0",
+    "hope": "^1.0.3",
+    "jquery": "^2.1.4",
+    "node-sass": "^3.4.1",
+    "normalize": "^0.3.1",
+    "normalize.css": "^3.0.3",
+    "postcss-loader": "^0.7.0",
+    "react": "^0.14",
+    "react-addons-css-transition-group": "^0.14.2",
+    "react-dom": "^0.14.2",
+    "react-toolbox": "^0.13.1",
+    "react-transform-catch-errors": "^1.0.0",
+    "react-transform-hmr": "^1.0.1",
+    "redbox-react": "^1.1.1",
+    "sass-loader": "^3.0.0",
+    "style-loader": "^0.13.0",
+    "toolbox-loader": "0.0.3",
+    "webpack": "^1.12.0",
+    "webpack-dev-middleware": "^1.2.0",
+    "webpack-hot-middleware": "^2.4.1",
+    "zenrequest": "*"
   },
   "scripts": {
     "start": "node zen",
     "test": "node zen.request"
   },
   "engines": {
-    "node" : "*"
+    "node": "*"
   }
 }

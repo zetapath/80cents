@@ -1,0 +1,21 @@
+// -- Sizes
+$UNIT: 1rem;
+$HEADER-HEIGHT: 4.8 * $UNIT;
+
+// -- Z-index
+$Z-INDEX-LOWEST: -100;
+$Z-INDEX-LOW: -10;
+$Z-INDEX-NORMAL: 0;
+$Z-INDEX-HIGH: 10;
+$Z-INDEX-HIGHEST: 100;
+
+// -- Fonts
+$FONT-SIZE: 1.6 * $UNIT;
+$FONT-SIZE-TINY: 1.0 * $UNIT;
+$FONT-SIZE-SMALL: 1.2 * $UNIT;
+$FONT-SIZE-NORMAL: 1.4 * $UNIT;
+$FONT-SIZE-LARGE: 2.0 * $UNIT;
+
+// -- Transition
+$ANIMATION-DURATION: 450ms;
+$ANIMATION-EASE: cubic-bezier(.645, .045, .355, 1.000);

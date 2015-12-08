@@ -16,12 +16,12 @@ module.exports = ->
 # -- Tasks ---------------------------------------------------------------------
 _addLine = (user, line, index) -> ->
   line.product = ZENrequest.PRODUCTS[index].id
-  Test "POST", "api/order/line", line, _session(user), "#{user.mail} added a new line #{line.id} x #{line.quantity}", 200, (response) ->
+  Test "POST", "api/order/line", line, _session(user), "#{user.mail} added product #{line.product} x #{line.quantity}", 200, (response) ->
     line.id = response.id
     line.order = response.order
 
 _removeLine = (user, line) -> ->
-  Test "DELETE", "api/order/line", line, _session(user), "#{user.mail} added a new line #{line.id} x #{line.quantity}", 200
+  Test "DELETE", "api/order/line", line, _session(user), "#{user.mail} removed line #{line.id} x #{line.quantity}", 200
 
 _update = (user, order) -> ->
   order.id = order.lines[0].order

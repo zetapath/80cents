@@ -1,0 +1,42 @@
+
+
+[data-page='home'] {
+  [data-component='slideshow'] {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    background-image: url('/img/background.jpg');
+    > h1 {
+      font-size: 9.6 * $UNIT;
+    }
+    > h4 {
+      font-size: 4.8 * $UNIT;
+    }
+  }
+  article:not([data-component='slideshow']) {
+    .product {
+      height: 35vh;
+      background-size: cover;
+    }
+  }
+}
+
+@media screen and (max-device-width: 480px) {
+  [data-page='home'] {
+    article {
+      &.slideshow {
+        height: 82.5vh;
+        > h1 {
+          margin-bottom: 0;
+          font-size: $FONT-SIZE-LARGE;
+          line-height: 100%;
+        }
+        > h4 {
+        }
+      }
+    }
+  }
+}

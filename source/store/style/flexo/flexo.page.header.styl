@@ -30,9 +30,9 @@ body
         text-transform              : Uppercase
         text-align                  : center
         border-radius               : SPACE
-        &:not([data-shopio=cart])> .icon
+        &:not([data-=cart])> .icon
           display                   : none
-        &[data-shopio=cart]
+        &[data-=cart]
           background-color          : COLOR
           color                     : WHITE
           text-shadow               : 0 1px 1px rgba(0,0,0,0.25)
@@ -82,7 +82,7 @@ body
         background-color            : transparent
         > nav > a
           color                     : WHITE
-          &[data-shopio=cart]
+          &[data-=cart]
             background-color        : THEME
 
 // -- MEDIAQUERIES -------------------------------------------------------------
@@ -106,7 +106,7 @@ body
       min-width                     : WIDTH
       margin-right                  : 0
     > nav
-      &[data-shopio=menu]
+      &[data-=menu]
         position                    : absolute
         top                         : 0
         left                        : 0
@@ -124,11 +124,11 @@ body
         &.active
           transform                   translateY(0%)
 
-      &[data-shopio=session]
+      &[data-=session]
         flex-grow                     1
         text-align                  : right
         > a
-          &:not([data-shopio=cart])
+          &:not([data-=cart])
             padding-left            : SPACE = (SPACE / 1.75)
             padding-right           : SPACE
             margin-right            : 0
@@ -138,13 +138,13 @@ body
               display               : none
             .icon
               display               : inline-block
-          &[data-shopio=cart]
+          &[data-=cart]
             margin                  : 0
 
     &.scroll
       background-color              : transparent
       border-bottom                 : none
-      > nav[data-shopio=session]
+      > nav[data-=session]
         a
           background-color          : THEME
       > button

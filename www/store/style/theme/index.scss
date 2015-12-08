@@ -1,0 +1,12 @@
+@import "./_config";
+
+body {
+  background-color: $BACKGROUND;
+  font-size: $FONT-SIZE;
+}
+
+body {
+  > header {
+    background-color: $ACCENT;
+  }
+}

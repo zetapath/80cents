@@ -77,7 +77,7 @@ body
         padding                         : SPACE
 
   // -- Product list
-  [data-shopio=products]
+  [data-=products]
     > a
       SIZE                              = 23.5vw
       margin                            : 1vw 0.5vw
@@ -138,7 +138,7 @@ body
             text-shadow                 : 0 0 SPACE rgba(0,0,0,0.5)
 
 
-  [data-shopio-collection], [data-shopio-product]
+  [data-collection], [data-product]
     transition                            all ANIMATION_DURATION ANIMATION_EASE
     &:not(.active)
       opacity                           : 0
@@ -174,7 +174,7 @@ body
       &:not(.slideshow)
         padding                         : (U / 2) 0
 
-    [data-shopio=products]
+    [data-=products]
       SIZE                              = 100vw
       margin                            : 0
       > a
