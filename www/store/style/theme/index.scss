@@ -1,10 +1,11 @@
 @import "./_config";
-@import "./element.button";
 
 @import "./store.header";
-
+@import "./store.footer";
+@import "./store.partial.button";
 
 body {
   background-color: $BACKGROUND;
   font-size: $FONT-SIZE;
+  font-family: $FONT_FAMILY;
 }

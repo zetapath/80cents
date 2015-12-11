@@ -1,0 +1,10 @@
+body > footer {
+  color: $TEXT-SECONDARY;
+  background-color: $BACKGROUND;
+  > nav {
+    &[data-role='pages'] > a {
+      font-weight: $FONT-WEIGHT-BOLD;
+      color: $TEXT-SECONDARY;
+    }
+  }
+}

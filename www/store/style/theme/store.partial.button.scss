@@ -1,0 +1,12 @@
+button {
+  font-weight: $FONT-WEIGHT-BOLD;
+  color: $WHITE;
+  border-radius: $BUTTON-BORDER-RADIUS;
+  transition: all $ANIMATION-DURATION $ANIMATION-EASE;
+  &.accent {
+    background-color: $ACCENT;
+  }
+  &:hover, &:active {
+    box-shadow: inset 0 0 0 3.2 * $UNIT rgba(255,255,255,.25);
+  }
+}

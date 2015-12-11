@@ -25,7 +25,7 @@ $BLUE_GREY: #607d8b;
 $PRIMARY: $GREY;
 $PRIMARY_DARK: darken($PRIMARY, 25%);
 $PRIMARY_LIGHT: lighten($PRIMARY, 25%);
-$ACCENT: $RED;
+$ACCENT: #FFDC64;
 $TEXT: #212121;
 $TEXT_SECONDARY: #727272;
 $DIVIDER: lighten(#b6b6b6, 75%);
@@ -34,8 +34,13 @@ $BACKGROUND: #f9f9f9;
 // -- Size
 $UNIT: 1rem;
 $FONT-SIZE: 1.6 * $UNIT;
+$BUTTON-BORDER-RADIUS: .2 * $UNIT;
+
 
 // -- Fonts
 $FONT_FAMILY: "Helvetica Neue", "Helvetica", "sans-serif";
-$FONT_WEIGHT_NORMAL: 400;
-$FONT_WEIGHT_BOLD: 700;
+$FONT-WEIGHT-BOLD: 700;
+
+// -- Animations
+$ANIMATION-DURATION: 450ms;
+$ANIMATION-EASE: cubic-bezier(.645, .045, .355, 1.000);

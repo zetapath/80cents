@@ -1,9 +1,7 @@
-body {
-  > header {
-    background-color: $PRIMARY-DARK;
-    a, button {
-      color: $WHITE;
-    }
+body > header {
+  background-color: $PRIMARY-DARK;
+  a {
+    color: $WHITE;
+    font-weight: $FONT-WEIGHT-BOLD;
   }
-
 }

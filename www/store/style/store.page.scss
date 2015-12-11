@@ -99,7 +99,7 @@ body {
     }
     h3 {
       margin-bottom: ($UNIT/ 2.5);
-      font-size: (1.5 * $FONT-SIZE-NORMAL);
+      font-size: (1.5 * $FONT-SIZE);
       &:before, &:after {
         width: ($UNIT/ 2);
       }

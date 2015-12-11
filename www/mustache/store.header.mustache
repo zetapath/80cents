@@ -1,19 +1,28 @@
 <header>
-  <a href="/" class="logo"></a>
-  <nav data-="menu">
+  <a href="/" class="logo">{{settings.name}}</a>
+
+  <nav data-role="menu">
     {{#settings.collections}}<a href="/collection/{{id}}">{{title}}</a>{{/settings.collections}}
-    {{#settings.pages}}{{#header}}<a href="/{{url_handle}}">{{title}}</a>{{/header}}{{/settings.pages}}
+    {{#settings.pages}}
+      {{#header}}<a href="/{{url_handle}}" alt={{title}}>{{title}}</a>{{/header}}
+    {{/settings.pages}}
     {{#session}}
-    <a href="/profile"><span class="icon user"></span><abbr>Account</abbr></a>
+      <a href="/profile">Profile</a>
     {{/session}}
   </nav>
-  <nav data-="session">
+
+  <nav data-role="session">
     {{#session}}
-    <a href="/cart" data-="cart"><span class="icon cart"></span><small>{{shopping.lines.length}}</small><strong>{{#shopping.amount}}{{shopping.amount}}{{/shopping.amount}}{{^shopping.amount}}0.00{{/shopping.amount}}</strong>{{settings.currency_shortcut}}</a>
+    <a href="/cart" data-="cart">
+      <small>{{shopping.lines.length}}</small>
+      <strong>{{#shopping.amount}}{{shopping.amount}}{{/shopping.amount}}{{^shopping.amount}}0.00{{/shopping.amount}}</strong>
+      {{settings.currency_shortcut}}
+    </a>
     {{/session}}
     {{^session}}
-    <button data-action="session" class="primary margin-left">sign in</button>
+    <button data-action="session" class="primary margin-left">Sign In</button>
     {{/session}}
   </nav>
+
   <button data-action="menu" class="icon plus"></button>
 </header>

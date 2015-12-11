@@ -5,12 +5,12 @@ $HEIGHT: ($UNIT / 1.6) !important;
     // -- Title
     > h1 {
       margin-bottom: 0;
-      font-size: ($FONT-SIZE-NORMAL * 2.5);
+      font-size: ($FONT-SIZE * 2.5);
     }
     // -- Price
     > strong {
       margin: $UNIT 0 ($UNIT / 4);
-      font-size: ($FONT-SIZE-NORMAL * 1.5);
+      font-size: ($FONT-SIZE * 1.5);
       > span {
         margin-right: $UNIT;
         text-decoration: line-through;
@@ -19,7 +19,7 @@ $HEIGHT: ($UNIT / 1.6) !important;
     // -- Heading
     > h6 {
       margin: ($UNIT * 2) 0 0 0;
-      font-size: ($FONT-SIZE-NORMAL * 1.25);
+      font-size: ($FONT-SIZE * 1.25);
     }
     // -- Description
     > .wysihtml5 {
@@ -137,7 +137,7 @@ $HEIGHT: ($UNIT / 1.6) !important;
   [data-page="product"] {
     > article section {
       > h1 {
-        font-size: ($FONT-SIZE-NORMAL * 2);
+        font-size: ($FONT-SIZE * 2);
       }
       > strong {
         margin: 0;
@@ -178,7 +178,7 @@ $HEIGHT: ($UNIT / 1.6) !important;
         align-items: flex-start;
         justify-content: flex-start;
         > strong {
-          font-size: $FONT-SIZE-NORMAL;
+          font-size: $FONT-SIZE;
         }
       }
     }

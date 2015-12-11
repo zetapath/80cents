@@ -1,35 +1,32 @@
-body {
-  > header {
-    display: flex;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: $Z-INDEX-HIGH;
-    height: $HEADER-HEIGHT;
-    padding: 0 $UNIT;
-    line-height: $HEADER-HEIGHT;
-    transition: all $ANIMATION-DURATION;
-    > .logo, > button {
-      z-index: $Z-INDEX-HIGHEST;
-      flex-grow: 0;
+body > header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: $Z-INDEX-HIGH;
+  display: flex;
+  height: $HEADER-HEIGHT;
+  padding: 0 $OFFSET;
+  line-height: $HEADER-HEIGHT;
+  transition: all $ANIMATION-DURATION;
+  > .logo, > button {
+    z-index: $Z-INDEX-HIGHEST;
+    flex-grow: 0;
+  }
+  > .logo {
+    margin-right: $OFFSET;
+    font-size: $FONT-SIZE-LARGE;
+    font-weight: bold;
+  }
+  > nav {
+    &[data-role='menu'] {
+      flex-grow: 1;
+      &, > a {
+        padding: 0 ($OFFSET / 2);
+      }
     }
-    > .logo {
-      width: 14.6 * $UNIT;
-      height: 17.5 * $UNIT;
-      margin-right: $UNIT;
-      background-image: url("/img/logo.png");
-      background-size: cover;
-      transition: all $ANIMATION-DURATION;
-      transform: translateY(0%);
-    }
-    > nav > a {
-      padding: ($UNIT / 2) $UNIT;
-      font-size: $FONT-SIZE-TINY;
-      font-weight: bold;
-      text-align: center;
-      text-transform: Uppercase;
-      letter-spacing: 1px;
+    > a {
+      font-size: $FONT-SIZE-SMALL;
       &:not([data-=cart]) > .icon {
         display: none;
       }
@@ -48,38 +45,9 @@ body {
         }
       }
     }
-    > button {
-      max-width: SIZE = (U / 2);
-      height: SIZE;
-      padding: 0;
-      margin-top: (1.5 * $UNIT);
-      margin-left: ($UNIT / 2);
-      font-size: FONT_SIZE_NORMAL;
-      line-height: SIZE;
-      transition: all $ANIMATION-DURATION $ANIMATION-EASE;
-      &.active {
-        margin-top: ($UNIT / 2);
-        font-size: FONT_SIZE_BIG;
-        transform: rotateZ(45deg);
-      }
-    }
-    &.scroll .logo {
-      transform: translateY(-10%);
-    }
   }
-  &:not([data-page="home"]) {
-    > header > nav > a {
-      margin-right: ($UNIT / 2);
-    }
-  }
-  &[data-page="home"] {
-    > header > nav {
-      margin-left: ($UNIT / 2);
-      text-align: right;
-      > a {
-        transition: color $ANIMATION-DURATION;
-      }
-    }
+  &.scroll .logo {
+    transform: translateY(-10%);
   }
 }
 
@@ -139,9 +107,6 @@ body {
           }
         }
       }
-    }
-    &.scroll > button {
-      max-width: 0;
     }
   }
 }

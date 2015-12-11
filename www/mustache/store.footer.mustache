@@ -1,8 +1,8 @@
-<footer class="bck align center" data-flex="vertical grow">
-  <nav>
+<footer>
+  <nav data-role="pages">
     {{#settings.pages}}<a href="/{{url_handle}}">{{title}}</a>{{/settings.pages}}
   </nav>
-  <nav class="networks">
+  <nav data-role="networks">
     {{#settings.networks}}
     <a href="{{url}}" class="icon {{type}}"></a>
     {{/settings.networks}}
