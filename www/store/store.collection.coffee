@@ -31,6 +31,7 @@ module.exports = (zen) ->
       bindings =
         page        : "collection"
         host        : C.HOST[global.ZEN.type.toUpperCase()]
+        asset       : 'store'
         session     : @session
         settings    : @settings
         collection  : @collection.parse()

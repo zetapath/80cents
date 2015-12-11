@@ -24,6 +24,7 @@ module.exports = (zen) ->
       bindings =
         page        : "collection"
         host        : C.HOST[global.ZEN.type.toUpperCase()]
+        asset       : 'store'
         session     : values[0]
         settings    : values[1]
         products    : (product.parse() for product in values[2])

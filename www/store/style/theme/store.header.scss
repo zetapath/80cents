@@ -1,0 +1,9 @@
+body {
+  > header {
+    background-color: $PRIMARY-DARK;
+    a, button {
+      color: $WHITE;
+    }
+  }
+
+}

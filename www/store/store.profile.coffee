@@ -36,6 +36,7 @@ module.exports = (zen) ->
       bindings =
         page        : "profile"
         host        : C.HOST[global.ZEN.type.toUpperCase()]
+        asset       : 'store'
         session     : @session
         settings    : @settings
         orders      : (order.parse() for order in @orders)

@@ -1,12 +1,10 @@
 @import "./_config";
+@import "./element.button";
+
+@import "./store.header";
+
 
 body {
   background-color: $BACKGROUND;
   font-size: $FONT-SIZE;
-}
-
-body {
-  > header {
-    background-color: $ACCENT;
-  }
 }
