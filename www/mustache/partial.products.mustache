@@ -1,14 +1,9 @@
-<nav data-="products" data-flex="horizontal center wrap">
+<nav data-component="products" data-flex="horizontal center wrap">
   {{#products}}
-  <a href="/product/{{shortcut}}" data-flex="vertical center" data-product="{{id}}">
-    <figure style="background-image: url(/uploads/{{default_image}});">
-      <button>View product</button>
-    </figure>
-    <div data-flex="vertical center">
-      {{#collection_id.title}}<small class="uppercase">{{collection_id.title}}</small>{{/collection_id.title}}
-      <strong class="uppercase">{{title}}</strong>
-      <small>{{price}} {{settings.currency_shortcut}}</small>
-    </div>
+  <a href="/product/{{shortcut}}" data-product="{{id}}" style="background-image: url(/uploads/{{default_image}});">
+    {{#collection_id.title}}<small class="uppercase">{{collection_id.title}}</small>{{/collection_id.title}}
+    <h3 class="uppercase">{{title}}</h3>
+    <small>{{price}} {{settings.currency_shortcut}}</small>
   </a>
   {{/products}}
 </nav>

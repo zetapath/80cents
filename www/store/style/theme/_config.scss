@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Medula+One);
+
 // -- Material Design Colors
 $WHITE: #fff;
 $BLACK: #000;
@@ -36,9 +38,9 @@ $UNIT: 1rem;
 $FONT-SIZE: 1.6 * $UNIT;
 $BUTTON-BORDER-RADIUS: .2 * $UNIT;
 
-
 // -- Fonts
 $FONT_FAMILY: "Helvetica Neue", "Helvetica", "sans-serif";
+$FONT-FAMILY-BRAND: "Medula One";
 $FONT-WEIGHT-BOLD: 700;
 
 // -- Animations

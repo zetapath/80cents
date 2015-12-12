@@ -2,7 +2,13 @@
 
 @import "./store.header";
 @import "./store.footer";
+
 @import "./store.partial.button";
+@import "./store.partial.products";
+
+@import "./store.page";
+@import "./store.page.home";
+
 
 body {
   background-color: $BACKGROUND;

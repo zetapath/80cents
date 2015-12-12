@@ -1,21 +1,19 @@
 <article data-component="slideshow">
   <div class="overlay"></div>
   <h1>{{settings.name}}</h1>
-  <h4>{{settings.description}}</h4>
+  <small>{{settings.description}}</small>
 </article>
 
-<article data-component="preview">
-  <h3>Collections</h3>
-  <nav data-="products" data-flex="horizontal center wrap" class="margin-bottom">
+<article data-component="content">
+  <h2>Collections</h2>
+  <nav data-component="products" class='highlight'>
     {{#collections}}
-    <a href="/collection/{{shortcut}}" class="product highlight" data-flex="vertical center" style="background-image: url(/uploads/{{default_image}});" data-collection={{id}}>
-      <div data-flex="vertical center">
-        <strong>{{title}}</strong>
-        <span>{{description}}</span>
-      </div>
+    <a href="/collection/{{shortcut}}" style="background-image: url(/uploads/{{default_image}});" data-collection={{id}}>
+      <h3>{{title}}</h3>
+      <small>{{description}}</small>
     </a>
     {{/collections}}
   </nav>
-  <h3 class="margin-top">Featured Products</h3>
+  <h2 class="margin-top">Featured Products</h2>
   {{> partial.products}}
 </article>

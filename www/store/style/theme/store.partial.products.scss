@@ -1,0 +1,10 @@
+[data-component='products'] {
+  > a {
+    background-color: $BACKGROUND;
+    transition: background, color $ANIMATION-DURATION $ANIMATION-EASE;
+    &:hover {
+      background-color: $TEXT_SECONDARY;
+      color: $WHITE;
+    }
+  }
+}

@@ -1,89 +1,31 @@
-$SIZE: 23.5vw;
+$SIZE: 25vw;
 $SIZE-HIGHLIGHT: 32vw;
 
-[data-products] {
-  > a {
-    margin: 1vw .5vw;
-    > figure {
-      display: flex;
-      width: $SIZE;
-      height: $SIZE;
-      align-content: center;
-      align-items: center;
-      justify-content: center;
-      margin: 0 0 $UNIT 0;
-      &, > * {
-        transition: all $ANIMATION-DURATION;
-      }
-      > button {
-        opacity: 0;
-        transform: translateY(100%);
-      }
-    }
-    > div {
-      > .uppercase {
-        text-transform: Uppercase;
-      }
-      > strong {
-        margin: 0 0 ($UNIT / 3) 0;
-        font-size: $FONT-SIZE-LARGE;
-        font-weight: bold;
-      }
-      > small {
-        font-size: $FONT-SIZE-TINY;
-        line-height: $FONT-SIZE-TINY;
-      }
-    }
-    &:hover {
-      > figure {
-        > button {
-          opacity: 1;
-          transform: translateY(0%);
-        }
-      }
-    }
-    &.highlight {
-      width: $SIZE-HIGHLIGHT;
-      min-height: $SIZE-HIGHLIGHT;
-      background-position: 50% 50%;
-      > div {
-        > strong {
-          font-size: (U / 2);
-          line-height: (U / 1.5);
-          text-shadow: 0 0 $UNIT rgba(0,0,0,.25);
-        }
-        > span {
-          padding: ($UNIT / 2) $UNIT;
-          font-weight: normal;
-          opacity: .75;
-        }
-      }
-      &:hover > * {
-        text-shadow: 0 0 $UNIT rgba(0,0,0,.5);
-      }
-    }
+[data-component='products'] {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  > * {
+    display: flex;
+    width: 0;
+    height: $SIZE;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    margin: ($OFFSET / 2);
+    background-position: center center;
+  }
+  &:not(.highlight) > * {
+    max-width: $SIZE;
   }
 }
 
-$SIZE: 100vw;
 @media screen and (max-device-width: 480px) {
-  [data-products] {
-    margin: 0;
+  [data-component='products'] {
     > a {
-      position: relative;
-      margin: 0;
-      > figure {
-        width: $SIZE;
-        height: $SIZE;
-        margin-bottom: 0;
-        > button {
-          display: none;
-        }
-      }
-      &.highlight {
-        width: $SIZE;
-        min-height: $SIZE;
-      }
+      min-width: 100vw;
+      height: 75vw;
+      margin: 0 0 $OFFSET 0;
     }
   }
 }

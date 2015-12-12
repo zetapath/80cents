@@ -2,7 +2,7 @@ button {
   font-weight: $FONT-WEIGHT-BOLD;
   color: $WHITE;
   border-radius: $BUTTON-BORDER-RADIUS;
-  transition: all $ANIMATION-DURATION $ANIMATION-EASE;
+  transition: background, box-shadow $ANIMATION-DURATION $ANIMATION-EASE;
   &.accent {
     background-color: $ACCENT;
   }
