@@ -1,0 +1,23 @@
+$HEIGHT: ($UNIT / 1.6) !important;
+
+[data-page="product"] {
+
+  [data-role="info"] {
+    > [data-role="image"] {
+      background-color: $BACKGROUND;
+    }
+    > [data-role="details"] {
+      > p {
+        color: $TEXT_SECONDARY;
+      }
+
+      [data-role="tags"] {
+        > a {
+          background-color: $ACCENT;
+          color: $WHITE;
+          border-radius: $BUTTON-BORDER-RADIUS;
+        }
+      }
+    }
+  }
+}

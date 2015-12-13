@@ -35,6 +35,9 @@
   h3 {
     font-size: 2.8 * $UNIT;
   }
+  small {
+    font-size: $FONT-SIZE-TINY;
+  }
 }
 
 @media screen and (max-device-width: 480px) {

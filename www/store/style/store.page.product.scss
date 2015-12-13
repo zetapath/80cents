@@ -1,184 +1,105 @@
 $HEIGHT: ($UNIT / 1.6) !important;
 
 [data-page="product"] {
-  > article section {
-    // -- Title
-    > h1 {
-      margin-bottom: 0;
-      font-size: ($FONT-SIZE * 2.5);
-    }
-    // -- Price
-    > strong {
-      margin: $UNIT 0 ($UNIT / 4);
-      font-size: ($FONT-SIZE * 1.5);
-      > span {
-        margin-right: $UNIT;
-        text-decoration: line-through;
-      }
-    }
-    // -- Heading
-    > h6 {
-      margin: ($UNIT * 2) 0 0 0;
-      font-size: ($FONT-SIZE * 1.25);
-    }
-    // -- Description
-    > .wysihtml5 {
-      margin: (1.5 * $UNIT) 0;
-      font-size: 92.5%;
-    }
-    // -- Form
-    > ul {
-      margin: $UNIT;
-      font-size: 90%;
-      line-height: 90%;
-    }
-    > form {
-      > * {
-        width: auto;
-        height: $HEIGHT;
-        line-height: $HEIGHT;
-        vertical-align: top;
-      }
-      > label {
-        display: inline-block;
-      }
-      > input {
-        text-align: center;
-      }
-      > button.icon, input {
-        width: $HEIGHT;
-        padding: 0 !important;
-      }
-    }
-    // -- Extra Information
-    > nav > * {
-      display: block;
-    }
-    // -- Images & Figures
-    img {
+  [data-component="content"] {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+  [data-role="info"] {
+    display: flex;
+    > [data-role="details"] {
+      display: flex;
       width: 100%;
-    }
-    figure.thumbnail {
-      width: 1.25 * $UNIT;
-      height: 1.25 * $UNIT;
-      margin: ($UNIT / 2);
-      cursor: pointer;
-    }
-    // -- Others
-    nav.thumbnails {
-      padding: ($UNIT / 2);
-    }
-    // -- Reviews
-    [data-reviews] > div {
-      li {
-        list-style: none;
-        display-flex() > figure {
-          width: $UNIT;
-          min-width: $UNIT;
-          height: $UNIT;
-          margin: 0 $UNIT 0 0;
+      flex-direction: column;
+      > h1 {
+        padding: 0;
+        margin-bottom: $OFFSET;
+        font-size: 4.8 * $UNIT;
+      }
+      > p {
+        margin: $OFFSET 0;
+        line-height: 135%;
+      }
+      > form {
+        display: flex;
+        align-items: center;
+        margin-bottom: $OFFSET;
+        > label {
+          margin-right: ($OFFSET / 2);
+          margin-left: $OFFSET;
         }
-        > div {
-          flex-grow: 2;
-          margin-top: ($UNIT / 4);
-          > * {
-            display: block;
+        > button {
+          &[data-action='buy'] {
+            width: 100%;
+            margin-left: $OFFSET;
           }
-          > small {
-            font-size: $FONT-SIZE-TINY;
-            line-height: $FONT-SIZE-SMALL;
-            > span {
-              opacity: .5;
-            }
-          }
-          > p {
-            margin: 0;
-          }
+        }
+        > input {
+          max-width: 3.2 * $UNIT;
         }
       }
-      > div {
-        padding: ($UNIT / 2) $UNIT;
-        > form {
-          > label {
-            margin-bottom: 0;
-          }
-          > input, textarea {
-            margin-bottom: ($UNIT / 2);
-          }
+      [data-role="tags"] {
+        margin-bottom: ($OFFSET / 2);
+        font-size: $FONT-SIZE-TINY;
+        font-weight: bold;
+        > a {
+          padding: ($UNIT / 4) ($UNIT / 2);
         }
       }
     }
   }
-  #fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
-    background-image: url('/assets/core/img/fancybox_sprite.png') !important;
-  }
-  #fancybox-loading div {
-    background: url('/assets/core/img/fancybox_loading.gif') center center no-repeat !important;
-  }
-  .fancybox-nav {
-    background: transparent url('/assets/core/img/blank.gif') !important;
-  }
+  // #fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
+  //   background-image: url('/assets/core/img/fancybox_sprite.png') !important;
+  // }
+  // #fancybox-loading div {
+  //   background: url('/assets/core/img/fancybox_loading.gif') center center no-repeat !important;
+  // }
+  // .fancybox-nav {
+  //   background: transparent url('/assets/core/img/blank.gif') !important;
+  // }
 }
 
 /*Retina graphics!*/
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-  #fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
-    background-image: url('/assets/core/img/fancybox_sprite@2x.png') !important;
-    background-size: 44px 152px;
-  }
+  // #fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
+  //   background-image: url('/assets/core/img/fancybox_sprite@2x.png') !important;
+  //   background-size: 44px 152px;
+  // }
 
-  #fancybox-loading div {
-    background-image: url('/assets/core/img/fancybox_loading@2x.gif') !important;
-    background-size: 24px 24px;
-  }
+  // #fancybox-loading div {
+  //   background-image: url('/assets/core/img/fancybox_loading@2x.gif') !important;
+  //   background-size: 24px 24px;
+  // }
 }
 
-@media screen and (max-device-width: 480px) {
+@media screen and (min-device-width: 481px) {
   [data-page="product"] {
-    > article section {
-      > h1 {
-        font-size: ($FONT-SIZE * 2);
+    [data-component="content"] {
+      padding: (2 * $OFFSET) 0;
+    }
+    [data-role="info"] {
+      > [data-role="image"] {
+        min-width: 40vw;
+        height: 40vw;
+        margin-right: $OFFSET;
       }
-      > strong {
-        margin: 0;
-      }
-      nav.thumbnails {
-        padding: ($UNIT / 2) 0 $UNIT 0 !important;
-        figure.thumbnail {
-          width: SIZE;
-          height: SIZE = (U / 1.25);
-          margin: ($UNIT / 10);
-        }
-      }
-      > ul {
-        margin: 0 $UNIT;
-        font-size: 90%;
-        line-height: 125%;
-        > li {
-          margin-bottom: ($UNIT / 2);
-        }
-      }
-      [data-action=add] {
-        width: 100%;
-        margin-bottom: $UNIT;
+      > [data-role="details"] {
+        padding: 0 $OFFSET;
       }
     }
-    > nav > a {
-      width: 100%;
-      flex-direction: row;
-      margin: ($UNIT / 4) ($UNIT / 2);
-      > figure {
-        width: $UNIT;
-        height: $UNIT;
-        margin-right: ($UNIT / 2);
+  }
+}
+@media screen and (max-device-width: 480px) {
+  [data-page="product"] {
+    [data-role="info"] {
+      flex-direction: column;
+      > [data-role="image"] {
+        min-height: 90vw;
+        margin-bottom: $OFFSET;
       }
-      > div {
-        flex-grow: 2;
-        align-content: flex-start;
-        align-items: flex-start;
-        justify-content: flex-start;
-        > strong {
-          font-size: $FONT-SIZE;
+      > [data-role="details"] {
+        > p {
+          text-align: justify;
         }
       }
     }

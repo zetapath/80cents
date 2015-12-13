@@ -3,14 +3,15 @@ $SIZE-HIGHLIGHT: 32vw;
 
 [data-component='products'] {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
   > * {
     display: flex;
     width: 0;
     height: $SIZE;
     flex-direction: column;
     flex-grow: 1;
+    align-items: center;
     justify-content: center;
     margin: ($OFFSET / 2);
     background-position: center center;

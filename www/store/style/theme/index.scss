@@ -8,10 +8,11 @@
 
 @import "./store.page";
 @import "./store.page.home";
+@import "./store.page.product";
 
 
 body {
-  background-color: $BACKGROUND;
+  background-color: $WHITE;
   font-size: $FONT-SIZE;
   font-family: $FONT_FAMILY;
 }
