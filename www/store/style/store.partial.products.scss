@@ -1,10 +1,8 @@
 $SIZE: 25vw;
-$SIZE-HIGHLIGHT: 32vw;
 
 [data-component='products'] {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   > * {
     display: flex;
     width: 0;
