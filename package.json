@@ -5,11 +5,13 @@
   "homepage": "http://zetapath.com",
   "author": {
     "name": "Javi Jimenez",
+    "url": "http://soyjavi.com/",
     "email": "javi.jimenez.villar@gmail.com"
   },
   "contributors": [
     {
       "name": "Catalina Oyaneder",
+      "url": "http://cataflu.com",
       "email": "cat2608@gmail.com"
     }
   ],
@@ -48,6 +50,7 @@
     "react": "^0.14",
     "react-addons-css-transition-group": "^0.14.2",
     "react-dom": "^0.14.2",
+    "react-router": "^1.0.0-rc3",
     "react-toolbox": "^0.13.1",
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.1",

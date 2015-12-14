@@ -26,7 +26,7 @@ module.exports = (zen) ->
         visibility: true
       Product.search filter, limit = 1, null, populate = "collection_id"
     , (error, @product) =>
-      price = @product.price * 0.05
+      price = @product.price * 0.15
       filter =
         _id           : $nin: [@product._id]
         collection_id : @product.collection_id

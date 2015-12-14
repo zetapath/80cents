@@ -22,6 +22,7 @@ module.exports = (zen) ->
     response.logout()
     response.redirect "/admin"
 
+
   zen.get "/admin/:context", (request, response) ->
     Session(request, response, redirect = true, owner = true).then (error, session) ->
       return response.redirect "/admin" if not session
@@ -40,8 +41,9 @@ module.exports = (zen) ->
 
       User.search(type: C.USER.TYPE.OWNER).then (error, users) ->
         response.page "base",
-          page  : "session"
-          asset : ".admin"
-          theme : "/assets/core/80cents.admin"
+          asset : "admin"
           host  : C.HOST[global.ZEN.type.toUpperCase()]
           owner : (users.length > 0)
+          page  : "session"
+          theme : "/assets/core/80cents.theme.admin"
+        , ['admin']

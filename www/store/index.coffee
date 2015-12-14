@@ -30,12 +30,12 @@ module.exports = (zen) ->
       return response.page 'base', page: 'error', ['404'] if not home and errors[2] isnt null
 
       bindings =
-        page        : if home then 'home' else 'page'
-        host        : C.HOST[global.ZEN.type.toUpperCase()]
-        session     : values[0]
         asset       : 'store'
-        settings    : values[1]
         collections : (collection.parse() for collection in values[2])
+        host        : C.HOST[global.ZEN.type.toUpperCase()]
+        page        : if home then 'home' else 'page'
+        session     : values[0]
+        settings    : values[1]
         theme       : helper.getTheme()
       if home
         bindings.products = (product.parse() for product in values[3])
