@@ -1,25 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Router, Route, IndexRoute } from 'react-router';
+import { createHashHistory } from 'history';
 // -- Toolbox
 import ReactToolboxApp from 'react-toolbox/lib/app';
-import {Button, IconButton} from 'react-toolbox/lib/button';
 // -- Components
-import Navigation from './components/navigation'
-// -- Style
-import style from './index.scss';
+import Main from './components/main';
 
 ReactDOM.render((
-  <ReactToolboxApp className={style.root}>
-    <Navigation />
-    <section>
-      <Button icon='bookmark' label='Bookmark' accent />
-      <Button icon='bookmark' label='Bookmark' raised primary />
-      <Button icon='inbox' label='Inbox' flat />
-      <Button icon='add' floating />
-      <Button icon='add' floating accent mini />
-      <IconButton icon='favorite' accent />
-      <Button icon='add' label='Add this' flat primary />
-      <Button icon='add' label='Add this' flat disabled />
-    </section>
-  </ReactToolboxApp>
+  <Router history={createHashHistory({queryKey: false})}>
+    <Route component={ReactToolboxApp}>
+      <Route path="/" component={Main} />
+      <Route path="/:context" component={Main}>
+        <Route path=":component" />
+      </Route>
+      <IndexRoute component={Main} content='dashboard'/>
+    </Route>
+  </Router>
 ), document.getElementById('app'));

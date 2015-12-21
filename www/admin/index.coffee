@@ -1,5 +1,4 @@
 "use strict"
-
 User        = require "../../common/models/user"
 Session     = require "../../common/session"
 C           = require "../../common/constants"

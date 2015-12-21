@@ -1,0 +1,26 @@
+@import "../_config.scss";
+$root-width: 22 * $unit ;
+
+.root {
+  display: flex;
+  width: $root-width;
+  height: 100vh;
+  flex-direction: column;
+  background-color: white;
+}
+
+.list {
+  flex-grow: 1;
+
+  .item {
+  }
+  .active {
+    font-weight: bold;
+  }
+}
+
+.footer {
+  padding: $offset;
+  font-size: $font-size-tiny;
+  color: $color-text-secondary;
+}
