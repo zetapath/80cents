@@ -64,8 +64,17 @@ And compiles:
 ```bash
 gulp init
 ```
-Now start application running the following command:
 
+Now start mongodb and run your application with following commands:
+
+
+Start mongodb on `localhost` port `27017`
+```bash
+sudo mongod
+```
+
+
+Start our application
 ```bash
 node 80cents.js
 ```
