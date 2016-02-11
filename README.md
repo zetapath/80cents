@@ -4,7 +4,7 @@ A real and easy NodeJS service for create ecommerce platforms.
 ---
 [![Package Quality](http://npm.packagequality.com/badge/80cents.png)](http://packagequality.com/#?package=80cents)
 ---
-- [Instalation](#instalation)
+- [Installation](#installation)
   - [Files](#files)
   - [Commands](#commands)
   - [Running your store](#running-your-store)
